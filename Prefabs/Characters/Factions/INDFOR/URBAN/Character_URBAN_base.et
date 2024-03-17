@@ -7,13 +7,19 @@ SCR_ChimeraCharacter : "{37578B1666981FCE}Prefabs/Characters/Core/Character_Base
   SCR_EditableCharacterComponent "{520EA1D2F659C85C}" {
    m_UIInfo SCR_EditableEntityUIInfo "{5298E609432D192D}" {
     Icon "{A489F552FB7489C3}UI/Textures/Editor/EditableEntities/Characters/EditableEntity_Character_Custom.edds"
-    m_sFaction "US"
+    m_sFaction "URBAN"
     m_aAuthoredLabels + {
      2 11
     }
     m_aAutoLabels {
     }
    }
+  }
+  CharacterWeaponSlotComponent "{520EA1D2F659CFAB}" {
+   WeaponSlotIndex 0
+  }
+  CharacterWeaponSlotComponent "{520EA1D2F659CFB7}" {
+   WeaponSlotIndex 1
   }
   SCR_CharacterIdentityComponent "{5584CBC63E092DBC}" {
    Identity Identity "{5584CBC6363C648B}" {

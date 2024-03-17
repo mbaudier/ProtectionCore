@@ -21,6 +21,13 @@ RadioManagerEntity RadioManager : "{B8E09FAB91C4ECCD}Prefabs/Radio/RadioManager.
 }
 SCR_FactionManager FactionManager_Protection1 : "{E70679F5E0A515AC}Prefabs/MP/Managers/Factions/FactionManager_Protection.et" {
  coords 2282.929 -490.635 2119.458
+ Factions {
+  SCR_Faction "{60E2C10830408844}" {
+   m_aFriendlyFactionsIds {
+    "FIA" "US" "URBAN"
+   }
+  }
+ }
 }
 SCR_BaseGameMode GameModeSF : "{ECEEDB2D3737204B}Prefabs/ScenarioFramework/GameModeSF.et" {
  coords 2303.386 -492.575 2106.539
