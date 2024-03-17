@@ -1,0 +1,20 @@
+SCR_FactionManager : "{A242612865F2A48E}Prefabs/MP/Managers/Factions/FactionManager_Base.et" {
+ ID "56B2B4776E6E4499"
+ Factions {
+  SCR_Faction "{56DEAC40D2DBC8B1}" : "{5EB46557DF2AA24F}Configs/Factions/US.conf" {
+   m_bIsPlayable 0
+  }
+  SCR_Faction "{56DEAC40D3C2E623}" : "{09727032415AC39B}Configs/Factions/USSR.conf" {
+   m_bIsPlayable 0
+  }
+  SCR_Faction "{56DEAC40D132400B}" : "{8053DB656DD18B14}Configs/Factions/FIA.conf" {
+   m_bIsPlayable 0
+  }
+  SCR_Faction "{60E2C10830408844}" : "{E5B2FC4A0D01E456}Configs/Factions/RURAL.conf" {
+   m_bIsPlayable 0
+  }
+  SCR_Faction "{60E2C10835E36609}" : "{FFF1E35BF8F3312D}Configs/Factions/URBAN.conf" {
+   m_bIsPlayable 0
+  }
+ }
+}

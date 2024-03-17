@@ -1,0 +1,24 @@
+GenericEntity Area2 : "{C72F956E4AC6A6E7}Prefabs/ScenarioFramework/Components/Area.et" {
+ coords 2042.141 59.608 2148.689
+ {
+  GenericEntity LayerTaskMove1 : "{246BEC080F393398}Prefabs/ScenarioFramework/Components/LayerTaskMove.et" {
+   components {
+    SCR_ScenarioFrameworkLayerTask "{5A2283E9F84958A1}" {
+     m_aTriggerActionsOnFinish {
+      SCR_ScenarioFrameworkActionSpawnObjects "{608F1BA5E43C602F}" {
+       m_aNameOfObjectsToSpawnOnActivation {
+        "LayerTaskDestroy1"
+       }
+      }
+     }
+    }
+   }
+   coords 0 0 0
+   {
+    GenericEntity SlotMoveTo1 : "{A44004A770A5D8BE}Prefabs/ScenarioFramework/Components/SlotMoveTo.et" {
+     coords -0.123 -0.471 -6.259
+    }
+   }
+  }
+ }
+}
