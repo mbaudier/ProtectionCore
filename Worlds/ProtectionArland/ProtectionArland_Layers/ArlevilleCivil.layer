@@ -1,4 +1,4 @@
-GenericEntity Area5 : "{C72F956E4AC6A6E7}Prefabs/ScenarioFramework/Components/Area.et" {
+GenericEntity Area_ArlevilleCivil : "{C72F956E4AC6A6E7}Prefabs/ScenarioFramework/Components/Area.et" {
  components {
   SCR_ScenarioFrameworkArea "{59E8CDC50969206E}" {
    m_fAreaRadius 24
@@ -7,24 +7,6 @@ GenericEntity Area5 : "{C72F956E4AC6A6E7}Prefabs/ScenarioFramework/Components/Ar
  coords 2758.452 77.29 1629.064
  {
   $grp GenericEntity : "{5F9FFF4BF027B3A3}Prefabs/ScenarioFramework/Components/Layer.et" {
-   Layer_Start {
-    components {
-     SCR_ScenarioFrameworkLayerBase "{5A2283EA2A0B4B14}" {
-      m_bExcludeFromDynamicDespawn 1
-     }
-    }
-    coords 129.271 -7.071 94.184
-    {
-     GenericEntity Slot4 : "{AA01691FDC4E9167}Prefabs/ScenarioFramework/Components/Slot.et" {
-      components {
-       SCR_ScenarioFrameworkSlotBase "{5A22E1D67E712EC8}" {
-        m_sObjectToSpawn "{5A2220DD0C16958B}Prefabs/MP/Spawning/SpawnPoint_US.et"
-       }
-      }
-      coords 0.627 -0.006 -0.428
-     }
-    }
-   }
    Civilians0 {
     components {
      SCR_ScenarioFrameworkLayerBase "{5A2283EA2A0B4B14}" {

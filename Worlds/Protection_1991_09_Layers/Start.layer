@@ -1,0 +1,46 @@
+GenericEntity Area_Start : "{C72F956E4AC6A6E7}Prefabs/ScenarioFramework/Components/Area.et" {
+ coords 3169.303 3.345 1168.836
+ {
+  GenericEntity Layer_Start : "{5F9FFF4BF027B3A3}Prefabs/ScenarioFramework/Components/Layer.et" {
+   coords 0 0 0
+   {
+    $grp GenericEntity : "{AA01691FDC4E9167}Prefabs/ScenarioFramework/Components/Slot.et" {
+     Start_Spawn {
+      components {
+       SCR_ScenarioFrameworkSlotBase "{5A22E1D67E712EC8}" {
+        m_sObjectToSpawn "{5A2220DD0C16958B}Prefabs/MP/Spawning/SpawnPoint_US.et"
+       }
+      }
+      coords 12.659 -3.345 -19.273
+     }
+     Start_Supply {
+      components {
+       SCR_ScenarioFrameworkSlotBase "{5A22E1D67E712EC8}" {
+        m_sObjectToSpawn "{13A99500A14FA14C}Prefabs/Props/Military/SupplyBox/SupplyShippingContainers/SupplyShippingContainers_01/SupplyShippingContainers_01_20ft.et"
+       }
+      }
+      coords -13.313 -0.321 -7.478
+      angleY -31.384
+     }
+     Start_Arsenal {
+      components {
+       SCR_ScenarioFrameworkSlotBase "{5A22E1D67E712EC8}" {
+        m_sObjectToSpawn "{45C675ED3CFBBEC5}Prefabs/Props/Military/Compositions/US/ArsenalBox_US.et"
+       }
+      }
+      coords -10.592 0.489 -4.775
+      angleY 45.853
+     }
+     Start_Vehicle {
+      components {
+       SCR_ScenarioFrameworkSlotBase "{5A22E1D67E712EC8}" {
+        m_sObjectToSpawn "{D7C51A961BF675B2}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_brown.et"
+       }
+      }
+      coords -14.653 1.003 6.016
+     }
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,43 @@
+GenericEntity Area_Task01 : "{C72F956E4AC6A6E7}Prefabs/ScenarioFramework/Components/Area.et" {
+ components {
+  SCR_ScenarioFrameworkArea "{59E8CDC50969206E}" {
+   m_bDynamicDespawn 1
+  }
+ }
+ coords 2758.452 77.29 1629.064
+ {
+  GenericEntity LayerTaskMove01 : "{246BEC080F393398}Prefabs/ScenarioFramework/Components/LayerTaskMove.et" {
+   components {
+    SCR_ScenarioFrameworkLayerTask "{5A2283E9F84958A1}" {
+     m_aTriggerActionsOnFinish {
+      SCR_ScenarioFrameworkActionSpawnObjects "{608F1BA5E43C602F}" {
+       m_aNameOfObjectsToSpawnOnActivation {
+        "LayerTaskDefend02"
+       }
+      }
+     }
+    }
+   }
+   coords 0 0 0
+   {
+    GenericEntity SlotMoveTo01 : "{A44004A770A5D8BE}Prefabs/ScenarioFramework/Components/SlotMoveTo.et" {
+     coords -15.704 0.776 15.196
+    }
+   }
+  }
+  GenericEntity Squad01 : "{5F9FFF4BF027B3A3}Prefabs/ScenarioFramework/Components/Layer.et" {
+   coords 24.177 6.268 16.491
+   {
+    GenericEntity Squad10 : "{8D43830F02C3F114}Prefabs/ScenarioFramework/Components/SlotAI.et" {
+     components {
+      SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+       m_sObjectToSpawn "{DDF3799FA1387848}Prefabs/Groups/BLUFOR/Group_US_RifleSquad.et"
+      }
+     }
+     coords -21.746 -4.669 -3.741
+     angleY 92.608
+    }
+   }
+  }
+ }
+}
