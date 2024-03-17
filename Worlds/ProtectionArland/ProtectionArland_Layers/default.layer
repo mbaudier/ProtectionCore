@@ -1,5 +1,5 @@
 SCR_AIWorld SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
- coords 2033.122 32.313 2018.837
+ coords 2303.386 -492.388 2107.539
  {
   CommentEntity {
    coords 0 1 0
@@ -14,19 +14,19 @@ SCR_AIWorld SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
  }
 }
 PerceptionManager PerceptionManager : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
- coords 2033.122 33.266 2023.837
+ coords 2303.386 -491.435 2112.539
 }
 RadioManagerEntity RadioManager : "{B8E09FAB91C4ECCD}Prefabs/Radio/RadioManager.et" {
- coords 2033.122 33.063 2022.837
+ coords 2303.386 -491.638 2111.539
 }
 SCR_FactionManager FactionManager_Protection1 : "{E70679F5E0A515AC}Prefabs/MP/Managers/Factions/FactionManager_Protection.et" {
- coords 2012.665 34.066 2030.756
+ coords 2282.929 -490.635 2119.458
 }
 SCR_BaseGameMode GameModeSF : "{ECEEDB2D3737204B}Prefabs/ScenarioFramework/GameModeSF.et" {
- coords 2033.122 32.126 2017.837
+ coords 2303.386 -492.575 2106.539
 }
 ScriptedChatEntity ScriptedChatEntity : "{F69BC912AC8236F9}Prefabs/MP/ScriptedChatEntity.et" {
- coords 2033.122 33.716 2025.837
+ coords 2303.386 -490.985 2114.539
 }
 SCR_LoadoutManager LoadoutManager_USxUSSR {
  components {
@@ -34,7 +34,7 @@ SCR_LoadoutManager LoadoutManager_USxUSSR {
    Streamable Disabled
   }
  }
- coords 2033.122 32.876 2021.837
+ coords 2303.386 -491.825 2110.539
  Flags 0
  m_aPlayerLoadouts {
   SCR_PlayerArsenalLoadout "{608F4307F2715EEE}" {
@@ -51,7 +51,7 @@ SCR_LoadoutManager LoadoutManager_USxUSSR {
  }
 }
 SCR_BaseTaskManager TaskManager : "{1AC69CD7907FB4F8}Prefabs/ScenarioFramework/Tasks/TaskManager.et" {
- coords 2033.122 32.501 2019.837
+ coords 2303.386 -492.2 2108.539
  {
   CommentEntity {
    coords 0 1 0

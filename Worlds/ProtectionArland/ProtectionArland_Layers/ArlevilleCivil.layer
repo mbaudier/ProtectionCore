@@ -1,0 +1,279 @@
+GenericEntity Area5 : "{C72F956E4AC6A6E7}Prefabs/ScenarioFramework/Components/Area.et" {
+ components {
+  SCR_ScenarioFrameworkArea "{59E8CDC50969206E}" {
+   m_fAreaRadius 24
+  }
+ }
+ coords 2758.452 77.29 1629.064
+ {
+  $grp GenericEntity : "{5F9FFF4BF027B3A3}Prefabs/ScenarioFramework/Components/Layer.et" {
+   Layer_Start {
+    components {
+     SCR_ScenarioFrameworkLayerBase "{5A2283EA2A0B4B14}" {
+      m_bExcludeFromDynamicDespawn 1
+     }
+    }
+    coords 129.271 -7.071 94.184
+    {
+     GenericEntity Slot4 : "{AA01691FDC4E9167}Prefabs/ScenarioFramework/Components/Slot.et" {
+      components {
+       SCR_ScenarioFrameworkSlotBase "{5A22E1D67E712EC8}" {
+        m_sObjectToSpawn "{5A2220DD0C16958B}Prefabs/MP/Spawning/SpawnPoint_US.et"
+       }
+      }
+      coords 0.627 -0.006 -0.428
+     }
+    }
+   }
+   Civilians0 {
+    components {
+     SCR_ScenarioFrameworkLayerBase "{5A2283EA2A0B4B14}" {
+      m_bEnableRepeatedSpawn 1
+      m_iRepeatedSpawnNumber 5
+      m_fRepeatedSpawnTimer 0.5
+     }
+    }
+    coords 6.544 -0.792 -12.17
+    {
+     GenericEntity Civilian00 : "{8D43830F02C3F114}Prefabs/ScenarioFramework/Components/SlotAI.et" {
+      components {
+       SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+        m_sFactionKey "RURAL"
+        m_bEnableRepeatedSpawn 1
+        m_sObjectToSpawn "{9377B9F8B8CA717A}Prefabs/Characters/Factions/INDFOR/RURAL/Character_RURAL_base.et"
+        m_bRandomizePerFaction 1
+        m_eEntityCatalogType CHARACTER
+        m_sWPToSpawn "{FAD1D789EE291964}Prefabs/AI/Waypoints/AIWaypoint_Defend_Large.et"
+       }
+      }
+     }
+    }
+   }
+   Civilians1 {
+    components {
+     SCR_ScenarioFrameworkLayerBase "{5A2283EA2A0B4B14}" {
+      m_bEnableRepeatedSpawn 1
+      m_iRepeatedSpawnNumber 5
+      m_fRepeatedSpawnTimer 0.5
+     }
+    }
+    coords 6.544 -0.792 -12.17
+    {
+     GenericEntity Civilian10 : "{8D43830F02C3F114}Prefabs/ScenarioFramework/Components/SlotAI.et" {
+      components {
+       SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+        m_sFactionKey "RURAL"
+        m_bEnableRepeatedSpawn 1
+        m_sObjectToSpawn "{9377B9F8B8CA717A}Prefabs/Characters/Factions/INDFOR/RURAL/Character_RURAL_base.et"
+        m_bRandomizePerFaction 1
+        m_eEntityCatalogType CHARACTER
+        m_sWPToSpawn "{FAD1D789EE291964}Prefabs/AI/Waypoints/AIWaypoint_Defend_Large.et"
+       }
+      }
+      coords 4.203 -0.29 16.781
+     }
+    }
+   }
+   Civilians2 {
+    components {
+     SCR_ScenarioFrameworkLayerBase "{5A2283EA2A0B4B14}" {
+      m_bEnableRepeatedSpawn 1
+      m_iRepeatedSpawnNumber 5
+      m_fRepeatedSpawnTimer 0.5
+     }
+    }
+    coords 12.25 -1.711 -33.323
+    {
+     GenericEntity Civilian20 : "{8D43830F02C3F114}Prefabs/ScenarioFramework/Components/SlotAI.et" {
+      components {
+       SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+        m_sFactionKey "RURAL"
+        m_bEnableRepeatedSpawn 1
+        m_sObjectToSpawn "{9377B9F8B8CA717A}Prefabs/Characters/Factions/INDFOR/RURAL/Character_RURAL_base.et"
+        m_bRandomizePerFaction 1
+        m_eEntityCatalogType CHARACTER
+        m_sWPToSpawn "{FAD1D789EE291964}Prefabs/AI/Waypoints/AIWaypoint_Defend_Large.et"
+       }
+      }
+      coords -5.563 0.453 5.149
+     }
+    }
+   }
+   Civilians3 {
+    components {
+     SCR_ScenarioFrameworkLayerBase "{5A2283EA2A0B4B14}" {
+      m_bEnableRepeatedSpawn 1
+      m_iRepeatedSpawnNumber 5
+      m_fRepeatedSpawnTimer 0.5
+     }
+    }
+    coords 12.25 -1.711 -33.323
+    {
+     GenericEntity Civilian30 : "{8D43830F02C3F114}Prefabs/ScenarioFramework/Components/SlotAI.et" {
+      components {
+       SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+        m_sFactionKey "RURAL"
+        m_bEnableRepeatedSpawn 1
+        m_sObjectToSpawn "{9377B9F8B8CA717A}Prefabs/Characters/Factions/INDFOR/RURAL/Character_RURAL_base.et"
+        m_bRandomizePerFaction 1
+        m_eEntityCatalogType CHARACTER
+        m_sWPToSpawn "{FAD1D789EE291964}Prefabs/AI/Waypoints/AIWaypoint_Defend_Large.et"
+       }
+      }
+      coords -3.907 -9.822 11.581
+     }
+    }
+   }
+   Civilians4 {
+    components {
+     SCR_ScenarioFrameworkLayerBase "{5A2283EA2A0B4B14}" {
+      m_bEnableRepeatedSpawn 1
+      m_iRepeatedSpawnNumber 5
+      m_fRepeatedSpawnTimer 0.5
+     }
+    }
+    coords 12.25 -1.711 -33.323
+    {
+     GenericEntity Civilian40 : "{8D43830F02C3F114}Prefabs/ScenarioFramework/Components/SlotAI.et" {
+      components {
+       SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+        m_sFactionKey "RURAL"
+        m_bEnableRepeatedSpawn 1
+        m_sObjectToSpawn "{9377B9F8B8CA717A}Prefabs/Characters/Factions/INDFOR/RURAL/Character_RURAL_base.et"
+        m_bRandomizePerFaction 1
+        m_eEntityCatalogType CHARACTER
+        m_sWPToSpawn "{FAD1D789EE291964}Prefabs/AI/Waypoints/AIWaypoint_Defend_Large.et"
+       }
+      }
+      coords 16.006 -0.957 28.177
+     }
+    }
+   }
+   Civilians5 {
+    components {
+     SCR_ScenarioFrameworkLayerBase "{5A2283EA2A0B4B14}" {
+      m_bEnableRepeatedSpawn 1
+      m_iRepeatedSpawnNumber 3
+      m_fRepeatedSpawnTimer 0.5
+     }
+    }
+    coords 12.25 -1.711 -33.323
+    {
+     GenericEntity Civilian50 : "{8D43830F02C3F114}Prefabs/ScenarioFramework/Components/SlotAI.et" {
+      components {
+       SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+        m_sFactionKey "RURAL"
+        m_bEnableRepeatedSpawn 1
+        m_sObjectToSpawn "{9377B9F8B8CA717A}Prefabs/Characters/Factions/INDFOR/RURAL/Character_RURAL_base.et"
+        m_bRandomizePerFaction 1
+        m_eEntityCatalogType CHARACTER
+        m_sWPToSpawn "{FAD1D789EE291964}Prefabs/AI/Waypoints/AIWaypoint_Defend_Large.et"
+       }
+      }
+      coords -3.195 0.805 35.615
+     }
+    }
+   }
+   Civilians6 {
+    components {
+     SCR_ScenarioFrameworkLayerBase "{5A2283EA2A0B4B14}" {
+      m_bEnableRepeatedSpawn 1
+      m_iRepeatedSpawnNumber 5
+      m_fRepeatedSpawnTimer 0.5
+     }
+    }
+    coords 12.25 -1.711 -33.323
+    {
+     GenericEntity Civilian60 : "{8D43830F02C3F114}Prefabs/ScenarioFramework/Components/SlotAI.et" {
+      components {
+       SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+        m_sFactionKey "RURAL"
+        m_bEnableRepeatedSpawn 1
+        m_sObjectToSpawn "{9377B9F8B8CA717A}Prefabs/Characters/Factions/INDFOR/RURAL/Character_RURAL_base.et"
+        m_bRandomizePerFaction 1
+        m_eEntityCatalogType CHARACTER
+        m_sWPToSpawn "{FAD1D789EE291964}Prefabs/AI/Waypoints/AIWaypoint_Defend_Large.et"
+       }
+      }
+      coords -30.856 2.008 18.522
+     }
+    }
+   }
+   Civilians7 {
+    components {
+     SCR_ScenarioFrameworkLayerBase "{5A2283EA2A0B4B14}" {
+      m_bEnableRepeatedSpawn 1
+      m_iRepeatedSpawnNumber 4
+      m_fRepeatedSpawnTimer 0.5
+     }
+    }
+    coords 12.25 -1.711 -33.323
+    {
+     GenericEntity Civilian70 : "{8D43830F02C3F114}Prefabs/ScenarioFramework/Components/SlotAI.et" {
+      components {
+       SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+        m_sFactionKey "RURAL"
+        m_bEnableRepeatedSpawn 1
+        m_sObjectToSpawn "{9377B9F8B8CA717A}Prefabs/Characters/Factions/INDFOR/RURAL/Character_RURAL_base.et"
+        m_bRandomizePerFaction 1
+        m_eEntityCatalogType CHARACTER
+        m_sWPToSpawn "{FAD1D789EE291964}Prefabs/AI/Waypoints/AIWaypoint_Defend_Large.et"
+       }
+      }
+      coords 8.983 -1.122 69.658
+     }
+    }
+   }
+   Civilians8 {
+    components {
+     SCR_ScenarioFrameworkLayerBase "{5A2283EA2A0B4B14}" {
+      m_bEnableRepeatedSpawn 1
+      m_iRepeatedSpawnNumber 3
+      m_fRepeatedSpawnTimer 0.5
+     }
+    }
+    coords 12.25 -1.711 -33.323
+    {
+     GenericEntity Civilian80 : "{8D43830F02C3F114}Prefabs/ScenarioFramework/Components/SlotAI.et" {
+      components {
+       SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+        m_sFactionKey "RURAL"
+        m_bEnableRepeatedSpawn 1
+        m_sObjectToSpawn "{9377B9F8B8CA717A}Prefabs/Characters/Factions/INDFOR/RURAL/Character_RURAL_base.et"
+        m_bRandomizePerFaction 1
+        m_eEntityCatalogType CHARACTER
+        m_sWPToSpawn "{FAD1D789EE291964}Prefabs/AI/Waypoints/AIWaypoint_Defend_Large.et"
+       }
+      }
+      coords -49.34 1.931 50.877
+     }
+    }
+   }
+   Civilians9 {
+    components {
+     SCR_ScenarioFrameworkLayerBase "{5A2283EA2A0B4B14}" {
+      m_bEnableRepeatedSpawn 1
+      m_iRepeatedSpawnNumber 2
+      m_fRepeatedSpawnTimer 0.5
+     }
+    }
+    coords 12.25 -1.711 -33.323
+    {
+     GenericEntity Civilian90 : "{8D43830F02C3F114}Prefabs/ScenarioFramework/Components/SlotAI.et" {
+      components {
+       SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+        m_sFactionKey "RURAL"
+        m_bEnableRepeatedSpawn 1
+        m_sObjectToSpawn "{9377B9F8B8CA717A}Prefabs/Characters/Factions/INDFOR/RURAL/Character_RURAL_base.et"
+        m_bRandomizePerFaction 1
+        m_eEntityCatalogType CHARACTER
+        m_sWPToSpawn "{FAD1D789EE291964}Prefabs/AI/Waypoints/AIWaypoint_Defend_Large.et"
+       }
+      }
+      coords 44.37 -2.234 38.06
+     }
+    }
+   }
+  }
+ }
+}
