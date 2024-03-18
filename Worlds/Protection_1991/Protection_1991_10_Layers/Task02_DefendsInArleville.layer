@@ -10,7 +10,7 @@ GenericEntity AreaTask02 : "{C72F956E4AC6A6E7}Prefabs/ScenarioFramework/Componen
    components {
     SCR_ScenarioFrameworkLayerTaskDefend "{5C52E161174024CB}" {
      m_eActivationType ON_TRIGGER_ACTIVATION
-     m_fDefendTime 300
+     m_bDisplayCountdownHUD 0
      m_aFactionSettings {
       SCR_ScenarioFrameworkTaskDefendDefendingFaction "{60E515102275A9D4}" {
        m_sFactionKey "US"
@@ -19,10 +19,13 @@ GenericEntity AreaTask02 : "{C72F956E4AC6A6E7}Prefabs/ScenarioFramework/Componen
        m_sFactionKey "RU"
       }
      }
-     m_fMinDefenderPercentageRatio 0.5
+     m_fMinDefenderPercentageRatio 0
      m_aAttackerLayerNames {
       "LayerMayorMeetingAttackers"
      }
+     m_bDelayedEvaluation 1
+     m_bDisplayDelayedEvaluationText 1
+     m_sDelayedEvaluationText "Eliminate all attackers"
     }
    }
    coords 0 0 0

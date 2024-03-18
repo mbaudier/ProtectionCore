@@ -78,7 +78,7 @@ GenericEntity AreaTask01 : "{C72F956E4AC6A6E7}Prefabs/ScenarioFramework/Componen
      Bodyguards {
       components {
        SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
-        m_sObjectToSpawn "{DDF3799FA1387848}Prefabs/Groups/BLUFOR/Group_US_RifleSquad.et"
+        m_sObjectToSpawn "{FCF7F5DC4F83955C}Prefabs/Groups/BLUFOR/Group_US_LightFireTeam.et"
        }
       }
       coords 15.951 -1.41 0

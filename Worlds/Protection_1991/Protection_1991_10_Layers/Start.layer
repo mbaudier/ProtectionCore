@@ -1,3 +1,7 @@
+GenericEntity : "{4923E218F59644B9}Prefabs/Props/Wrecks/BoatWreck_01.et" {
+ coords 3132.978 34.585 1386.904
+ angleY -16.2
+}
 GenericEntity AreaStart : "{C72F956E4AC6A6E7}Prefabs/ScenarioFramework/Components/Area.et" {
  coords 3177.489 0.707 1158.746
  {
@@ -52,19 +56,56 @@ GenericEntity AreaStart : "{C72F956E4AC6A6E7}Prefabs/ScenarioFramework/Component
        components {
         SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
          m_sObjectToSpawn "{30FF39F55CD4BC29}Prefabs/Characters/Factions/INDFOR/RURAL/Character_RURAL_Fisherman01.et"
-         m_sWPToSpawn "{2FCBE5C76E285A7B}Prefabs/AI/Waypoints/AIWaypoint_DefendSmall.et"
+         m_WaypointSet SCR_ScenarioFrameworkWaypointSet "{60E546E853CC2766}" {
+          m_aLayerName {
+           "WaypointsFishermen"
+          }
+         }
+         m_sWPToSpawn "{35BD6541CBB8AC08}Prefabs/AI/Waypoints/AIWaypoint_Cycle.et"
         }
        }
-       coords -51.652 35.326 238.037
+       coords -45.634 33.552 224.702
+       angleY 91.437
       }
       StartFisherman01 {
        components {
         SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
          m_sObjectToSpawn "{30FF39F55CD4BC29}Prefabs/Characters/Factions/INDFOR/RURAL/Character_RURAL_Fisherman01.et"
-         m_sWPToSpawn "{2FCBE5C76E285A7B}Prefabs/AI/Waypoints/AIWaypoint_DefendSmall.et"
+         m_WaypointSet SCR_ScenarioFrameworkWaypointSet "{60E546E81D0C1024}" {
+          m_aLayerName {
+           "WaypointsFishermen"
+          }
+         }
+         m_sWPToSpawn "{35BD6541CBB8AC08}Prefabs/AI/Waypoints/AIWaypoint_Cycle.et"
         }
        }
        coords -44.333 33.428 224.133
+       angleY -123.332
+      }
+     }
+    }
+   }
+   WaypointsFishermen {
+    coords -43.768 32.896 219.502
+    {
+     $grp GenericEntity : "{EBD91177954E8236}Prefabs/ScenarioFramework/Components/SlotWaypoint.et" {
+      FishermenWP1 {
+       components {
+        SCR_ScenarioFrameworkSlotWaypoint "{5EEEE11FAD8EE85C}" {
+         m_Waypoint SCR_ScenarioFrameworkWaypointCycle "{60E546E80C7D1EED}" {
+         }
+        }
+       }
+       coords 0 0 0
+      }
+      FishermenWP2 {
+       components {
+        SCR_ScenarioFrameworkSlotWaypoint "{5EEEE11FAD8EE85C}" {
+         m_Waypoint SCR_ScenarioFrameworkWaypointCycle "{60E546E8158AE769}" {
+         }
+        }
+       }
+       coords -13.859 3.962 28.93
       }
      }
     }

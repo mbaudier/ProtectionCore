@@ -30,7 +30,7 @@ SCR_ChimeraCharacter : "{E398E44759DA1A43}Prefabs/Characters/Factions/BLUFOR/US_
     }
     ItemsInitConfigurationItem "{5538C29DAD1DCAF6}" {
      PrefabsToSpawn + {
-      "{E8F00BF730225B00}Prefabs/Weapons/Grenades/Grenade_M67.et" "{E8F00BF730225B00}Prefabs/Weapons/Grenades/Grenade_M67.et"
+      "{E8F00BF730225B00}Prefabs/Weapons/Grenades/Grenade_M67.et" "{E8F00BF730225B00}Prefabs/Weapons/Grenades/Grenade_M67.et" "{D8F2CA92583B23D3}Prefabs/Weapons/Magazines/Magazine_556x45_STANAG_30rnd_Last_5Tracer.et" "{D8F2CA92583B23D3}Prefabs/Weapons/Magazines/Magazine_556x45_STANAG_30rnd_Last_5Tracer.et"
      }
     }
    }
