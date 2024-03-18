@@ -2,9 +2,20 @@ GenericEntity AreaTask01 : "{C72F956E4AC6A6E7}Prefabs/ScenarioFramework/Componen
  coords 2743.371 78.613 1640.013
  {
   GenericEntity LayerTask01Move : "{246BEC080F393398}Prefabs/ScenarioFramework/Components/LayerTaskMove.et" {
+   components {
+    SCR_ScenarioFrameworkLayerTask "{5A2283E9F84958A1}" {
+     m_aTriggerActionsOnFinish {
+      SCR_ScenarioFrameworkActionSpawnObjects "{60E5151532FF59E3}" {
+       m_aNameOfObjectsToSpawnOnActivation {
+        "LayerTaskDefendMayorMeeting"
+       }
+      }
+     }
+    }
+   }
    coords 0 0 0
    {
-    GenericEntity SlotMoveTo1 : "{A44004A770A5D8BE}Prefabs/ScenarioFramework/Components/SlotMoveTo.et" {
+    GenericEntity MoveToMayorMeeting : "{A44004A770A5D8BE}Prefabs/ScenarioFramework/Components/SlotMoveTo.et" {
      components {
       SCR_ScenarioFrameworkSlotExtraction "{5A1EEEC837EEA27B}" {
        m_aPlugins {
@@ -26,7 +37,8 @@ GenericEntity AreaTask01 : "{C72F956E4AC6A6E7}Prefabs/ScenarioFramework/Componen
       components {
        SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
         m_sFactionKey "US"
-        m_sObjectToSpawn "{036D018C27337044}Prefabs/Characters/Factions/INDFOR/URBAN/Character_URBAN_Businessman00.et"
+        m_sObjectToSpawn "{C4B3985F031B34B4}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Businessman00.et"
+        m_sWPToSpawn "{2FCBE5C76E285A7B}Prefabs/AI/Waypoints/AIWaypoint_DefendSmall.et"
        }
       }
       coords -2.076 -0.546 0
@@ -35,7 +47,8 @@ GenericEntity AreaTask01 : "{C72F956E4AC6A6E7}Prefabs/ScenarioFramework/Componen
       components {
        SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
         m_sFactionKey "US"
-        m_sObjectToSpawn "{8AA5799597126801}Prefabs/Characters/Factions/INDFOR/URBAN/Character_URBAN_Businessman02.et"
+        m_sObjectToSpawn "{212FD4A60FFEA3DF}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Businessman01.et"
+        m_sWPToSpawn "{2FCBE5C76E285A7B}Prefabs/AI/Waypoints/AIWaypoint_DefendSmall.et"
        }
       }
       coords 0.784 -0.546 0
@@ -45,7 +58,8 @@ GenericEntity AreaTask01 : "{C72F956E4AC6A6E7}Prefabs/ScenarioFramework/Componen
       components {
        SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
         m_sFactionKey "US"
-        m_sObjectToSpawn "{036D018C27337044}Prefabs/Characters/Factions/INDFOR/URBAN/Character_URBAN_Businessman00.et"
+        m_sObjectToSpawn "{212FD4A60FFEA3DF}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Businessman01.et"
+        m_sWPToSpawn "{2FCBE5C76E285A7B}Prefabs/AI/Waypoints/AIWaypoint_DefendSmall.et"
        }
       }
       coords 0 -0.546 -1.171
@@ -55,6 +69,7 @@ GenericEntity AreaTask01 : "{C72F956E4AC6A6E7}Prefabs/ScenarioFramework/Componen
        SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
         m_sFactionKey "RURAL"
         m_sObjectToSpawn "{5460268B4DBF78E3}Prefabs/Characters/Factions/INDFOR/RURAL/Character_RURAL_Notable01.et"
+        m_sWPToSpawn "{2FCBE5C76E285A7B}Prefabs/AI/Waypoints/AIWaypoint_DefendSmall.et"
        }
       }
       coords 0 -0.546 3.179

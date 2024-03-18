@@ -1,0 +1,75 @@
+GenericEntity AreaTask02 : "{C72F956E4AC6A6E7}Prefabs/ScenarioFramework/Components/Area.et" {
+ components {
+  SCR_ScenarioFrameworkArea "{59E8CDC50969206E}" {
+   m_fAreaRadius 50
+  }
+ }
+ coords 2742.715 78.964 1640.432
+ {
+  GenericEntity LayerTaskDefendMayorMeeting : "{775C493CE872C3A5}Prefabs/ScenarioFramework/Components/LayerTaskDefend.et" {
+   components {
+    SCR_ScenarioFrameworkLayerTaskDefend "{5C52E161174024CB}" {
+     m_eActivationType ON_TRIGGER_ACTIVATION
+     m_fDefendTime 300
+     m_aFactionSettings {
+      SCR_ScenarioFrameworkTaskDefendDefendingFaction "{60E515102275A9D4}" {
+       m_sFactionKey "US"
+      }
+      SCR_ScenarioFrameworkTaskDefendAttackingFaction "{60E5151025B931CF}" {
+       m_sFactionKey "RU"
+      }
+     }
+     m_fMinDefenderPercentageRatio 0.5
+     m_aAttackerLayerNames {
+      "LayerMayorMeetingAttackers"
+     }
+    }
+   }
+   coords 0 0 0
+   {
+    GenericEntity LayerMayorMeetingAttackers : "{5F9FFF4BF027B3A3}Prefabs/ScenarioFramework/Components/Layer.et" {
+     coords 0 0 0
+     {
+      $grp GenericEntity : "{8D43830F02C3F114}Prefabs/ScenarioFramework/Components/SlotAI.et" {
+       Task02Attackers01 {
+        components {
+         SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+          m_sObjectToSpawn "{E552DABF3636C2AD}Prefabs/Groups/OPFOR/Group_USSR_RifleSquad.et"
+          m_sWPToSpawn "{B3E7B8DC2BAB8ACC}Prefabs/AI/Waypoints/AIWaypoint_SearchAndDestroy.et"
+         }
+        }
+        coords -25.38 2.567 -34.685
+       }
+       Task02Attackers02 {
+        components {
+         SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+          m_sObjectToSpawn "{E552DABF3636C2AD}Prefabs/Groups/OPFOR/Group_USSR_RifleSquad.et"
+          m_sWPToSpawn "{B3E7B8DC2BAB8ACC}Prefabs/AI/Waypoints/AIWaypoint_SearchAndDestroy.et"
+         }
+        }
+        coords 5.469 -2.045 -41.67
+       }
+       Task02Attackers00 {
+        components {
+         SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+          m_sObjectToSpawn "{E552DABF3636C2AD}Prefabs/Groups/OPFOR/Group_USSR_RifleSquad.et"
+          m_sWPToSpawn "{B3E7B8DC2BAB8ACC}Prefabs/AI/Waypoints/AIWaypoint_SearchAndDestroy.et"
+         }
+        }
+        coords 96.377 -5.102 -31.903
+       }
+      }
+     }
+    }
+    GenericEntity Task02Spawn : "{AA01691FDC4E9167}Prefabs/ScenarioFramework/Components/Slot.et" {
+     components {
+      SCR_ScenarioFrameworkSlotBase "{5A22E1D67E712EC8}" {
+       m_sObjectToSpawn "{5A2220DD0C16958B}Prefabs/MP/Spawning/SpawnPoint_US.et"
+      }
+     }
+     coords 0 -0.898 -2.468
+    }
+   }
+  }
+ }
+}

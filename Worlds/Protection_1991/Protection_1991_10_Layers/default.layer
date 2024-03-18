@@ -25,7 +25,18 @@ SCR_FactionManager FactionManager_Protection : "{E70679F5E0A515AC}Prefabs/MP/Man
   SCR_Faction "{56DEAC40D2DBC8B1}" {
    m_bIsPlayable 1
   }
+  SCR_Faction "{60E2C10830408844}" {
+   m_aFriendlyFactionsIds {
+    "FIA" "US" "URBAN"
+   }
+  }
+  SCR_Faction "{60E2C10835E36609}" {
+   m_aFriendlyFactionsIds {
+    "USSR" "US" "RURAL"
+   }
+  }
  }
+ m_bCanChangeFactionsPlayable 0
 }
 SCR_BaseGameMode GameModeSF : "{ECEEDB2D3737204B}Prefabs/ScenarioFramework/GameModeSF.et" {
  coords 2033.122 32.126 2017.837
@@ -51,6 +62,6 @@ SCR_BaseTaskManager TaskManager : "{1AC69CD7907FB4F8}Prefabs/ScenarioFramework/T
   }
  }
 }
-SCR_LoadoutManager LoadoutManager_Protection : "{C4F7860EF519B92A}Prefabs/MP/Managers/Loadouts/LoadoutManager_Protection.et" {
+SCR_LoadoutManager LoadoutManager_Protection : "{C4F7860EF519B92A}Prefabs/MP/Managers/Loadouts/LoadoutManager_SOF.et" {
  coords 2034.439 33.063 2022.739
 }
