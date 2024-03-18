@@ -5,7 +5,72 @@ GenericEntity AreaTask01 : "{C72F956E4AC6A6E7}Prefabs/ScenarioFramework/Componen
    coords 0 0 0
    {
     GenericEntity SlotMoveTo1 : "{A44004A770A5D8BE}Prefabs/ScenarioFramework/Components/SlotMoveTo.et" {
+     components {
+      SCR_ScenarioFrameworkSlotExtraction "{5A1EEEC837EEA27B}" {
+       m_aPlugins {
+        SCR_ScenarioFrameworkPluginTrigger "{5A6C6D099D49E4BA}" {
+         m_fAreaRadius 3
+        }
+       }
+      }
+     }
      coords 0 0 0
+    }
+   }
+  }
+  GenericEntity LayerMayorMeeting : "{5F9FFF4BF027B3A3}Prefabs/ScenarioFramework/Components/Layer.et" {
+   coords 0 0 0
+   {
+    $grp GenericEntity : "{8D43830F02C3F114}Prefabs/ScenarioFramework/Components/SlotAI.et" {
+     Businessman01 {
+      components {
+       SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+        m_sFactionKey "US"
+        m_sObjectToSpawn "{036D018C27337044}Prefabs/Characters/Factions/INDFOR/URBAN/Character_URBAN_Businessman00.et"
+       }
+      }
+      coords -2.076 -0.546 0
+     }
+     Businessman02 {
+      components {
+       SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+        m_sFactionKey "US"
+        m_sObjectToSpawn "{8AA5799597126801}Prefabs/Characters/Factions/INDFOR/URBAN/Character_URBAN_Businessman02.et"
+       }
+      }
+      coords 0.784 -0.546 0
+      angleY -62.655
+     }
+     Businessman03 {
+      components {
+       SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+        m_sFactionKey "US"
+        m_sObjectToSpawn "{036D018C27337044}Prefabs/Characters/Factions/INDFOR/URBAN/Character_URBAN_Businessman00.et"
+       }
+      }
+      coords 0 -0.546 -1.171
+     }
+     Mayor {
+      components {
+       SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+        m_sFactionKey "RURAL"
+        m_sObjectToSpawn "{5460268B4DBF78E3}Prefabs/Characters/Factions/INDFOR/RURAL/Character_RURAL_Notable01.et"
+       }
+      }
+      coords 0 -0.546 3.179
+      angleY -156.027
+     }
+     Bodyguards {
+      components {
+       SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+        m_sObjectToSpawn "{DDF3799FA1387848}Prefabs/Groups/BLUFOR/Group_US_RifleSquad.et"
+       }
+      }
+      coords 15.951 -1.41 0
+      angleX 0.568
+      angleY 100.342
+      angleZ 0.104
+     }
     }
    }
   }

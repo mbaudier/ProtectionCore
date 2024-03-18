@@ -4,14 +4,33 @@ GenericEntity AreaStart : "{C72F956E4AC6A6E7}Prefabs/ScenarioFramework/Component
   GenericEntity LayerStart : "{5F9FFF4BF027B3A3}Prefabs/ScenarioFramework/Components/Layer.et" {
    coords 0 0 0
    {
-    GenericEntity SlotSpawn : "{AA01691FDC4E9167}Prefabs/ScenarioFramework/Components/Slot.et" {
-     components {
-      SCR_ScenarioFrameworkSlotBase "{5A22E1D67E712EC8}" {
-       m_sObjectToSpawn "{5A2220DD0C16958B}Prefabs/MP/Spawning/SpawnPoint_US.et"
-       m_bCanBeGarbageCollected 0
+    $grp GenericEntity : "{AA01691FDC4E9167}Prefabs/ScenarioFramework/Components/Slot.et" {
+     StartSpawn {
+      components {
+       SCR_ScenarioFrameworkSlotBase "{5A22E1D67E712EC8}" {
+        m_sObjectToSpawn "{5A2220DD0C16958B}Prefabs/MP/Spawning/SpawnPoint_US.et"
+        m_bCanBeGarbageCollected 0
+       }
       }
+      coords 4.708 -2.309 -12.71
      }
-     coords 4.708 -0.707 -7.969
+     StartVehicle {
+      components {
+       SCR_ScenarioFrameworkSlotBase "{5A22E1D67E712EC8}" {
+        m_sObjectToSpawn "{870EB660433857D3}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_teal.et"
+       }
+      }
+      coords -16.992 3.109 14.83
+     }
+     StartSupply {
+      components {
+       SCR_ScenarioFrameworkSlotBase "{5A22E1D67E712EC8}" {
+        m_sObjectToSpawn "{13A99500A14FA14C}Prefabs/Props/Military/SupplyBox/SupplyShippingContainers/SupplyShippingContainers_01/SupplyShippingContainers_01_20ft.et"
+       }
+      }
+      coords -21.751 2.44 3.545
+      angleY -34.589
+     }
     }
    }
   }
