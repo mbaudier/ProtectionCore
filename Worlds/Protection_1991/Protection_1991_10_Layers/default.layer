@@ -20,21 +20,14 @@ RadioManagerEntity RadioManager : "{B8E09FAB91C4ECCD}Prefabs/Radio/RadioManager.
  coords 2033.122 33.063 2022.837
 }
 SCR_FactionManager FactionManager_Protection : "{E70679F5E0A515AC}Prefabs/MP/Managers/Factions/FactionManager_Protection.et" {
- coords 2038.916 32.457 2018.963
+ coords 2033.122 32.688 2020.837
  Factions {
-  SCR_Faction "{60E2C10830408844}" {
-   m_aFriendlyFactionsIds {
-    "FIA" "US" "URBAN"
-   }
+  SCR_Faction "{56DEAC40D2DBC8B1}" {
+   m_bIsPlayable 1
   }
  }
 }
 SCR_BaseGameMode GameModeSF : "{ECEEDB2D3737204B}Prefabs/ScenarioFramework/GameModeSF.et" {
- components {
-  SCR_GameModeSFManager "{5A96783ABCA252AE}" {
-   m_bDynamicDespawn 1
-  }
- }
  coords 2033.122 32.126 2017.837
 }
 ScriptedChatEntity ScriptedChatEntity : "{F69BC912AC8236F9}Prefabs/MP/ScriptedChatEntity.et" {
@@ -59,5 +52,5 @@ SCR_BaseTaskManager TaskManager : "{1AC69CD7907FB4F8}Prefabs/ScenarioFramework/T
  }
 }
 SCR_LoadoutManager LoadoutManager_Protection : "{C4F7860EF519B92A}Prefabs/MP/Managers/Loadouts/LoadoutManager_Protection.et" {
- coords 2035.509 36.168 2026.987
+ coords 2034.439 33.063 2022.739
 }

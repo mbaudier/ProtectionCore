@@ -1,0 +1,13 @@
+GenericEntity AreaTask01 : "{C72F956E4AC6A6E7}Prefabs/ScenarioFramework/Components/Area.et" {
+ coords 2743.371 78.613 1640.013
+ {
+  GenericEntity LayerTask01Move : "{246BEC080F393398}Prefabs/ScenarioFramework/Components/LayerTaskMove.et" {
+   coords 0 0 0
+   {
+    GenericEntity SlotMoveTo1 : "{A44004A770A5D8BE}Prefabs/ScenarioFramework/Components/SlotMoveTo.et" {
+     coords 0 0 0
+    }
+   }
+  }
+ }
+}

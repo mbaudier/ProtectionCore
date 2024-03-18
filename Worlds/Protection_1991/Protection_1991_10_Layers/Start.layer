@@ -1,0 +1,19 @@
+GenericEntity AreaStart : "{C72F956E4AC6A6E7}Prefabs/ScenarioFramework/Components/Area.et" {
+ coords 3177.489 0.707 1158.746
+ {
+  GenericEntity LayerStart : "{5F9FFF4BF027B3A3}Prefabs/ScenarioFramework/Components/Layer.et" {
+   coords 0 0 0
+   {
+    GenericEntity SlotSpawn : "{AA01691FDC4E9167}Prefabs/ScenarioFramework/Components/Slot.et" {
+     components {
+      SCR_ScenarioFrameworkSlotBase "{5A22E1D67E712EC8}" {
+       m_sObjectToSpawn "{5A2220DD0C16958B}Prefabs/MP/Spawning/SpawnPoint_US.et"
+       m_bCanBeGarbageCollected 0
+      }
+     }
+     coords 4.708 -0.707 -7.969
+    }
+   }
+  }
+ }
+}
