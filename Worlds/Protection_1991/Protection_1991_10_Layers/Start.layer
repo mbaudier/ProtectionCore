@@ -1,7 +1,3 @@
-GenericEntity : "{4923E218F59644B9}Prefabs/Props/Wrecks/BoatWreck_01.et" {
- coords 3132.978 34.585 1386.904
- angleY -16.2
-}
 GenericEntity AreaStart : "{C72F956E4AC6A6E7}Prefabs/ScenarioFramework/Components/Area.et" {
  coords 3177.489 0.707 1158.746
  {
@@ -51,6 +47,73 @@ GenericEntity AreaStart : "{C72F956E4AC6A6E7}Prefabs/ScenarioFramework/Component
    LayerStartFishermen {
     coords 0 0 0
     {
+     GenericEntity WaypointsFishermen : "{5F9FFF4BF027B3A3}Prefabs/ScenarioFramework/Components/Layer.et" {
+      coords -43.768 32.896 219.502
+      {
+       $grp GenericEntity : "{EBD91177954E8236}Prefabs/ScenarioFramework/Components/SlotWaypoint.et" {
+        FishermenWP3 {
+         components {
+          SCR_ScenarioFrameworkSlotWaypoint "{5EEEE11FAD8EE85C}" {
+           m_Waypoint SCR_ScenarioFrameworkWaypointPatrol "{60E708BE085756E6}" {
+            m_fCompletionRadius 2
+           }
+          }
+         }
+         coords -13.216 3.918 28.93
+        }
+        FishermenWP1 {
+         components {
+          SCR_ScenarioFrameworkSlotWaypoint "{5EEEE11FAD8EE85C}" {
+           m_Waypoint SCR_ScenarioFrameworkWaypointPatrol "{60E708BEF00509AC}" {
+            m_fCompletionRadius 2
+           }
+          }
+         }
+         coords 14.646 -5.308 -27.888
+        }
+        FishermenWP0 {
+         components {
+          SCR_ScenarioFrameworkSlotWaypoint "{5EEEE11FAD8EE85C}" {
+           m_Waypoint SCR_ScenarioFrameworkWaypointPatrol "{60E708BEFD171990}" {
+            m_fCompletionRadius 2
+           }
+          }
+         }
+         coords 12.855 -11.879 -71.613
+        }
+        FishermenWP5 {
+         components {
+          SCR_ScenarioFrameworkSlotWaypoint "{5EEEE11FAD8EE85C}" {
+           m_Waypoint SCR_ScenarioFrameworkWaypointPatrol "{60E708BE83372DC1}" {
+            m_fCompletionRadius 2
+           }
+          }
+         }
+         coords 14.583 -5.161 -27.046
+        }
+        FishermenWP4 {
+         components {
+          SCR_ScenarioFrameworkSlotWaypoint "{5EEEE11FAD8EE85C}" {
+           m_Waypoint SCR_ScenarioFrameworkWaypointPatrol "{60E708BFBC63D6C6}" {
+            m_fCompletionRadius 2
+           }
+          }
+         }
+         coords 0.566 0.023 0.5
+        }
+        FishermenWP2 {
+         components {
+          SCR_ScenarioFrameworkSlotWaypoint "{5EEEE11FAD8EE85C}" {
+           m_Waypoint SCR_ScenarioFrameworkWaypointPatrol "{60E708B84EC632A5}" {
+            m_fCompletionRadius 2
+           }
+          }
+         }
+         coords 0.75 -0.03 0.121
+        }
+       }
+      }
+     }
      $grp GenericEntity : "{8D43830F02C3F114}Prefabs/ScenarioFramework/Components/SlotAI.et" {
       StartFisherman00 {
        components {
@@ -58,55 +121,42 @@ GenericEntity AreaStart : "{C72F956E4AC6A6E7}Prefabs/ScenarioFramework/Component
          m_sObjectToSpawn "{30FF39F55CD4BC29}Prefabs/Characters/Factions/INDFOR/RURAL/Character_RURAL_Fisherman01.et"
          m_WaypointSet SCR_ScenarioFrameworkWaypointSet "{60E546E853CC2766}" {
           m_aLayerName {
-           "WaypointsFishermen"
+           "FishermenWPCycle"
           }
          }
          m_sWPToSpawn "{35BD6541CBB8AC08}Prefabs/AI/Waypoints/AIWaypoint_Cycle.et"
         }
        }
-       coords -45.634 33.552 224.702
+       coords -32.702 20.336 143.647
        angleY 91.437
       }
       StartFisherman01 {
        components {
         SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
-         m_sObjectToSpawn "{30FF39F55CD4BC29}Prefabs/Characters/Factions/INDFOR/RURAL/Character_RURAL_Fisherman01.et"
+         m_sObjectToSpawn "{7D6EE6863B754543}Prefabs/Characters/Factions/INDFOR/RURAL/Character_RURAL_Worker01.et"
          m_WaypointSet SCR_ScenarioFrameworkWaypointSet "{60E546E81D0C1024}" {
           m_aLayerName {
-           "WaypointsFishermen"
+           "FishermenWPCycle"
           }
          }
          m_sWPToSpawn "{35BD6541CBB8AC08}Prefabs/AI/Waypoints/AIWaypoint_Cycle.et"
         }
        }
-       coords -44.333 33.428 224.133
+       coords -31.401 20.229 143.078
        angleY -123.332
       }
      }
-    }
-   }
-   WaypointsFishermen {
-    coords -43.768 32.896 219.502
-    {
-     $grp GenericEntity : "{EBD91177954E8236}Prefabs/ScenarioFramework/Components/SlotWaypoint.et" {
-      FishermenWP1 {
-       components {
-        SCR_ScenarioFrameworkSlotWaypoint "{5EEEE11FAD8EE85C}" {
-         m_Waypoint SCR_ScenarioFrameworkWaypointCycle "{60E546E80C7D1EED}" {
+     GenericEntity FishermenWPCycle : "{EBD91177954E8236}Prefabs/ScenarioFramework/Components/SlotWaypoint.et" {
+      components {
+       SCR_ScenarioFrameworkSlotWaypoint "{5EEEE11FAD8EE85C}" {
+        m_Waypoint SCR_ScenarioFrameworkWaypointCycle "{60E708B72E5DF8AC}" {
+         m_aLayersWithWaypointsToCycle {
+          "WaypointsFishermen"
          }
         }
        }
-       coords 0 0 0
       }
-      FishermenWP2 {
-       components {
-        SCR_ScenarioFrameworkSlotWaypoint "{5EEEE11FAD8EE85C}" {
-         m_Waypoint SCR_ScenarioFrameworkWaypointCycle "{60E546E8158AE769}" {
-         }
-        }
-       }
-       coords -13.859 3.962 28.93
-      }
+      coords -55.711 32.392 183.835
      }
     }
    }
