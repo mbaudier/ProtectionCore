@@ -1,3 +1,11 @@
+GenericEntity Slot1 : "{AA01691FDC4E9167}Prefabs/ScenarioFramework/Components/Slot.et" {
+ components {
+  SCR_ScenarioFrameworkSlotBase "{5A22E1D67E712EC8}" {
+   m_sObjectToSpawn "{A4D16A62B432451A}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_red.et"
+  }
+ }
+ coords 3153.335 4.203 1169.592
+}
 GenericEntity AreaStart : "{C72F956E4AC6A6E7}Prefabs/ScenarioFramework/Components/Area.et" {
  coords 3177.489 0.707 1158.746
  {
@@ -40,6 +48,14 @@ GenericEntity AreaStart : "{C72F956E4AC6A6E7}Prefabs/ScenarioFramework/Component
        }
        coords -18.851 3.127 5.396
        angleY -144.606
+      }
+      StartVehicle01 {
+       components {
+        SCR_ScenarioFrameworkSlotBase "{5A22E1D67E712EC8}" {
+         m_sObjectToSpawn "{C8B16ABCA57679A2}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_blue.et"
+        }
+       }
+       coords -22.704 3.38 16.921
       }
      }
     }
