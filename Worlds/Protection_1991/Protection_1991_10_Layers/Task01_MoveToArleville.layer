@@ -20,12 +20,13 @@ GenericEntity AreaTask01 : "{C72F956E4AC6A6E7}Prefabs/ScenarioFramework/Componen
       SCR_ScenarioFrameworkSlotExtraction "{5A1EEEC837EEA27B}" {
        m_aPlugins {
         SCR_ScenarioFrameworkPluginTrigger "{5A6C6D099D49E4BA}" {
-         m_fAreaRadius 3
         }
        }
+       m_sTaskTitle "Join businessmen meeting with Arleville's mayor"
       }
      }
-     coords 0 0 0
+     coords -2.149 0 3.228
+     angleY -33.654
     }
    }
   }
@@ -33,47 +34,16 @@ GenericEntity AreaTask01 : "{C72F956E4AC6A6E7}Prefabs/ScenarioFramework/Componen
    coords 0 0 0
    {
     $grp GenericEntity : "{8D43830F02C3F114}Prefabs/ScenarioFramework/Components/SlotAI.et" {
-     Businessman01 {
-      components {
-       SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
-        m_sFactionKey "US"
-        m_sObjectToSpawn "{C4B3985F031B34B4}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Businessman00.et"
-        m_sWPToSpawn "{2FCBE5C76E285A7B}Prefabs/AI/Waypoints/AIWaypoint_DefendSmall.et"
-       }
-      }
-      coords -2.076 -0.546 0
-     }
-     Businessman02 {
-      components {
-       SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
-        m_sFactionKey "US"
-        m_sObjectToSpawn "{212FD4A60FFEA3DF}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Businessman01.et"
-        m_sWPToSpawn "{2FCBE5C76E285A7B}Prefabs/AI/Waypoints/AIWaypoint_DefendSmall.et"
-       }
-      }
-      coords 0.784 -0.546 0
-      angleY -62.655
-     }
-     Businessman03 {
-      components {
-       SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
-        m_sFactionKey "US"
-        m_sObjectToSpawn "{212FD4A60FFEA3DF}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Businessman01.et"
-        m_sWPToSpawn "{2FCBE5C76E285A7B}Prefabs/AI/Waypoints/AIWaypoint_DefendSmall.et"
-       }
-      }
-      coords 0 -0.546 -1.171
-     }
      Mayor {
       components {
        SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
         m_sFactionKey "RURAL"
         m_sObjectToSpawn "{5460268B4DBF78E3}Prefabs/Characters/Factions/INDFOR/RURAL/Character_RURAL_Notable01.et"
-        m_sWPToSpawn "{2FCBE5C76E285A7B}Prefabs/AI/Waypoints/AIWaypoint_DefendSmall.et"
+        m_sWPToSpawn "{531EC45063C1F57B}Prefabs/AI/Waypoints/AIWaypoint_Wait.et"
        }
       }
-      coords 0 -0.546 3.179
-      angleY -156.027
+      coords -2.361 -0.547 -1.111
+      angleY 16.08
      }
      Bodyguards {
       components {
@@ -86,6 +56,15 @@ GenericEntity AreaTask01 : "{C72F956E4AC6A6E7}Prefabs/ScenarioFramework/Componen
       angleY 100.342
       angleZ 0.104
      }
+    }
+    GenericEntity Task01EscapeVehicle : "{AA01691FDC4E9167}Prefabs/ScenarioFramework/Components/Slot.et" {
+     components {
+      SCR_ScenarioFrameworkSlotBase "{5A22E1D67E712EC8}" {
+       m_sObjectToSpawn "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et"
+      }
+     }
+     coords 14.695 -1.208 20.143
+     angleY 135.85
     }
    }
   }

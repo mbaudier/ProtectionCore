@@ -2,6 +2,7 @@ GenericEntity Area_ArlevilleCivil : "{C72F956E4AC6A6E7}Prefabs/ScenarioFramework
  components {
   SCR_ScenarioFrameworkArea "{59E8CDC50969206E}" {
    m_fAreaRadius 24
+   m_bShowDebugShapesInWorkbench 1
   }
  }
  coords 2758.452 77.29 1629.064

@@ -1,0 +1,63 @@
+GenericEntity AreaTask03 : "{C72F956E4AC6A6E7}Prefabs/ScenarioFramework/Components/Area.et" {
+ components {
+  SCR_ScenarioFrameworkArea "{59E8CDC50969206E}" {
+   m_bDynamicDespawn 1
+  }
+ }
+ coords 2746.307 72.719 1720.927
+ {
+  GenericEntity LayerTaskMoveToBeauregard : "{246BEC080F393398}Prefabs/ScenarioFramework/Components/LayerTaskMove.et" {
+   components {
+    SCR_ScenarioFrameworkLayerTask "{5A2283E9F84958A1}" {
+     m_eActivationType ON_TRIGGER_ACTIVATION
+     m_bExcludeFromDynamicDespawn 1
+    }
+   }
+   coords -0.132 0 -0.572
+   {
+    GenericEntity SlotMoveToBeauregard : "{A44004A770A5D8BE}Prefabs/ScenarioFramework/Components/SlotMoveTo.et" {
+     components {
+      SCR_ScenarioFrameworkSlotExtraction "{5A1EEEC837EEA27B}" {
+       m_bExcludeFromDynamicDespawn 1
+      }
+     }
+     coords 372.272 -68.758 1290.209
+    }
+   }
+  }
+  GenericEntity LayerArlevilleFIADefenders : "{5F9FFF4BF027B3A3}Prefabs/ScenarioFramework/Components/Layer.et" {
+   components {
+    SCR_ScenarioFrameworkLayerBase "{5A2283EA2A0B4B14}" {
+     m_eActivationType ON_TRIGGER_ACTIVATION
+    }
+   }
+   coords 0 0 0
+   {
+    GenericEntity ArlevilleFIADefenders00 : "{8D43830F02C3F114}Prefabs/ScenarioFramework/Components/SlotAI.et" {
+     components {
+      SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+       m_sObjectToSpawn "{CE41AF625D05D0F0}Prefabs/Groups/INDFOR/Group_FIA_RifleSquad.et"
+       m_WaypointSet SCR_ScenarioFrameworkWaypointSet "{60E90ACD425EDDDA}" {
+        m_aLayerName {
+         "ArlevilleFIADefendersForcedMoveWP"
+        }
+       }
+       m_eAIGroupFormation Line
+      }
+     }
+     coords -105.969 8.66 4.191
+     angleY 133.274
+    }
+    GenericEntity ArlevilleFIADefendersForcedMoveWP : "{EBD91177954E8236}Prefabs/ScenarioFramework/Components/SlotWaypoint.et" {
+     components {
+      SCR_ScenarioFrameworkSlotWaypoint "{5EEEE11FAD8EE85C}" {
+       m_Waypoint SCR_ScenarioFrameworkWaypointForcedMove "{60E90AC67ECB851D}" {
+       }
+      }
+     }
+     coords -35.629 4.802 -76.382
+    }
+   }
+  }
+ }
+}
