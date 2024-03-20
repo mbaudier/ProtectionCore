@@ -1,169 +1,61 @@
 GenericEntity AreaStart : "{C72F956E4AC6A6E7}Prefabs/ScenarioFramework/Components/Area.et" {
  coords 3177.489 0.707 1158.746
  {
-  $grp GenericEntity : "{5F9FFF4BF027B3A3}Prefabs/ScenarioFramework/Components/Layer.et" {
-   LayerStart {
-    coords 0 0 0
-    {
-     $grp GenericEntity : "{AA01691FDC4E9167}Prefabs/ScenarioFramework/Components/Slot.et" {
-      StartSpawn {
-       components {
-        SCR_ScenarioFrameworkSlotBase "{5A22E1D67E712EC8}" {
-         m_sObjectToSpawn "{5A2220DD0C16958B}Prefabs/MP/Spawning/SpawnPoint_US.et"
-         m_bCanBeGarbageCollected 0
-        }
-       }
-       coords 4.708 -2.309 -12.71
-      }
-      StartVehicle {
-       components {
-        SCR_ScenarioFrameworkSlotBase "{5A22E1D67E712EC8}" {
-         m_eActivationType ON_AREA_TRIGGER_ACTIVATION
-         m_sObjectToSpawn "{870EB660433857D3}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_teal.et"
-        }
-       }
-       coords -16.992 3.109 14.83
-      }
-      StartSupply {
-       components {
-        SCR_ScenarioFrameworkSlotBase "{5A22E1D67E712EC8}" {
-         m_sObjectToSpawn "{13A99500A14FA14C}Prefabs/Props/Military/SupplyBox/SupplyShippingContainers/SupplyShippingContainers_01/SupplyShippingContainers_01_20ft.et"
-        }
-       }
-       coords -21.751 2.44 3.545
-       angleY -34.589
-      }
-      StartArsenal {
-       components {
-        SCR_ScenarioFrameworkSlotBase "{5A22E1D67E712EC8}" {
-         m_sObjectToSpawn "{45C675ED3CFBBEC5}Prefabs/Props/Military/Compositions/US/ArsenalBox_US.et"
-        }
-       }
-       coords -18.851 3.127 5.396
-       angleY -144.606
-      }
-      StartVehicle01 {
-       components {
-        SCR_ScenarioFrameworkSlotBase "{5A22E1D67E712EC8}" {
-         m_sObjectToSpawn "{C8B16ABCA57679A2}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_blue.et"
-        }
-       }
-       coords -22.704 3.38 16.921
-      }
-      StartVehicle02 {
-       components {
-        SCR_ScenarioFrameworkSlotBase "{5A22E1D67E712EC8}" {
-         m_sObjectToSpawn "{A4D16A62B432451A}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_red.et"
-        }
-       }
-       coords -24.154 3.057 10.846
-      }
-     }
-    }
-   }
-   LayerStartFishermen {
-    coords 0 0 0
-    {
-     GenericEntity WaypointsFishermen : "{5F9FFF4BF027B3A3}Prefabs/ScenarioFramework/Components/Layer.et" {
-      coords -43.768 32.896 219.502
-      {
-       $grp GenericEntity : "{EBD91177954E8236}Prefabs/ScenarioFramework/Components/SlotWaypoint.et" {
-        FishermenWP3 {
-         components {
-          SCR_ScenarioFrameworkSlotWaypoint "{5EEEE11FAD8EE85C}" {
-           m_Waypoint SCR_ScenarioFrameworkWaypointPatrol "{60E708BE085756E6}" {
-            m_fCompletionRadius 2
-           }
-          }
-         }
-         coords -13.216 3.918 28.93
-        }
-        FishermenWP1 {
-         components {
-          SCR_ScenarioFrameworkSlotWaypoint "{5EEEE11FAD8EE85C}" {
-           m_Waypoint SCR_ScenarioFrameworkWaypointPatrol "{60E708BEF00509AC}" {
-            m_fCompletionRadius 2
-           }
-          }
-         }
-         coords 14.646 -5.308 -27.888
-        }
-        FishermenWP5 {
-         components {
-          SCR_ScenarioFrameworkSlotWaypoint "{5EEEE11FAD8EE85C}" {
-           m_Waypoint SCR_ScenarioFrameworkWaypointPatrol "{60E708BE83372DC1}" {
-            m_fCompletionRadius 2
-           }
-          }
-         }
-         coords 14.583 -5.161 -27.046
-        }
-        FishermenWP4 {
-         components {
-          SCR_ScenarioFrameworkSlotWaypoint "{5EEEE11FAD8EE85C}" {
-           m_Waypoint SCR_ScenarioFrameworkWaypointPatrol "{60E708BFBC63D6C6}" {
-            m_fCompletionRadius 2
-           }
-          }
-         }
-         coords 0.566 0.023 0.5
-        }
-        FishermenWP2 {
-         components {
-          SCR_ScenarioFrameworkSlotWaypoint "{5EEEE11FAD8EE85C}" {
-           m_Waypoint SCR_ScenarioFrameworkWaypointPatrol "{60E708B84EC632A5}" {
-            m_fCompletionRadius 2
-           }
-          }
-         }
-         coords 0.75 -0.03 0.121
-        }
-       }
-      }
-     }
-     $grp GenericEntity : "{8D43830F02C3F114}Prefabs/ScenarioFramework/Components/SlotAI.et" {
-      StartFisherman00 {
-       components {
-        SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
-         m_sObjectToSpawn "{30FF39F55CD4BC29}Prefabs/Characters/Factions/INDFOR/RURAL/Character_RURAL_Fisherman01.et"
-         m_WaypointSet SCR_ScenarioFrameworkWaypointSet "{60E546E853CC2766}" {
-          m_aLayerName {
-           "FishermenWPCycle"
-          }
-         }
-         m_sWPToSpawn "{35BD6541CBB8AC08}Prefabs/AI/Waypoints/AIWaypoint_Cycle.et"
-        }
-       }
-       coords -29.266 26.869 187.383
-       angleY 91.437
-      }
-      StartFisherman01 {
-       components {
-        SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
-         m_sObjectToSpawn "{30FF39F55CD4BC29}Prefabs/Characters/Factions/INDFOR/RURAL/Character_RURAL_Fisherman01.et"
-         m_WaypointSet SCR_ScenarioFrameworkWaypointSet "{60E546E81D0C1024}" {
-          m_aLayerName {
-           "FishermenWPCycle"
-          }
-         }
-         m_sWPToSpawn "{35BD6541CBB8AC08}Prefabs/AI/Waypoints/AIWaypoint_Cycle.et"
-        }
-       }
-       coords -29.031 26.595 185.737
-       angleY -123.332
-      }
-     }
-     GenericEntity FishermenWPCycle : "{EBD91177954E8236}Prefabs/ScenarioFramework/Components/SlotWaypoint.et" {
+  GenericEntity LayerStart : "{5F9FFF4BF027B3A3}Prefabs/ScenarioFramework/Components/Layer.et" {
+   coords 0 0 0
+   {
+    $grp GenericEntity : "{AA01691FDC4E9167}Prefabs/ScenarioFramework/Components/Slot.et" {
+     StartSpawn {
       components {
-       SCR_ScenarioFrameworkSlotWaypoint "{5EEEE11FAD8EE85C}" {
-        m_Waypoint SCR_ScenarioFrameworkWaypointCycle "{60E708B72E5DF8AC}" {
-         m_aLayersWithWaypointsToCycle {
-          "WaypointsFishermen"
-         }
-        }
+       SCR_ScenarioFrameworkSlotBase "{5A22E1D67E712EC8}" {
+        m_sObjectToSpawn "{5A2220DD0C16958B}Prefabs/MP/Spawning/SpawnPoint_US.et"
+        m_bCanBeGarbageCollected 0
        }
       }
-      coords -55.711 32.392 183.835
+      coords 4.708 -2.309 -12.71
+     }
+     StartVehicle {
+      components {
+       SCR_ScenarioFrameworkSlotBase "{5A22E1D67E712EC8}" {
+        m_eActivationType ON_AREA_TRIGGER_ACTIVATION
+        m_sObjectToSpawn "{870EB660433857D3}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_teal.et"
+       }
+      }
+      coords -16.992 3.109 14.83
+     }
+     StartSupply {
+      components {
+       SCR_ScenarioFrameworkSlotBase "{5A22E1D67E712EC8}" {
+        m_sObjectToSpawn "{13A99500A14FA14C}Prefabs/Props/Military/SupplyBox/SupplyShippingContainers/SupplyShippingContainers_01/SupplyShippingContainers_01_20ft.et"
+       }
+      }
+      coords -21.751 2.44 3.545
+      angleY -34.589
+     }
+     StartArsenal {
+      components {
+       SCR_ScenarioFrameworkSlotBase "{5A22E1D67E712EC8}" {
+        m_sObjectToSpawn "{45C675ED3CFBBEC5}Prefabs/Props/Military/Compositions/US/ArsenalBox_US.et"
+       }
+      }
+      coords -18.851 3.127 5.396
+      angleY -144.606
+     }
+     StartVehicle01 {
+      components {
+       SCR_ScenarioFrameworkSlotBase "{5A22E1D67E712EC8}" {
+        m_sObjectToSpawn "{C8B16ABCA57679A2}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_blue.et"
+       }
+      }
+      coords -22.704 3.38 16.921
+     }
+     StartVehicle02 {
+      components {
+       SCR_ScenarioFrameworkSlotBase "{5A22E1D67E712EC8}" {
+        m_sObjectToSpawn "{A4D16A62B432451A}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_red.et"
+       }
+      }
+      coords -24.154 3.057 10.846
      }
     }
    }

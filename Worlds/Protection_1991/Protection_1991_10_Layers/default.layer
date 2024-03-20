@@ -42,6 +42,11 @@ SCR_FactionManager FactionManager_Protection : "{E70679F5E0A515AC}Prefabs/MP/Man
  m_bCanChangeFactionsPlayable 0
 }
 SCR_BaseGameMode GameModeSF : "{ECEEDB2D3737204B}Prefabs/ScenarioFramework/GameModeSF.et" {
+ components {
+  SCR_GameModeSFManager "{5A96783ABCA252AE}" {
+   m_bDynamicDespawn 1
+  }
+ }
  coords 2033.122 32.126 2017.837
 }
 ScriptedChatEntity ScriptedChatEntity : "{F69BC912AC8236F9}Prefabs/MP/ScriptedChatEntity.et" {
