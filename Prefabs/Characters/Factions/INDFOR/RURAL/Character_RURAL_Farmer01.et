@@ -3,7 +3,7 @@ SCR_ChimeraCharacter : "{9377B9F8B8CA717A}Prefabs/Characters/Factions/INDFOR/RUR
  components {
   SCR_EditableCharacterComponent "{520EA1D2F659C85C}" {
    m_UIInfo SCR_EditableEntityUIInfo "{5298E609432D192D}" {
-    Name "Farmer01"
+    Name "Farmer 01"
    }
   }
   BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {

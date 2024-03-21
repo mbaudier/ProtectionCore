@@ -7,6 +7,8 @@ SCR_EditorModeEntity : "{E56F54E533ACE527}Prefabs/Editor/Modes/EditorModeBase.et
     }
     SCR_PlaceableEntitiesRegistry "{60EB3E6606D18FDF}" : "{AB2499B12DB5F2BA}Configs/Editor/PlaceableEntities/Characters_GANG.conf" {
     }
+    SCR_PlaceableEntitiesRegistry "{60EB579AB19FD429}" : "{54356385BBD42F56}Configs/Editor/PlaceableEntities/Characters_RURAL.conf" {
+    }
    }
   }
  }
