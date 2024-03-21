@@ -1,18 +1,15 @@
 SCR_ChimeraCharacter : "{37578B1666981FCE}Prefabs/Characters/Core/Character_Base.et" {
- ID "60E2B3CB4A780B93"
+ ID "520EC961A090B1EE"
  components {
-  FactionAffiliationComponent "{60E2B3CB579FEA75}" {
-   "faction affiliation" "URBAN"
+  FactionAffiliationComponent "{60EB3E62D6D9B246}" {
+   "faction affiliation" "GANG"
   }
   SCR_EditableCharacterComponent "{520EA1D2F659C85C}" {
    m_UIInfo SCR_EditableEntityUIInfo "{5298E609432D192D}" {
     Name "Naked"
-    Icon "{A489F552FB7489C3}UI/Textures/Editor/EditableEntities/Characters/EditableEntity_Character_Custom.edds"
-    m_sFaction "URBAN"
+    m_sFaction "GANG"
     m_aAuthoredLabels + {
-     2 910214 1001
-    }
-    m_aAutoLabels {
+     2 1001 910215
     }
    }
   }

@@ -1,0 +1,11 @@
+SCR_FactionManager : "{A242612865F2A48E}Prefabs/MP/Managers/Factions/FactionManager_Base.et" {
+ ID "56B2B4776E6E4499"
+ Factions {
+  SCR_Faction "{60EB0DF3E1999737}" : "{E5B2FC4A0D01E456}Configs/Factions/RURAL.conf" {
+  }
+  SCR_Faction "{60EB0DF3EA8BB5EB}" : "{FFF1E35BF8F3312D}Configs/Factions/URBAN.conf" {
+  }
+  SCR_Faction "{60EB3E61C015A278}" : "{5C630F7CDC94DACA}Configs/Factions/GANG.conf" {
+  }
+ }
+}

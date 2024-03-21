@@ -1,6 +1,11 @@
-SCR_ChimeraCharacter : "{70697C21DE7AE2ED}Prefabs/Characters/Factions/INDFOR/FIA/Character_URBAN_base.et" {
+SCR_ChimeraCharacter : "{70697C21DE7AE2ED}Prefabs/Characters/Factions/INDFOR/URBAN/Character_URBAN_base.et" {
  ID "520EC961A090B1EE"
  components {
+  SCR_EditableCharacterComponent "{520EA1D2F659C85C}" {
+   m_UIInfo SCR_EditableEntityUIInfo "{5298E609432D192D}" {
+    Name "Businessman 02"
+   }
+  }
   BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
    Slots {
     LoadoutSlotInfo Jacket {

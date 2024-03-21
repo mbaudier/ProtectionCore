@@ -1,6 +1,11 @@
 SCR_ChimeraCharacter : "{E398E44759DA1A43}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_TL.et" {
  ID "51FA90A5D40EA513"
  components {
+  SCR_EditableCharacterComponent "{520EA1D2F659C85C}" {
+   m_UIInfo SCR_EditableEntityUIInfo "{5298E609432D192D}" {
+    Name "SOF Operator"
+   }
+  }
   CharacterWeaponSlotComponent "{520EA1D2F659CFAB}" {
    WeaponTemplate "{BFF3186D2A9CEFB7}Prefabs/Weapons/Rifles/M16/Rifle_M16A2_carbine_AP2k.et"
   }

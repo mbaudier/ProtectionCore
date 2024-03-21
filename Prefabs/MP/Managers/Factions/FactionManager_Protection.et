@@ -16,5 +16,7 @@ SCR_FactionManager : "{A242612865F2A48E}Prefabs/MP/Managers/Factions/FactionMana
   SCR_Faction "{60E2C10835E36609}" : "{FFF1E35BF8F3312D}Configs/Factions/URBAN.conf" {
    m_bIsPlayable 0
   }
+  SCR_Faction "{60EB3E61F4E10F1A}" : "{5C630F7CDC94DACA}Configs/Factions/GANG.conf" {
+  }
  }
 }
