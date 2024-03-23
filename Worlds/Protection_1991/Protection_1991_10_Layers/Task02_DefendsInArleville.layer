@@ -91,7 +91,7 @@ GenericEntity AreaTask02 : "{C72F956E4AC6A6E7}Prefabs/ScenarioFramework/Componen
           m_eAIGroupFormation Column
          }
         }
-        coords 120.208 -5.133 -16.136
+        coords 120.208 -6.091 -63.307
        }
       }
      }
@@ -115,6 +115,8 @@ GenericEntity AreaTask02 : "{C72F956E4AC6A6E7}Prefabs/ScenarioFramework/Componen
          }
         }
         m_bSpawnAIOnWPPos 0
+        m_sWPToSpawn "{531EC45063C1F57B}Prefabs/AI/Waypoints/AIWaypoint_Wait.et"
+        m_fPerceptionFactor 0
        }
       }
       coords -0.502 -0.898 1.604
@@ -130,6 +132,8 @@ GenericEntity AreaTask02 : "{C72F956E4AC6A6E7}Prefabs/ScenarioFramework/Componen
          }
         }
         m_bSpawnAIOnWPPos 0
+        m_sWPToSpawn "{531EC45063C1F57B}Prefabs/AI/Waypoints/AIWaypoint_Wait.et"
+        m_fPerceptionFactor 0
        }
       }
       coords -3.346 -0.897 1.748
@@ -145,6 +149,8 @@ GenericEntity AreaTask02 : "{C72F956E4AC6A6E7}Prefabs/ScenarioFramework/Componen
          }
         }
         m_bSpawnAIOnWPPos 0
+        m_sWPToSpawn "{531EC45063C1F57B}Prefabs/AI/Waypoints/AIWaypoint_Wait.et"
+        m_fPerceptionFactor 0
        }
       }
       coords -2.914 -0.898 0.277
@@ -193,7 +199,7 @@ GenericEntity AreaTask02 : "{C72F956E4AC6A6E7}Prefabs/ScenarioFramework/Componen
         }
        }
       }
-      coords 99.713 -6.307 4.63
+      coords 81.215 -5.929 -19.321
      }
      Task02SaDClear {
       components {

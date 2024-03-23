@@ -63,6 +63,7 @@ GenericEntity AreaTask03 : "{C72F956E4AC6A6E7}Prefabs/ScenarioFramework/Componen
       Task03FIASaDWP {
        components {
         SCR_ScenarioFrameworkSlotWaypoint "{5EEEE11FAD8EE85C}" {
+         m_bShowDebugShapesInWorkbench 0
          m_Waypoint SCR_ScenarioFrameworkWaypointSearchAndDestroy "{60EF33BA0DA92F63}" {
           m_fCompletionRadius 100
          }
