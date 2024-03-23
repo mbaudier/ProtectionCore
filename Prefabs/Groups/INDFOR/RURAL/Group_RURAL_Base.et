@@ -8,7 +8,7 @@ SCR_AIGroup : "{000CD338713F2B5A}Prefabs/AI/Groups/Group_Base.et" {
    m_UIInfo SCR_EditableGroupUIInfo "{5298E609432D192D}" {
     Icon "{9164E45B9A237FE9}UI/Textures/Editor/EditableEntities/Characters/EditableEntity_Character_Unarmed.edds"
     m_Image "{6A73F75531DF6AD6}UI/Textures/EditorPreviews/Characters/OPFOR/USSR_Army/Character_USSR_Unarmed.edds"
-    m_sFaction "URBAN"
+    m_sFaction "RURAL"
     m_aAuthoredLabels + {
      910214 1001
     }
@@ -25,5 +25,5 @@ SCR_AIGroup : "{000CD338713F2B5A}Prefabs/AI/Groups/Group_Base.et" {
   }
  }
  coords 0 0 0
- m_faction "URBAN"
+ m_faction "RURAL"
 }
