@@ -10,11 +10,11 @@ GenericEntity AreaTask02 : "{C72F956E4AC6A6E7}Prefabs/ScenarioFramework/Componen
    components {
     SCR_ScenarioFrameworkLayerTaskDefend "{5C52E161174024CB}" {
      m_eActivationType ON_TRIGGER_ACTIVATION
-     m_sTaskTitle "Defend businessmen"
+     m_sTaskTitle "Defend the businessmen in the vehicle"
      m_sTaskPrefab "{888DC29A0B4F3F20}Prefabs/ScenarioFramework/Tasks/TaskDefend.et"
      m_aTriggerActionsOnFinish {
       SCR_ScenarioFrameworkActionShowPopupNotification "{60E90ADCC21CDBCA}" {
-       m_sText "FIA are arriving to defend the civilians. Flee with the military vehicle to Beauregard."
+       m_sText "FIA are arriving to defend the civilians"
       }
       SCR_ScenarioFrameworkActionSpawnObjects "{60E90ACE8A8FBF77}" {
        m_aNameOfObjectsToSpawnOnActivation {

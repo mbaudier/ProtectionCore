@@ -2,259 +2,57 @@ GenericEntity AreaCivilBeauregard : "{C72F956E4AC6A6E7}Prefabs/ScenarioFramework
  components {
   SCR_ScenarioFrameworkArea "{59E8CDC50969206E}" {
    m_bDynamicDespawn 1
-   m_iDynamicDespawnRange 300
    m_bShowDebugShapesInWorkbench 1
   }
  }
  coords 3141.842 11.555 2768.649
  {
-  $grp GenericEntity : "{5F9FFF4BF027B3A3}Prefabs/ScenarioFramework/Components/Layer.et" {
-   BeauregardCivilians0 {
-    components {
-     SCR_ScenarioFrameworkLayerBase "{5A2283EA2A0B4B14}" {
-      m_bEnableRepeatedSpawn 1
-      m_iRepeatedSpawnNumber 2
-      m_fRepeatedSpawnTimer 0.5
-     }
-    }
-    coords 25.429 -0.099 8.534
-    {
-     GenericEntity SlotAI1 : "{8D43830F02C3F114}Prefabs/ScenarioFramework/Components/SlotAI.et" {
-      components {
-       SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
-        m_sFactionKey "URBAN"
-        m_bEnableRepeatedSpawn 1
-        m_sObjectToSpawn "{70697C21DE7AE2ED}Prefabs/Characters/Factions/INDFOR/URBAN/Character_URBAN_base.et"
-        m_bRandomizePerFaction 1
-        m_eEntityCatalogType CHARACTER
-        m_sWPToSpawn "{FAD1D789EE291964}Prefabs/AI/Waypoints/AIWaypoint_Defend_Large.et"
-       }
-      }
-      coords 44.37 -2.234 38.06
-     }
+  GenericEntity BeauregardCivilians0 : "{5F9FFF4BF027B3A3}Prefabs/ScenarioFramework/Components/Layer.et" {
+   components {
+    SCR_ScenarioFrameworkLayerBase "{5A2283EA2A0B4B14}" {
+     m_iRepeatedSpawnNumber 2
+     m_fRepeatedSpawnTimer 0.5
     }
    }
-   Layer2 {
-    components {
-     SCR_ScenarioFrameworkLayerBase "{5A2283EA2A0B4B14}" {
-      m_bEnableRepeatedSpawn 1
-      m_iRepeatedSpawnNumber 5
-      m_fRepeatedSpawnTimer 0.5
-     }
-    }
-    coords 19.723 0.82 29.687
-    {
-     GenericEntity SlotAI2 : "{8D43830F02C3F114}Prefabs/ScenarioFramework/Components/SlotAI.et" {
+   coords 26.761 -0.033 29.699
+   {
+    $grp GenericEntity : "{8D43830F02C3F114}Prefabs/ScenarioFramework/Components/SlotAI.et" {
+     BeauregardCivilians00 {
       components {
        SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
-        m_sFactionKey "URBAN"
-        m_bEnableRepeatedSpawn 1
-        m_sObjectToSpawn "{70697C21DE7AE2ED}Prefabs/Characters/Factions/INDFOR/URBAN/Character_URBAN_base.et"
-        m_bRandomizePerFaction 1
-        m_eEntityCatalogType CHARACTER
-        m_sWPToSpawn "{FAD1D789EE291964}Prefabs/AI/Waypoints/AIWaypoint_Defend_Large.et"
+        m_sObjectToSpawn "{316A6381E4CC77A9}Prefabs/Groups/INDFOR/URBAN/Group_URBAN_Mix00.et"
+        m_sWPToSpawn "{4ECD14650D82F5CA}Prefabs/AI/Waypoints/AIWaypoint_Loiter_CO.et"
+        m_eAICombatType RETREAT
        }
       }
+      coords -1.305 0.02 -0.063
      }
-    }
-   }
-   Layer3 {
-    components {
-     SCR_ScenarioFrameworkLayerBase "{5A2283EA2A0B4B14}" {
-      m_bEnableRepeatedSpawn 1
-      m_iRepeatedSpawnNumber 5
-      m_fRepeatedSpawnTimer 0.5
-     }
-    }
-    coords 19.723 0.82 29.687
-    {
-     GenericEntity SlotAI3 : "{8D43830F02C3F114}Prefabs/ScenarioFramework/Components/SlotAI.et" {
+     BeauregardCivilians01 {
       components {
        SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
-        m_sFactionKey "URBAN"
-        m_bEnableRepeatedSpawn 1
-        m_sObjectToSpawn "{70697C21DE7AE2ED}Prefabs/Characters/Factions/INDFOR/URBAN/Character_URBAN_base.et"
-        m_bRandomizePerFaction 1
-        m_eEntityCatalogType CHARACTER
-        m_sWPToSpawn "{FAD1D789EE291964}Prefabs/AI/Waypoints/AIWaypoint_Defend_Large.et"
+        m_sObjectToSpawn "{316A6381E4CC77A9}Prefabs/Groups/INDFOR/URBAN/Group_URBAN_Mix00.et"
+        m_eAICombatType RETREAT
        }
       }
-      coords 4.203 -0.29 16.781
+      coords -7.472 -0.085 -23.428
      }
-    }
-   }
-   Layer4 {
-    components {
-     SCR_ScenarioFrameworkLayerBase "{5A2283EA2A0B4B14}" {
-      m_bEnableRepeatedSpawn 1
-      m_iRepeatedSpawnNumber 5
-      m_fRepeatedSpawnTimer 0.5
-     }
-    }
-    coords 25.429 -0.099 8.534
-    {
-     GenericEntity SlotAI4 : "{8D43830F02C3F114}Prefabs/ScenarioFramework/Components/SlotAI.et" {
+     BeauregardCivilians02 {
       components {
        SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
-        m_sFactionKey "URBAN"
-        m_bEnableRepeatedSpawn 1
-        m_sObjectToSpawn "{70697C21DE7AE2ED}Prefabs/Characters/Factions/INDFOR/URBAN/Character_URBAN_base.et"
-        m_bRandomizePerFaction 1
-        m_eEntityCatalogType CHARACTER
-        m_sWPToSpawn "{FAD1D789EE291964}Prefabs/AI/Waypoints/AIWaypoint_Defend_Large.et"
+        m_sObjectToSpawn "{316A6381E4CC77A9}Prefabs/Groups/INDFOR/URBAN/Group_URBAN_Mix00.et"
+        m_eAICombatType RETREAT
        }
       }
-      coords -5.563 0.453 5.149
+      coords -43.611 -0.088 37.897
      }
-    }
-   }
-   Layer5 {
-    components {
-     SCR_ScenarioFrameworkLayerBase "{5A2283EA2A0B4B14}" {
-      m_bEnableRepeatedSpawn 1
-      m_iRepeatedSpawnNumber 5
-      m_fRepeatedSpawnTimer 0.5
-     }
-    }
-    coords 25.429 -0.099 8.534
-    {
-     GenericEntity SlotAI5 : "{8D43830F02C3F114}Prefabs/ScenarioFramework/Components/SlotAI.et" {
+     BeauregardCivilians03 {
       components {
        SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
-        m_sFactionKey "URBAN"
-        m_bEnableRepeatedSpawn 1
-        m_sObjectToSpawn "{70697C21DE7AE2ED}Prefabs/Characters/Factions/INDFOR/URBAN/Character_URBAN_base.et"
-        m_bRandomizePerFaction 1
-        m_eEntityCatalogType CHARACTER
-        m_sWPToSpawn "{FAD1D789EE291964}Prefabs/AI/Waypoints/AIWaypoint_Defend_Large.et"
+        m_sObjectToSpawn "{316A6381E4CC77A9}Prefabs/Groups/INDFOR/URBAN/Group_URBAN_Mix00.et"
+        m_eAICombatType RETREAT
        }
       }
-      coords -3.907 -9.822 11.581
-     }
-    }
-   }
-   Layer6 {
-    components {
-     SCR_ScenarioFrameworkLayerBase "{5A2283EA2A0B4B14}" {
-      m_bEnableRepeatedSpawn 1
-      m_iRepeatedSpawnNumber 5
-      m_fRepeatedSpawnTimer 0.5
-     }
-    }
-    coords 25.429 -0.099 8.534
-    {
-     GenericEntity SlotAI6 : "{8D43830F02C3F114}Prefabs/ScenarioFramework/Components/SlotAI.et" {
-      components {
-       SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
-        m_sFactionKey "URBAN"
-        m_bEnableRepeatedSpawn 1
-        m_sObjectToSpawn "{70697C21DE7AE2ED}Prefabs/Characters/Factions/INDFOR/URBAN/Character_URBAN_base.et"
-        m_bRandomizePerFaction 1
-        m_eEntityCatalogType CHARACTER
-        m_sWPToSpawn "{FAD1D789EE291964}Prefabs/AI/Waypoints/AIWaypoint_Defend_Large.et"
-       }
-      }
-      coords 16.006 -0.957 28.177
-     }
-    }
-   }
-   Layer7 {
-    components {
-     SCR_ScenarioFrameworkLayerBase "{5A2283EA2A0B4B14}" {
-      m_bEnableRepeatedSpawn 1
-      m_iRepeatedSpawnNumber 3
-      m_fRepeatedSpawnTimer 0.5
-     }
-    }
-    coords 25.429 -0.099 8.534
-    {
-     GenericEntity SlotAI7 : "{8D43830F02C3F114}Prefabs/ScenarioFramework/Components/SlotAI.et" {
-      components {
-       SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
-        m_sFactionKey "URBAN"
-        m_bEnableRepeatedSpawn 1
-        m_sObjectToSpawn "{70697C21DE7AE2ED}Prefabs/Characters/Factions/INDFOR/URBAN/Character_URBAN_base.et"
-        m_bRandomizePerFaction 1
-        m_eEntityCatalogType CHARACTER
-        m_sWPToSpawn "{FAD1D789EE291964}Prefabs/AI/Waypoints/AIWaypoint_Defend_Large.et"
-       }
-      }
-      coords -3.195 0.805 35.615
-     }
-    }
-   }
-   Layer8 {
-    components {
-     SCR_ScenarioFrameworkLayerBase "{5A2283EA2A0B4B14}" {
-      m_bEnableRepeatedSpawn 1
-      m_iRepeatedSpawnNumber 5
-      m_fRepeatedSpawnTimer 0.5
-     }
-    }
-    coords 25.429 -0.099 8.534
-    {
-     GenericEntity SlotAI8 : "{8D43830F02C3F114}Prefabs/ScenarioFramework/Components/SlotAI.et" {
-      components {
-       SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
-        m_sFactionKey "URBAN"
-        m_bEnableRepeatedSpawn 1
-        m_sObjectToSpawn "{70697C21DE7AE2ED}Prefabs/Characters/Factions/INDFOR/URBAN/Character_URBAN_base.et"
-        m_bRandomizePerFaction 1
-        m_eEntityCatalogType CHARACTER
-        m_sWPToSpawn "{FAD1D789EE291964}Prefabs/AI/Waypoints/AIWaypoint_Defend_Large.et"
-       }
-      }
-      coords -30.856 2.008 18.522
-     }
-    }
-   }
-   Layer9 {
-    components {
-     SCR_ScenarioFrameworkLayerBase "{5A2283EA2A0B4B14}" {
-      m_bEnableRepeatedSpawn 1
-      m_iRepeatedSpawnNumber 4
-      m_fRepeatedSpawnTimer 0.5
-     }
-    }
-    coords 25.429 -0.099 8.534
-    {
-     GenericEntity SlotAI9 : "{8D43830F02C3F114}Prefabs/ScenarioFramework/Components/SlotAI.et" {
-      components {
-       SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
-        m_sFactionKey "URBAN"
-        m_bEnableRepeatedSpawn 1
-        m_sObjectToSpawn "{70697C21DE7AE2ED}Prefabs/Characters/Factions/INDFOR/URBAN/Character_URBAN_base.et"
-        m_bRandomizePerFaction 1
-        m_eEntityCatalogType CHARACTER
-        m_sWPToSpawn "{FAD1D789EE291964}Prefabs/AI/Waypoints/AIWaypoint_Defend_Large.et"
-       }
-      }
-      coords 8.983 -1.122 69.658
-     }
-    }
-   }
-   Layer10 {
-    components {
-     SCR_ScenarioFrameworkLayerBase "{5A2283EA2A0B4B14}" {
-      m_bEnableRepeatedSpawn 1
-      m_iRepeatedSpawnNumber 3
-      m_fRepeatedSpawnTimer 0.5
-     }
-    }
-    coords 25.429 -0.099 8.534
-    {
-     GenericEntity SlotAI10 : "{8D43830F02C3F114}Prefabs/ScenarioFramework/Components/SlotAI.et" {
-      components {
-       SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
-        m_sFactionKey "URBAN"
-        m_bEnableRepeatedSpawn 1
-        m_sObjectToSpawn "{70697C21DE7AE2ED}Prefabs/Characters/Factions/INDFOR/URBAN/Character_URBAN_base.et"
-        m_bRandomizePerFaction 1
-        m_eEntityCatalogType CHARACTER
-        m_sWPToSpawn "{FAD1D789EE291964}Prefabs/AI/Waypoints/AIWaypoint_Defend_Large.et"
-       }
-      }
-      coords -49.34 1.931 50.877
+      coords -63.438 3.973 -88.355
      }
     }
    }
