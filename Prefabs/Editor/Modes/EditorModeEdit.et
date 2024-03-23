@@ -9,6 +9,12 @@ SCR_EditorModeEntity : "{E56F54E533ACE527}Prefabs/Editor/Modes/EditorModeBase.et
     }
     SCR_PlaceableEntitiesRegistry "{60EB579AB19FD429}" : "{54356385BBD42F56}Configs/Editor/PlaceableEntities/Characters_RURAL.conf" {
     }
+    SCR_PlaceableEntitiesRegistry "{60EEA7F0B901C1B5}" : "{32EAE4DF1F6E3780}Configs/Editor/PlaceableEntities/Groups_URBAN.conf" {
+    }
+    SCR_PlaceableEntitiesRegistry "{60EEBA8C9906BD06}" : "{F406F2A3ED33336A}Configs/Editor/PlaceableEntities/Groups_GANG.conf" {
+    }
+    SCR_PlaceableEntitiesRegistry "{60EED3DD97ADE825}" : "{31C7230A7924628B}Configs/Editor/PlaceableEntities/Systems/Systems_ProtectionCore.conf" {
+    }
    }
   }
  }

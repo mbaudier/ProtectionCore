@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{4A188E44289B9A50}Prefabs/MP/Managers/Factions/FactionManager_Editor.et"
+ Name "{4E7A1E0BFD1E5F47}PrefabsEditable/SpawnPoints/E_SpawnPoint_GANG.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }
