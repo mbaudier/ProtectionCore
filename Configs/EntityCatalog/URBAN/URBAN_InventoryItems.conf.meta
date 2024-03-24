@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{DE17AC501F0CD5EB}Configs/Core/EditableEntityCore.conf"
+ Name "{1941D4DCB14C86D1}Configs/EntityCatalog/RURAL/URBAN_InventoryItems.conf"
  Configurations {
   CONFResourceClass PC {
   }

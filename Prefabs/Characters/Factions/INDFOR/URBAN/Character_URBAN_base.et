@@ -18,10 +18,17 @@ SCR_ChimeraCharacter : "{37578B1666981FCE}Prefabs/Characters/Core/Character_Base
    }
   }
   CharacterWeaponSlotComponent "{520EA1D2F659CFAB}" {
+   WeaponType Handgun
+   WeaponSlotType "secondary"
    WeaponSlotIndex 0
+   HolsteredIndex 0
+   HolsteredHidden 1
   }
   CharacterWeaponSlotComponent "{520EA1D2F659CFB7}" {
+   WeaponSlotType "scondary"
    WeaponSlotIndex 1
+   HolsteredIndex 1
+   HolsteredHidden 1
   }
  }
 }
