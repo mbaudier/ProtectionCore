@@ -1,0 +1,26 @@
+GenericEntity : "{417C1860396E29AF}Prefabs/Systems/Arsenal/ArsenalBoxes/URBAN/ArsenalBox_URBAN.et" {
+ ID "60F12C296BAF5272"
+ components {
+  SCR_EditableSystemComponent "{5D32B2B71D781153}" : "{6FA0A85CFC5420AD}Prefabs/Editor/Components/Systems_SCR_EditableEntityComponent.ct" {
+   m_UIInfo SCR_EditableEntityUIInfo "{58D2A1BEBFDC56CC}" {
+    Name "#AR-EditableEntity_ArsenalBox_FIA_Name"
+    Description "#AR-EditableEntity_ArsenalBox_Description"
+    Icon "{EA975C03DF5422AD}UI/Textures/Editor/EditableEntities/Systems/EditableEntity_System_Arsenal.edds"
+    m_Image "{7EDEAAC89131B224}UI/Textures/EditorPreviews/Auto/Systems/Arsenal/ArsenalBoxes/US/E_ArsenalBox_US.edds"
+    m_sFaction "URBAN"
+    m_aAuthoredLabels {
+     24 38 25 35 34 33 1001
+    }
+    m_aAutoLabels {
+     7 122 27 910214
+    }
+    m_EntityChildrenBudgetCost {
+     SCR_EntityBudgetValue "{60F12A6CD6199380}" {
+      m_BudgetType PROPS
+      m_Value 9
+     }
+    }
+   }
+  }
+ }
+}
