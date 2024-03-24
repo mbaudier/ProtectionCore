@@ -11,6 +11,8 @@ GenericEntity AreaTask03 : "{C72F956E4AC6A6E7}Prefabs/ScenarioFramework/Componen
       SCR_ScenarioFrameworkActionShowPopupNotification "{60EF33BB820DFE12}" {
        m_sText "Mission accomplished!"
       }
+      SCR_ScenarioFrameworkActionEndMission "{60F06043F2A70C73}" {
+      }
      }
     }
    }

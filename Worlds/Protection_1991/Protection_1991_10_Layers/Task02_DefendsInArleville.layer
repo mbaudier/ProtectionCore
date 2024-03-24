@@ -6,6 +6,144 @@ GenericEntity AreaTask02 : "{C72F956E4AC6A6E7}Prefabs/ScenarioFramework/Componen
  }
  coords 2742.715 78.964 1640.432
  {
+  GenericEntity LayerMayorMeetingAttackers : "{5F9FFF4BF027B3A3}Prefabs/ScenarioFramework/Components/Layer.et" {
+   components {
+    SCR_ScenarioFrameworkLayerBase "{5A2283EA2A0B4B14}" {
+     m_eActivationType ON_TRIGGER_ACTIVATION
+    }
+   }
+   coords 0 0 0
+   {
+    GenericEntity LayerMayorMeetingAttackersWP : "{5F9FFF4BF027B3A3}Prefabs/ScenarioFramework/Components/Layer.et" {
+     coords 0 0 0
+     {
+      $grp GenericEntity : "{EBD91177954E8236}Prefabs/ScenarioFramework/Components/SlotWaypoint.et" {
+       Task02Move00 {
+        components {
+         SCR_ScenarioFrameworkSlotWaypoint "{5EEEE11FAD8EE85C}" {
+          m_Waypoint SCR_ScenarioFrameworkWaypointForcedMove "{60E708A6E48C4803}" {
+           m_eAIWaypointCompletionType Leader
+          }
+         }
+        }
+        coords 81.215 -5.929 -19.321
+       }
+       Task02Move01 {
+        components {
+         SCR_ScenarioFrameworkSlotWaypoint "{5EEEE11FAD8EE85C}" {
+          m_Waypoint SCR_ScenarioFrameworkWaypointForcedMove "{60E708A1E9604965}" {
+           m_eAIWaypointCompletionType Leader
+          }
+         }
+        }
+        coords -23.609 -1.557 -27.814
+       }
+       Task02Move02 {
+        components {
+         SCR_ScenarioFrameworkSlotWaypoint "{5EEEE11FAD8EE85C}" {
+          m_Waypoint SCR_ScenarioFrameworkWaypointForcedMove "{60E708A1DCCA25B0}" {
+           m_eAIWaypointCompletionType Leader
+          }
+         }
+        }
+        coords 7.01 -2.391 -48.679
+       }
+       Task02SaD00 {
+        components {
+         SCR_ScenarioFrameworkSlotWaypoint "{5EEEE11FAD8EE85C}" {
+          m_bShowDebugShapesInWorkbench 0
+          m_Waypoint SCR_ScenarioFrameworkWaypointSearchAndDestroy "{60E708BB0B6AFECF}" {
+           m_fCompletionRadius 50
+          }
+         }
+        }
+        coords 68.799 -5.587 -1.558
+       }
+       Task02SaD01 {
+        components {
+         SCR_ScenarioFrameworkSlotWaypoint "{5EEEE11FAD8EE85C}" {
+          m_bShowDebugShapesInWorkbench 0
+          m_Waypoint SCR_ScenarioFrameworkWaypointSearchAndDestroy "{60E708A4741581F7}" {
+           m_fCompletionRadius 50
+          }
+         }
+        }
+        coords -26.817 -1.464 -1.071
+       }
+       Task02SaD02 {
+        components {
+         SCR_ScenarioFrameworkSlotWaypoint "{5EEEE11FAD8EE85C}" {
+          m_bShowDebugShapesInWorkbench 0
+          m_Waypoint SCR_ScenarioFrameworkWaypointSearchAndDestroy "{60E708A428543E08}" {
+           m_fCompletionRadius 50
+          }
+         }
+        }
+        coords 29.504 -3.102 -15.255
+       }
+       Task02SaDClear {
+        components {
+         SCR_ScenarioFrameworkSlotWaypoint "{5EEEE11FAD8EE85C}" {
+          m_bShowDebugShapesInWorkbench 0
+          m_Waypoint SCR_ScenarioFrameworkWaypointSearchAndDestroy "{60E708A0FD313F51}" {
+           m_fCompletionRadius 50
+          }
+         }
+        }
+        coords 29.685 -4.907 43.675
+       }
+      }
+     }
+    }
+    $grp GenericEntity : "{8D43830F02C3F114}Prefabs/ScenarioFramework/Components/SlotAI.et" {
+     Task02Attackers01 {
+      components {
+       SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+        m_sObjectToSpawn "{657590C1EC9E27D3}Prefabs/Groups/OPFOR/Group_USSR_LightFireTeam.et"
+        m_WaypointSet SCR_ScenarioFrameworkWaypointSet "{60E708A40A60EBA2}" {
+         m_aLayerName {
+          "Task02Move01" "Task02SaD01" "Task02SaDClear"
+         }
+        }
+        m_sWPToSpawn "{B3E7B8DC2BAB8ACC}Prefabs/AI/Waypoints/AIWaypoint_SearchAndDestroy.et"
+        m_eAIGroupFormation Line
+       }
+      }
+      coords -76.285 -13.117 -64.59
+     }
+     Task02Attackers02 {
+      components {
+       SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+        m_sObjectToSpawn "{657590C1EC9E27D3}Prefabs/Groups/OPFOR/Group_USSR_LightFireTeam.et"
+        m_WaypointSet SCR_ScenarioFrameworkWaypointSet "{60E708A438AF8CF2}" {
+         m_aLayerName {
+          "Task02Move02" "Task02SaD02" "Task02SaDClear"
+         }
+        }
+        m_sWPToSpawn "{B3E7B8DC2BAB8ACC}Prefabs/AI/Waypoints/AIWaypoint_SearchAndDestroy.et"
+        m_eAIGroupFormation Line
+       }
+      }
+      coords 13.074 -15.677 -150.183
+     }
+     Task02Attackers00 {
+      components {
+       SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+        m_sObjectToSpawn "{657590C1EC9E27D3}Prefabs/Groups/OPFOR/Group_USSR_LightFireTeam.et"
+        m_WaypointSet SCR_ScenarioFrameworkWaypointSet "{60E708BB831E9175}" {
+         m_aLayerName {
+          "Task02Move00" "Task02SaD00" "Task02SaDClear"
+         }
+        }
+        m_sWPToSpawn "{B3E7B8DC2BAB8ACC}Prefabs/AI/Waypoints/AIWaypoint_SearchAndDestroy.et"
+        m_eAIGroupFormation Column
+       }
+      }
+      coords 120.208 -6.091 -63.307
+     }
+    }
+   }
+  }
   GenericEntity LayerTaskDefendMayorMeeting : "{775C493CE872C3A5}Prefabs/ScenarioFramework/Components/LayerTaskDefend.et" {
    components {
     SCR_ScenarioFrameworkLayerTaskDefend "{5C52E161174024CB}" {
@@ -44,58 +182,6 @@ GenericEntity AreaTask02 : "{C72F956E4AC6A6E7}Prefabs/ScenarioFramework/Componen
    }
    coords 0 0 0
    {
-    GenericEntity LayerMayorMeetingAttackers : "{5F9FFF4BF027B3A3}Prefabs/ScenarioFramework/Components/Layer.et" {
-     coords 0 0 0
-     {
-      $grp GenericEntity : "{8D43830F02C3F114}Prefabs/ScenarioFramework/Components/SlotAI.et" {
-       Task02Attackers01 {
-        components {
-         SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
-          m_sObjectToSpawn "{657590C1EC9E27D3}Prefabs/Groups/OPFOR/Group_USSR_LightFireTeam.et"
-          m_WaypointSet SCR_ScenarioFrameworkWaypointSet "{60E708A40A60EBA2}" {
-           m_aLayerName {
-            "Task02Move01" "Task02SaD01" "Task02SaDClear"
-           }
-          }
-          m_sWPToSpawn "{B3E7B8DC2BAB8ACC}Prefabs/AI/Waypoints/AIWaypoint_SearchAndDestroy.et"
-          m_eAIGroupFormation Line
-         }
-        }
-        coords -76.285 -13.117 -64.59
-       }
-       Task02Attackers02 {
-        components {
-         SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
-          m_sObjectToSpawn "{657590C1EC9E27D3}Prefabs/Groups/OPFOR/Group_USSR_LightFireTeam.et"
-          m_WaypointSet SCR_ScenarioFrameworkWaypointSet "{60E708A438AF8CF2}" {
-           m_aLayerName {
-            "Task02Move02" "Task02SaD02" "Task02SaDClear"
-           }
-          }
-          m_sWPToSpawn "{B3E7B8DC2BAB8ACC}Prefabs/AI/Waypoints/AIWaypoint_SearchAndDestroy.et"
-          m_eAIGroupFormation Line
-         }
-        }
-        coords 13.074 -15.677 -150.183
-       }
-       Task02Attackers00 {
-        components {
-         SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
-          m_sObjectToSpawn "{657590C1EC9E27D3}Prefabs/Groups/OPFOR/Group_USSR_LightFireTeam.et"
-          m_WaypointSet SCR_ScenarioFrameworkWaypointSet "{60E708BB831E9175}" {
-           m_aLayerName {
-            "Task02Move00" "Task02SaD00" "Task02SaDClear"
-           }
-          }
-          m_sWPToSpawn "{B3E7B8DC2BAB8ACC}Prefabs/AI/Waypoints/AIWaypoint_SearchAndDestroy.et"
-          m_eAIGroupFormation Column
-         }
-        }
-        coords 120.208 -6.091 -63.307
-       }
-      }
-     }
-    }
     GenericEntity Task02Spawn : "{AA01691FDC4E9167}Prefabs/ScenarioFramework/Components/Slot.et" {
      components {
       SCR_ScenarioFrameworkSlotBase "{5A22E1D67E712EC8}" {
@@ -116,7 +202,6 @@ GenericEntity AreaTask02 : "{C72F956E4AC6A6E7}Prefabs/ScenarioFramework/Componen
         }
         m_bSpawnAIOnWPPos 0
         m_sWPToSpawn "{531EC45063C1F57B}Prefabs/AI/Waypoints/AIWaypoint_Wait.et"
-        m_fPerceptionFactor 0
        }
       }
       coords -0.502 -0.898 1.604
@@ -133,7 +218,6 @@ GenericEntity AreaTask02 : "{C72F956E4AC6A6E7}Prefabs/ScenarioFramework/Componen
         }
         m_bSpawnAIOnWPPos 0
         m_sWPToSpawn "{531EC45063C1F57B}Prefabs/AI/Waypoints/AIWaypoint_Wait.et"
-        m_fPerceptionFactor 0
        }
       }
       coords -3.346 -0.897 1.748
@@ -150,99 +234,22 @@ GenericEntity AreaTask02 : "{C72F956E4AC6A6E7}Prefabs/ScenarioFramework/Componen
         }
         m_bSpawnAIOnWPPos 0
         m_sWPToSpawn "{531EC45063C1F57B}Prefabs/AI/Waypoints/AIWaypoint_Wait.et"
-        m_fPerceptionFactor 0
        }
       }
       coords -2.914 -0.898 0.277
       angleY 97.883
      }
     }
-    $grp GenericEntity : "{EBD91177954E8236}Prefabs/ScenarioFramework/Components/SlotWaypoint.et" {
-     Task02SaD00 {
-      components {
-       SCR_ScenarioFrameworkSlotWaypoint "{5EEEE11FAD8EE85C}" {
-        m_bShowDebugShapesInWorkbench 0
-        m_Waypoint SCR_ScenarioFrameworkWaypointSearchAndDestroy "{60E708BB0B6AFECF}" {
-         m_fCompletionRadius 50
-        }
+    GenericEntity Task02EscapeWP : "{EBD91177954E8236}Prefabs/ScenarioFramework/Components/SlotWaypoint.et" {
+     components {
+      SCR_ScenarioFrameworkSlotWaypoint "{5EEEE11FAD8EE85C}" {
+       m_Waypoint SCR_ScenarioFrameworkWaypointGetInNearest "{60E90AC67ECB851D}" {
+        m_fCompletionRadius 2
+        m_bGunnerAllowed 0
        }
       }
-      coords 68.799 -5.587 -1.558
      }
-     Task02SaD01 {
-      components {
-       SCR_ScenarioFrameworkSlotWaypoint "{5EEEE11FAD8EE85C}" {
-        m_bShowDebugShapesInWorkbench 0
-        m_Waypoint SCR_ScenarioFrameworkWaypointSearchAndDestroy "{60E708A4741581F7}" {
-         m_fCompletionRadius 50
-        }
-       }
-      }
-      coords -26.817 -1.464 -1.071
-     }
-     Task02SaD02 {
-      components {
-       SCR_ScenarioFrameworkSlotWaypoint "{5EEEE11FAD8EE85C}" {
-        m_bShowDebugShapesInWorkbench 0
-        m_Waypoint SCR_ScenarioFrameworkWaypointSearchAndDestroy "{60E708A428543E08}" {
-         m_fCompletionRadius 50
-        }
-       }
-      }
-      coords 29.504 -3.102 -15.255
-     }
-     Task02Move00 {
-      components {
-       SCR_ScenarioFrameworkSlotWaypoint "{5EEEE11FAD8EE85C}" {
-        m_Waypoint SCR_ScenarioFrameworkWaypointForcedMove "{60E708A6E48C4803}" {
-         m_eAIWaypointCompletionType Leader
-        }
-       }
-      }
-      coords 81.215 -5.929 -19.321
-     }
-     Task02SaDClear {
-      components {
-       SCR_ScenarioFrameworkSlotWaypoint "{5EEEE11FAD8EE85C}" {
-        m_bShowDebugShapesInWorkbench 0
-        m_Waypoint SCR_ScenarioFrameworkWaypointSearchAndDestroy "{60E708A0FD313F51}" {
-         m_fCompletionRadius 50
-        }
-       }
-      }
-      coords 29.685 -4.907 43.675
-     }
-     Task02Move01 {
-      components {
-       SCR_ScenarioFrameworkSlotWaypoint "{5EEEE11FAD8EE85C}" {
-        m_Waypoint SCR_ScenarioFrameworkWaypointForcedMove "{60E708A1E9604965}" {
-         m_eAIWaypointCompletionType Leader
-        }
-       }
-      }
-      coords -23.609 -1.557 -27.814
-     }
-     Task02Move02 {
-      components {
-       SCR_ScenarioFrameworkSlotWaypoint "{5EEEE11FAD8EE85C}" {
-        m_Waypoint SCR_ScenarioFrameworkWaypointForcedMove "{60E708A1DCCA25B0}" {
-         m_eAIWaypointCompletionType Leader
-        }
-       }
-      }
-      coords 7.01 -2.391 -48.679
-     }
-     Task02EscapeWP {
-      components {
-       SCR_ScenarioFrameworkSlotWaypoint "{5EEEE11FAD8EE85C}" {
-        m_Waypoint SCR_ScenarioFrameworkWaypointGetInNearest "{60E90AC67ECB851D}" {
-         m_fCompletionRadius 2
-         m_bGunnerAllowed 0
-        }
-       }
-      }
-      coords 14.251 -1.067 17.977
-     }
+     coords 14.251 -1.067 17.977
     }
    }
   }
