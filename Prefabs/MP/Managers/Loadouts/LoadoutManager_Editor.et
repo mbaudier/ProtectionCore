@@ -6,18 +6,8 @@ SCR_LoadoutManager : "{AA4E7419A1FF65B0}Prefabs/MP/Managers/Loadouts/LoadoutMana
    m_sLoadoutResource "{95E8247374D70A43}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_SOF_TL.et"
    m_sAffiliatedFaction "US"
   }
-  SCR_FactionPlayerLoadout "{60EEF01FC0AF8DF6}" {
-   m_sLoadoutName "#AR-Loadout_Editor_SavedArsenalLoadout_Name"
-   m_sLoadoutResource "{95E8247374D70A43}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_SOF_TL.et"
-   m_sAffiliatedFaction "US"
-  }
   SCR_FactionPlayerLoadout "{60F0FA27757DC1B6}" {
    m_sLoadoutName "#AR-Loadout_Editor_NewArsenalLoadout_Name"
-   m_sLoadoutResource "{E062ADE88FDC1A41}Prefabs/Characters/Factions/INDFOR/GANG/Character_GANG_Gangsta00.et"
-   m_sAffiliatedFaction "GANG"
-  }
-  SCR_FactionPlayerLoadout "{60EF12957F62AFBA}" {
-   m_sLoadoutName "#AR-Loadout_Editor_SavedArsenalLoadout_Name"
    m_sLoadoutResource "{E062ADE88FDC1A41}Prefabs/Characters/Factions/INDFOR/GANG/Character_GANG_Gangsta00.et"
    m_sAffiliatedFaction "GANG"
   }
@@ -26,19 +16,9 @@ SCR_LoadoutManager : "{AA4E7419A1FF65B0}Prefabs/MP/Managers/Loadouts/LoadoutMana
    m_sLoadoutResource "{8541E0C0CDFA6729}Prefabs/Characters/Factions/INDFOR/RURAL/Character_RURAL_Farmer00.et"
    m_sAffiliatedFaction "RURAL"
   }
-  SCR_FactionPlayerLoadout "{60F0DB8538F24933}" {
-   m_sLoadoutName "#AR-Loadout_Editor_SavedArsenalLoadout_Name"
-   m_sLoadoutResource "{8541E0C0CDFA6729}Prefabs/Characters/Factions/INDFOR/RURAL/Character_RURAL_Farmer00.et"
-   m_sAffiliatedFaction "RURAL"
-  }
   SCR_FactionPlayerLoadout "{60F0FA2727039768}" {
    m_sLoadoutName "#AR-Loadout_Editor_NewArsenalLoadout_Name"
    m_sLoadoutResource "{5B46A00AC2E7626D}Prefabs/Characters/Factions/INDFOR/URBAN/Character_URBAN_Guy00.et"
-  }
-  SCR_FactionPlayerLoadout "{60F0DB85ED9888E4}" {
-   m_sLoadoutName "#AR-Loadout_Editor_SavedArsenalLoadout_Name"
-   m_sLoadoutResource "{5B46A00AC2E7626D}Prefabs/Characters/Factions/INDFOR/URBAN/Character_URBAN_Guy00.et"
-   m_sAffiliatedFaction "URBAN"
   }
  }
 }
