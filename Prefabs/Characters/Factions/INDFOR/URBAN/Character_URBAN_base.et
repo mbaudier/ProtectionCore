@@ -26,10 +26,13 @@ SCR_ChimeraCharacter : "{37578B1666981FCE}Prefabs/Characters/Core/Character_Base
    HolsteredHidden 1
   }
   CharacterWeaponSlotComponent "{520EA1D2F659CFB7}" {
-   WeaponSlotType "scondary"
+   WeaponSlotType "empty"
    WeaponSlotIndex 1
    HolsteredIndex 1
    HolsteredHidden 1
+  }
+  CharacterWeaponSlotComponent "{520EA1D2F659CFDC}" {
+   WeaponSlotType "empty"
   }
  }
 }
