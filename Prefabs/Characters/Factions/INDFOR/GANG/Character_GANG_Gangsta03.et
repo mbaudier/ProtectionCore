@@ -38,6 +38,7 @@ SCR_ChimeraCharacter : "{B95C14B8EBE9B3FA}Prefabs/Characters/Factions/INDFOR/GAN
      TargetStorage "Prefabs/Characters/Uniforms/Pants_Trousers_01/Pants_Trousers_01_LightBrown.et"
      PrefabsToSpawn {
       "{48720FC416263FC1}Prefabs/Weapons/Magazines/Vz58/Magazine_762x39_Vz58_30rnd_Ball.et" "{48720FC416263FC1}Prefabs/Weapons/Magazines/Vz58/Magazine_762x39_Vz58_30rnd_Ball.et" "{48720FC416263FC1}Prefabs/Weapons/Magazines/Vz58/Magazine_762x39_Vz58_30rnd_Ball.et"
+      "{48720FC416263FC1}Prefabs/Weapons/Magazines/Vz58/Magazine_762x39_Vz58_30rnd_Ball.et" "{48720FC416263FC1}Prefabs/Weapons/Magazines/Vz58/Magazine_762x39_Vz58_30rnd_Ball.et" "{48720FC416263FC1}Prefabs/Weapons/Magazines/Vz58/Magazine_762x39_Vz58_30rnd_Ball.et"
      }
     }
    }
