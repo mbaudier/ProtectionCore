@@ -12,7 +12,7 @@ GenericEntity : "{D2E4F8D6F22F0ACD}Prefabs/Systems/Arsenal/ArsenalBoxes/GANG/Ars
      24 38 25 35 34 33 1001
     }
     m_aAutoLabels {
-     7 122 27 15
+     7 122 27 910215
     }
     m_EntityChildrenBudgetCost {
      SCR_EntityBudgetValue "{60F0F14532CF1E22}" {
@@ -27,59 +27,61 @@ GenericEntity : "{D2E4F8D6F22F0ACD}Prefabs/Systems/Arsenal/ArsenalBoxes/GANG/Ars
   }
  }
  {
-  GenericEntity {
-   ID "5D32A9A4DC27065D"
-   Flags 1048576
+  $grp GenericEntity {
    {
-    DecalEntity {
-     ID "56DEFDB4A2C87F38"
-     Flags 1048576
+    ID "5D32A9A4DC27065D"
+    Flags 1048576
+    {
+     DecalEntity {
+      ID "56DEFDB4A2C87F38"
+      Flags 1048576
+     }
     }
    }
-  }
-  GenericEntity {
-   ID "5D32A9A4DC2706A2"
-   Flags 1048576
-  }
-  GenericEntity {
-   ID "5D32A9A4DC2706A5"
-   Flags 1048576
    {
-    GenericEntity {
-     ID "56B6871A1414CB69"
-     Flags 1048576
+    ID "5D32A9A4DC2706A2"
+    Flags 1048576
+   }
+   {
+    ID "5D32A9A4DC2706A5"
+    Flags 1048576
+    {
+     GenericEntity {
+      ID "56B6871A1414CB69"
+      Flags 1048576
+     }
     }
    }
-  }
-  GenericEntity {
-   ID "5D32A9A4DC2706AA"
-   Flags 1048576
-  }
-  GenericEntity {
-   ID "5D32A9A4DC2706AB"
-   Flags 1048576
-  }
-  GenericEntity {
-   ID "5D32A9A4DC2706AF"
-   Flags 1048576
    {
-    GenericEntity {
-     ID "56B6871A278AB642"
-     Flags 1048576
+    ID "5D32A9A4DC2706AA"
+    Flags 1048576
+   }
+   {
+    ID "5D32A9A4DC2706AB"
+    Flags 1048576
+   }
+   {
+    ID "5D32A9A4DC2706AF"
+    Flags 1048576
+    {
+     GenericEntity {
+      ID "56B6871A278AB642"
+      Flags 1048576
+     }
     }
    }
-  }
-  GenericEntity {
-   ID "5D32A9A4DC2706B0"
-   Flags 1048576
-  }
-  GenericEntity {
-   ID "5D32A9A4DC2706B9"
-   Flags 1048576
-  }
-  GenericEntity {
-   ID "5D32A9A4DC2706BC"
-   Flags 1048576
+   {
+    ID "5D32A9A4DC2706B0"
+    Flags 1048576
+   }
+   {
+    ID "5D32A9A4DC2706B9"
+    Flags 1048576
+   }
+   {
+    ID "5D32A9A4DC2706BC"
+    Flags 1048576
+   }
   }
  }
 }

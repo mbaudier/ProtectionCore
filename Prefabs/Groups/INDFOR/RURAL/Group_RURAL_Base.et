@@ -10,7 +10,7 @@ SCR_AIGroup : "{000CD338713F2B5A}Prefabs/AI/Groups/Group_Base.et" {
     m_Image "{6A73F75531DF6AD6}UI/Textures/EditorPreviews/Characters/OPFOR/USSR_Army/Character_USSR_Unarmed.edds"
     m_sFaction "RURAL"
     m_aAuthoredLabels + {
-     910214 1001
+     910213 1001
     }
     m_MilitarySymbol SCR_MilitarySymbol "{563682D06ED5ACD9}" {
      m_Identity CIVILIAN

@@ -19,11 +19,10 @@ SCR_LoadoutManager : "{AA4E7419A1FF65B0}Prefabs/MP/Managers/Loadouts/LoadoutMana
   SCR_FactionPlayerLoadout "{60EF12957F62AFBA}" {
    m_sLoadoutName "#AR-Loadout_Editor_SavedArsenalLoadout_Name"
    m_sLoadoutResource "{E062ADE88FDC1A41}Prefabs/Characters/Factions/INDFOR/GANG/Character_GANG_Gangsta00.et"
-   m_sLoadoutImage "{2B0877799B9B6C66}UI/Textures/EditorPreviews/Characters/BLUFOR/US_Army/Character_US_Rifleman.edds"
    m_sAffiliatedFaction "GANG"
   }
   SCR_FactionPlayerLoadout "{60F0FA274D79E9D7}" {
-   m_sLoadoutName "Loadout_Editor_NewArsenalLoadout_Name"
+   m_sLoadoutName "#AR-Loadout_Editor_NewArsenalLoadout_Name"
    m_sLoadoutResource "{8541E0C0CDFA6729}Prefabs/Characters/Factions/INDFOR/RURAL/Character_RURAL_Farmer00.et"
    m_sAffiliatedFaction "RURAL"
   }
@@ -33,7 +32,7 @@ SCR_LoadoutManager : "{AA4E7419A1FF65B0}Prefabs/MP/Managers/Loadouts/LoadoutMana
    m_sAffiliatedFaction "RURAL"
   }
   SCR_FactionPlayerLoadout "{60F0FA2727039768}" {
-   m_sLoadoutName "Loadout_Editor_NewArsenalLoadout_Name"
+   m_sLoadoutName "#AR-Loadout_Editor_NewArsenalLoadout_Name"
    m_sLoadoutResource "{5B46A00AC2E7626D}Prefabs/Characters/Factions/INDFOR/URBAN/Character_URBAN_Guy00.et"
   }
   SCR_FactionPlayerLoadout "{60F0DB85ED9888E4}" {
