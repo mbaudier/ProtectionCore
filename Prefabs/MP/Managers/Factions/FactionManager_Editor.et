@@ -24,10 +24,10 @@ SCR_FactionManager : "{A242612865F2A48E}Prefabs/MP/Managers/Factions/FactionMana
    }
   }
   SCR_Faction "{60EEE620D9F2F6A5}" : "{5C630F7CDC94DACA}Configs/Factions/GANG.conf" {
+   m_bIsPlayable 0
    m_aFriendlyFactionsIds {
     "US" "URSS" "URBAN"
    }
   }
  }
- m_bCanChangeFactionsPlayable 0
 }
