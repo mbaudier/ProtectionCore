@@ -15,18 +15,18 @@ SCR_FactionManager : "{A242612865F2A48E}Prefabs/MP/Managers/Factions/FactionMana
   }
   SCR_Faction "{60EEE620D4D3AA33}" : "{E5B2FC4A0D01E456}Configs/Factions/RURAL.conf" {
    m_aFriendlyFactionsIds {
-    "FIA" "USSR" "US" "URBAN"
+    "FIA" "USSR" "US" "URBAN" "RHS_RF_MSV" "RHS_US_USMC"
    }
   }
   SCR_Faction "{60EEE620DA613FE4}" : "{FFF1E35BF8F3312D}Configs/Factions/URBAN.conf" {
    m_aFriendlyFactionsIds {
-    "USSR" "US" "RURAL" "GANG"
+    "USSR" "US" "RURAL" "GANG" "RHS_RF_MSV" "RHS_US_USMC"
    }
   }
   SCR_Faction "{60EEE620D9F2F6A5}" : "{5C630F7CDC94DACA}Configs/Factions/GANG.conf" {
    m_bIsPlayable 0
    m_aFriendlyFactionsIds {
-    "US" "URSS" "URBAN"
+    "US" "URSS" "URBAN" "RHS_RF_MSV" "RHS_US_USMC"
    }
   }
  }
