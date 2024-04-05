@@ -1,0 +1,94 @@
+GenericEntity AreaTask04 : "{C72F956E4AC6A6E7}Prefabs/ScenarioFramework/Components/Area.et" {
+ coords 3103.698 4.031 3015.969
+ {
+  $grp GenericEntity : "{246BEC080F393398}Prefabs/ScenarioFramework/Components/LayerTaskMove.et" {
+   LayerTask04Move01 {
+    coords -545.705 15.031 72.135
+    {
+     GenericEntity SlotMoveTo1 : "{A44004A770A5D8BE}Prefabs/ScenarioFramework/Components/SlotMoveTo.et" {
+      coords 0.195 -0.004 -0.011
+     }
+    }
+   }
+   LayerTaskMove1 {
+    components {
+     SCR_ScenarioFrameworkLayerTask "{5A2283E9F84958A1}" {
+      m_aTriggerActionsOnFinish {
+       SCR_ScenarioFrameworkActionShowPopupNotification "{610AD552B1C23395}" {
+        m_sText "Tell team to go to vehicle"
+       }
+       SCR_ScenarioFrameworkActionAI "{610AD552F46BDE46}" {
+        m_Getter SCR_ScenarioFrameworkGetSpawnedEntity "{610AD55630804074}" {
+         m_sLayerName "Task04Team"
+        }
+        m_aAIActions {
+         SCR_ScenarioFrameworkAIAddWaypoint "{610AD552C6D57D5E}" {
+          m_Getter SCR_ScenarioFrameworkGetLayerBase "{610AD552CB10B046}" {
+           m_sLayerBaseName "Task04GetInVehicle"
+          }
+         }
+         SCR_ScenarioFrameworkAIActionSetHoldFire "{610AD5560820C80B}" {
+         }
+        }
+       }
+      }
+     }
+    }
+    coords 16.082 -0.063 -9.607
+    {
+     GenericEntity SlotMoveTo2 : "{A44004A770A5D8BE}Prefabs/ScenarioFramework/Components/SlotMoveTo.et" {
+      coords -1.013 0 1.248
+     }
+    }
+   }
+  }
+  GenericEntity LayerTask04 : "{5F9FFF4BF027B3A3}Prefabs/ScenarioFramework/Components/Layer.et" {
+   coords 6.921 -0.031 -4.323
+   {
+    GenericEntity Task04Team : "{8D43830F02C3F114}Prefabs/ScenarioFramework/Components/SlotAI.et" {
+     components {
+      SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+       m_sObjectToSpawn "{84E5BBAB25EA23E5}Prefabs/Groups/BLUFOR/Group_US_FireTeam.et"
+       m_WaypointSet SCR_ScenarioFrameworkWaypointSet "{610AD556FD94B82D}" {
+        m_aLayerName {
+         "Task04InitialWP"
+        }
+       }
+       m_eAIGroupFormation Column
+      }
+     }
+     coords 19.474 0.296 -11.397
+    }
+    GenericEntity Task04Vehicle : "{AA01691FDC4E9167}Prefabs/ScenarioFramework/Components/Slot.et" {
+     components {
+      SCR_ScenarioFrameworkSlotBase "{5A22E1D67E712EC8}" {
+       m_sObjectToSpawn "{DD774A8FD0989A78}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB_MERDC.et"
+      }
+     }
+     coords 3.154 0 2.57
+    }
+    $grp GenericEntity : "{EBD91177954E8236}Prefabs/ScenarioFramework/Components/SlotWaypoint.et" {
+     Task04GetInVehicle {
+      components {
+       SCR_ScenarioFrameworkSlotWaypoint "{5EEEE11FAD8EE85C}" {
+        m_Waypoint SCR_ScenarioFrameworkWaypointGetInNearest "{610AD54F8FA995C4}" {
+         m_fCompletionRadius 5
+        }
+       }
+      }
+      coords 2.522 1.008 2.44
+     }
+     Task04InitialWP {
+      components {
+       SCR_ScenarioFrameworkSlotWaypoint "{5EEEE11FAD8EE85C}" {
+        m_Waypoint SCR_ScenarioFrameworkWaypointMove "{610AD549344F11EC}" {
+        }
+       }
+      }
+      coords 16.287 1.84 -34.097
+     }
+    }
+   }
+  }
+ }
+}

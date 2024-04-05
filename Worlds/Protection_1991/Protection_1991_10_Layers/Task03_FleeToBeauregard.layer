@@ -11,8 +11,6 @@ GenericEntity AreaTask03 : "{C72F956E4AC6A6E7}Prefabs/ScenarioFramework/Componen
       SCR_ScenarioFrameworkActionShowPopupNotification "{60EF33BB820DFE12}" {
        m_sText "Mission accomplished!"
       }
-      SCR_ScenarioFrameworkActionEndMission "{60F06043F2A70C73}" {
-      }
      }
     }
    }
@@ -81,29 +79,6 @@ GenericEntity AreaTask03 : "{C72F956E4AC6A6E7}Prefabs/ScenarioFramework/Componen
     {
      GenericEntity Task03FinishBusinessmenWP0 : "{EBD91177954E8236}Prefabs/ScenarioFramework/Components/SlotWaypoint.et" {
       coords -15.278 -0.005 1.297
-     }
-    }
-   }
-   LayerBeauregardGANGDefenders {
-    coords 517.459 -70.518 1156.451
-    {
-     $grp GenericEntity : "{8D43830F02C3F114}Prefabs/ScenarioFramework/Components/SlotAI.et" {
-      BeauregardGANGDefenders00 {
-       components {
-        SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
-         m_sObjectToSpawn "{9EB0377EE756B199}Prefabs/Groups/INDFOR/GANG/Group_GANG_Mix00.et"
-        }
-       }
-       coords -0.556 0.226 -11.108
-      }
-      BeauregardGANGDefenders01 {
-       components {
-        SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
-         m_sObjectToSpawn "{9EB0377EE756B199}Prefabs/Groups/INDFOR/GANG/Group_GANG_Mix00.et"
-        }
-       }
-       coords -1.989 0.037 -0.582
-      }
      }
     }
    }
