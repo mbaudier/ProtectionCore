@@ -1,0 +1,61 @@
+GenericEntity AreaMilitaryArleville : "{C72F956E4AC6A6E7}Prefabs/ScenarioFramework/Components/Area.et" {
+ coords 2763.34 76.866 1631.18
+ {
+  $grp SCR_ScenarioFrameworkLogicCounter : "{6C1792C71DCAFD55}Prefabs/ScenarioFramework/Components/LogicCounter.et" {
+   ArlevilleRuralCounter20 {
+    coords 0.061 0.014 -1.3
+    m_aInputs {
+     SCR_ScenarioFrameworkLogicInput "{610B326E1EA1C495}" {
+      m_InputAction SCR_ScenarioFrameworkActionInputCheckEntitiesInTrigger "{610B326ECAB86D94}" {
+       m_Getter SCR_ScenarioFrameworkGetLayerBase "{610B326ECCEC7ED5}" {
+        m_sLayerBaseName "ArlevilleRuralTrigger"
+       }
+       m_eComparisonOperator LESS_OR_EQUAL
+       m_iValue 20
+      }
+     }
+    }
+    m_aActions {
+     SCR_ScenarioFrameworkActionShowPopupNotification "{610B326E80C7BAA5}" {
+      m_iMaxNumberOfActivations 1
+      m_sText "Only 20 civilians left in Arleville"
+     }
+    }
+   }
+   ArlevilleRuralCounter15 {
+    coords 4.036 -0.476 1.202
+    m_aInputs {
+     SCR_ScenarioFrameworkLogicInput "{610B326E1EA1C495}" {
+      m_InputAction SCR_ScenarioFrameworkActionInputCheckEntitiesInTrigger "{610B326ECAB86D94}" {
+       m_Getter SCR_ScenarioFrameworkGetLayerBase "{610B326ECCEC7ED5}" {
+        m_sLayerBaseName "ArlevilleRuralTrigger"
+       }
+       m_eComparisonOperator LESS_OR_EQUAL
+       m_iValue 15
+      }
+     }
+    }
+    m_aActions {
+     SCR_ScenarioFrameworkActionShowPopupNotification "{610B326E80C7BAA5}" {
+      m_iMaxNumberOfActivations 1
+      m_sText "Only 15 civilians left in Arleville"
+     }
+    }
+   }
+  }
+  GenericEntity ArlevilleRuralTrigger : "{D183AFE8DAF9793D}Prefabs/ScenarioFramework/Components/SlotTrigger.et" {
+   components {
+    SCR_ScenarioFrameworkSlotTrigger "{5A4B5098DE424991}" {
+     m_aPlugins {
+      SCR_ScenarioFrameworkPluginTrigger "{5AC53D73FCB1F805}" {
+       m_fAreaRadius 66
+       m_eActivationPresence ANY_CHARACTER
+       m_sActivatedByThisFaction "RURAL"
+      }
+     }
+    }
+   }
+   coords 0.415 -0.007 -2.46
+  }
+ }
+}
