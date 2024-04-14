@@ -1,0 +1,27 @@
+GenericEntity : "{5F9FFF4BF027B3A3}Prefabs/ScenarioFramework/Components/Layer.et" {
+ ID "59F0B4850F342318"
+ {
+  $grp GenericEntity : "{51899FF5F9930355}Prefabs/ScenarioFramework/Components/SlotRural.et" {
+   {
+    ID "611D1A0A9EDDCD81"
+    coords 0 0 0
+   }
+   {
+    ID "611D1A0B60A1FF0B"
+    coords 0 0 0
+   }
+   {
+    ID "611D1A0B6409C1C5"
+    coords 0 0 0
+   }
+   {
+    ID "611D1A0B667B02A9"
+    coords 0 0 0
+   }
+   {
+    ID "611D1A0B6A022E3F"
+    coords 0 0 0
+   }
+  }
+ }
+}

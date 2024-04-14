@@ -1,0 +1,51 @@
+$grp SCR_ScenarioFrameworkLogicCounter : "{6C1792C71DCAFD55}Prefabs/ScenarioFramework/Components/LogicCounter.et" {
+ CivilianDeathsCounter {
+  coords 2764.029 76.802 1630.441
+  m_iCountTo 1000
+  m_aOnIncreaseActions {
+   SCR_ScenarioFrameworkActionShowPopupNotification "{611D1A03C64410DE}" {
+    m_sTitle "Another civilian death!"
+   }
+   SCR_ScenarioFrameworkActionIncrementCounter "{611D1A0AE32A80A2}" {
+    m_sCounterName "CivilianDeathsWarning1"
+   }
+   SCR_ScenarioFrameworkActionIncrementCounter "{611D1A0AF49B7771}" {
+    m_sCounterName "CivilianDeathsWarning2"
+   }
+   SCR_ScenarioFrameworkActionIncrementCounter "{611D1A0AFF81031E}" {
+    m_sCounterName "CivilianDeathsEndMission"
+   }
+  }
+ }
+ CivilianDeathsWarning1 {
+  coords 2766.095 76.633 1622.986
+  m_aActions {
+   SCR_ScenarioFrameworkActionShowPopupNotification "{611D1A0A74FDD91D}" {
+    m_sText "10 civilian deaths, mission will fail at 30"
+   }
+  }
+  m_iCountTo 10
+ }
+ CivilianDeathsWarning2 {
+  coords 2765.909 76.621 1622.341
+  m_aActions {
+   SCR_ScenarioFrameworkActionShowPopupNotification "{611D1A0A74FDD91D}" {
+    m_sText "20 civilian deaths, mission will fail at 30"
+   }
+  }
+  m_iCountTo 20
+ }
+ CivilianDeathsEndMission {
+  coords 2765.938 76.616 1622.302
+  m_aActions {
+   SCR_ScenarioFrameworkActionShowPopupNotification "{611D1A0A35CE6B6F}" {
+    m_sText "30 civilian deaths, mission failed!"
+   }
+   SCR_ScenarioFrameworkActionEndMission "{611CF26574D9941B}" {
+    m_bOverrideGameOverType 1
+    m_eOverriddenGameOverType FACTION_DEFEAT_SCORE
+   }
+  }
+  m_iCountTo 30
+ }
+}

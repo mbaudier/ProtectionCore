@@ -1,0 +1,21 @@
+GenericEntity : "{8D43830F02C3F114}Prefabs/ScenarioFramework/Components/SlotAI.et" {
+ ID "5A26E3FA239786D5"
+ components {
+  SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+   m_aPlugins {
+    SCR_ScenarioFrameworkPluginOnDestroyEvent "{611D1A00E5F5DB09}" {
+     m_aActionsOnDestroy {
+      SCR_ScenarioFrameworkActionIncrementCounter "{611D1A00EC1AFE94}" {
+       m_sCounterName "CivilianDeathsCounter"
+      }
+     }
+    }
+   }
+   m_sWPToSpawn "{FAD1D789EE291964}Prefabs/AI/Waypoints/AIWaypoint_Defend_Large.et"
+   m_eAIGroupFormation Column
+   m_eAISkill NONE
+   m_eAICombatType RETREAT
+   m_fPerceptionFactor 0.5
+  }
+ }
+}
