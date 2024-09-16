@@ -204,7 +204,7 @@ GenericEntity AreaTask02 : "{C72F956E4AC6A6E7}Prefabs/ScenarioFramework/Componen
         m_sWPToSpawn "{531EC45063C1F57B}Prefabs/AI/Waypoints/AIWaypoint_Wait.et"
        }
       }
-      coords -0.502 -0.898 1.604
+      coords 6.49 -1.526 11.428
       angleY -164.403
      }
      Task02Businessman01 {
@@ -220,7 +220,7 @@ GenericEntity AreaTask02 : "{C72F956E4AC6A6E7}Prefabs/ScenarioFramework/Componen
         m_sWPToSpawn "{531EC45063C1F57B}Prefabs/AI/Waypoints/AIWaypoint_Wait.et"
        }
       }
-      coords -3.346 -0.897 1.748
+      coords 5.094 -1.526 12.649
       angleY 138.218
      }
      Task02Businessman02 {
@@ -236,7 +236,7 @@ GenericEntity AreaTask02 : "{C72F956E4AC6A6E7}Prefabs/ScenarioFramework/Componen
         m_sWPToSpawn "{531EC45063C1F57B}Prefabs/AI/Waypoints/AIWaypoint_Wait.et"
        }
       }
-      coords -2.914 -0.898 0.277
+      coords 5.32 -1.526 11.572
       angleY 97.883
      }
     }
