@@ -2,11 +2,19 @@ GenericEntity : "{8D43830F02C3F114}Prefabs/ScenarioFramework/Components/SlotAI.e
  ID "5A26E3FA239786D5"
  components {
   SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+   m_aActivationActions {
+    SCR_ScenarioFrameworkActionIncrementCounter "{6272FDFEADCE716E}" {
+     m_sCounterName "ProtectionCivilianCount"
+    }
+   }
    m_aPlugins {
     SCR_ScenarioFrameworkPluginOnDestroyEvent "{611D1A00E5F5DB09}" {
      m_aActionsOnDestroy {
       SCR_ScenarioFrameworkActionIncrementCounter "{611D1A00EC1AFE94}" {
-       m_sCounterName "CivilianDeathsCounter"
+       m_sCounterName "ProtectionCivilianDeaths"
+      }
+      SCR_ScenarioFrameworkActionDecreaseLogicCounter "{6272FDFED6387F32}" {
+       m_sCounterName "ProtectionCivilianCount"
       }
      }
     }
