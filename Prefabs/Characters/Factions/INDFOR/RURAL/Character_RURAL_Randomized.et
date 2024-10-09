@@ -1,0 +1,43 @@
+SCR_ChimeraCharacter : "{9377B9F8B8CA717A}Prefabs/Characters/Factions/INDFOR/RURAL/Character_RURAL_base.et" {
+ ID "60E2B3CB5E831188"
+ components {
+  SCR_EditableCharacterComponent "{520EA1D2F659C85C}" {
+   m_UIInfo SCR_EditableEntityUIInfo "{5298E609432D192D}" {
+    Name "Random rural civilian"
+    Icon "{C431FD61793AA13F}UI/Textures/Editor/EditableEntities/Characters/EditableEntity_Random.edds"
+    m_aAuthoredLabels + {
+     290
+    }
+   }
+   m_VariantData SCR_EditableEntityVariantData "{628C93B55880DADE}" {
+    m_bRandomizeDefaultVariant 0
+    m_aVariants {
+     SCR_EditableEntityVariant "{628C93B5275EA704}" {
+      m_sVariantPrefab "{8541E0C0CDFA6729}Prefabs/Characters/Factions/INDFOR/RURAL/Character_RURAL_Farmer00.et"
+     }
+     SCR_EditableEntityVariant "{628C93B5364078BA}" {
+      m_sVariantPrefab "{60DDAC39C11FF042}Prefabs/Characters/Factions/INDFOR/RURAL/Character_RURAL_Farmer01.et"
+     }
+     SCR_EditableEntityVariant "{628C93B53C15CED2}" {
+      m_sVariantPrefab "{0C8998D97DDB7F6C}Prefabs/Characters/Factions/INDFOR/RURAL/Character_RURAL_Farmer02.et"
+     }
+     SCR_EditableEntityVariant "{628C93B5072C2765}" {
+      m_sVariantPrefab "{E915D420713EE807}Prefabs/Characters/Factions/INDFOR/RURAL/Character_RURAL_Farmer03.et"
+     }
+     SCR_EditableEntityVariant "{628C93B50EFA3992}" {
+      m_sVariantPrefab "{D421F11804526130}Prefabs/Characters/Factions/INDFOR/RURAL/Character_RURAL_Farmer04.et"
+     }
+     SCR_EditableEntityVariant "{628C93B5164A3D3F}" {
+      m_sVariantPrefab "{31BDBDE108B7F65B}Prefabs/Characters/Factions/INDFOR/RURAL/Character_RURAL_Farmer05.et"
+     }
+     SCR_EditableEntityVariant "{628C93B51CED77C1}" {
+      m_sVariantPrefab "{5460268B4DBF78E3}Prefabs/Characters/Factions/INDFOR/RURAL/Character_RURAL_Notable01.et"
+     }
+     SCR_EditableEntityVariant "{628C93B5E81AD9E7}" {
+      m_sVariantPrefab "{7D6EE6863B754543}Prefabs/Characters/Factions/INDFOR/RURAL/Character_RURAL_Worker01.et"
+     }
+    }
+   }
+  }
+ }
+}

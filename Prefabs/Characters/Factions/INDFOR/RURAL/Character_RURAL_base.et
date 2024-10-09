@@ -11,10 +11,9 @@ SCR_ChimeraCharacter : "{37578B1666981FCE}Prefabs/Characters/Core/Character_Base
     m_Image "{6A73F75531DF6AD6}UI/Textures/EditorPreviews/Characters/OPFOR/USSR_Army/Character_USSR_Unarmed.edds"
     m_sFaction "RURAL"
     m_aAuthoredLabels + {
-     2 910213
+     2 910213 22
     }
     m_aAutoLabels {
-     122 22
     }
    }
   }

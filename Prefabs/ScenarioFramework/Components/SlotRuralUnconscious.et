@@ -9,7 +9,7 @@ GenericEntity : "{51899FF5F9930355}Prefabs/ScenarioFramework/Components/SlotRura
      }
      m_aMedicalActions {
       SCR_ScenarioFrameworkMedicalActionSetBlood "{628908A857E95BFF}" {
-       m_fBloodValue 1000
+       m_fBloodValue 2000
       }
       SCR_ScenarioFrameworkMedicalActionAddParticularBleeding "{628908A8EA719362}" {
        m_sHitZoneName "Head"

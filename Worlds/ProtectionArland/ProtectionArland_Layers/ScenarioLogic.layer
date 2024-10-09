@@ -8,7 +8,7 @@ $grp SCR_ScenarioFrameworkLogicCounter : "{6C1792C71DCAFD55}Prefabs/ScenarioFram
   m_iCountTo 1000
   m_aOnIncreaseActions {
    SCR_ScenarioFrameworkActionShowPopupNotification "{611D1A03C64410DE}" {
-    m_sTitle "Another civilian death!"
+    m_sTitle "A civilian died"
    }
    SCR_ScenarioFrameworkActionIncrementCounter "{611D1A0AE32A80A2}" {
     m_sCounterName "CivilianDeathsWarning1"
