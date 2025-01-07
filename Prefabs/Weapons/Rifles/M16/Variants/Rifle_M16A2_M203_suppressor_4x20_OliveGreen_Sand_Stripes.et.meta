@@ -1,0 +1,17 @@
+MetaFileClass {
+ Name "{9CFFA6EF6EF7A721}Prefabs/Weapons/Rifles/M16/Variants/Rifle_M16A2_M203_suppressor_4x20_OliveGreen_Sand_Stripes.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass PS5 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+ }
+}
