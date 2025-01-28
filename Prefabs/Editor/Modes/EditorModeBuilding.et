@@ -1,0 +1,17 @@
+SCR_EditorModeEntity : "{E56F54E533ACE527}Prefabs/Editor/Modes/EditorModeBase.et" {
+ ID "518A34314C7CB324"
+ components {
+  SCR_CampaignBuildingPlacingEditorComponent "{5A0ACCCCDF0C0F65}" {
+   m_Registries {
+    SCR_PlaceableEntitiesRegistryFromCatalog "{6479319EDAAD2871}" {
+     m_sAddon "Protection"
+     m_eEditorMode BUILDING
+     m_eCatalogFactionType FACTIONS_ONLY
+     m_CatalogTypes {
+      40 30
+     }
+    }
+   }
+  }
+ }
+}

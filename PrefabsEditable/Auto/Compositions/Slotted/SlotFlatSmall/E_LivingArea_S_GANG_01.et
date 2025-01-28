@@ -1,0 +1,29 @@
+GenericEntity : "{DB7F01C68EACBEC0}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatSmall/E_LivingArea_S_US_01.et" {
+ ID "5282DCB5DFC8538F"
+ components {
+  FactionAffiliationComponent "{5D06E95D184CD4C6}" {
+   "faction affiliation" "GANG"
+  }
+  SCR_EditableEntityComponent "{5E94CE5A76C55093}" {
+   m_UIInfo SCR_EditableEntityUIInfo "{5298E609432D192D}" {
+    m_sFaction "GANG"
+    m_aAutoLabels {
+     910215
+    }
+    m_EntityBudgetCost {
+     SCR_EntityBudgetValue "{5E987D8CB9155A47}" {
+      m_BudgetType RANK_PRIVATE
+      m_Value 0
+     }
+    }
+   }
+  }
+ }
+ {
+  GenericEntity : "{37AC505252B88231}Prefabs/Props/Military/Compositions/US/PersonnelService_GANG_Small.et" {
+   ID "6479319F39CA1553"
+   coords -2.809 0.052 4.207
+   angleY -82
+  }
+ }
+}

@@ -1,0 +1,13 @@
+GenericEntity : "{1B2B9C866C3D2F8C}Prefabs/Props/Military/Compositions/US/PersonnelService_US_Small.et" {
+ ID "F0DBA538AC2A0552"
+ components {
+  SCR_CampaignBuildingProviderComponent "{5ED7185081A6289C}" {
+   m_iRank PRIVATE
+  }
+  SCR_FactionAffiliationComponent "{5D22B92ED7E59790}" {
+   "faction affiliation" "GANG"
+  }
+ }
+ coords -2.809 -0.267 4.207
+ angleY -82
+}
