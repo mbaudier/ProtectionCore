@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{37AC505252B88231}Prefabs/Props/Military/Compositions/US/PersonnelService_GANG_Small.et"
+ Name "{EFFA9A20BDE82843}PrefabsEditable/Auto/Props/Military/Compositions/US/E_PersonnelService_GANG_Small.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }
