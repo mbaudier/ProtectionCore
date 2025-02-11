@@ -29,5 +29,7 @@ SCR_FactionManager : "{A242612865F2A48E}Prefabs/MP/Managers/Factions/FactionMana
     "US" "URSS" "URBAN" "RHS_RF_MSV" "RHS_US_USMC"
    }
   }
+  SCR_Faction "{6497365BA32CE395}" : "{B709EDB4147259CD}Configs/Factions/REDPEACE.conf" {
+  }
  }
 }

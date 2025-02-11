@@ -1,0 +1,23 @@
+SCR_ChimeraCharacter : "{D090408CBFEFD27B}Prefabs/Characters/Factions/OPFOR/REDPEACE/Character_REDPEACE_Base.et" {
+ ID "520EC961A090B1EE"
+ components {
+  SCR_EditableCharacterComponent "{520EA1D2F659C85C}" {
+   m_UIInfo SCR_EditableEntityUIInfo "{5298E609432D192D}" {
+    Icon "{C431FD61793AA13F}UI/Textures/Editor/EditableEntities/Characters/EditableEntity_Random.edds"
+    m_aAuthoredLabels + {
+     290
+    }
+   }
+   m_VariantData SCR_EditableEntityVariantData "{6497365F8205C98C}" {
+    m_aVariants {
+     SCR_EditableEntityVariant "{6497365F8BB29A5D}" {
+      m_sVariantPrefab "{FC0F7D05A318F84F}Prefabs/Characters/Factions/OPFOR/REDPEACE/Character_REDPEACE_Rifleman.et"
+     }
+     SCR_EditableEntityVariant "{6497365F8D62DC8D}" {
+      m_sVariantPrefab "{D2E36B1CF506AFB5}Prefabs/Characters/Factions/OPFOR/REDPEACE/Character_REDPEACE_Rifleman_Variant_1.et"
+     }
+    }
+   }
+  }
+ }
+}

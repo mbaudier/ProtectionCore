@@ -1,0 +1,17 @@
+MetaFileClass {
+ Name "{3930C6C9699E20AA}Configs/EntityCatalog/USSR/Groups_EntityCatalog_REDPEACE.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+ }
+}

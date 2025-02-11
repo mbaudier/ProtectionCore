@@ -1,0 +1,87 @@
+GenericEntity : "{D2E4F8D6F22F0ACD}Prefabs/Systems/Arsenal/ArsenalBoxes/GANG/ArsenalBox_GANG.et" {
+ ID "56F2C6D6F7C6DAFA"
+ components {
+  SCR_EditableSystemComponent "{5D32B2B71D781153}" : "{6FA0A85CFC5420AD}Prefabs/Editor/Components/Systems_SCR_EditableEntityComponent.ct" {
+   m_UIInfo SCR_EditableEntityUIInfo "{58D2A1BEBFDC56CC}" {
+    Name "#AR-EditableEntity_ArsenalBox_FIA_Name"
+    Description "#AR-EditableEntity_ArsenalBox_Description"
+    Icon "{EA975C03DF5422AD}UI/Textures/Editor/EditableEntities/Systems/EditableEntity_System_Arsenal.edds"
+    m_Image "{7EDEAAC89131B224}UI/Textures/EditorPreviews/Auto/Systems/Arsenal/ArsenalBoxes/US/E_ArsenalBox_US.edds"
+    m_sFaction "REDPEACE"
+    m_aAuthoredLabels {
+     24 38 25 35 34 33 1001
+    }
+    m_aAutoLabels {
+     7 122 27 910218
+    }
+    m_EntityChildrenBudgetCost {
+     SCR_EntityBudgetValue "{64973659B52570E6}" {
+      m_BudgetType PROPS
+      m_Value 9
+     }
+    }
+   }
+  }
+  SCR_FactionAffiliationComponent "{5A50E7655452A21D}" {
+   "faction affiliation" "REDPEACE"
+  }
+ }
+ {
+  $grp GenericEntity {
+   {
+    ID "64973659B5242230"
+    Flags 1048576
+   }
+   {
+    ID "64973659B5242232"
+    Flags 1048576
+    {
+     DecalEntity {
+      ID "64973659B5242233"
+      Flags 1048576
+     }
+    }
+   }
+   {
+    ID "64973659B5246A4F"
+    Flags 1048576
+    {
+     GenericEntity {
+      ID "64973659B5246A4E"
+      Flags 1048576
+     }
+    }
+   }
+   {
+    ID "64973659B5246A51"
+    Flags 1048576
+   }
+   {
+    ID "64973659B5252B7B"
+    Flags 1048576
+   }
+   {
+    ID "64973659B5254EF7"
+    Flags 1048576
+   }
+   {
+    ID "64973659B52570D5"
+    Flags 1048576
+   }
+   {
+    ID "64973659B525A245"
+    Flags 1048576
+    {
+     GenericEntity {
+      ID "64973659B5252B7A"
+      Flags 1048576
+     }
+    }
+   }
+   {
+    ID "64973659B525A6A5"
+    Flags 1048576
+   }
+  }
+ }
+}
