@@ -1,0 +1,6 @@
+SCR_AIGroup : "{F7306A9B1A7A9303}Prefabs/Groups/INDFOR/URBAN/Group_URBAN_Base.et" {
+ ID "0000000000000001"
+ m_aUnitPrefabSlots {
+  "{F26F2933F70EB514}Prefabs/Characters/Factions/INDFOR/URBAN/Character_URBAN_Randomized.et"
+ }
+}

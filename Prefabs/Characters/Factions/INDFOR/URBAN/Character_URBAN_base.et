@@ -8,7 +8,7 @@ SCR_ChimeraCharacter : "{37578B1666981FCE}Prefabs/Characters/Core/Character_Base
    m_UIInfo SCR_EditableEntityUIInfo "{5298E609432D192D}" {
     Name "Urban civilian"
     Icon "{9164E45B9A237FE9}UI/Textures/Editor/EditableEntities/Characters/EditableEntity_Character_Unarmed.edds"
-    m_Image "{6A73F75531DF6AD6}UI/Textures/EditorPreviews/Characters/OPFOR/USSR_Army/Character_USSR_Unarmed.edds"
+    m_Image "{3AF0BB06FEAC0CC2}UI/Textures/EditorPreviews/Characters/CIV/Character_CIV_4.edds"
     m_sFaction "URBAN"
     m_aAuthoredLabels {
      2 70 910214 22

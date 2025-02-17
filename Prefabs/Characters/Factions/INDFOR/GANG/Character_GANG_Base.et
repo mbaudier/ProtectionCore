@@ -8,6 +8,7 @@ SCR_ChimeraCharacter : "{37578B1666981FCE}Prefabs/Characters/Core/Character_Base
    m_UIInfo SCR_EditableEntityUIInfo "{5298E609432D192D}" {
     Name "Gang member"
     Icon "{AE53796BC5D21A08}UI/Textures/Editor/EditableEntities/Characters/EditableEntity_Character_Rifleman.edds"
+    m_Image "{7328AE198C6A78A8}UI/Textures/EditorPreviews/Characters/CIV/Character_CIV_3.edds"
     m_sFaction "GANG"
     m_aAuthoredLabels {
      1001 910215 2 70
