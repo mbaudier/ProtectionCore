@@ -8,19 +8,12 @@ class ARGEO_PopulatedArea : SCR_ScenarioFrameworkArea
 	override void EOnInit(IEntity owner)
 	{
 		super.EOnInit(owner);
-		Print("Populated area initialized");
+		//Print("Populated area initialized");
 	}
 	
 	override void OnAreaTriggerActivated(IEntity entity)
 	{
-		Print("Populated area trigger activated "+entity);
-/*		
-		ARGEO_PopulatedTriggerEntity populatedTrigger = ARGEO_PopulatedTriggerEntity.Cast(entity);		
-		if (!populatedTrigger)
-			return;
-		FactionKey areaFactionKey = GetFactionKey();
-		populatedTrigger.SetFactionKey(areaFactionKey);
-*/
+		//Print("Populated area trigger activated "+entity);
 		super.OnAreaTriggerActivated(entity);
 	}
 	
@@ -32,6 +25,6 @@ class ARGEO_PopulatedArea : SCR_ScenarioFrameworkArea
 			return;
 		FactionKey areaFactionKey = GetFactionKey();
 		populatedTrigger.SetFactionKey(areaFactionKey);
-		Print("Spawned area trigger");
+		//Print("Spawned area trigger");
 	}
 }

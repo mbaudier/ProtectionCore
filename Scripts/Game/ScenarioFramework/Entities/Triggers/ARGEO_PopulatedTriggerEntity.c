@@ -11,23 +11,39 @@ class ARGEO_PopulatedTriggerEntity : SCR_ScenarioFrameworkTriggerEntity
 	override void EOnInit(IEntity owner)
 	{
 		super.EOnInit(owner);
-		Print("Populated trigger initialized");
+		//Print("Populated trigger initialized");
 	}
 
 	override protected event void OnActivate(IEntity ent)
 	{
 		super.OnActivate(ent);
-		Print("Populated trigger activated "+ent);
+		//Print("Populated trigger activated "+ent);
 		
-		SCR_FactionAffiliationComponent comp = SCR_FactionAffiliationComponent.Cast(ent.FindComponent(SCR_FactionAffiliationComponent));		
-		if (!comp)
-			return;
-		if(m_sFactionKey)
-			comp.SetAffiliatedFactionByKey(m_sFactionKey);		
+		FactionKey factionKey = m_sFactionKey;
+		
+		bool enableSpawn = true;
+		
+		if(enableSpawn)
+		{
+			SCR_FactionAffiliationComponent factionAffiliation = SCR_FactionAffiliationComponent.Cast(ent.FindComponent(SCR_FactionAffiliationComponent));		
+			if (factionAffiliation)
+			{
+				factionAffiliation.SetAffiliatedFactionByKey(factionKey);		
+				//Print("Populated trigger - " + ent.GetID() + " - set faction " + factionKey);
+			}
+
+			ARGEO_PopulatedSpawnPointComponent populatedSpawnPoint = ARGEO_PopulatedSpawnPointComponent.Cast(ent.FindComponent(ARGEO_PopulatedSpawnPointComponent));
+			if(populatedSpawnPoint)
+			{
+				populatedSpawnPoint.EnableSpawn();
+				Print("Populated trigger - " + ent.GetID() + " - enable spawn of " + factionKey);
+			}
+		}
 	}
 	
 	void SetFactionKey(FactionKey factionKey)
 	{
 		m_sFactionKey = factionKey;
+		//Print("Populated trigger set faction key "+m_sFactionKey);
 	}
 }
