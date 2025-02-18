@@ -7,7 +7,7 @@ SCR_AIGroup : "{000CD338713F2B5A}Prefabs/AI/Groups/Group_Base.et" {
   SCR_EditableGroupComponent "{50D291F6C83FA532}" {
    m_UIInfo SCR_EditableGroupUIInfo "{5298E609432D192D}" {
     Icon "{9164E45B9A237FE9}UI/Textures/Editor/EditableEntities/Characters/EditableEntity_Character_Unarmed.edds"
-    m_Image "{6A73F75531DF6AD6}UI/Textures/EditorPreviews/Characters/OPFOR/USSR_Army/Character_USSR_Unarmed.edds"
+    m_Image "{130450729A459E97}UI/Textures/EditorPreviews/Characters/CIV/Character_CIV_CottonShirt_5.edds"
     m_sFaction "RURAL"
     m_aAuthoredLabels + {
      910213 1001
