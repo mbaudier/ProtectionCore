@@ -38,6 +38,10 @@ class ARGEO_PopulatedTriggerEntity : SCR_ScenarioFrameworkTriggerEntity
 				populatedSpawnPoint.EnableSpawn();
 				//Print("Populated trigger - " + ent.GetID() + " - enable spawn of " + factionKey);
 			}
+			else
+			{		
+				Print("Populated trigger - " + ent.GetID() + " - " + ent);
+			}
 		}
 	}
 	

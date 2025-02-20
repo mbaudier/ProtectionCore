@@ -24,6 +24,9 @@ class ARGEO_PopulatedSpawnPointComponent : SCR_AmbientPatrolSpawnPointComponent
 	{
 		super.SpawnPatrol();
 		//Print("Populated spawn point - " + GetOwner().GetID() + " - spawned " + m_SavedFaction.GetFactionKey());
+
+		// start deactivated
+		super.DeactivateGroup();
 	}
 	
 	override void DespawnPatrol()
