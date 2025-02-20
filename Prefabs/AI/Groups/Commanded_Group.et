@@ -1,0 +1,11 @@
+SCR_AIGroup : "{04D3B38E23F51754}Prefabs/AI/Groups/Slave_Group.et" {
+ ID "0000000000000001"
+ components {
+  AIFormationComponent "{507E9DC12F541FE6}" {
+   DefaultFormation "Column"
+  }
+  SCR_AIGroupMovementComponent "{6126A0E02097C7FF}" {
+   DefaultFormation "Column"
+  }
+ }
+}
