@@ -22,14 +22,39 @@ class ARGEO_ProtectAIGroupCommand : SCR_BaseGroupCommand
 		if (!groupController)
 			return false;
 		
+		
+		// character to be protected
 		SCR_ChimeraCharacter character = SCR_ChimeraCharacter.Cast(cursorTarget);
 		if (!character)
 			return false;		
 
+		if (GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(character) != 0)
+			return false;
+
+		if(IsCharacterInAnyGroup(groupController, character))
+			return false;
+
+		FactionAffiliationComponent factionAffiliation = FactionAffiliationComponent.Cast(character.FindComponent(FactionAffiliationComponent))	;
+		Faction currentFaction = factionAffiliation.GetAffiliatedFaction();
+
+		// add targeted person
+		groupController.RequestAddAIAgent(character, playerID);
+		factionAffiliation.SetAffiliatedFaction(currentFaction);
+
+		// make sure the commanded group will belong to player faction 
+		// otherwise the first agent sets the faction of the commanded group
+		SCR_AIGroup commandedGroup = groupController.GetPlayersGroup().GetSlave();
+		array<AIAgent> commandedAgents = {};
+		commandedGroup.GetAgents(commandedAgents);
+		if(commandedAgents.GetSizeOf() == 1) {					
+			commandedGroup.SetFaction(playerController.GetLocalControlledEntityFaction());
+			factionAffiliation.SetAffiliatedFaction(currentFaction);
+		}
+
+		int count = 1;
 		if(m_bProtectGroup)
 		{
 			// add the whole group
-			int count = 0;
 			SCR_AIGroup groupToJoin = GetGroupFromCharacter(character);
 			if(groupToJoin) {
 				array<AIAgent> agents = {};
@@ -38,7 +63,10 @@ class ARGEO_ProtectAIGroupCommand : SCR_BaseGroupCommand
 					SCR_ChimeraCharacter c = SCR_ChimeraCharacter.Cast(agent.GetControlledEntity());
 					if(!IsCharacterInAnyGroup(groupController, c))
 					{
-						groupController.RequestAddAIAgent(c, playerID);												
+						FactionAffiliationComponent fa = FactionAffiliationComponent.Cast(c.FindComponent(FactionAffiliationComponent))	;
+						Faction currentF = fa.GetAffiliatedFaction();
+						groupController.RequestAddAIAgent(c, playerID);
+						factionAffiliation.SetAffiliatedFaction(currentF);
 						count++;
 					}
 				}
@@ -48,18 +76,24 @@ class ARGEO_ProtectAIGroupCommand : SCR_BaseGroupCommand
 				return false;
 			}
 			
-			if(count == 1)
-				SCR_HintManagerComponent.GetInstance().ShowCustomHint("Civilian protected", "Protected", 3.0);	
-			else	
-				SCR_HintManagerComponent.GetInstance().ShowCustomHint("Group of civilians protected", "Protected", 3.0);	
 		}
-		else
-		{
-			// add targeted person
-			if (GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(character) == 0)
-				groupController.RequestAddAIAgent(character, playerID);
+		
+		if(count == 1)
+			SCR_HintManagerComponent.GetInstance().ShowCustomHint("Civilian protected", "Protected", 3.0);	
+		else	
+			SCR_HintManagerComponent.GetInstance().ShowCustomHint("Group of civilians protected", "Protected", 3.0);	
 	
-		}
+	
+		// DEBUG list the whole group
+		array<AIAgent> commandedA = {};
+		commandedGroup.GetAgents(commandedA);
+		int index = 0;
+		foreach(AIAgent a:commandedA) {
+			SCR_ChimeraCharacter c = SCR_ChimeraCharacter.Cast(a.GetControlledEntity());
+			Print(" " + index + " - " + c.GetFactionKey());
+			index++;
+		}		
+		
 		return true;
 	}
 	

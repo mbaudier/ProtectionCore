@@ -1,0 +1,15 @@
+GenericEntity : "{EFA00582842D41D0}Prefabs/Structures/Core/BuildingHousehold_Base.et" {
+ ID "64A6F30B4C3FA92F"
+ {
+  $grp GenericEntity : "{CBB58AA09362E1E8}Prefabs/Systems/Protection/PopulatedSpawnpoint.et" {
+   {
+    ID "64A6F309503AD81F"
+    coords -1.162 0.5 3.487
+   }
+   {
+    ID "64A733F3821FF8A5"
+    coords -1.151 0.5 -2.307
+   }
+  }
+ }
+}
