@@ -30,7 +30,7 @@ class ARGEO_RecruitAIGroupCommand : SCR_RecruitAIGroupCommand
 		Faction playerFaction = playerController.GetLocalControlledEntityFaction();
 		groupController.RequestAddAIAgent(character, playerID);
 
-		// force player faction on recruited
+		// force player faction on recruited military
 		FactionAffiliationComponent factionAffiliation = FactionAffiliationComponent.Cast(character.FindComponent(FactionAffiliationComponent))	;
 		factionAffiliation.SetAffiliatedFaction(playerFaction);
 		

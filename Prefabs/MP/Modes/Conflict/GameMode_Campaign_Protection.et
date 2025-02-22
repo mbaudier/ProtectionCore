@@ -1,0 +1,10 @@
+SCR_GameModeCampaign : "{3B230AAC5252108F}Prefabs/MP/Modes/Conflict/GameMode_Campaign.et" {
+ ID "56B2B479C6B96951"
+ components {
+  SCR_CommandingManagerComponent "{5D16783AFAE684F8}" {
+   m_sAIGroupPrefab "{4A9D83DCB0619829}Prefabs/AI/Groups/Commanded_Group.et"
+   m_sCommandsConfigPath "{4615FA289AC337D6}Configs/Commanding/ProtectionCommands.conf"
+   m_iMaxAIPerGroup -1
+  }
+ }
+}

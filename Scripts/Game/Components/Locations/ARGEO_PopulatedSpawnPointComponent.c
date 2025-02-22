@@ -32,7 +32,7 @@ class ARGEO_PopulatedSpawnPointComponent : SCR_AmbientPatrolSpawnPointComponent
 	override void DespawnPatrol()
 	{
 		super.DespawnPatrol();
-		Print("Populated spawn point - " + GetOwner().GetID() + " - despawned " + m_SavedFaction.GetFactionKey());
+		Print("Populated spawn point - " + GetOwner().GetID() + " - despawned ");
 	}
 	
 	override void ActivateGroup()
@@ -44,7 +44,8 @@ class ARGEO_PopulatedSpawnPointComponent : SCR_AmbientPatrolSpawnPointComponent
 	override void DeactivateGroup()
 	{
 		super.DeactivateGroup();
-		Print("Populated spawn point - " + GetOwner().GetID() + " - deactivated " + m_SavedFaction.GetFactionKey());
+		if(m_Group)
+			Print("Populated spawn point - " + GetOwner().GetID() + " - deactivated " + m_SavedFaction.GetFactionKey());
 	}
 	
 	void DisableSpawn()

@@ -9,6 +9,7 @@ SCR_ChimeraCharacter : "{D090408CBFEFD27B}Prefabs/Characters/Factions/OPFOR/REDP
     }
    }
    m_VariantData SCR_EditableEntityVariantData "{6497365F8205C98C}" {
+    m_bRandomizeDefaultVariant 0
     m_aVariants {
      SCR_EditableEntityVariant "{6497365F8BB29A5D}" {
       m_sVariantPrefab "{FC0F7D05A318F84F}Prefabs/Characters/Factions/OPFOR/REDPEACE/Character_REDPEACE_Rifleman.et"

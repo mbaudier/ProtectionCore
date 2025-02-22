@@ -1,6 +1,13 @@
 SCR_ChimeraCharacter : "{37578B1666981FCE}Prefabs/Characters/Core/Character_Base.et" {
  ID "60E2B3CB5E831188"
  components {
+  ChimeraAIControlComponent "{520EA1D2DB109F34}" {
+   components {
+    SCR_AICombatComponent "{55A2C9BE343B2EA1}" {
+     m_eAISkillDefault NONE
+    }
+   }
+  }
   FactionAffiliationComponent "{555C98D1CD949F3E}" {
    "faction affiliation" "RURAL"
   }

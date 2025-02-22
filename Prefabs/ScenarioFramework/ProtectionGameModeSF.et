@@ -1,0 +1,10 @@
+SCR_BaseGameMode : "{ECEEDB2D3737204B}Prefabs/ScenarioFramework/GameModeSF.et" {
+ ID "56B2B479C6B96951"
+ components {
+  SCR_CommandingManagerComponent "{64AD03B2FC3136C6}" {
+   m_sAIGroupPrefab "{4A9D83DCB0619829}Prefabs/AI/Groups/Commanded_Group.et"
+   m_sCommandsConfigPath "{4615FA289AC337D6}Configs/Commanding/ProtectionCommands.conf"
+   m_iMaxAIPerGroup -1
+  }
+ }
+}

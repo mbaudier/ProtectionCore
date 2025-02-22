@@ -2,23 +2,39 @@ SCR_FactionManager : "{A242612865F2A48E}Prefabs/MP/Managers/Factions/FactionMana
  ID "56B2B4776E6E4499"
  Factions {
   SCR_Faction "{56DEAC40D2DBC8B1}" : "{5EB46557DF2AA24F}Configs/Factions/US.conf" {
+   m_aFriendlyFactionsIds {
+    "URBAN" "RURAL"
+   }
   }
   SCR_Faction "{56DEAC40D3C2E623}" : "{09727032415AC39B}Configs/Factions/USSR.conf" {
+   UIInfo SCR_FactionUIInfo "{528C96127F8B6B08}" {
+    Name "ОМСДОН"
+    m_sNameUpper "ОМСДОН"
+   }
    m_iOrder 1
+   m_aFriendlyFactionsIds {
+    "URBAN"
+   }
   }
   SCR_Faction "{56DEAC40D132400B}" : "{8053DB656DD18B14}Configs/Factions/FIA.conf" {
    m_iOrder 2
-  }
-  SCR_Faction "{60EB3E61F4E10F1A}" : "{5C630F7CDC94DACA}Configs/Factions/GANG.conf" {
-   m_iOrder 100
+   m_aFriendlyFactionsIds {
+    "RURAL"
+   }
   }
   SCR_Faction "{60E2C10835E36609}" : "{FFF1E35BF8F3312D}Configs/Factions/URBAN.conf" {
    m_iOrder 200
    m_bIsPlayable 0
+   m_aFriendlyFactionsIds {
+    "RURAL" "US" "USSR"
+   }
   }
   SCR_Faction "{60E2C10830408844}" : "{E5B2FC4A0D01E456}Configs/Factions/RURAL.conf" {
    m_iOrder 201
    m_bIsPlayable 0
+   m_aFriendlyFactionsIds {
+    "URBAN" "US" "FIA"
+   }
   }
  }
 }

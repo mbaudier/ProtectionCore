@@ -9,6 +9,7 @@ SCR_ChimeraCharacter : "{70697C21DE7AE2ED}Prefabs/Characters/Factions/INDFOR/URB
     }
    }
    m_VariantData SCR_EditableEntityVariantData "{64A30CCCE1C52B95}" {
+    m_bRandomizeDefaultVariant 0
     m_aVariants {
      SCR_EditableEntityVariant "{64A30CCCE578E552}" {
       m_sVariantPrefab "{5B46A00AC2E7626D}Prefabs/Characters/Factions/INDFOR/URBAN/Character_URBAN_Guy00.et"

@@ -1,0 +1,27 @@
+SCR_ChimeraCharacter : "{B95C14B8EBE9B3FA}Prefabs/Characters/Factions/INDFOR/GANG/Character_GANG_Base.et" {
+ ID "520EC961A090B1EE"
+ components {
+  SCR_EditableCharacterComponent "{520EA1D2F659C85C}" {
+   m_VariantData SCR_EditableEntityVariantData "{64AD31E80AF0D2BC}" {
+    m_bRandomizeDefaultVariant 0
+    m_aVariants {
+     SCR_EditableEntityVariant "{64AD31E809B342E8}" {
+      m_sVariantPrefab "{E062ADE88FDC1A41}Prefabs/Characters/Factions/INDFOR/GANG/Character_GANG_Gangsta00.et"
+     }
+     SCR_EditableEntityVariant "{64AD31E81F0CA236}" {
+      m_sVariantPrefab "{1A6501B0C9C50EC4}Prefabs/Characters/Factions/INDFOR/GANG/Character_GANG_Gangsta01.et"
+     }
+     SCR_EditableEntityVariant "{64AD31E8EFADC078}" {
+      m_sVariantPrefab "{76313550750181EA}Prefabs/Characters/Factions/INDFOR/GANG/Character_GANG_Gangsta02.et"
+     }
+     SCR_EditableEntityVariant "{64AD31E8F0C3F498}" {
+      m_sVariantPrefab "{93AD79A979E41681}Prefabs/Characters/Factions/INDFOR/GANG/Character_GANG_Gangsta03.et"
+     }
+     SCR_EditableEntityVariant "{64AD31E8F5F1DC00}" {
+      m_sVariantPrefab "{AE995C910C889FB6}Prefabs/Characters/Factions/INDFOR/GANG/Character_GANG_Gangsta04.et"
+     }
+    }
+   }
+  }
+ }
+}

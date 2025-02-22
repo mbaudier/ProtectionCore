@@ -36,6 +36,7 @@ class ARGEO_ProtectAIGroupCommand : SCR_BaseGroupCommand
 
 		FactionAffiliationComponent factionAffiliation = FactionAffiliationComponent.Cast(character.FindComponent(FactionAffiliationComponent))	;
 		Faction currentFaction = factionAffiliation.GetAffiliatedFaction();
+		SCR_AIGroup currentGroup = GetGroupFromCharacter(character);
 
 		// add targeted person
 		groupController.RequestAddAIAgent(character, playerID);
@@ -46,19 +47,18 @@ class ARGEO_ProtectAIGroupCommand : SCR_BaseGroupCommand
 		SCR_AIGroup commandedGroup = groupController.GetPlayersGroup().GetSlave();
 		array<AIAgent> commandedAgents = {};
 		commandedGroup.GetAgents(commandedAgents);
-		if(commandedAgents.GetSizeOf() == 1) {					
-			commandedGroup.SetFaction(playerController.GetLocalControlledEntityFaction());
-			factionAffiliation.SetAffiliatedFaction(currentFaction);
-		}
+//		if(commandedAgents.GetSizeOf() == 1) {					
+//			commandedGroup.SetFaction(playerController.GetLocalControlledEntityFaction());
+//			factionAffiliation.SetAffiliatedFaction(currentFaction);
+//		}
 
 		int count = 1;
 		if(m_bProtectGroup)
 		{
 			// add the whole group
-			SCR_AIGroup groupToJoin = GetGroupFromCharacter(character);
-			if(groupToJoin) {
+			if(currentGroup) {
 				array<AIAgent> agents = {};
-				groupToJoin.GetAgents(agents);
+				currentGroup.GetAgents(agents);
 				foreach(AIAgent agent:agents) {
 					SCR_ChimeraCharacter c = SCR_ChimeraCharacter.Cast(agent.GetControlledEntity());
 					if(!IsCharacterInAnyGroup(groupController, c))
@@ -118,10 +118,10 @@ class ARGEO_ProtectAIGroupCommand : SCR_BaseGroupCommand
 		// do not show protect group if he/she is alone
 		if(m_bProtectGroup)
 		{
-			SCR_AIGroup groupToJoin = GetGroupFromCharacter(character);
-			if(!groupToJoin)
+			SCR_AIGroup currentGroup = GetGroupFromCharacter(character);
+			if(!currentGroup)
 				return false;
-			if(groupToJoin.GetAgentsCount() < 2)
+			if(currentGroup.GetAgentsCount() < 2)
 				return false;
 		}
 		

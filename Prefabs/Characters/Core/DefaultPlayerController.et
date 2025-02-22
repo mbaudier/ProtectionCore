@@ -1,0 +1,9 @@
+SCR_PlayerController {
+ ID "1A9BA6BEFA06E3B1"
+ components {
+  SCR_PlayerControllerCommandingComponent "{5A7CC0F22BDDB868}" {
+   m_sCommandingConfigActionPair "{772828E5A635A070}Configs/Commanding/ProtectionCommandingMenuActionConfigPairs.conf"
+   m_sCommandingMapMenuConfigPath "{D21D89C14A2E91B2}Configs/Commanding/ProtectionCommandingMapMenu.conf"
+  }
+ }
+}

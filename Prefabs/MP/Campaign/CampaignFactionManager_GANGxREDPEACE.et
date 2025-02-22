@@ -1,20 +1,46 @@
 SCR_CampaignFactionManager : "{A242612865F2A48E}Prefabs/MP/Managers/Factions/FactionManager_Base.et" {
  ID "56B2B4776E6E4499"
  Factions {
-  SCR_CampaignFaction "{50B30C3AF4BFD934}" : "{15B582F8FA0B0940}Configs/Factions/USSR_Campaign.conf" {
-   m_sFactionBackground "{21533F2089005056}UI/Textures/DeployMenu/Loadout-BG/Loadout_BG_USSR.imageset"
+  SCR_CampaignFaction "{64772CF83CCD1BAB}" : "{081E35D18047E893}Configs/Factions/GANG_Campaign.conf" {
+   m_iOrder 1
+   m_aFriendlyFactionsIds {
+    "RURAL" "URBAN" "USSR"
+   }
   }
-  SCR_CampaignFaction "{50B30C3ADB052C80}" : "{ADFDBDA163950168}Configs/Factions/US_Campaign.conf" {
-   m_sFactionBackground "{F8AC305446D5D480}UI/Textures/DeployMenu/Loadout-BG/Loadout_US_BG.imageset"
+  SCR_CampaignFaction "{64AD110BB13FCB22}" : "{2BD6CDBB8091F637}Configs/Factions/REDPEACE_Campaign.conf" {
+   m_iOrder 1000
+   m_aFriendlyFactionsIds {
+    "RURAL" "URBAN" "USSR"
+   }
   }
   SCR_CampaignFaction "{56F0C3A6336375DC}" : "{CF9447B87AB774DB}Configs/Factions/FIA_Campaign.conf" {
+   m_aFriendlyFactionsIds {
+    "RURAL"
+   }
    m_sFactionBackground "{81BF3B1DCC106577}UI/Textures/DeployMenu/Loadout-BG/Loadout_BG_FIA.imageset"
   }
-  SCR_CampaignFaction "{64772CF83CCD1BAB}" : "{081E35D18047E893}Configs/Factions/GANG_Campaign.conf" {
+  SCR_CampaignFaction "{50B30C3AF4BFD934}" : "{15B582F8FA0B0940}Configs/Factions/USSR_Campaign.conf" {
+   UIInfo SCR_FactionUIInfo "{528C96127F8B6B08}" {
+    Name "ОМСДОН"
+    Description "Rogue Soviet interior ministry forces"
+    m_sNameUpper "ОМСДОН"
+   }
+   m_iOrder 3000
+   m_bIsPlayable 0
+   m_aFriendlyFactionsIds {
+    "URBAN" "GANG" "REDPEACE"
+   }
+   m_sFactionBackground "{21533F2089005056}UI/Textures/DeployMenu/Loadout-BG/Loadout_BG_USSR.imageset"
   }
   SCR_Faction "{64772CF802CE21FC}" : "{E5B2FC4A0D01E456}Configs/Factions/RURAL.conf" {
+   m_aFriendlyFactionsIds {
+    "URBAN" "GANG" "REDPEACE" "FIA"
+   }
   }
   SCR_Faction "{64772CF8000D56BB}" : "{FFF1E35BF8F3312D}Configs/Factions/URBAN.conf" {
+   m_aFriendlyFactionsIds {
+    "RURAL" "GANG" "REDPEACE" "USSR"
+   }
   }
  }
  m_bCanChangeFactionsPlayable 0
