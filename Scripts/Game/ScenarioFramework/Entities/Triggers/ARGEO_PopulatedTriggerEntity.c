@@ -6,7 +6,7 @@ class ARGEO_PopulatedTriggerEntityClass : SCR_ScenarioFrameworkTriggerEntityClas
 class ARGEO_PopulatedTriggerEntity : SCR_ScenarioFrameworkTriggerEntity
 {
 	
-	FactionKey m_sFactionKey;
+	private FactionKey m_sFactionKey;
 	
 	override void EOnInit(IEntity owner)
 	{
