@@ -1,9 +1,0 @@
-GenericEntity : "{1E4C8AD00BBB16AA}Prefabs/Systems/AmbientPatrol/AmbientPatrolSpawnpoint_Base.et" {
- ID "5CCEC603A58CB072"
- components {
-  ARGEO_PopulatedSpawnPointComponent "{5CCEC6036BBF3EDD}" {
-   m_eGroupType POPULATION
-  }
- }
- coords 0.578 1.513 2.501
-}

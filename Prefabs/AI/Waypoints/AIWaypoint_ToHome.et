@@ -1,0 +1,12 @@
+SCR_AIWaypoint : "{750A8D1695BD6998}Prefabs/AI/Waypoints/AIWaypoint_Move.et" {
+ ID "50F6DEC95C249E03"
+ components {
+  Hierarchy "{64B5177C620D6777}" {
+  }
+ }
+ Title "Come home"
+ Description "Narrow location within a home"
+ AIBehaviorTreeMoveTo "{62D36413D46F02A6}AI/BehaviorTrees/Waypoints/WP_Patrol.bt"
+ CompletionRadius 1.5
+ CompletionType Leader
+}

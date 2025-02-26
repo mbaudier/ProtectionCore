@@ -1,0 +1,20 @@
+SCR_AIWaypoint : "{1E4C8AD00BBB16AA}Prefabs/Systems/AmbientPatrol/AmbientPatrolSpawnpoint_Base.et" {
+ ID "5CCEC603A58CB072"
+ components {
+  ARGEO_PopulatedSpawnPointComponent "{5CCEC6036BBF3EDD}" {
+   m_sDefaultWaypointPrefab "{45FA1ED74E8909FF}Prefabs/AI/Waypoints/AIWaypoint_StayAtHome.et"
+   m_eGroupType POPULATION
+  }
+ }
+ coords 0.578 1.513 2.501
+ Title "Home"
+ AIBehaviorTreeMoveTo "{62D36413D46F02A6}AI/BehaviorTrees/Waypoints/WP_Patrol.bt"
+ CompletionRadius 1.5
+ CompletionType Leader
+ {
+  AIWaypointCycle : "{AEB5FFF8300FA6EC}Prefabs/AI/Waypoints/AIWaypoint_PopulatedCycle.et" {
+   ID "64B5177CEC1CC638"
+   coords 0 0 0
+  }
+ }
+}

@@ -1,0 +1,11 @@
+AIWaypointCycle {
+ ID "64B50EDC35D40D49"
+ components {
+  Hierarchy "{64B5177CDF9F4FF6}" {
+  }
+ }
+ coords 128.483 -15.307 74.257
+ Title "Home activities"
+ Description "Peaceful activities from home"
+ CompletionRadius 10
+}
