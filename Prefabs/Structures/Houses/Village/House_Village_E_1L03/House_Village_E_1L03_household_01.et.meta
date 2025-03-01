@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{60333F74EE12B52F}Prefabs/Structures/Houses/Village/House_Village_E_1I05/House_Village_E_1I05s.et"
+ Name "{E8F0D656120EC20A}Prefabs/Systems/Population/House_Village_E_1L03_household_01.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

@@ -1,0 +1,23 @@
+GenericEntity : "{EFA00582842D41D0}Prefabs/Systems/Population/BuildingHousehold_Base.et" {
+ ID "64A6F30B4C3FA92F"
+ {
+  $grp SCR_AIWaypoint : "{CBB58AA09362E1E8}Prefabs/Systems/Population/PopulatedSpawnpoint.et" {
+   {
+    ID "64C3169E80664D65"
+    coords 3.022 7.3 4.266
+   }
+   {
+    ID "64C3169E8279117C"
+    coords 3.892 3.812 -0.653
+   }
+   {
+    ID "64C3169EBCAA8324"
+    coords 3.763 3.8 3.29
+   }
+   {
+    ID "64C3169EBEC2EBE0"
+    coords 2.677 0 -0.53
+   }
+  }
+ }
+}

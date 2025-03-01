@@ -1,0 +1,9 @@
+SCR_DestructibleBuildingEntity : "{A43A100E3C377DB2}Prefabs/Structures/Core/Building_Base.et" {
+ ID "F0DBA538AC2A0552"
+ {
+  GenericEntity : "{348F0BD05E874A9F}Prefabs/Structures/Houses/Town/House_Town_E_2I03/House_Town_E_2I03_household_01.et" {
+   ID "64C30B0759D7377E"
+   coords 0 0 0
+  }
+ }
+}

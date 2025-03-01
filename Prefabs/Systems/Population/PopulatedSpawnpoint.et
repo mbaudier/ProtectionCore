@@ -6,7 +6,7 @@ SCR_AIWaypoint : "{1E4C8AD00BBB16AA}Prefabs/Systems/AmbientPatrol/AmbientPatrolS
    m_eGroupType POPULATION
   }
  }
- coords 0.578 1.513 2.501
+ coords 1.654 0.486 -7.736
  Title "Home"
  AIBehaviorTreeMoveTo "{62D36413D46F02A6}AI/BehaviorTrees/Waypoints/WP_Patrol.bt"
  CompletionRadius 1.5
