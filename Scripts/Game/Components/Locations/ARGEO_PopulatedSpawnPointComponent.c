@@ -15,7 +15,7 @@ class ARGEO_PopulatedSpawnPointComponent : SCR_AmbientPatrolSpawnPointComponent
 	{
 		super.EOnInit(owner);
 		m_fDefaultAILimitThreshold = m_fAILimitThreshold;
-		DisableSpawn();// disable spawn by default
+		//DisableSpawn();// disable spawn by default
 		//Print("Populated spawnpoint initialized");
 	}
 
