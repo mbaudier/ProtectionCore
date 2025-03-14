@@ -2,7 +2,7 @@ GenericEntity : "{C72F956E4AC6A6E7}Prefabs/ScenarioFramework/Components/Area.et"
  ID "59E8CDC4819B4FE1"
  components {
   ARGEO_PopulatedArea "{59E8CDC50969206E}" {
-   m_sTriggerResource "{3B9714A3E67390C8}Prefabs/ScenarioFramework/Triggers/PopulatedAreaTrigger.et"
+   m_sTriggerResource "{D48BC61D01C94A5D}Prefabs/Systems/Population/PopulateStructuresTrigger.et"
    m_fAreaRadius 200
   }
  }
