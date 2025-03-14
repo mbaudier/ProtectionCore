@@ -1,0 +1,29 @@
+SCR_LoadoutManager : "{58FBD035E53D95C1}Prefabs/MP/Campaign/CampaignLoadoutManager.et" {
+ ID "5690D9DBA5D97663"
+ m_aPlayerLoadouts {
+  SCR_FactionPlayerLoadout "{5690D9DB9BA76597}" {
+   m_sLoadoutResource "{D2982D8EDE492D79}Prefabs/Characters/Campaign/Final/Campaign_GANG_Player.et"
+   m_sAffiliatedFaction "GANG"
+  }
+  SCR_FactionPlayerLoadout "{5690D9DB9400735C}" {
+   m_sLoadoutResource "{2E36B11E88C65E0B}Prefabs/Characters/Campaign/Final/Campaign_REDPEACE_Player.et"
+   m_sAffiliatedFaction "REDPEACE"
+  }
+  SCR_FactionPlayerLoadout "{64DD123ACB038F41}" {
+   m_sLoadoutResource "{59E52584CFABA777}Prefabs/Characters/Campaign/Final/Campaign_URBAN_Player.et"
+   m_sAffiliatedFaction "URBAN"
+  }
+  SCR_PlayerArsenalLoadout "{5B108B49559B24A2}" {
+   m_sLoadoutResource "{891238F03F037386}Prefabs/Characters/Campaign/Final/Campaign_GANG_Base.et"
+   m_sAffiliatedFaction "GANG"
+  }
+  SCR_PlayerArsenalLoadout "{5B108B4948B445F8}" {
+   m_sLoadoutResource "{BFF3554FBDAF04D6}Prefabs/Characters/Campaign/Final/Campaign_REDPEACE_Base.et"
+   m_sAffiliatedFaction "REDPEACE"
+  }
+  SCR_PlayerArsenalLoadout "{64DD123AD7E0F799}" {
+   m_sLoadoutResource "{59E52584CFABA777}Prefabs/Characters/Campaign/Final/Campaign_URBAN_Player.et"
+   m_sAffiliatedFaction "URBAN"
+  }
+ }
+}

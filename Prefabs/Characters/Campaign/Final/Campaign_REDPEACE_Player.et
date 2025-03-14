@@ -1,6 +1,9 @@
-SCR_ChimeraCharacter : "{D39B5420E9FF4922}Prefabs/Characters/Campaign/Final/Campaign_REDPEACE_Base.et" {
+SCR_ChimeraCharacter : "{BFF3554FBDAF04D6}Prefabs/Characters/Campaign/Final/Campaign_REDPEACE_Base.et" {
  ID "520EC961A090BE1E"
  components {
+  CharacterWeaponSlotComponent "{520EA1D2F659CFAB}" {
+   WeaponTemplate "{FA5C25BF66A53DCF}Prefabs/Weapons/Rifles/AK74/Rifle_AK74.et"
+  }
   BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
    Slots {
     LoadoutSlotInfo Hat {
@@ -14,6 +17,22 @@ SCR_ChimeraCharacter : "{D39B5420E9FF4922}Prefabs/Characters/Campaign/Final/Camp
     }
     LoadoutSlotInfo Boots {
      Prefab "{4C6029AB8BF5C044}Prefabs/Characters/Footwear/CombatBoots_Soviet_01_Dirty.et"
+    }
+   }
+  }
+  SCR_InventoryStorageManagerComponent "{520EA1D2DB118DE5}" {
+   InitialInventoryItems {
+    ItemsInitConfigurationItem "{64DD1239EFAEE171}" {
+     TargetStorage "Prefabs/Characters/Uniforms/Pants_M88.et"
+     PrefabsToSpawn {
+      "{13772C903CB5E4F7}Prefabs/Items/Equipment/Maps/PaperMap_01_folded.et" "{7CEF68E2BC68CE71}Prefabs/Items/Equipment/Compass/Compass_Adrianov.et"
+     }
+    }
+    ItemsInitConfigurationItem "{64DD1239C62F3F8E}" {
+     TargetStorage "Prefabs/Characters/Uniforms/Jacket_M88_rolledup.et"
+     PrefabsToSpawn {
+      "{33F3FD3662F44BB7}Prefabs/Weapons/Ammo/Ammo_545x39_AP_7N10.et" "{33F3FD3662F44BB7}Prefabs/Weapons/Ammo/Ammo_545x39_AP_7N10.et" "{33F3FD3662F44BB7}Prefabs/Weapons/Ammo/Ammo_545x39_AP_7N10.et"
+     }
     }
    }
   }

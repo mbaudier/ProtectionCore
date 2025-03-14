@@ -1,28 +1,3 @@
-SCR_ChimeraCharacter : "{5346CF7E39A65A6B}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Base.et" {
- ID "520EC961A090BE1E"
- components {
-  SCR_CommunicationSoundComponent "{54FD05D0C92D071F}" {
-   Filenames + {
-    "{FC7A7A9F92D1E225}Sounds/RadioProtocol/RadioProtocol_Campaign_SL_RU.acp" "{7413663A6477A6AE}Sounds/RadioProtocol/RadioProtocol_Campaign_HQ_1_RU.acp" "{C6C424D13BD59536}Sounds/RadioProtocol/RadioProtocol_Campaign_HQ_2_RU.acp" "{A8891A880EB47BBE}Sounds/RadioProtocol/RadioProtocol_Campaign_HQ_3_RU.acp" "{E19A40EC2D7BC495}Sounds/RadioProtocol/RadioProtocol_Campaign_HQ_4_RU.acp" "{8FD77EB5181A2A1D}Sounds/RadioProtocol/RadioProtocol_Campaign_HQ_5_RU.acp" "{F74F3305B3A080B9}Sounds/RadioProtocol/RadioProtocol_Campaign_SL_US.acp" "{B3121241CD2D1794}Sounds/RadioProtocol/RadioProtocol_Campaign_HQ_1_US.acp" "{769D43ACF046BF37}Sounds/RadioProtocol/RadioProtocol_Campaign_HQ_2_US.acp" "{01972B2404E45047}Sounds/RadioProtocol/RadioProtocol_Campaign_HQ_3_US.acp" "{D88FC72ACD99E54C}Sounds/RadioProtocol/RadioProtocol_Campaign_HQ_4_US.acp" "{B6C2F973F8F80BC4}Sounds/RadioProtocol/RadioProtocol_Campaign_HQ_5_US.acp"
-   }
-  }
-  FactionAffiliationComponent "{520EC9618276DF23}" {
-   "faction affiliation" "REDPEACE"
-  }
-  SCR_CampaignBuildingComponent "{64973658E7A911D9}" {
-  }
-  SCR_MapDescriptorComponent "{64973658E7A911CB}" {
-   VisibleOnMap 0
-   MainType Unit
-   UnitType Infantry
-  }
-  SCR_CharacterIdentityComponent "{5584CBC63E092DBC}" {
-   Identity Identity "{5584CBC6363C648B}" {
-    VisualIdentity VisualIdentity "{56E6D9456009D1C4}" {
-     Head "{04F4D8CBA36A534B}Prefabs/Characters/Heads/Head_Black_02.et"
-     Body "{6253161EEAB88EAB}Prefabs/Characters/Basebody/CharacterBasebody_Black_02.et"
-    }
-   }
-  }
- }
+SCR_ChimeraCharacter : "{D090408CBFEFD27B}Prefabs/Characters/Factions/OPFOR/REDPEACE/Character_REDPEACE_Base.et" {
+ ID "520EC961A090B1EE"
 }

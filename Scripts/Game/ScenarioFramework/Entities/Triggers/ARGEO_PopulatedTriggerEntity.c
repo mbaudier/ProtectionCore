@@ -1,3 +1,4 @@
+// Deprecated - TODO SCR_ScenarioFrameworkTriggerEntity with ARGEO_PopulateStructuresTriggerEntity logic
 [EntityEditorProps(category: "GameScripted/Triggers", description: "")]
 class ARGEO_PopulatedTriggerEntityClass : SCR_ScenarioFrameworkTriggerEntityClass
 {

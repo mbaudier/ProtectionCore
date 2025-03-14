@@ -1,27 +1,12 @@
-SCR_ChimeraCharacter : "{B95C14B8EBE9B3FA}Prefabs/Characters/Factions/INDFOR/GANG/Character_GANG_Base.et" {
+SCR_ChimeraCharacter : "{891238F03F037386}Prefabs/Characters/Campaign/Final/Campaign_GANG_Base.et" {
  ID "520EC961A090B1EE"
  components {
-  SCR_EditableCharacterComponent "{520EA1D2F659C85C}" {
-   m_UIInfo SCR_EditableEntityUIInfo "{5298E609432D192D}" {
-    Name "Gangsta 01"
-    Icon "{AE53796BC5D21A08}UI/Textures/Editor/EditableEntities/Characters/EditableEntity_Character_Rifleman.edds"
-   }
-  }
   CharacterWeaponSlotComponent "{520EA1D2F659CFAB}" {
-   WeaponType Rifle
-   WeaponTemplate "{F97A4AC994231900}Prefabs/Weapons/Rifles/M16/Rifle_M16A2_carbine.et"
-  }
-  SCR_CharacterIdentityComponent "{5584CBC63E092DBC}" {
-   Identity Identity "{5584CBC6363C648B}" {
-    VisualIdentity VisualIdentity "{56E6D9456009D1C4}" {
-     Head "{C1F80EE178D948D6}Prefabs/Characters/Heads/Head_White_08.et"
-    }
-   }
+   WeaponTemplate "{BFF3186D2A9CEFB7}Prefabs/Weapons/Rifles/M16/Rifle_M16A2_carbine_AP2k.et"
   }
   BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
    Slots {
-    LoadoutSlotInfo Jacket {
-     Prefab "{E44990162EBC47B7}Prefabs/Characters/Uniforms/Jacket_M88_base.et"
+    LoadoutSlotInfo ArmoredVest {
     }
     LoadoutSlotInfo Pants {
      Prefab "{604BB72BE8E023C2}Prefabs/Characters/Uniforms/Pants_US_BDU.et"
@@ -29,11 +14,14 @@ SCR_ChimeraCharacter : "{B95C14B8EBE9B3FA}Prefabs/Characters/Factions/INDFOR/GAN
     LoadoutSlotInfo Boots {
      Prefab "{DAAFD15478BDE1C3}Prefabs/Characters/Footwear/CombatBoots_US_01.et"
     }
+    LoadoutSlotInfo Back {
+     Prefab "{AC298BA8A7D27007}Prefabs/Items/Equipment/Backpacks/Backpack_Medical_Soviet_NoCross_01.et"
+    }
    }
   }
   SCR_InventoryStorageManagerComponent "{520EA1D2DB118DE5}" {
    InitialInventoryItems {
-    ItemsInitConfigurationItem "{60EB55489F370A23}" {
+    ItemsInitConfigurationItem "{64DB18CC973EF91B}" {
      TargetStorage "Prefabs/Characters/Uniforms/Pants_US_BDU.et"
      PrefabsToSpawn {
       "{13772C903CB5E4F7}Prefabs/Items/Equipment/Maps/PaperMap_01_folded.et" "{61D4F80E49BF9B12}Prefabs/Items/Equipment/Compass/Compass_SY183.et" "{7ECA478D7C80ACC0}Prefabs/Weapons/Magazines/Magazine_556x45_STANAG_30rnd_M193_M196_Last_5Tracer.et" "{D8F2CA92583B23D3}Prefabs/Weapons/Magazines/Magazine_556x45_STANAG_30rnd_M855_M856_Last_5Tracer.et"

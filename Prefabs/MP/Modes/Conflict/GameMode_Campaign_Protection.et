@@ -6,5 +6,8 @@ SCR_GameModeCampaign : "{3B230AAC5252108F}Prefabs/MP/Modes/Conflict/GameMode_Cam
    m_sCommandsConfigPath "{4615FA289AC337D6}Configs/Commanding/ProtectionCommands.conf"
    m_iMaxAIPerGroup -1
   }
+  SCR_NametagConfigComponent "{571AA9E54FC9210D}" {
+   m_sConfigPath "{5B6640F98711544D}Configs/NameTags/NametagSingleFriendly.conf"
+  }
  }
 }

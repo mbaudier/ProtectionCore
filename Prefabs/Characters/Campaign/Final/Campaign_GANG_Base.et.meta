@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{BFF3554FBDAF04D6}Prefabs/Characters/Factions/OPFOR/REDPEACE/Campaign_REDPEACE_Base.et"
+ Name "{891238F03F037386}Prefabs/Characters/Factions/INDFOR/GANG/Campaign_GANG_Base.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

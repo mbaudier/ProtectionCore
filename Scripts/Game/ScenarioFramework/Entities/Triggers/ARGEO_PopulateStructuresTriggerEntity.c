@@ -19,6 +19,7 @@ class ARGEO_PopulateStructuresTriggerEntity : SCR_BaseTriggerEntity
 
 		// Find ambient spawn points
 		array<ARGEO_PopulatedSpawnPointComponent> spawnPoints = {};
+		
 		array<IEntity> queue = {ent};
 		ARGEO_PopulatedSpawnPointComponent spawnPoint;
 		IEntity processedEntity;
@@ -71,5 +72,11 @@ class ARGEO_PopulateStructuresTriggerEntity : SCR_BaseTriggerEntity
 	{
 		Print("Populate structures trigger - " + m_iPopulationCount + " people " + m_sFactionKey);
 		EnablePeriodicQueries(false);
+	}
+
+	void SetFactionKey(FactionKey factionKey)
+	{
+		m_sFactionKey = factionKey;
+		//Print("Populated trigger set faction key "+m_sFactionKey);
 	}
 }
