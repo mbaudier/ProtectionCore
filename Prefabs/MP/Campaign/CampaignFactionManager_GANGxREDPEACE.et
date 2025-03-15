@@ -1,21 +1,21 @@
 SCR_CampaignFactionManager : "{A242612865F2A48E}Prefabs/MP/Managers/Factions/FactionManager_Base.et" {
  ID "56B2B4776E6E4499"
  Factions {
-  SCR_CampaignFaction "{64772CF83CCD1BAB}" : "{081E35D18047E893}Configs/Factions/GANG_Campaign.conf" {
+  SCR_CampaignFaction "{64AD110BB13FCB22}" : "{2BD6CDBB8091F637}Configs/Factions/REDPEACE_Campaign.conf" {
    m_iOrder 1
    m_aFriendlyFactionsIds {
-    "RURAL" "URBAN" "USSR"
+    "RURAL" "URBAN"
    }
   }
-  SCR_CampaignFaction "{64AD110BB13FCB22}" : "{2BD6CDBB8091F637}Configs/Factions/REDPEACE_Campaign.conf" {
+  SCR_CampaignFaction "{64772CF83CCD1BAB}" : "{081E35D18047E893}Configs/Factions/GANG_Campaign.conf" {
    m_iOrder 1000
    m_aFriendlyFactionsIds {
-    "RURAL" "URBAN" "USSR"
+    "RURAL" "URBAN"
    }
   }
-  SCR_CampaignFaction "{64DAF34D27B8F60B}" : "{8D2B128564EDFC31}Configs/Factions/RURAL_Campaign.conf" {
+  SCR_Faction "{64DEECE2B3FF3633}" : "{E5B2FC4A0D01E456}Configs/Factions/RURAL.conf" {
   }
-  SCR_CampaignFaction "{64DAF34D259B8095}" : "{9DF3980184DEF50C}Configs/Factions/URBAN_Campaign.conf" {
+  SCR_Faction "{64DEECE2B615FC60}" : "{FFF1E35BF8F3312D}Configs/Factions/URBAN.conf" {
   }
  }
  m_bCanChangeFactionsPlayable 0
