@@ -1,0 +1,28 @@
+SCR_AIGroup : "{C55EC82EF9347B58}Prefabs/Groups/INDFOR/GANG/Group_GANG_Base.et" {
+ ID "0000000000000001"
+ components {
+  SCR_EditableGroupComponent "{50D291F6C83FA532}" {
+   m_UIInfo SCR_EditableGroupUIInfo "{5298E609432D192D}" {
+    Name "#AR-Group_Guerrilla_FireTeam"
+    m_Image "{82429EC36B5D8E80}UI/Textures/EditorPreviews/Groups/BLUFOR/Group_US_LightFireTeam.edds"
+    m_aAutoLabels {
+     71
+    }
+    m_MilitarySymbol SCR_MilitarySymbol "{563682D06ED5ACD9}" {
+     m_Identity INDFOR
+     m_Icons INFANTRY
+     m_Amplifier TEAM
+    }
+   }
+  }
+  SCR_GroupIdentityComponent "{56366C5C50AD3CF2}" {
+   m_MilitarySymbol SCR_MilitarySymbol "{56366C5C4E32A359}" {
+    m_Icons INFANTRY
+    m_Amplifier TEAM
+   }
+  }
+ }
+ m_aUnitPrefabSlots {
+  "{E062ADE88FDC1A41}Prefabs/Characters/Factions/INDFOR/GANG/Character_GANG_Gangsta00.et" "{1A6501B0C9C50EC4}Prefabs/Characters/Factions/INDFOR/GANG/Character_GANG_Gangsta01.et" "{76313550750181EA}Prefabs/Characters/Factions/INDFOR/GANG/Character_GANG_Gangsta02.et" "{93AD79A979E41681}Prefabs/Characters/Factions/INDFOR/GANG/Character_GANG_Gangsta03.et"
+ }
+}
