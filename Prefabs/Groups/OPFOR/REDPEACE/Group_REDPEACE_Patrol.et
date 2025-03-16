@@ -6,6 +6,11 @@ SCR_AIGroup : "{5AABA0F07D00FAFF}Prefabs/Groups/OPFOR/REDPEACE/Group_REDPEACE_Ba
     Name "#AR-Group_SentryTeam"
     Icon "{AE53796BC5D21A08}UI/Textures/Editor/EditableEntities/Characters/EditableEntity_Character_Rifleman.edds"
     m_Image "{46D0DCAB6C9B3C74}UI/Textures/EditorPreviews/Groups/OPFOR/Group_USSR_SentryTeam.edds"
+    m_EntityBudgetCost {
+     SCR_EntityBudgetValue "{604482963251834C}" {
+      m_Value 100
+     }
+    }
    }
   }
  }

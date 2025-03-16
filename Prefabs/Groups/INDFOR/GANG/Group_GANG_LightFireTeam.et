@@ -8,6 +8,11 @@ SCR_AIGroup : "{C55EC82EF9347B58}Prefabs/Groups/INDFOR/GANG/Group_GANG_Base.et" 
     m_aAutoLabels {
      71
     }
+    m_EntityBudgetCost {
+     SCR_EntityBudgetValue "{604482963251834C}" {
+      m_Value 300
+     }
+    }
     m_MilitarySymbol SCR_MilitarySymbol "{563682D06ED5ACD9}" {
      m_Identity INDFOR
      m_Icons INFANTRY
