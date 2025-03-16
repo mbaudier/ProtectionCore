@@ -1,0 +1,17 @@
+MetaFileClass {
+ Name "{9D36D0360A05A1C5}Configs/Editor/PlaceableEntities/Vehicles_GANG.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+ }
+}

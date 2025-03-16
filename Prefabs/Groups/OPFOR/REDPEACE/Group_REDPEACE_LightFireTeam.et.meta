@@ -1,0 +1,17 @@
+MetaFileClass {
+ Name "{AAACC5529D7E5A68}Prefabs/Groups/OPFOR/REDPEACE/Group_REDPEACE_FireTeam.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass PS5 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+ }
+}
