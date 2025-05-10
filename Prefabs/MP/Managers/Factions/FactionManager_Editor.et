@@ -13,23 +13,32 @@ SCR_FactionManager : "{A242612865F2A48E}Prefabs/MP/Managers/Factions/FactionMana
     "RURAL"
    }
   }
-  SCR_Faction "{60EEE620D4D3AA33}" : "{E5B2FC4A0D01E456}Configs/Factions/RURAL.conf" {
-   m_aFriendlyFactionsIds {
-    "FIA" "USSR" "US" "URBAN" "RHS_RF_MSV" "RHS_US_USMC"
+  SCR_Faction "{607AA5C7A94496DA}" {
+   m_aFriendlyFactionsIds + {
+    "RURAL" "URBAN" "GANG" "REDPEACE"
    }
   }
-  SCR_Faction "{60EEE620DA613FE4}" : "{FFF1E35BF8F3312D}Configs/Factions/URBAN.conf" {
+  SCR_Faction "{655516E49F0CD8DE}" : "{E5B2FC4A0D01E456}Configs/Factions/RURAL.conf" {
    m_aFriendlyFactionsIds {
-    "USSR" "US" "RURAL" "GANG" "RHS_RF_MSV" "RHS_US_USMC"
+    "US" "USSR" "FIA" "REDPEACE"
    }
   }
-  SCR_Faction "{60EEE620D9F2F6A5}" : "{5C630F7CDC94DACA}Configs/Factions/GANG.conf" {
+  SCR_Faction "{655516E49847FB2D}" : "{FFF1E35BF8F3312D}Configs/Factions/URBAN.conf" {
+   m_aFriendlyFactionsIds {
+    "US" "USSR" "GANG" "REDPEACE"
+   }
+  }
+  SCR_Faction "{655516E494718E01}" : "{5C630F7CDC94DACA}Configs/Factions/GANG.conf" {
    m_bIsPlayable 0
    m_aFriendlyFactionsIds {
-    "US" "URSS" "URBAN" "RHS_RF_MSV" "RHS_US_USMC"
+    "US" "USSR"
    }
   }
-  SCR_Faction "{6497365BA32CE395}" : "{B709EDB4147259CD}Configs/Factions/REDPEACE.conf" {
+  SCR_Faction "{655516E491381816}" : "{B709EDB4147259CD}Configs/Factions/REDPEACE.conf" {
+   m_bIsPlayable 0
+   m_aFriendlyFactionsIds {
+    "US" "USSR"
+   }
   }
  }
 }
