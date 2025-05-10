@@ -15,7 +15,6 @@ class ARGEO_PopulatedSpawnPointComponent : SCR_AmbientPatrolSpawnPointComponent
 	{
 		super.EOnInit(owner);
 		m_fDefaultAILimitThreshold = m_fAILimitThreshold;
-		//DisableSpawn();// disable spawn by default
 		//Print("Populated spawnpoint initialized");
 	}
 
@@ -64,8 +63,19 @@ class ARGEO_PopulatedSpawnPointComponent : SCR_AmbientPatrolSpawnPointComponent
 
 	override void SpawnPatrol()
 	{
+		// FIXME workaround until we understand why it is spawned even if not selected by trigger
+		SCR_FactionAffiliationComponent factionAffiliation = SCR_FactionAffiliationComponent.Cast(GetOwner().FindComponent(SCR_FactionAffiliationComponent));
+		if (!factionAffiliation)
+			return;
+		SCR_Faction faction = SCR_Faction.Cast(factionAffiliation.GetAffiliatedFaction());
+		if (!faction)
+		{
+			//factionAffiliation.SetAffiliatedFactionByKey("CIV");// populate all
+			return;
+		}
+		
 		super.SpawnPatrol();
-		//Print("Populated spawn point - " + GetOwner().GetID() + " - spawned " + m_SavedFaction.GetFactionKey());
+//		Print("Populated spawn point - " + GetOwner().GetID() + " - spawned " + m_SavedFaction.GetFactionKey());
 
 		// start deactivated
 		//super.DeactivateGroup();
@@ -74,7 +84,7 @@ class ARGEO_PopulatedSpawnPointComponent : SCR_AmbientPatrolSpawnPointComponent
 	override void DespawnPatrol()
 	{
 		super.DespawnPatrol();
-		Print("Populated spawn point - " + GetOwner().GetID() + " - despawned ");
+//		Print("Populated spawn point - " + GetOwner().GetID() + " - despawned ");
 	}
 	
 	override void ActivateGroup()
