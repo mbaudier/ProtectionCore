@@ -21,7 +21,7 @@ SCR_ChimeraCharacter : "{E398E44759DA1A43}Prefabs/Characters/Factions/BLUFOR/US_
    WeaponTemplate "{877128FBE22FF2C9}Prefabs/Weapons/Rifles/M16/Variants/Rifle_M16A2_carbine_suppressor_AP2K_OliveGreen_Sand_Stripes.et"
   }
   CharacterWeaponSlotComponent "{520EA1D2F659CFB7}" {
-   WeaponTemplate "{9CFFA6EF6EF7A721}Prefabs/Weapons/Rifles/M16/Variants/Rifle_M16A2_M203_suppressor_4x20_OliveGreen_Sand_Stripes.et"
+   WeaponTemplate "{C29B073E2E583220}Prefabs/Weapons/Rifles/M16/Variants/Rifle_M16A2_suppressor_M203_OliveGreen_Sand_Stripes.et"
   }
   CharacterWeaponSlotComponent "{520EA1D2F659CFDC}" {
    WeaponTemplate "{1353C6EAD1DCFE43}Prefabs/Weapons/Handguns/M9/Handgun_M9.et"
@@ -29,7 +29,7 @@ SCR_ChimeraCharacter : "{E398E44759DA1A43}Prefabs/Characters/Factions/BLUFOR/US_
   BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
    Slots {
     LoadoutSlotInfo Hat {
-     Prefab "{8D75122D5BF561FB}Prefabs/Characters/HeadGear/Hat_Boonie_US_01/Hat_Boonie_US_02.et"
+     Prefab "{BE19A15F1073E7BD}Prefabs/Characters/HeadGear/Hat_Knitted_01/Hat_Knitted_01_black.et"
     }
     LoadoutSlotInfo ArmoredVest {
      Enabled 0
@@ -47,8 +47,10 @@ SCR_ChimeraCharacter : "{E398E44759DA1A43}Prefabs/Characters/Factions/BLUFOR/US_
      }
     }
     ItemsInitConfigurationItem "{5D7CAAFB9235E903}" {
-    }
-    ItemsInitConfigurationItem "{5A24B6035F7619E7}" {
+     TargetStorage "Jacket/Jacket_US_BDU.et"
+     PrefabsToSpawn + {
+      "{44AAA61117B6CA8E}Prefabs/Weapons/Attachments/Optics/Optic_4x20/Optic_4x20_OliveGreen_Sand_Stripes.et"
+     }
     }
     ItemsInitConfigurationItem "{54A49B42D138207E}" {
      PrefabsToSpawn + {
@@ -56,7 +58,6 @@ SCR_ChimeraCharacter : "{E398E44759DA1A43}Prefabs/Characters/Factions/BLUFOR/US_
      }
     }
     ItemsInitConfigurationItem "{5538C29DADB44836}" {
-     TargetStorage "Prefabs/Characters/Uniforms/Jacket_US_BDU.et"
      PrefabsToSpawn {
       "{D8F2CA92583B23D3}Prefabs/Weapons/Magazines/Magazine_556x45_STANAG_30rnd_M855_M856_Last_5Tracer.et" "{D8F2CA92583B23D3}Prefabs/Weapons/Magazines/Magazine_556x45_STANAG_30rnd_M855_M856_Last_5Tracer.et" "{D8F2CA92583B23D3}Prefabs/Weapons/Magazines/Magazine_556x45_STANAG_30rnd_M855_M856_Last_5Tracer.et" "{D8F2CA92583B23D3}Prefabs/Weapons/Magazines/Magazine_556x45_STANAG_30rnd_M855_M856_Last_5Tracer.et"
      }
@@ -67,9 +68,9 @@ SCR_ChimeraCharacter : "{E398E44759DA1A43}Prefabs/Characters/Factions/BLUFOR/US_
      }
     }
     ItemsInitConfigurationItem "{63230CF99458403E}" {
-     TargetStorage "Prefabs/Items/Equipment/Backpacks/Backpack_Medical_M5.et"
+     TargetStorage "Back/Backpack_Medical_M5.et"
      PrefabsToSpawn {
-      "{1663496AE5B9F10B}Prefabs/Weapons/Ammo/Ammo_Grenade_HEDP_M433.et" "{1663496AE5B9F10B}Prefabs/Weapons/Ammo/Ammo_Grenade_HEDP_M433.et" "{1663496AE5B9F10B}Prefabs/Weapons/Ammo/Ammo_Grenade_HEDP_M433.et" "{98DB57ECEDC81CC2}Prefabs/Weapons/Ammo/Ammo_Flare_40mm_M583A1_White.et" "{98DB57ECEDC81CC2}Prefabs/Weapons/Ammo/Ammo_Flare_40mm_M583A1_White.et" "{CE0AF733722B3978}Prefabs/Items/Equipment/Detonators/BlastingMachine_M34/BlastingMachine_M34.et" "{33CBDE73AB48172A}Prefabs/Weapons/Explosives/DemoBlock_M112/DemoBlock_M112.et" "{33CBDE73AB48172A}Prefabs/Weapons/Explosives/DemoBlock_M112/DemoBlock_M112.et" "{6E35D94130954509}Prefabs/Items/Equipment/Accessories/ETool_ALICE/ETool_ALICE_FreeRoamBuilding_Gadget.et"
+      "{1663496AE5B9F10B}Prefabs/Weapons/Ammo/Ammo_Grenade_HEDP_M433.et" "{1663496AE5B9F10B}Prefabs/Weapons/Ammo/Ammo_Grenade_HEDP_M433.et" "{1663496AE5B9F10B}Prefabs/Weapons/Ammo/Ammo_Grenade_HEDP_M433.et" "{98DB57ECEDC81CC2}Prefabs/Weapons/Ammo/Ammo_Flare_40mm_M583A1_White.et" "{98DB57ECEDC81CC2}Prefabs/Weapons/Ammo/Ammo_Flare_40mm_M583A1_White.et" "{CE0AF733722B3978}Prefabs/Items/Equipment/Detonators/BlastingMachine_M34/BlastingMachine_M34.et" "{33CBDE73AB48172A}Prefabs/Weapons/Explosives/DemoBlock_M112/DemoBlock_M112.et" "{33CBDE73AB48172A}Prefabs/Weapons/Explosives/DemoBlock_M112/DemoBlock_M112.et" "{6E35D94130954509}Prefabs/Items/Equipment/Accessories/ETool_ALICE/ETool_ALICE_FreeRoamBuilding_Gadget.et" "{00E36F41CA310E2A}Prefabs/Items/Medicine/SalineBag_01/SalineBag_US_01.et" "{00E36F41CA310E2A}Prefabs/Items/Medicine/SalineBag_01/SalineBag_US_01.et" "{0D9A5DCF89AE7AA9}Prefabs/Items/Medicine/MorphineInjection_01/MorphineInjection_01.et" "{0D9A5DCF89AE7AA9}Prefabs/Items/Medicine/MorphineInjection_01/MorphineInjection_01.et"
      }
     }
    }
