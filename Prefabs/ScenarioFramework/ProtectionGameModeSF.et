@@ -1,4 +1,4 @@
-SCR_BaseGameMode : "{ECEEDB2D3737204B}Prefabs/ScenarioFramework/GameModeSF.et" {
+SCR_BaseGameMode : "{ECEEDB2D3737204B}Prefabs/Systems/ScenarioFramework/GameModeSF.et" {
  ID "56B2B479C6B96951"
  components {
   SCR_CommandingManagerComponent "{64AD03B2FC3136C6}" {
@@ -7,4 +7,5 @@ SCR_BaseGameMode : "{ECEEDB2D3737204B}Prefabs/ScenarioFramework/GameModeSF.et" {
    m_iMaxAIPerGroup -1
   }
  }
+ m_eTestGameFlags 7
 }
