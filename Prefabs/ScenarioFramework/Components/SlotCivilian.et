@@ -1,4 +1,4 @@
-GenericEntity : "{8D43830F02C3F114}Prefabs/ScenarioFramework/Components/SlotAI.et" {
+GenericEntity : "{8D43830F02C3F114}Prefabs/Systems/ScenarioFramework/Components/SlotAI.et" {
  ID "5A26E3FA239786D5"
  components {
   SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
@@ -19,10 +19,19 @@ GenericEntity : "{8D43830F02C3F114}Prefabs/ScenarioFramework/Components/SlotAI.e
      }
     }
    }
-   m_sWPToSpawn "{FAD1D789EE291964}Prefabs/AI/Waypoints/AIWaypoint_Defend_Large.et"
+   m_sObjectToSpawn "{FF333A7C2BE71BD3}Prefabs/Groups/CIV/Group_CIV_Population.et"
+   m_aFactionSwitchedObjects {
+    SCR_ScenarioFrameworkFactionSwitchedObject "{656D036F9BE141C4}" {
+     m_sFactionKey "RURAL"
+     m_sObjectToSpawn "{65662525339A7073}Prefabs/Groups/INDFOR/RURAL/Group_RURAL_Population.et"
+    }
+    SCR_ScenarioFrameworkFactionSwitchedObject "{656D036F9271B1CE}" {
+     m_sFactionKey "URBAN"
+     m_sObjectToSpawn "{FDB9DA4B64379AEA}Prefabs/Groups/INDFOR/URBAN/Group_URBAN_Population.et"
+    }
+   }
    m_eAIGroupFormation Column
-   m_eAISkill NONE
-   m_eAICombatType RETREAT
+   m_eAISkill NOOB
    m_fPerceptionFactor 0.5
   }
  }
