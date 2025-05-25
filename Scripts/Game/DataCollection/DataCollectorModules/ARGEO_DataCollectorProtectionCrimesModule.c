@@ -3,7 +3,7 @@ class ARGEO_DataCollectorProtectionCrimesModule : SCR_DataCollectorCrimesModule
 {
 	override protected float EvaluateHarmingFriendlies(notnull SCR_PlayerData playerData)
 	{
-		// Instead of overriding EvaluatePlayerCrimes, we use the call to EvaluateHarmingFriendlies in orde rto extend war crimes
+		// Instead of overriding EvaluatePlayerCrimes, we use the call to EvaluateHarmingFriendlies in order to extend war crimes
 		//super.EvaluateHarmingFriendlies(playerData);
 		
 		array<float> accumulatedActions = playerData.GetAccumulatedActions();
