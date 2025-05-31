@@ -82,7 +82,7 @@ modded class SCR_DataCollectorShootingModule
 		}
 		else // friendly fire
 		{
-			if (instigatorContextData.DoesPlayerKillCountAsTeamKill())
+			if (instigatorContextData.DoesPlayerKillCountAsTeamKill(true, true))
 			{
 				isLegalKill = false;
 				if(killerData)

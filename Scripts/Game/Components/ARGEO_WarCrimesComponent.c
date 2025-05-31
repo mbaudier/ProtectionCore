@@ -18,18 +18,11 @@ class ARGEO_WarCrimesComponent : SCR_BaseGameModeComponent
 	protected static ARGEO_WarCrimesComponent s_Instance;
 	
 	
-	//------------------------------------------------------------------------------------------------
-	//! \return
 	static ARGEO_WarCrimesComponent GetInstance()
 	{
 		return s_Instance;
 	}
 
-	//------------------------------------------------------------------------------------------------
-	// constructor
-	//! \param[in] src
-	//! \param[in] ent
-	//! \param[in] parent
 	override void OnGameModeStart()
 	{
 		if (!s_Instance)

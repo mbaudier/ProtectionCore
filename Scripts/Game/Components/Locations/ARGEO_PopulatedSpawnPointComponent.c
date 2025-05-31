@@ -15,6 +15,7 @@ class ARGEO_PopulatedSpawnPointComponent : SCR_AmbientPatrolSpawnPointComponent
 	{
 		super.EOnInit(owner);
 		m_fDefaultAILimitThreshold = m_fAILimitThreshold;
+		//DisableSpawn();
 		//Print("Populated spawnpoint initialized");
 	}
 
@@ -63,15 +64,19 @@ class ARGEO_PopulatedSpawnPointComponent : SCR_AmbientPatrolSpawnPointComponent
 
 	override void SpawnPatrol()
 	{
-		// FIXME workaround until we understand why it is spawned even if not selected by trigger
+		ARGEO_PopulationComponent populationComponent = ARGEO_PopulationComponent.GetInstance();
+
+				// FIXME workaround until we understand why it is spawned even if not selected by trigger
 		SCR_FactionAffiliationComponent factionAffiliation = SCR_FactionAffiliationComponent.Cast(GetOwner().FindComponent(SCR_FactionAffiliationComponent));
 		if (!factionAffiliation)
 			return;
 		SCR_Faction faction = SCR_Faction.Cast(factionAffiliation.GetAffiliatedFaction());
 		if (!faction)
 		{
-			//factionAffiliation.SetAffiliatedFactionByKey("CIV");// populate all
-			return;
+			if(populationComponent.PopulateOutsidePopulatedAreas()) // populate all
+				factionAffiliation.SetAffiliatedFactionByKey(populationComponent.GetDefaultCivilianFactionKey());
+			else
+				return;
 		}
 		
 		super.SpawnPatrol();
