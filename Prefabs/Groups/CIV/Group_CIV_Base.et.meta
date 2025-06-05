@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{53105B088649240C}Prefabs/Groups/CIV/Group_CIV_Population.et"
+ Name "{1DB5C3A7F8BC1686}Prefabs/AI/Groups/Group_CIV_Base.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }
