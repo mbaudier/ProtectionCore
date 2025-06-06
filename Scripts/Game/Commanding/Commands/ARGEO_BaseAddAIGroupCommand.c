@@ -1,5 +1,4 @@
 //------------------------------------------------------------------------------------------------
-[BaseContainerProps()]
 class ARGEO_BaseAddAIGroupCommand : SCR_BaseGroupCommand
 {
 	[Attribute(defvalue: "0", desc: "Apply to the whole AI group of the target")]
@@ -25,6 +24,12 @@ class ARGEO_BaseAddAIGroupCommand : SCR_BaseGroupCommand
 	protected bool ProcessPlayer(notnull SCR_ChimeraCharacter character, int targetPlayerID)
 	{
 		return false;
+	}
+	
+	/// Will set the faction to protected faction
+	protected bool IsProtecting()
+	{
+		return true;
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -73,7 +78,7 @@ class ARGEO_BaseAddAIGroupCommand : SCR_BaseGroupCommand
 			SCR_AIGroup commandedGroup = groupController.GetPlayersGroup().GetSlave();
 			array<AIAgent> commandedAgents = {};
 			commandedGroup.GetAgents(commandedAgents);
-			commandedGroup.SetFaction(playerController.GetLocalControlledEntityFaction());
+//			commandedGroup.SetFaction(playerController.GetLocalControlledEntityFaction());
 	
 			int count = 1;
 			if (m_bApplyToGroup)
@@ -122,7 +127,22 @@ class ARGEO_BaseAddAIGroupCommand : SCR_BaseGroupCommand
 		Faction currentFaction = factionAffiliation.GetAffiliatedFaction();
 		groupController.RequestAddAIAgent(character, playerID);
 		// faction has been set to recruiter's faction, set it back to original
-		factionAffiliation.SetAffiliatedFaction(currentFaction);
+		//factionAffiliation.SetAffiliatedFaction(currentFaction);
+		Faction factionToSet = currentFaction;
+		if (IsProtecting())
+		{
+			FactionManager factionManager = GetGame().GetFactionManager();
+			ARGEO_ProtectionFactionManagerComponent protectionFactionManagerComponent = ARGEO_ProtectionFactionManagerComponent.Cast(factionManager.FindComponent(ARGEO_ProtectionFactionManagerComponent));
+			if (protectionFactionManagerComponent)
+			{
+				Faction protectedFaction = protectionFactionManagerComponent.GetProtectedFaction();
+				if (protectedFaction)
+				{
+					factionToSet = protectedFaction;
+				}
+			}
+		}
+		factionAffiliation.SetAffiliatedFaction(factionToSet);
 	}
 	
 	//------------------------------------------------------------------------------------------------

@@ -1,5 +1,5 @@
 //------------------------------------------------------------------------------------------------
-[BaseContainerProps()]
+[BaseContainerProps(), SCR_BaseGroupCommandTitleField("m_sCommandName")]
 class ARGEO_RecruitAIGroupCommand : ARGEO_BaseAddAIGroupCommand
 {
 	override bool CanBeShownForFaction(notnull SCR_Faction controlledEntityFaction, notnull SCR_Faction faction)
@@ -8,6 +8,11 @@ class ARGEO_RecruitAIGroupCommand : ARGEO_BaseAddAIGroupCommand
 			return false;
 		else
 			return faction.IsMilitary();
+	}
+
+	override bool IsProtecting()
+	{
+		return false;
 	}
 	
 }

@@ -29,7 +29,7 @@ class ARGEO_WarCrimesComponent : SCR_BaseGameModeComponent
 			s_Instance = this;
 
 		Print("Protection manager game mode started");
-		if(m_bPlayableFactionsFriendlyToNonMilitary)
+		if (m_bPlayableFactionsFriendlyToNonMilitary)
 		{
 			SCR_FactionManager factionManager = SCR_FactionManager.Cast(GetGame().GetFactionManager());
 			SCR_SortedArray<SCR_Faction> factions = new SCR_SortedArray<SCR_Faction>();
@@ -37,22 +37,22 @@ class ARGEO_WarCrimesComponent : SCR_BaseGameModeComponent
 
 			array<SCR_Faction> nonMilitary = new array<SCR_Faction>();
 			array<SCR_Faction> playable = new array<SCR_Faction>();
-			for(int i = 0; i < factions.Count(); i++)
+			for (int i = 0; i < factions.Count(); i++)
 			{		
 				SCR_Faction f = factions.Get(i);
-				if(!f.IsMilitary())
+				if (!f.IsMilitary())
 				{			
 					nonMilitary.Insert(f);
 				}
-				if(f.IsPlayable())
+				if (f.IsPlayable())
 				{			
 					playable.Insert(f);
 				}
 			}
 			
-			foreach(SCR_Faction nm : nonMilitary)
+			foreach (SCR_Faction nm : nonMilitary)
 			{
-				foreach(SCR_Faction p : playable)
+				foreach (SCR_Faction p : playable)
 				{
 					factionManager.SetFactionsFriendly(nm, p, -1, false);
 				}
