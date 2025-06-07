@@ -3,7 +3,11 @@ class ARGEO_BaseAddAIGroupCommand : SCR_BaseGroupCommand
 {
 	[Attribute(defvalue: "0", desc: "Apply to the whole AI group of the target")]
 	protected bool m_bApplyToGroup;
-
+	
+	// caches to avoid testing repeatedly whether a protected faction is available
+	private ARGEO_ProtectionFactionManagerComponent m_ProtectionFactionManagerComponent = NULL;
+	private bool m_bProtectionEnabled = true;
+	
 	/// To be overridden
 	protected void PostRecruitment(int count)
 	{
@@ -46,28 +50,44 @@ class ARGEO_BaseAddAIGroupCommand : SCR_BaseGroupCommand
 		
 		// faction has now been set to recruiter's faction, set it to either PROTECTED or original:
 		Faction factionToSet = currentFaction;// can be NULL
-		if (IsProtecting())
+		if (IsProtecting() && m_bProtectionEnabled)
 		{
-			FactionManager factionManager = GetGame().GetFactionManager();
-			ARGEO_ProtectionFactionManagerComponent protectionFactionManagerComponent = ARGEO_ProtectionFactionManagerComponent.Cast(factionManager.FindComponent(ARGEO_ProtectionFactionManagerComponent));
-			if (protectionFactionManagerComponent)
+			Faction protectedFaction = GetProtectedFaction();
+			if (protectedFaction)
 			{
-				Faction protectedFaction = protectionFactionManagerComponent.GetProtectedFaction();
-				if (protectedFaction)
+				factionToSet = protectedFaction;
+				ARGEO_CharacterProtectionComponent characterProtectionComponent = ARGEO_CharacterProtectionComponent.Cast(character.FindComponent(ARGEO_CharacterProtectionComponent));
+				if (characterProtectionComponent)
 				{
-					factionToSet = protectedFaction;
-					ARGEO_CharacterProtectionComponent characterProtectionComponent = ARGEO_CharacterProtectionComponent.Cast(character.FindComponent(ARGEO_CharacterProtectionComponent));
-					if (characterProtectionComponent)
-					{
-						// TODO use updated faction callback
-						characterProtectionComponent.SetPreProtectionFaction(currentFaction);
-					}
+					// TODO use updated faction callback
+					characterProtectionComponent.SetPreProtectionFaction(currentFaction);
 				}
 			}
 		}
 		factionAffiliation.SetAffiliatedFaction(factionToSet);
+		
+		AIGroup commandedGroup = groupController.GetPlayersGroup().GetSlave();
+		if (GroupContainsProtected(commandedGroup))
+		{
+			// set column formation when protecting
+			// FIXME understand why it is not working
+			AIFormationComponent aiFormation = AIFormationComponent.Cast(commandedGroup.FindComponent(AIFormationComponent));
+			if (aiFormation)
+			{
+				string formationName = SCR_Enum.GetEnumName(SCR_EAIGroupFormation, SCR_EAIGroupFormation.Column);
+				aiFormation.SetFormation(formationName);
+			}
+			AIGroupMovementComponent groupMovement = AIGroupMovementComponent.Cast(commandedGroup.FindComponent(AIGroupMovementComponent));
+			if (groupMovement)
+				groupMovement.SetFormationDisplacement(0);
+			//aiFormation.SetFormation("Column");
+			// TODO sort military before and after protected
+		}
 	}
 	
+	//
+	// FORKED LOGIC
+	//
 
 	//------------------------------------------------------------------------------------------------
 	override bool Execute(IEntity cursorTarget, IEntity target, vector targetPosition, int playerID, bool isClient)
@@ -245,6 +265,51 @@ class ARGEO_BaseAddAIGroupCommand : SCR_BaseGroupCommand
 			return false;
 		
 		return true;
+	}
+	
+	//
+	// UTILITIES
+	//
+	
+	private bool GroupContainsProtected(AIGroup commandedGroup)
+	{
+		if (commandedGroup) {
+			Faction protectedFaction = GetProtectedFaction();
+			array<AIAgent> agents = {};
+			commandedGroup.GetAgents(agents);
+			foreach (AIAgent agent:agents) {
+				FactionAffiliationComponent fac = FactionAffiliationComponent.Cast(agent.GetControlledEntity().FindComponent(FactionAffiliationComponent));
+				Faction faction = fac.GetAffiliatedFaction();
+				if (protectedFaction == faction)
+					return true;
+			}
+		}
+		return false;
+	}
+	
+	private Faction GetProtectedFaction()
+	{
+		if (!m_bProtectionEnabled)
+			return NULL;
+		
+		if (!m_ProtectionFactionManagerComponent)
+		{
+			FactionManager factionManager = GetGame().GetFactionManager();
+			m_ProtectionFactionManagerComponent = ARGEO_ProtectionFactionManagerComponent.Cast(factionManager.FindComponent(ARGEO_ProtectionFactionManagerComponent));
+			if (m_ProtectionFactionManagerComponent)
+			{
+				Faction protectionFaction = m_ProtectionFactionManagerComponent.GetProtectedFaction();
+				if (!protectionFaction)
+					m_bProtectionEnabled = false;
+				else
+					return protectionFaction;
+			}
+			else
+			{
+				m_bProtectionEnabled = false;
+			}
+		}
+		return m_ProtectionFactionManagerComponent.GetProtectedFaction();
 	}
 	
 	private bool IsCharacterInAnyGroup(SCR_PlayerControllerGroupComponent groupController, SCR_ChimeraCharacter character)

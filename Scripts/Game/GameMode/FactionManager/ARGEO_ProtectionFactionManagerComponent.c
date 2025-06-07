@@ -5,13 +5,22 @@ class ARGEO_ProtectionFactionManagerComponentClass: SCR_BaseFactionManagerCompon
 
 class ARGEO_ProtectionFactionManagerComponent : SCR_BaseFactionManagerComponent
 {
-	[Attribute("PROTECTED", desc: "Technical faction temporarily assigned when civilians, POW, etc. are protected. Friendly to all.", category: "Protection")]
+	[Attribute("CIV", desc: "Faction temporarily assigned when civilians, POW, etc. are protected.", category: "Protection")]
 	private FactionKey m_sProtectedFaction;
+	
+	[Attribute("1", desc: "Force the protected faction to be friendly to all.", category: "Protection")]
+	private bool m_bForceProtectedFactionFriendlyToAll;
+	
+	[Attribute("0", desc: "Soldiers from friendly military factions can be recruited.", category: "Protection")]
+	private bool m_bAlliesCanBeRecruited;
 	
 	private SCR_Faction m_ProtectedFaction = NULL;
 
 	override void OnFactionsInit(array<Faction> factions)
 	{
+		if(!m_bForceProtectedFactionFriendlyToAll)
+			return;
+		
 		// find protected faction
 		for (int i = 0; i < factions.Count(); i++)
 		{		
@@ -40,5 +49,10 @@ class ARGEO_ProtectionFactionManagerComponent : SCR_BaseFactionManagerComponent
 	Faction GetProtectedFaction()
 	{
 		return m_ProtectedFaction;
+	}
+	
+	bool CanAlliesCanBeRecruited()
+	{
+		return m_bAlliesCanBeRecruited;
 	}
 }

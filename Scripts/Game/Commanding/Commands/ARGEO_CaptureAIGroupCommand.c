@@ -3,10 +3,13 @@ class ARGEO_CaptureAIGroupCommand : ARGEO_BaseAddAIGroupCommand
 {
 	override bool CanBeShownForFaction(notnull SCR_Faction controlledEntityFaction, notnull SCR_Faction faction)
 	{
+		if (!controlledEntityFaction.IsMilitary())
+			return false;
+		
 		if (faction.IsMilitary() && controlledEntityFaction.IsFactionEnemy(faction))
 			return true;
-		else
-			return false;
+		
+		return false;
 	}
 	
 	override void PostRecruitment(int count)
