@@ -32,6 +32,43 @@ class ARGEO_BaseAddAIGroupCommand : SCR_BaseGroupCommand
 		return true;
 	}
 
+	// TODO comment
+	protected void AddAIAgent(SCR_PlayerControllerGroupComponent groupController, int playerID, SCR_ChimeraCharacter character)
+	{
+		Faction currentFaction = NULL;
+		FactionAffiliationComponent factionAffiliation = FactionAffiliationComponent.Cast(character.FindComponent(FactionAffiliationComponent));
+		if (factionAffiliation)
+		{
+			currentFaction = factionAffiliation.GetAffiliatedFaction();
+		}
+		
+		groupController.RequestAddAIAgent(character, playerID);
+		
+		// faction has now been set to recruiter's faction, set it to either PROTECTED or original:
+		Faction factionToSet = currentFaction;// can be NULL
+		if (IsProtecting())
+		{
+			FactionManager factionManager = GetGame().GetFactionManager();
+			ARGEO_ProtectionFactionManagerComponent protectionFactionManagerComponent = ARGEO_ProtectionFactionManagerComponent.Cast(factionManager.FindComponent(ARGEO_ProtectionFactionManagerComponent));
+			if (protectionFactionManagerComponent)
+			{
+				Faction protectedFaction = protectionFactionManagerComponent.GetProtectedFaction();
+				if (protectedFaction)
+				{
+					factionToSet = protectedFaction;
+					ARGEO_CharacterProtectionComponent characterProtectionComponent = ARGEO_CharacterProtectionComponent.Cast(character.FindComponent(ARGEO_CharacterProtectionComponent));
+					if (characterProtectionComponent)
+					{
+						// TODO use updated faction callback
+						characterProtectionComponent.SetPreProtectionFaction(currentFaction);
+					}
+				}
+			}
+		}
+		factionAffiliation.SetAffiliatedFaction(factionToSet);
+	}
+	
+
 	//------------------------------------------------------------------------------------------------
 	override bool Execute(IEntity cursorTarget, IEntity target, vector targetPosition, int playerID, bool isClient)
 	{
@@ -119,30 +156,6 @@ class ARGEO_BaseAddAIGroupCommand : SCR_BaseGroupCommand
 			
 			return true;
 		}
-	}
-	
-	protected void AddAIAgent(SCR_PlayerControllerGroupComponent groupController, int playerID, SCR_ChimeraCharacter character)
-	{
-		FactionAffiliationComponent factionAffiliation = FactionAffiliationComponent.Cast(character.FindComponent(FactionAffiliationComponent));
-		Faction currentFaction = factionAffiliation.GetAffiliatedFaction();
-		groupController.RequestAddAIAgent(character, playerID);
-		// faction has been set to recruiter's faction, set it back to original
-		//factionAffiliation.SetAffiliatedFaction(currentFaction);
-		Faction factionToSet = currentFaction;
-		if (IsProtecting())
-		{
-			FactionManager factionManager = GetGame().GetFactionManager();
-			ARGEO_ProtectionFactionManagerComponent protectionFactionManagerComponent = ARGEO_ProtectionFactionManagerComponent.Cast(factionManager.FindComponent(ARGEO_ProtectionFactionManagerComponent));
-			if (protectionFactionManagerComponent)
-			{
-				Faction protectedFaction = protectionFactionManagerComponent.GetProtectedFaction();
-				if (protectedFaction)
-				{
-					factionToSet = protectedFaction;
-				}
-			}
-		}
-		factionAffiliation.SetAffiliatedFaction(factionToSet);
 	}
 	
 	//------------------------------------------------------------------------------------------------

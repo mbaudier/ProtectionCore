@@ -1,0 +1,7 @@
+SCR_ChimeraCharacter {
+ ID "520EC961A090B1EE"
+ components {
+  ARGEO_CharacterProtectionComponent "{658ED7A064B35E5D}" {
+  }
+ }
+}

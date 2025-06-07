@@ -25,7 +25,20 @@ class ARGEO_RemoveAIGroupCommand : SCR_BaseGroupCommand
 		
 		if (GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(character) == 0)
 			groupController.RequestRemoveAgent(character, playerID);
-		
+
+		//
+		// Protection specific
+		//
+		FactionAffiliationComponent factionAffiliation = FactionAffiliationComponent.Cast(character.FindComponent(FactionAffiliationComponent));
+		ARGEO_CharacterProtectionComponent characterProtectionComponent = ARGEO_CharacterProtectionComponent.Cast(character.FindComponent(ARGEO_CharacterProtectionComponent));
+		if (factionAffiliation && characterProtectionComponent)
+		{
+			// TODO use updated faction callback
+			Faction preProtectionFaction = characterProtectionComponent.GetPreProtectionFaction();
+			factionAffiliation.SetAffiliatedFaction(preProtectionFaction);
+		}
+		//
+				
 		return true;
 	}
 	

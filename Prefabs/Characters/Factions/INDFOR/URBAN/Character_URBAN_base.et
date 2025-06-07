@@ -8,7 +8,7 @@ SCR_ChimeraCharacter : "{37578B1666981FCE}Prefabs/Characters/Core/Character_Base
     }
    }
   }
-  FactionAffiliationComponent "{60E2B3CB579FEA75}" {
+  SCR_CharacterFactionAffiliationComponent "{60E2B3CB579FEA75}" {
    "faction affiliation" "URBAN"
   }
   SCR_EditableCharacterComponent "{520EA1D2F659C85C}" {

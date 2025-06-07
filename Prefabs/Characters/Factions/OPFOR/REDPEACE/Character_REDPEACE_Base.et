@@ -6,7 +6,7 @@ SCR_ChimeraCharacter : "{37578B1666981FCE}Prefabs/Characters/Core/Character_Base
     "{04548C6D4A936054}Sounds/RadioProtocol/RadioProtocol_Report_2_US.acp"
    }
   }
-  FactionAffiliationComponent "{6497090CD4FA7FF0}" {
+  SCR_CharacterFactionAffiliationComponent "{6497090CD4FA7FF0}" {
    "faction affiliation" "REDPEACE"
   }
   SCR_EditableCharacterComponent "{520EA1D2F659C85C}" {
