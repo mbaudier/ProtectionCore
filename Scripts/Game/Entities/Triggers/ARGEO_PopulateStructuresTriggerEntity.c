@@ -1,23 +1,26 @@
 [EntityEditorProps(category: "GameScripted/Triggers", description: "")]
-class ARGEO_PopulateStructuresTriggerEntityClass : SCR_BaseTriggerEntityClass
+class ARGEO_PopulateStructuresTriggerEntityClass : ScriptedGameTriggerEntityClass
 {
 }
 
-class ARGEO_PopulateStructuresTriggerEntity : SCR_BaseTriggerEntity
+class ARGEO_PopulateStructuresTriggerEntity : ScriptedGameTriggerEntity
 {
-	static ref RandomGenerator s_Rng = new RandomGenerator();
+	private static ref RandomGenerator s_Rng = new RandomGenerator();
+	private static int s_iTotalPopulation = 0;
 
 	[Attribute(desc: "Faction which will be used to populate. Leave empty for default civilians.", category: "Population")]
 	protected FactionKey m_sFactionKey;
 	
 	private int m_iPopulationCount = 0;
+	
+	private string m_sLocationName;
 
 	override protected event void OnActivate(IEntity ent)
 	{
 		super.OnActivate(ent);
 
 		ARGEO_PopulationComponent populationComponent = ARGEO_PopulationComponent.GetInstance();
-		int buildingsOccupation = populationComponent.GetGlobalBuildingsOccupation();
+		float buildingsOccupation = populationComponent.GetGlobalBuildingsOccupation();
 		
 		if(!m_sFactionKey)
 			m_sFactionKey = populationComponent.GetDefaultCivilianFactionKey();
@@ -39,7 +42,7 @@ class ARGEO_PopulateStructuresTriggerEntity : SCR_BaseTriggerEntity
 			
 			if (spawnPoint) {
 				FactionKey factionKey = m_sFactionKey;	
-				bool enableSpawn;
+				bool enableSpawn = false;
 				if(buildingsOccupation >= 100)
 				{
 					// TODO deal with overpopulation
@@ -47,35 +50,36 @@ class ARGEO_PopulateStructuresTriggerEntity : SCR_BaseTriggerEntity
 				}
 				else
 				{
-					int rnd = s_Rng.RandInt(0, 100);
-					enableSpawn = (rnd <= buildingsOccupation);
+					float rnd = s_Rng.RandFloat01()*100;
+					//int rnd = s_Rng.RandInt(0, 100);
+					// strictly inferior, otherwise occupation 0 does not disable
+					enableSpawn = (rnd < buildingsOccupation);
 				}
 				
-				spawnPoints.Insert(spawnPoint);
 				SCR_FactionAffiliationComponent factionAffiliation = SCR_FactionAffiliationComponent.Cast(processedEntity.FindComponent(SCR_FactionAffiliationComponent));		
 				if (factionAffiliation)
 				{
 					factionAffiliation.SetAffiliatedFactionByKey(factionKey);		
-					//Print("Populated trigger - " + ent.GetID() + " - set faction " + factionKey);
 				}
 				
 				if(enableSpawn)
 				{
 					spawnPoint.EnableSpawn();
+					spawnPoints.Insert(spawnPoint);
 				}
 				else
 				{
 					spawnPoint.DisableSpawn();
-				}
-
-				// FIXME hack until we understand how to deactivate properly
-				if(!enableSpawn)		
+					// FIXME hack until we understand how to deactivate properly
 					processedEntity.GetParent().RemoveChild(processedEntity);
+				}
+				
+				nextInHierarchy = NULL;// no need to go deeper
 			}
-			
-			nextInHierarchy = processedEntity.GetChildren();
-			
-
+			else
+			{
+				nextInHierarchy = processedEntity.GetChildren();
+			}
 			
 			while (nextInHierarchy)
 			{
@@ -95,10 +99,22 @@ class ARGEO_PopulateStructuresTriggerEntity : SCR_BaseTriggerEntity
 	
 	override event protected void OnQueryFinished(bool bIsEmpty)
 	{
-		Print("Populate structures trigger - " + m_iPopulationCount + " people " + m_sFactionKey);
+		s_iTotalPopulation = s_iTotalPopulation + m_iPopulationCount;
+		Print("Populate structures trigger - " + m_sLocationName + " : " + m_iPopulationCount + " people " + m_sFactionKey+ " - Total: " + s_iTotalPopulation);
 		EnablePeriodicQueries(false);
 	}
 
+	override event protected event void OnInit(IEntity owner)
+	{
+		string parentName = "N/A";
+		IEntity parent = owner.GetParent();
+		if (parent)
+		{
+			parentName = parent.GetName();
+		}
+		m_sLocationName = parentName;
+	}
+	
 	void SetFactionKey(FactionKey factionKey)
 	{
 		m_sFactionKey = factionKey;

@@ -3,16 +3,18 @@ ARGEO_PopulateStructuresTriggerEntity {
  components {
   RplComponent "{64A6DA3F48F0A69E}" {
   }
+  Hierarchy "{6590DA47D10CF4EA}" {
+  }
  }
  coords 85.936 4.138 76.567
  TriggerShapeType Sphere
- SphereRadius 5
+ SphereRadius 100
  ShapeColor 0.502 0 0.376 1
  TriggerActivationType "All changes"
  PeriodicQueries 1
  PrefabsFilter {
   PrefabFilter "{64A73B9AB27616E7}" {
-   Prefab "{EFA00582842D41D0}Prefabs/Structures/Core/BuildingHousehold_Base.et"
+   Prefab "{EFA00582842D41D0}Prefabs/Systems/Population/BuildingHousehold_Base.et"
    CheckPrefabHierarchy 1
   }
  }

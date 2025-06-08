@@ -8,8 +8,8 @@ class ARGEO_PopulationComponent : SCR_BaseGameModeComponent
 	[Attribute("CIV", desc: "Default civilian faction.", category: "Population")]
 	protected FactionKey m_sDefaultCivilianFactionKey;
 
-	[Attribute("100", desc: "Buildings occupation ratio, in percentage.", category: "Population")]
-	protected int m_iGlobalBuildingsOccupation;
+	[Attribute(defvalue: "0", UIWidgets.Slider, desc: "Buildings occupation ratio, in percentage.", params: "0 100 1", category: "Population")]
+	protected float m_fGlobalBuildingsOccupation;
 
 	[Attribute("0", desc: "Populate with the default faction the buildings outside the explicitely populated areas.", category: "Population")]
 	protected bool m_bPopulateOutsidePopulatedAreas;
@@ -26,6 +26,7 @@ class ARGEO_PopulationComponent : SCR_BaseGameModeComponent
 	{
 		if (!s_Instance)
 			s_Instance = this;
+		Print("Global building occupation: " + m_fGlobalBuildingsOccupation + "%");
 	}
 	
 	//
@@ -36,9 +37,9 @@ class ARGEO_PopulationComponent : SCR_BaseGameModeComponent
 		return m_sDefaultCivilianFactionKey;
 	}
 	
-	int GetGlobalBuildingsOccupation()
+	float GetGlobalBuildingsOccupation()
 	{
-		return m_iGlobalBuildingsOccupation;
+		return m_fGlobalBuildingsOccupation;
 	}
 	
 	bool PopulateOutsidePopulatedAreas()

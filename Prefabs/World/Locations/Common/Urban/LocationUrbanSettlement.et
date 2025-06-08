@@ -1,0 +1,11 @@
+GenericEntity : "{07555910A43107F9}Prefabs/World/Locations/Common/Urban/LocationUrbanBase.et" {
+ ID "5278CCE9842C9D03"
+ {
+  ARGEO_PopulateStructuresTriggerEntity : "{D48BC61D01C94A5D}Prefabs/Systems/Population/PopulateStructuresTrigger.et" {
+   ID "6590DA5ED74C6814"
+   coords 0 0 0
+   SphereRadius 200
+   DrawShape 0
+  }
+ }
+}

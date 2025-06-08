@@ -20,7 +20,8 @@ class ARGEO_PopulatedArea : SCR_ScenarioFrameworkArea
 	override void SpawnTrigger()
 	{
 		super.SpawnTrigger();
-		ARGEO_PopulateStructuresTriggerEntity populateStructureTrigger = ARGEO_PopulateStructuresTriggerEntity.Cast(GetTrigger());		
+		//ARGEO_PopulateStructuresTriggerEntity populateStructureTrigger = ARGEO_PopulateStructuresTriggerEntity.Cast(GetTrigger());		
+		ARGEO_PopulateStructuresTriggerEntity populateStructureTrigger = NULL;		
 		if (!populateStructureTrigger)
 			return;
 		FactionKey areaFactionKey = GetFactionKey();

@@ -1,3 +1,7 @@
 GenericEntity {
  ID "64A6F30B4C3FA92F"
+ components {
+  Hierarchy "{659113069BF1927D}" {
+  }
+ }
 }
