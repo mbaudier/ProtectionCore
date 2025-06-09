@@ -90,7 +90,7 @@ class ARGEO_PopulatedSpawnPointComponent : SCR_AmbientPatrolSpawnPointComponent
 		//Print("Populated spawn point - " + GetOwner().GetID() + " - spawned " + m_SavedFaction.GetFactionKey());
 
 		// start deactivated
-		//super.DeactivateGroup();
+		DeactivateGroup();
 	}
 	
 	override void DespawnPatrol()
@@ -101,9 +101,16 @@ class ARGEO_PopulatedSpawnPointComponent : SCR_AmbientPatrolSpawnPointComponent
 	
 	override void ActivateGroup()
 	{
-		super.ActivateGroup();
-				
+		//super.ActivateGroup();
+		// since there may be a lot of civilians in the same area, smooth activation
+		int randomDelay = s_Rng.RandInt(0, 5000);
+		GetGame().GetCallqueue().CallLater(DoActivateGroup, randomDelay, false);	
 		//Print("Populated spawn point - " + GetOwner().GetID() + " - activated " + m_SavedFaction.GetFactionKey());
+	}
+	
+	private void DoActivateGroup()
+	{
+		super.ActivateGroup();
 	}
 	
 	override void DeactivateGroup()

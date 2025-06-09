@@ -11,6 +11,16 @@ class ARGEO_CaptureAIGroupCommand : ARGEO_BaseAddAIGroupCommand
 		
 		return false;
 	}
+
+	override bool CanBeShownForCharacter(notnull SCR_ChimeraCharacter targetCharacter)
+	{
+		CharacterPerceivableComponent perceivableComp = CharacterPerceivableComponent.Cast(targetCharacter.FindComponent(CharacterPerceivableComponent));
+		if (perceivableComp)
+		{
+			return perceivableComp.IsDisarmed();
+		}
+		return false;
+	}
 	
 	override void PostRecruitment(int count)
 	{

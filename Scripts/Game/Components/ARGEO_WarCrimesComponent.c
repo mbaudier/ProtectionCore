@@ -78,7 +78,7 @@ class ARGEO_WarCrimesComponent : SCR_BaseGameModeComponent
 			if(faction && faction.IsMilitary())
 				return false;
 	
-			return IsUnarmed(character);
+			return IsDisarmed(character);
 		}
 	
 		// TODO deal with buildings
@@ -94,20 +94,28 @@ class ARGEO_WarCrimesComponent : SCR_BaseGameModeComponent
 			if(faction && !faction.IsMilitary())
 				return false;
 			// TODO check health, unconsciousness
-			return IsUnarmed(character);
+			return IsDisarmed(character);
 		}
 	
 		return false; 
 	}
 
 
-	bool IsUnarmed(SCR_ChimeraCharacter character)
+	bool IsDisarmed(SCR_ChimeraCharacter character)
 	{
-		CharacterWeaponManagerComponent weaponManager = CharacterWeaponManagerComponent.Cast(character.FindComponent(CharacterWeaponManagerComponent));
-		WeaponSlotComponent weapon = weaponManager.GetCurrentSlot();
-		// TODO check other visible slots
-		bool unarmed = !weapon;
-		return unarmed;
+		CharacterPerceivableComponent perceivableComp = CharacterPerceivableComponent.Cast(character.FindComponent(CharacterPerceivableComponent));
+		if (perceivableComp)
+		{
+			return perceivableComp.IsDisarmed();
+		}
+		else
+		{
+			CharacterWeaponManagerComponent weaponManager = CharacterWeaponManagerComponent.Cast(character.FindComponent(CharacterWeaponManagerComponent));
+			WeaponSlotComponent weapon = weaponManager.GetCurrentSlot();
+			// TODO check other visible slots
+			bool unarmed = !weapon;
+			return unarmed;
+		}
 	}
 	
 	//
