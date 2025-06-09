@@ -71,7 +71,7 @@ class ARGEO_PopulateStructuresTriggerEntity : ScriptedGameTriggerEntity
 				{
 					spawnPoint.DisableSpawn();
 					// FIXME hack until we understand how to deactivate properly
-					processedEntity.GetParent().RemoveChild(processedEntity);
+					//processedEntity.GetParent().RemoveChild(processedEntity);
 				}
 				
 				nextInHierarchy = NULL;// no need to go deeper

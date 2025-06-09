@@ -4,6 +4,7 @@ SCR_AIWaypoint : "{1E4C8AD00BBB16AA}Prefabs/Systems/AmbientPatrol/AmbientPatrolS
   ARGEO_PopulatedSpawnPointComponent "{5CCEC6036BBF3EDD}" {
    m_sDefaultWaypointPrefab "{45FA1ED74E8909FF}Prefabs/AI/Waypoints/AIWaypoint_StayAtHome.et"
    m_eGroupType POPULATION
+   m_fAILimitThreshold 0.8
   }
  }
  coords 1.654 0.486 -7.736

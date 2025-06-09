@@ -11,8 +11,8 @@ class ARGEO_PopulationComponent : SCR_BaseGameModeComponent
 	[Attribute(defvalue: "0", UIWidgets.Slider, desc: "Buildings occupation ratio, in percentage.", params: "0 100 1", category: "Population")]
 	protected float m_fGlobalBuildingsOccupation;
 
-	[Attribute("0", desc: "Populate with the default faction the buildings outside the explicitely populated areas.", category: "Population")]
-	protected bool m_bPopulateOutsidePopulatedAreas;
+//	[Attribute("0", desc: "Populate with the default faction the buildings outside the explicitely populated areas.", category: "Population")]
+//	protected bool m_bPopulateOutsidePopulatedAreas;
 
 	protected static ARGEO_PopulationComponent s_Instance;
 	
@@ -42,8 +42,8 @@ class ARGEO_PopulationComponent : SCR_BaseGameModeComponent
 		return m_fGlobalBuildingsOccupation;
 	}
 	
-	bool PopulateOutsidePopulatedAreas()
-	{
-		return m_bPopulateOutsidePopulatedAreas;
-	}
+//	bool PopulateOutsidePopulatedAreas()
+//	{
+//		return m_bPopulateOutsidePopulatedAreas;
+//	}
 }

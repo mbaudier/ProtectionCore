@@ -4,18 +4,21 @@ class ARGEO_PopulatedSpawnPointComponentClass : SCR_AmbientPatrolSpawnPointCompo
 
 class ARGEO_PopulatedSpawnPointComponent : SCR_AmbientPatrolSpawnPointComponent
 {
-	protected float m_fDefaultAILimitThreshold = 0.95;
+	private static ref RandomGenerator s_Rng = new RandomGenerator();
+//	protected float m_fDefaultAILimitThreshold = 0.95;
 	
 	protected AIWaypoint m_ToHomeWP;
 	protected AIWaypointCycle m_DailyLifeWP;
 
 	protected SCR_TimedWaypoint m_StayAtHomeWP;
+	
+	private bool m_bSpawnEnabled = false;
 
 	override void EOnInit(IEntity owner)
 	{
+		//m_fDefaultAILimitThreshold = m_fAILimitThreshold;
 		super.EOnInit(owner);
-		m_fDefaultAILimitThreshold = m_fAILimitThreshold;
-		//DisableSpawn();
+		DisableSpawn();// force unregister
 		//Print("Populated spawnpoint initialized");
 	}
 
@@ -64,23 +67,27 @@ class ARGEO_PopulatedSpawnPointComponent : SCR_AmbientPatrolSpawnPointComponent
 
 	override void SpawnPatrol()
 	{
+		// do not use any resource
+		if (!IsSpawnEnabled())
+			return;
+		
 		ARGEO_PopulationComponent populationComponent = ARGEO_PopulationComponent.GetInstance();
 
-				// FIXME workaround until we understand why it is spawned even if not selected by trigger
+		// FIXME workaround until we understand why it is spawned even if not selected by trigger
 		SCR_FactionAffiliationComponent factionAffiliation = SCR_FactionAffiliationComponent.Cast(GetOwner().FindComponent(SCR_FactionAffiliationComponent));
 		if (!factionAffiliation)
 			return;
 		SCR_Faction faction = SCR_Faction.Cast(factionAffiliation.GetAffiliatedFaction());
 		if (!faction)
 		{
-			if(populationComponent.PopulateOutsidePopulatedAreas()) // populate all
+//			if(populationComponent.PopulateOutsidePopulatedAreas()) // populate all
 				factionAffiliation.SetAffiliatedFactionByKey(populationComponent.GetDefaultCivilianFactionKey());
-			else
-				return;
+//			else
+//				return;
 		}
 		
 		super.SpawnPatrol();
-		Print("Populated spawn point - " + GetOwner().GetID() + " - spawned " + m_SavedFaction.GetFactionKey());
+		//Print("Populated spawn point - " + GetOwner().GetID() + " - spawned " + m_SavedFaction.GetFactionKey());
 
 		// start deactivated
 		//super.DeactivateGroup();
@@ -106,14 +113,34 @@ class ARGEO_PopulatedSpawnPointComponent : SCR_AmbientPatrolSpawnPointComponent
 		//	Print("Populated spawn point - " + GetOwner().GetID() + " - deactivated " + m_SavedFaction.GetFactionKey());
 	}
 	
+	bool IsSpawnEnabled()
+	{
+		return m_bSpawnEnabled;
+	}
+	
 	void DisableSpawn()
 	{
-		SetAILimitThreshold(0);
+		//SetAILimitThreshold(0);
+		SCR_AmbientPatrolSystem ambientPatrolSystem = SCR_AmbientPatrolSystem.GetInstance();
+		if (ambientPatrolSystem)
+			ambientPatrolSystem.UnregisterPatrol(this);
+		m_bSpawnEnabled = false;
 	}
 	
 	void EnableSpawn()
 	{
-		SetAILimitThreshold(m_fDefaultAILimitThreshold);
+		//SetAILimitThreshold(m_fDefaultAILimitThreshold);
+		SCR_AmbientPatrolSystem ambientPatrolSystem = SCR_AmbientPatrolSystem.GetInstance();
+		if (ambientPatrolSystem)
+			ambientPatrolSystem.RegisterPatrol(this);
+		m_bSpawnEnabled = true;
+		
+		// add random delay so that not all civilians spawn at the same time
+		ChimeraWorld world =  GetOwner().GetWorld();
+		WorldTimestamp currentTime = world.GetServerTimestamp();
+		int randomDelay = s_Rng.RandInt(5,30);
+		SetRespawnTimestamp(currentTime.PlusSeconds(randomDelay));
+		
 		if(m_iMembersAlive == 0)
 		{	
 			// workaround for when bases cleared it as remnants
@@ -121,8 +148,8 @@ class ARGEO_PopulatedSpawnPointComponent : SCR_AmbientPatrolSpawnPointComponent
 		}
 	}
 	
-	protected void SetAILimitThreshold(float threshold)
-	{
-		m_fAILimitThreshold = threshold;
-	}
+//	protected void SetAILimitThreshold(float threshold)
+//	{
+//		m_fAILimitThreshold = threshold;
+//	}
 }
