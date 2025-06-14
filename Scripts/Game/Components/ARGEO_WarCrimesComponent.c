@@ -106,16 +106,14 @@ class ARGEO_WarCrimesComponent : SCR_BaseGameModeComponent
 		CharacterPerceivableComponent perceivableComp = CharacterPerceivableComponent.Cast(character.FindComponent(CharacterPerceivableComponent));
 		if (perceivableComp)
 		{
-			return perceivableComp.IsDisarmed();
+			if(perceivableComp.IsDisarmed())
+				return true;
 		}
-		else
-		{
-			CharacterWeaponManagerComponent weaponManager = CharacterWeaponManagerComponent.Cast(character.FindComponent(CharacterWeaponManagerComponent));
-			WeaponSlotComponent weapon = weaponManager.GetCurrentSlot();
-			// TODO check other visible slots
-			bool unarmed = !weapon;
-			return unarmed;
-		}
+		CharacterWeaponManagerComponent weaponManager = CharacterWeaponManagerComponent.Cast(character.FindComponent(CharacterWeaponManagerComponent));
+		WeaponSlotComponent weapon = weaponManager.GetCurrentSlot();
+		// TODO check other visible slots
+		bool disarmed = !weapon;
+		return disarmed;
 	}
 	
 	//
