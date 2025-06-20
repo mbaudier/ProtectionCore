@@ -1,6 +1,8 @@
 GenericEntity {
  ID "64A6F30B4C3FA92F"
  components {
+  ARGEO_HouseholdComponent "{65A913AE4BA16966}" {
+  }
   Hierarchy "{659113069BF1927D}" {
   }
  }
