@@ -1,10 +1,10 @@
-class ARGEO_HouseholdComponentClass: ScriptComponentClass
+class ARGEO_BuildingHouseholdEntityClass: GenericEntityClass
 {
 }
 
 //! The link between people and a given building.
 //! It typically contains 
-class ARGEO_HouseholdComponent: ScriptComponent
+class ARGEO_BuildingHouseholdEntity: GenericEntity
 {
 	private SCR_DestructibleBuildingComponent m_DestructibleBuildingComp;
 	
@@ -15,9 +15,9 @@ class ARGEO_HouseholdComponent: ScriptComponent
 		//Print("Household initialized");
 	}
 
-	override void OnPostInit(IEntity owner)
+	override void EOnActivate(IEntity owner)
 	{
-		super.OnPostInit(owner);
+		super.EOnActivate(owner);
 
 		m_DestructibleBuildingComp = FindDestructibleBuildingComp(owner);
 		if(m_DestructibleBuildingComp)
