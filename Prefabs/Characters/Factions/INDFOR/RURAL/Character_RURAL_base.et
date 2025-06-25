@@ -2,11 +2,6 @@ SCR_ChimeraCharacter : "{37578B1666981FCE}Prefabs/Characters/Core/Character_Base
  ID "60E2B3CB5E831188"
  components {
   ChimeraAIControlComponent "{520EA1D2DB109F34}" {
-   components {
-    SCR_AICombatComponent "{55A2C9BE343B2EA1}" {
-     m_eAISkillDefault NONE
-    }
-   }
   }
   SCR_CharacterFactionAffiliationComponent "{555C98D1CD949F3E}" {
    "faction affiliation" "RURAL"
@@ -38,16 +33,6 @@ SCR_ChimeraCharacter : "{37578B1666981FCE}Prefabs/Characters/Core/Character_Base
   CharacterWeaponSlotComponent "{520EA1D2F659CFDC}" {
    WeaponSlotType "empty"
    HolsteredIndex 2
-  }
-  SCR_CharacterIdentityComponent "{5584CBC63E092DBC}" {
-   Identity Identity "{5584CBC6363C648B}" {
-    VisualIdentity VisualIdentity "{56E6D9456009D1C4}" {
-     Head "{EAF055495BA85CA1}Prefabs/Characters/Heads/Head_White_02.et"
-    }
-    SoundIdentity SoundIdentity "{56E6D945D8F79290}" {
-     VoiceID 0
-    }
-   }
   }
  }
 }
