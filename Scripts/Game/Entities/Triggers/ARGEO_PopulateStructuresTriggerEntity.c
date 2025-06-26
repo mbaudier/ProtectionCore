@@ -5,21 +5,54 @@ class ARGEO_PopulateStructuresTriggerEntityClass : ScriptedGameTriggerEntityClas
 
 class ARGEO_PopulateStructuresTriggerEntity : ScriptedGameTriggerEntity
 {
-	private static ref RandomGenerator s_Rng = new RandomGenerator();
-	private static int s_iTotalPopulation = 0;
+	//private static ref RandomGenerator s_Rng = new RandomGenerator();
+	//private static int s_iTotalPopulation = 0;
 
-	[Attribute(desc: "Faction which will be used to populate. Leave empty for default civilians.", category: "Population")]
-	protected FactionKey m_sFactionKey;
+	[Attribute(desc: "ID of the populated territory to attach to.", category: "Population")]
+	protected string m_sPopulatedTerritoryID;
+
+	// TODO use FactionAffiliationComponent
+//	[Attribute(desc: "Force population to this faction.", category: "Population")]
+//	protected FactionKey m_sFactionKey;
 	
-	private int m_iPopulationCount = 0;
+	
+	//private int m_iPopulationCount = 0;
 	
 	private string m_sLocationName;
+	
 
 	override protected event void OnActivate(IEntity ent)
 	{
 		super.OnActivate(ent);
+		
+		FactionKey triggerFactionKey;
+		FactionAffiliationComponent triggerFactionAffiliation = FactionAffiliationComponent.Cast(this.FindComponent(FactionAffiliationComponent));
+		if (triggerFactionAffiliation)
+		{
+			triggerFactionKey = triggerFactionAffiliation.GetAffiliatedFactionKey();
+		}
+		
+		ARGEO_BuildingHouseholdEntity buildingHousehold = ARGEO_BuildingHouseholdEntity.Cast(ent);
+		if (!buildingHousehold || buildingHousehold.GetPopulatedTerritoryID())
+			return;
+		buildingHousehold.SetPopulatedTerritoryID(m_sPopulatedTerritoryID);
 
 		ARGEO_PopulationComponent populationComponent = ARGEO_PopulationComponent.GetInstance();
+		populationComponent.RegisterBuildingHousehold(buildingHousehold);
+		if (triggerFactionKey)
+		{
+			array<ARGEO_PopulatedSpawnPointComponent> spawnPoints = {};
+			buildingHousehold.GetSpawnPoints(spawnPoints);
+			foreach (ARGEO_PopulatedSpawnPointComponent spawnPoint : spawnPoints)
+			{
+				FactionAffiliationComponent factionAffiliation = FactionAffiliationComponent.Cast(spawnPoint.GetOwner().FindComponent(FactionAffiliationComponent));		
+				if (factionAffiliation)
+				{
+					factionAffiliation.SetAffiliatedFactionByKey(triggerFactionKey);
+				}
+			}
+		}
+/*		
 		float buildingsOccupation = populationComponent.GetGlobalBuildingsOccupation();
 		
 		if(!m_sFactionKey)
@@ -39,8 +72,9 @@ class ARGEO_PopulateStructuresTriggerEntity : ScriptedGameTriggerEntity
 			queue.Remove(0);
 			
 			spawnPoint = ARGEO_PopulatedSpawnPointComponent.Cast(processedEntity.FindComponent(ARGEO_PopulatedSpawnPointComponent));
-			
+			 
 			if (spawnPoint) {
+				
 				FactionKey factionKey = m_sFactionKey;	
 				bool enableSpawn = false;
 				if(buildingsOccupation >= 100)
@@ -50,7 +84,7 @@ class ARGEO_PopulateStructuresTriggerEntity : ScriptedGameTriggerEntity
 				}
 				else
 				{
-					float rnd = s_Rng.RandFloat01()*100;
+					float rnd = s_Rng.RandFloat01() * 100;
 					//int rnd = s_Rng.RandInt(0, 100);
 					// strictly inferior, otherwise occupation 0 does not disable
 					enableSpawn = (rnd < buildingsOccupation);
@@ -94,13 +128,13 @@ class ARGEO_PopulateStructuresTriggerEntity : ScriptedGameTriggerEntity
 			// TODO count and track population
 			m_iPopulationCount++;
 		}
-
+*/	
 	}
 	
 	override event protected void OnQueryFinished(bool bIsEmpty)
 	{
-		s_iTotalPopulation = s_iTotalPopulation + m_iPopulationCount;
-		Print("Populate structures trigger - " + m_sLocationName + " : " + m_iPopulationCount + " people " + m_sFactionKey+ " - Total: " + s_iTotalPopulation);
+		//s_iTotalPopulation = s_iTotalPopulation + m_iPopulationCount;
+		//Print("Populate structures trigger - " + m_sLocationName + " : " + m_iPopulationCount + " people " + m_sFactionKey+ " - Total: " + s_iTotalPopulation);
 		EnablePeriodicQueries(false);
 	}
 
@@ -113,11 +147,13 @@ class ARGEO_PopulateStructuresTriggerEntity : ScriptedGameTriggerEntity
 			parentName = parent.GetName();
 		}
 		m_sLocationName = parentName;
+		if (!m_sPopulatedTerritoryID)
+			m_sPopulatedTerritoryID = m_sLocationName;
 	}
-	
-	void SetFactionKey(FactionKey factionKey)
-	{
-		m_sFactionKey = factionKey;
-		//Print("Populated trigger set faction key "+m_sFactionKey);
-	}
+		
+//	void SetFactionKey(FactionKey factionKey)
+//	{
+//		m_sFactionKey = factionKey;
+//		//Print("Populated trigger set faction key "+m_sFactionKey);
+//	}
 }

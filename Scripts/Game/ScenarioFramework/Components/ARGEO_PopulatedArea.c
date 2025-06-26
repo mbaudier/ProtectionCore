@@ -25,7 +25,8 @@ class ARGEO_PopulatedArea : SCR_ScenarioFrameworkArea
 		if (!populateStructureTrigger)
 			return;
 		FactionKey areaFactionKey = GetFactionKey();
-		populateStructureTrigger.SetFactionKey(areaFactionKey);
+		// TODO use FactionAffiliation
+		//populateStructureTrigger.SetFactionKey(areaFactionKey);
 		//Print("Spawned area trigger");
 	}
 }

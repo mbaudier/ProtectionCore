@@ -1,6 +1,8 @@
 ARGEO_PopulateStructuresTriggerEntity {
  ID "64A6DA3F48F0A6A9"
  components {
+  FactionAffiliationComponent "{65B5068E3672FD54}" {
+  }
   RplComponent "{64A6DA3F48F0A69E}" {
   }
   Hierarchy "{6590DA47D10CF4EA}" {

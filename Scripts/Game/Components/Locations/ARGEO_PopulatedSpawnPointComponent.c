@@ -13,6 +13,7 @@ class ARGEO_PopulatedSpawnPointComponent : SCR_AmbientPatrolSpawnPointComponent
 	protected SCR_TimedWaypoint m_StayAtHomeWP;
 	
 	private bool m_bSpawnEnabled = false;
+	
 
 	override void EOnInit(IEntity owner)
 	{

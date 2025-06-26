@@ -5,7 +5,7 @@ class ARGEO_ProtectionFactionManagerComponentClass: SCR_BaseFactionManagerCompon
 
 class ARGEO_ProtectionFactionManagerComponent : SCR_BaseFactionManagerComponent
 {
-	[Attribute("CIV", desc: "Faction temporarily assigned when civilians, POW, etc. are protected.", category: "Protection")]
+	[Attribute("CIV", desc: "Possibly virtual faction temporarily assigned when civilians, POW, etc. are protected.", category: "Protection")]
 	private FactionKey m_sProtectedFaction;
 	
 	[Attribute("1", desc: "Force the protected faction to be friendly to all.", category: "Protection")]
@@ -14,13 +14,10 @@ class ARGEO_ProtectionFactionManagerComponent : SCR_BaseFactionManagerComponent
 	[Attribute("0", desc: "Soldiers from friendly military factions can be recruited.", category: "Protection")]
 	private bool m_bAlliesCanBeRecruited;
 	
-	private SCR_Faction m_ProtectedFaction = NULL;
+	private SCR_Faction m_ProtectedFaction;
 
 	override void OnFactionsInit(array<Faction> factions)
 	{
-		if(!m_bForceProtectedFactionFriendlyToAll)
-			return;
-		
 		// find protected faction
 		for (int i = 0; i < factions.Count(); i++)
 		{		
@@ -33,6 +30,10 @@ class ARGEO_ProtectionFactionManagerComponent : SCR_BaseFactionManagerComponent
 		
 		if (m_ProtectedFaction)
 		{
+			if (!m_bForceProtectedFactionFriendlyToAll)
+				return;
+		
+			// force all factions friendly to the protected faction
 			for (int i = 0; i < factions.Count(); i++)
 			{		
 				SCR_Faction f = SCR_Faction.Cast(factions.Get(i));
@@ -43,6 +44,10 @@ class ARGEO_ProtectionFactionManagerComponent : SCR_BaseFactionManagerComponent
 					// no need to notify as we are still initializing
 				}
 			}
+		}
+		else
+		{
+			Print("Virtual protected faction not found", LogLevel.WARNING);
 		}
 	}
 	
