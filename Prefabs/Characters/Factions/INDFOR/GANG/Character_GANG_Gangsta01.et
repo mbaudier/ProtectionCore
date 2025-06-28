@@ -20,11 +20,13 @@ SCR_ChimeraCharacter : "{B95C14B8EBE9B3FA}Prefabs/Characters/Factions/INDFOR/GAN
   }
   BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
    Slots {
+    LoadoutSlotInfo Hat {
+     Prefab "{323641C91965842E}Prefabs/Characters/HeadGear/Hat_Ushanka_01/Hat_Ushanka_01_unfolded.et"
+    }
     LoadoutSlotInfo Jacket {
-     Prefab "{E44990162EBC47B7}Prefabs/Characters/Uniforms/Jacket_M88_base.et"
+     Prefab "{B137B7CE988557D2}Prefabs/Characters/Uniforms/Suit_Pilot_US_01/Suit_Pilot_US_01.et"
     }
     LoadoutSlotInfo Pants {
-     Prefab "{604BB72BE8E023C2}Prefabs/Characters/Uniforms/Pants_US_BDU.et"
     }
     LoadoutSlotInfo Boots {
      Prefab "{DAAFD15478BDE1C3}Prefabs/Characters/Footwear/CombatBoots_US_01.et"
