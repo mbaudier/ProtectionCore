@@ -1,0 +1,18 @@
+ARGEO_CivicCenterEntity {
+ ID "65BAD24D2F9AAD33"
+ components {
+  Hierarchy "{65BAD24D2F9AAD09}" {
+  }
+ }
+ {
+  SCR_AIWaypoint : "{06E1B6EBD480C6E0}Prefabs/AI/Waypoints/AIWaypoint_ForcedMove.et" {
+   ID "65BAD24D74983FFD"
+   components {
+    Hierarchy "{65BB33D6E49CACE7}" {
+    }
+   }
+   coords 0 0 0
+   CompletionRadius 20
+  }
+ }
+}

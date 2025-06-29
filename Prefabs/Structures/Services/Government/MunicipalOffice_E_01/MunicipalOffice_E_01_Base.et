@@ -1,0 +1,9 @@
+SCR_DestructibleBuildingEntity : "{A43A100E3C377DB2}Prefabs/Structures/Core/Building_Base.et" {
+ ID "F0DBA538AC2A0552"
+ {
+  ARGEO_CivicCenterEntity : "{2BCCF9E4BF5F8258}Prefabs/Systems/Population/CivicCenter_Base.et" {
+   ID "65BAD2432D653373"
+   coords 0 0 0
+  }
+ }
+}

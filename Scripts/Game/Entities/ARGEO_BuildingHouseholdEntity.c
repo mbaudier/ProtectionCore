@@ -1,34 +1,16 @@
-class ARGEO_BuildingHouseholdEntityClass: GenericEntityClass
+class ARGEO_BuildingHouseholdEntityClass: ARGEO_BuildingPopulationEntityClass
 {
 }
 
 //! The link between people and a given building.
-class ARGEO_BuildingHouseholdEntity: GenericEntity
+class ARGEO_BuildingHouseholdEntity: ARGEO_BuildingPopulationEntity
 {
-	private SCR_DestructibleBuildingComponent m_DestructibleBuildingComp;
-	
 	private ref array<ARGEO_PopulatedSpawnPointComponent> m_aSpawnPoints = new array<ARGEO_PopulatedSpawnPointComponent>;
-
-	private string m_sPopulatedTerritoryID;
-	
-	override void EOnInit(IEntity owner)
-	{
-		super.EOnInit(owner);
-		
-		//Print("Household initialized");
-	}
 
 	override void EOnActivate(IEntity owner)
 	{
 		super.EOnActivate(owner);
 
-		m_DestructibleBuildingComp = FindDestructibleBuildingComp(owner);
-		if(m_DestructibleBuildingComp)
-		{
-			m_DestructibleBuildingComp.GetOnDamageStateChanged().Insert(OnBuildingDestroyed);
-		}
-		//Print("Household post-init");
-		
 		// Find populated spawn points
 		array<IEntity> queue = {owner};
 		IEntity processedEntity;
@@ -58,44 +40,45 @@ class ARGEO_BuildingHouseholdEntity: GenericEntity
 		}
 	}
 	
-	//------------------------------------------------------------------------------------------------
-	//! Called when the related building is destroyed, making the related people displaced persons.
-	protected void OnBuildingDestroyed(EDamageState state)
+	//
+	// EVENTS
+	//
+	void OnSafetyStatusChanged(ARGEO_PopulationSafetyStatus safetyStatus)
 	{
-		if (state != EDamageState.DESTROYED)
-			return;
-		Print("Building destroyed!");
-	}
-	
-	private SCR_DestructibleBuildingComponent FindDestructibleBuildingComp(IEntity current)
-	{
-		if (!current)
-			return null;
-		
-		SCR_DestructibleBuildingComponent res = SCR_DestructibleBuildingComponent.Cast(current.FindComponent(SCR_DestructibleBuildingComponent));
-		if (res)
-			return res;
-		
-		IEntity parent = current.GetParent();
-		// recursive call
-		return FindDestructibleBuildingComp(parent);
+		if (safetyStatus <= ARGEO_PopulationSafetyStatus.DANGEROUS)
+		{
+			ARGEO_PopulationComponent populationComp = ARGEO_PopulationComponent.GetInstance();
+			if (!populationComp)
+				return;
+			foreach (ARGEO_PopulatedSpawnPointComponent spawnPoint : m_aSpawnPoints)
+			{
+//				if (spawnPoint.GetMembersAlive() > 0)
+//				{
+					SCR_AIGroup group = spawnPoint.GetSpawnedGroup();
+					if (group)
+					{
+						array<AIWaypoint> wps = {};
+						group.GetWaypoints(wps);
+						foreach (AIWaypoint wp : wps)
+						{	
+							group.RemoveWaypoint(wp);			
+						}
+						ARGEO_CivicCenterEntity civicCenter = populationComp.GetClosestCivicCenter(group.GetCenterOfMass());
+						if (civicCenter)
+						{
+							AIWaypoint fleeTo = civicCenter.GetMoveToWaypoint();
+							group.AddWaypoint(fleeTo);
+							Print("Civilian fleeing to " + fleeTo.GetOrigin());
+						}
+					}
+//				}
+			}
+		}
 	}
 	
 	//
 	// ACCESSORS
 	//
-	void SetPopulatedTerritoryID(string populatedTerritoryID)
-	{
-		if (m_sPopulatedTerritoryID)
-			return; // TODO warning?
-		m_sPopulatedTerritoryID = populatedTerritoryID;
-	}
-	
-	string GetPopulatedTerritoryID()
-	{
-		return m_sPopulatedTerritoryID;
-	}
-	
 	int GetSpawnPointsCount()
 	{
 		return m_aSpawnPoints.Count();

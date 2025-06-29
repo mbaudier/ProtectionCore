@@ -11,15 +11,12 @@ class ARGEO_PopulationComponent : SCR_BaseGameModeComponent
 	[Attribute(defvalue: "0", UIWidgets.Slider, desc: "Buildings occupation ratio, in percentage.", params: "0 100 1", category: "Population")]
 	protected float m_fGlobalBuildingsOccupation;
 
-//	[Attribute("0", desc: "Populate with the default faction the buildings outside the explicitely populated areas.", category: "Population")]
-//	protected bool m_bPopulateOutsidePopulatedAreas;
-
 	protected static ARGEO_PopulationComponent s_Instance;
 	
 	protected ref array<ref Faction> m_aPopulationFactions = new array<ref Faction>();
 	
 	protected ref array<ref ARGEO_PopulatedTerritory> m_aPopulatedTerritories = new array<ref ARGEO_PopulatedTerritory>;
-	//protected ref ARGEO_PopulatedTerritory m_IsolatedPopulation = new ARGEO_PopulatedTerritory("");
+	protected ref array<ARGEO_CivicCenterEntity> m_aCivicCenters = new array<ARGEO_CivicCenterEntity>;
 	
 	private bool m_bPopulationAppliedOnce = false;
 	
@@ -35,6 +32,11 @@ class ARGEO_PopulationComponent : SCR_BaseGameModeComponent
 		
 		if (m_bPopulationAppliedOnce)
 			ApplyPopulation(); // update 
+	}
+	
+	void RegisterCivicCenter(ARGEO_CivicCenterEntity civiCenter)
+	{
+		m_aCivicCenters.Insert(civiCenter);
 	}
 	
 	void ApplyPopulation()
@@ -58,13 +60,44 @@ class ARGEO_PopulationComponent : SCR_BaseGameModeComponent
 	}
 	
 	//
+	// DISPLACEMENT
+	//
+	ARGEO_CivicCenterEntity GetClosestCivicCenter(vector pos)
+	{
+		ARGEO_CivicCenterEntity best;
+		float closest;
+		foreach (ARGEO_CivicCenterEntity civicCenter : m_aCivicCenters)
+		{	
+			float distanceSq = vector.DistanceSqXZ(pos, civicCenter.GetOrigin());
+			if (!best)
+			{
+				best = civicCenter;
+				closest = distanceSq;
+			}
+			else
+			{
+				if(closest > distanceSq)
+				{
+					best = civicCenter;
+					closest = distanceSq;
+				}		
+			}
+		}
+		return best;
+	}
+	
+	//
 	// LIFE CYLE
 	//
-	override void OnGameModeStart()
+	override void OnPostInit(IEntity owner)
 	{
 		if (!s_Instance)
 			s_Instance = this;
 		Print("Global building occupation: " + m_fGlobalBuildingsOccupation + "%");
+	}
+
+	override void OnGameModeStart()
+	{
 		
 
 		SCR_FactionManager factionManager = SCR_FactionManager.Cast(GetGame().GetFactionManager());
@@ -81,10 +114,6 @@ class ARGEO_PopulationComponent : SCR_BaseGameModeComponent
 			{
 				Faction faction = f;
 				m_aPopulationFactions.Insert(faction);
-				
-				// TODO make it configurable
-				//if (faction.GetFactionKey() == m_sDefaultCivilianFactionKey)
-				//	m_IsolatedPopulation.SetFactionWeight(faction.GetFactionKey(), 0);
 				
 				for (int j = 0; j < homeTerritoryConfig.GetHomeTerritoriesCount(); j++)
 				{
@@ -103,10 +132,35 @@ class ARGEO_PopulationComponent : SCR_BaseGameModeComponent
 				}
 			}
 		}
-		
+
 		// apply population after the backend delay also used by the ambient patrol system
-		//GetGame().GetCallqueue().CallLater(ApplyPopulation, SCR_GameModeCampaign.BACKEND_DELAY);
 		GetGame().GetCallqueue().CallLater(ApplyPopulation, 10000);
+		//GetGame().GetCallqueue().CallLater(ApplyPopulation, SCR_GameModeCampaign.BACKEND_DELAY);
+	}
+	
+	//
+	// EVENTS
+	//
+	void NotifyBuildingDestroyed(ARGEO_BuildingPopulationEntity building)
+	{
+		string populatedTerritoryID = building.GetPopulatedTerritoryID();
+		ARGEO_PopulatedTerritory populatedTerritory = GetPopulatedTerritory(populatedTerritoryID);
+		if (!populatedTerritory)
+			return;
+		populatedTerritory.ChangeSafetyStatus(ARGEO_PopulationSafetyStatus.DANGEROUS);
+	}
+	
+	void NotifyBuildingDamaged(ARGEO_BuildingPopulationEntity building, BaseDamageContext damageContext)
+	{
+		ARGEO_BuildingHouseholdEntity household = ARGEO_BuildingHouseholdEntity.Cast(building);
+		if (household)
+		{
+			string populatedTerritoryID = building.GetPopulatedTerritoryID();
+			ARGEO_PopulatedTerritory populatedTerritory = GetPopulatedTerritory(populatedTerritoryID);
+			if (!populatedTerritory)
+				return;
+			populatedTerritory.ChangeSafetyStatus(ARGEO_PopulationSafetyStatus.DANGEROUS);
+		}
 	}
 	
 	//
@@ -141,107 +195,5 @@ class ARGEO_PopulationComponent : SCR_BaseGameModeComponent
 	static ARGEO_PopulationComponent GetInstance()
 	{
 		return s_Instance;
-	}
-}
-
-class ARGEO_PopulatedTerritory
-{
-	string m_sID;
-	
-	protected ref map<FactionKey, int> m_mFactionWeights = new map<FactionKey, int>;
-	protected ref array<ARGEO_BuildingHouseholdEntity> m_aBuildingHouseholds = new array<ARGEO_BuildingHouseholdEntity>;
-	
-	private int m_iSpawnPointsCount = 0;
-	private int m_iTotalWeight = 0;
-	
-	void ARGEO_PopulatedTerritory(string populatedTerritoryID)
-	{
-		m_sID = populatedTerritoryID;
-	}
-	
-	void SetFactionWeight(FactionKey factionKey, int weight)
-	{
-		m_mFactionWeights.Set(factionKey, weight);
-		m_iTotalWeight += weight;
-	}
-	
-	void AddBuildingHousehold(ARGEO_BuildingHouseholdEntity buildingHousehold)
-	{
-		m_aBuildingHouseholds.Insert(buildingHousehold);
-		m_iSpawnPointsCount += buildingHousehold.GetSpawnPointsCount();
-	}
-	
-	int PopulateRandomSpawnPoints(int toPopulateSpawnPointsCount)
-	{
-		array<ARGEO_PopulatedSpawnPointComponent> spawnPoints = {};
-		foreach (ARGEO_BuildingHouseholdEntity buildingHousehold : m_aBuildingHouseholds)
-		{
-			buildingHousehold.GetSpawnPoints(spawnPoints);
-		}
-		
-		int spawnPointCount = 0;
-		for (int i = 0; i < toPopulateSpawnPointsCount; i++)
-		{
-			if(spawnPoints.Count() == 0)
-			{
-				Print("Not enough spawn points to populate territory " + m_sID + " (" + toPopulateSpawnPointsCount + " > "+ spawnPointCount + ")", LogLevel.WARNING);
-				break; // toPopulateSpawnPointsCount
-			}
-			
-			int index = Math.RandomInt(0, spawnPoints.Count());
-			ARGEO_PopulatedSpawnPointComponent spawnPoint = spawnPoints[index];
-			GenericEntity owner = spawnPoint.GetOwner();
-			FactionAffiliationComponent factionAffiliation = FactionAffiliationComponent.Cast(owner.FindComponent(FactionAffiliationComponent));		
-			if (factionAffiliation)
-			{
-				int randomWeight = Math.RandomIntInclusive(0, m_iTotalWeight);
-		
-				int checkedWeight = 0;
-				
-				FactionKey factionKey;
-				foreach (FactionKey f, int weight : m_mFactionWeights)
-				{
-					checkedWeight += weight;
-					if (randomWeight <= checkedWeight)
-					{
-						factionKey = f;
-						break; // m_mFactionWeights
-					}
-				}
-
-				if(factionKey)
-					factionAffiliation.SetAffiliatedFactionByKey(factionKey);		
-			}
-			spawnPoint.EnableSpawn();
-			
-			spawnPointCount++;
-			spawnPoints.Remove(index);
-		}
-		
-		// in case we are updating, make sure all other spawn points are disabled
-		foreach (ARGEO_PopulatedSpawnPointComponent spawnPoint : spawnPoints)
-		{
-			spawnPoint.DisableSpawn();
-		}
-		
-		return spawnPointCount;
-	}
-	
-	//
-	// ACCESSORS
-	//
-	string GetPopulatedTerritoryID()
-	{
-		return m_sID;
-	}
-	
-	int GetSpawnPointsCount()
-	{
-		return m_iSpawnPointsCount;
-	}
-	
-	int GetTotalWeight()
-	{
-		return m_iTotalWeight;
 	}
 }
