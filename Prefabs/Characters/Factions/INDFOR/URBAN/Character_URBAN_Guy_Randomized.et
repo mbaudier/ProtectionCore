@@ -1,0 +1,30 @@
+SCR_ChimeraCharacter : "{70697C21DE7AE2ED}Prefabs/Characters/Factions/INDFOR/URBAN/Character_URBAN_base.et" {
+ ID "60E2B3CB4A780B93"
+ components {
+  SCR_EditableCharacterComponent "{520EA1D2F659C85C}" {
+   m_UIInfo SCR_EditableEntityUIInfo "{5298E609432D192D}" {
+    Icon "{C431FD61793AA13F}UI/Textures/Editor/EditableEntities/Characters/EditableEntity_Random.edds"
+    m_aAuthoredLabels + {
+     290
+    }
+   }
+   m_VariantData SCR_EditableEntityVariantData "{65BD2C0CDA0C3A9B}" {
+    m_bRandomizeDefaultVariant 0
+    m_aVariants {
+     SCR_EditableEntityVariant "{65BD2C0CDA0C3A95}" {
+      m_sVariantPrefab "{5B46A00AC2E7626D}Prefabs/Characters/Factions/INDFOR/URBAN/Character_URBAN_Guy00.et"
+     }
+     SCR_EditableEntityVariant "{65BD2C0CDA0C3A96}" {
+      m_sVariantPrefab "{BEDAECF3CE02F506}Prefabs/Characters/Factions/INDFOR/URBAN/Character_URBAN_Guy01.et"
+     }
+     SCR_EditableEntityVariant "{65BD2C0CDA0C3A88}" {
+      m_sVariantPrefab "{D28ED81372C67A28}Prefabs/Characters/Factions/INDFOR/URBAN/Character_URBAN_Guy02.et"
+     }
+     SCR_EditableEntityVariant "{65BD2C0CDA0C3A8B}" {
+      m_sVariantPrefab "{91B7CCB279B0FC3A}Prefabs/Characters/Factions/INDFOR/URBAN/Character_URBAN_Guy03.et"
+     }
+    }
+   }
+  }
+ }
+}

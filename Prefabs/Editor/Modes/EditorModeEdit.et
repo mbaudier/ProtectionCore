@@ -3,17 +3,8 @@ SCR_EditorModeEntity : "{E56F54E533ACE527}Prefabs/Editor/Modes/EditorModeBase.et
  components {
   SCR_PlacingEditorComponent "{5145484399BAA2E7}" {
    m_Registries {
-    SCR_PlaceableEntitiesRegistry "{60EB3E66470B6C81}" : "{B0FD04060BDB2D94}Configs/Editor/PlaceableEntities/Characters_URBAN.conf" {
-    }
-    SCR_PlaceableEntitiesRegistry "{60EB3E6606D18FDF}" : "{AB2499B12DB5F2BA}Configs/Editor/PlaceableEntities/Characters_GANG.conf" {
-    }
-    SCR_PlaceableEntitiesRegistry "{60EB579AB19FD429}" : "{54356385BBD42F56}Configs/Editor/PlaceableEntities/Characters_RURAL.conf" {
-    }
-    SCR_PlaceableEntitiesRegistry "{60EEA7F0B901C1B5}" : "{32EAE4DF1F6E3780}Configs/Editor/PlaceableEntities/Groups_URBAN.conf" {
-    }
     SCR_PlaceableEntitiesRegistry "{60EED3DD97ADE825}" : "{31C7230A7924628B}Configs/Editor/PlaceableEntities/Systems/Systems_ProtectionCore.conf" {
-    }
-    SCR_PlaceableEntitiesRegistry "{60EF128FAD5FC676}" : "{D622835CAF613542}Configs/Editor/PlaceableEntities/Groups_RURAL.conf" {
+     m_sSourceDirectory "{2F57DB09BFDC73A1}PrefabsEditable/Auto/Systems"
     }
    }
   }

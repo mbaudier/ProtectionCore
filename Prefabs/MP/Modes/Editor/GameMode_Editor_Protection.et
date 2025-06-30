@@ -1,0 +1,47 @@
+SCR_GameModeEditor : "{D2DE7F43D48A3667}Prefabs/MP/Modes/Editor/GameMode_Editor.et" {
+ ID "56B2B479C6B96951"
+ components {
+  ARGEO_PopulationComponent "{657F0CE6ADBB46C4}" {
+   m_sDefaultCivilianFactionKey "RURAL"
+   m_fGlobalBuildingsOccupation 70
+  }
+  ARGEO_WarCrimesComponent "{657D06928358A762}" {
+   m_bKillingHorsDeCombatIsWarCrime 1
+  }
+  SCR_CampaignBuildingManagerComponent "{65BD0832A38DBBD1}" {
+   m_sFreeRoamBuildingClientTrigger "{5E191CEAF4B95816}Prefabs/MP/FreeRoamBuildingClientTrigger.et"
+   m_BudgetType CAMPAIGN
+   m_iCompositionRefundPercentage 100
+   m_OutlineManager SCR_CampaignBuildingCompositionOutlineManager "{5DF6FBB5913F3245}" : "{96A8B496A076F1C0}Scripts/Game/Building/CampaignBuildingCompositionOutline.conf" {
+   }
+   m_sPrefabsToBuildResource "{D2527D9AA5B4A33E}Configs/Editor/PlaceableEntities/Compositions/Compositions_FreeRoamBuilding.conf"
+   m_sPrefabToHoldSupplyOnRefund "{4BBE0A784C01900E}Prefabs/Props/Military/SupplyBox/SupplyCrate/SupplyCrate_01/SupplyCrate_01_FreeRoamBuilding.et"
+  }
+  SCR_CommandingManagerComponent "{65BD0832A38DBBC4}" {
+   m_sAIGroupPrefab "{4A9D83DCB0619829}Prefabs/AI/Groups/Commanded_Group.et"
+   m_sCommandsConfigPath "{4615FA289AC337D6}Configs/Commanding/ProtectionCommands.conf"
+   m_iMaxAIPerGroup -1
+  }
+ }
+ PlayerControllerPrefab "{48E64DB069A7CBAD}Prefabs/Characters/Core/DefaultPlayerControllerMP_Factions_Protection.et"
+ m_eTestGameFlags SpawnAI
+ {
+  SCR_FactionManager "65BD0E78396CF47C" : "{6B8E0BC290FDBB18}Prefabs/MP/Managers/Factions/FactionManager_Editor_Protection.et" {
+   ID "65BD08333C3BDCE4"
+   coords 0 0 0
+  }
+  RadioManagerEntity : "{B8E09FAB91C4ECCD}Prefabs/Radio/RadioManager.et" {
+   ID "65BD0832A38DBBF6"
+  }
+  ScriptedChatEntity : "{F69BC912AC8236F9}Prefabs/MP/ScriptedChatEntity.et" {
+   ID "65BD0832A38DBBE9"
+  }
+  SCR_LoadoutManager : "{50920F2E4492A606}Prefabs/MP/Managers/Loadouts/LoadoutManager_Editor_Protection.et" {
+   ID "65BD0833320A5AF4"
+   coords 0 0 0
+  }
+  SCR_BaseTaskManager : "{87208DAD6F3C0DE2}Prefabs/MP/Managers/Tasks/TaskManager_Editor.et" {
+   ID "65BD0832A38DBBE8"
+  }
+ }
+}

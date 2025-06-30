@@ -1,0 +1,24 @@
+SCR_ChimeraCharacter : "{70697C21DE7AE2ED}Prefabs/Characters/Factions/INDFOR/URBAN/Character_URBAN_base.et" {
+ ID "60E2B3CB4A780B93"
+ components {
+  SCR_EditableCharacterComponent "{520EA1D2F659C85C}" {
+   m_UIInfo SCR_EditableEntityUIInfo "{5298E609432D192D}" {
+    Icon "{C431FD61793AA13F}UI/Textures/Editor/EditableEntities/Characters/EditableEntity_Random.edds"
+    m_aAuthoredLabels + {
+     290
+    }
+   }
+   m_VariantData SCR_EditableEntityVariantData "{65BD2C0CC685D494}" {
+    m_bRandomizeDefaultVariant 0
+    m_aVariants {
+     SCR_EditableEntityVariant "{65BD2C0CC685D4FB}" {
+      m_sVariantPrefab "{4D12EFF93119C2CE}Prefabs/Characters/Factions/INDFOR/URBAN/Character_URBAN_Hipster00.et"
+     }
+     SCR_EditableEntityVariant "{65BD2C0CC685D4FC}" {
+      m_sVariantPrefab "{A88EA3003DFC55A5}Prefabs/Characters/Factions/INDFOR/URBAN/Character_URBAN_Hipster01.et"
+     }
+    }
+   }
+  }
+ }
+}

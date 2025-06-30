@@ -1,0 +1,38 @@
+SCR_AIWorld SCR_AIWorld_Arland : "{01DC74137CFDDB6A}Prefabs/AI/SCR_AIWorld_Arland.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60B8A2995A7E8BC2}" {
+     NavmeshFile "{D8EF7131FB31AF97}worlds/GameMaster/Navmeshes/GM_Arland.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60B8A299509CF377}" {
+     NavmeshFile "{A0AEEB1E7EF474FA}worlds/GameMaster/Navmeshes/GM_Arland_vehicles.nmn"
+    }
+   }
+  }
+ }
+ coords 2633.576 110.213 2395.986
+}
+PerceptionManager PerceptionManager : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 2631.93 110.391 2395.717
+}
+SCR_GameModeEditor GameMode_Editor_Protection : "{4E2FCFA7A56E4550}Prefabs/MP/Modes/Editor/GameMode_Editor_Protection.et" {
+ coords 2632.74 110.311 2395.879
+ {
+  SCR_FactionManager "65BD0E7860203504" {
+   ID "65BD08333C3BDCE4"
+   Factions {
+    SCR_Faction "{65BD08321444E389}" {
+     m_bIsPlayable 0
+    }
+    SCR_Faction "{65BD083211A6C7EF}" {
+     m_bIsPlayable 0
+    }
+   }
+  }
+ }
+}

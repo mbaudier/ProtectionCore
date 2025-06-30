@@ -1,0 +1,48 @@
+SCR_FactionManager : "{A242612865F2A48E}Prefabs/MP/Managers/Factions/FactionManager_Base.et" {
+ ID "56B2B4776E6E4499"
+ components {
+  ARGEO_ProtectionFactionManagerComponent "{65BD0832072A1BC8}" {
+   m_sProtectedFaction "PROTECTED"
+   m_bAlliesCanBeRecruited 1
+  }
+ }
+ Factions {
+  SCR_Faction "{56DEAC40D2DBC8B1}" : "{5EB46557DF2AA24F}Configs/Factions/US.conf" {
+   m_bIsPlayable 0
+   m_aFriendlyFactionsIds {
+    "RURAL" "URBAN" "REDPEACE" "GANG"
+   }
+   m_sFactionBackground "{F8AC305446D5D480}UI/Textures/DeployMenu/Loadout-BG/Loadout_US_BG.imageset"
+  }
+  SCR_Faction "{56DEAC40D3C2E623}" : "{09727032415AC39B}Configs/Factions/USSR.conf" {
+   m_bIsPlayable 0
+   m_aFriendlyFactionsIds {
+    "RURAL" "URBAN" "REDPEACE" "GANG"
+   }
+   m_sFactionBackground "{21533F2089005056}UI/Textures/DeployMenu/Loadout-BG/Loadout_BG_USSR.imageset"
+  }
+  SCR_Faction "{56DEAC40D132400B}" : "{8053DB656DD18B14}Configs/Factions/FIA.conf" {
+   m_bIsPlayable 0
+   m_aFriendlyFactionsIds {
+    "RURAL" "URBAN" "REDPEACE"
+   }
+   m_sFactionBackground "{81BF3B1DCC106577}UI/Textures/DeployMenu/Loadout-BG/Loadout_BG_FIA.imageset"
+  }
+  SCR_Faction "{65BD08321E6B6038}" : "{E5B2FC4A0D01E456}Configs/Factions/RURAL.conf" {
+  }
+  SCR_Faction "{65BD08321BDDBDF1}" : "{FFF1E35BF8F3312D}Configs/Factions/URBAN.conf" {
+  }
+  SCR_Faction "{65BD08321444E389}" : "{5C630F7CDC94DACA}Configs/Factions/GANG.conf" {
+   m_bIsPlayable 0
+   m_aFriendlyFactionsIds {
+    "RURAL" "URBAN"
+   }
+  }
+  SCR_Faction "{65BD083211A6C7EF}" : "{B709EDB4147259CD}Configs/Factions/REDPEACE.conf" {
+   m_bIsPlayable 0
+   m_aFriendlyFactionsIds {
+    "RURAL" "URBAN"
+   }
+  }
+ }
+}
