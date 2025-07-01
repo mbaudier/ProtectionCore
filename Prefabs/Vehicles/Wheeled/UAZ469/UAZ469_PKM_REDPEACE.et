@@ -7,6 +7,12 @@ Vehicle : "{0B4DEA8078B78A9B}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_PKM.et" {
     m_aAutoLabels {
      910218 122 50
     }
+    m_EntityBudgetCost {
+     SCR_EntityBudgetValue "{648895FA34A72414}" {
+      m_BudgetType RANK_PRIVATE
+      m_Value 1
+     }
+    }
    }
   }
   SCR_VehicleFactionAffiliationComponent "{5882CBD9AC741CEC}" {

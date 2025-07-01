@@ -9,10 +9,6 @@ SCR_LoadoutManager : "{58FBD035E53D95C1}Prefabs/MP/Campaign/CampaignLoadoutManag
    m_sLoadoutResource "{2E36B11E88C65E0B}Prefabs/Characters/Campaign/Final/Campaign_REDPEACE_Player.et"
    m_sAffiliatedFaction "REDPEACE"
   }
-  SCR_FactionPlayerLoadout "{64DD123ACB038F41}" {
-   m_sLoadoutResource "{59E52584CFABA777}Prefabs/Characters/Campaign/Final/Campaign_URBAN_Player.et"
-   m_sAffiliatedFaction "URBAN"
-  }
   SCR_PlayerArsenalLoadout "{5B108B49559B24A2}" {
    m_sLoadoutResource "{891238F03F037386}Prefabs/Characters/Campaign/Final/Campaign_GANG_Base.et"
    m_sAffiliatedFaction "GANG"
@@ -21,8 +17,14 @@ SCR_LoadoutManager : "{58FBD035E53D95C1}Prefabs/MP/Campaign/CampaignLoadoutManag
    m_sLoadoutResource "{BFF3554FBDAF04D6}Prefabs/Characters/Campaign/Final/Campaign_REDPEACE_Base.et"
    m_sAffiliatedFaction "REDPEACE"
   }
+  SCR_FactionPlayerLoadout "{64DD123ACB038F41}" {
+   m_sLoadoutName "Loadout_Editor_NewArsenalLoadout_Name"
+   m_sLoadoutResource "{74DF5613F8551847}Prefabs/Characters/Factions/INDFOR/RURAL/Character_RURAL_Randomized.et"
+   m_sAffiliatedFaction "RURAL"
+  }
   SCR_PlayerArsenalLoadout "{64DD123AD7E0F799}" {
-   m_sLoadoutResource "{59E52584CFABA777}Prefabs/Characters/Campaign/Final/Campaign_URBAN_Player.et"
+   m_sLoadoutName "Loadout_Editor_NewArsenalLoadout_Name"
+   m_sLoadoutResource "{F26F2933F70EB514}Prefabs/Characters/Factions/INDFOR/URBAN/Character_URBAN_Randomized.et"
    m_sAffiliatedFaction "URBAN"
   }
  }
