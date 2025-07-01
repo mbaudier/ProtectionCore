@@ -1,4 +1,26 @@
 SCR_AIGroup : "{000CD338713F2B5A}Prefabs/AI/Groups/Group_Base.et" {
  ID "0000000000000001"
+ components {
+  SCR_EditableGroupComponent "{50D291F6C83FA532}" {
+   m_UIInfo SCR_EditableGroupUIInfo "{5298E609432D192D}" {
+    Icon "{9164E45B9A237FE9}UI/Textures/Editor/EditableEntities/Characters/EditableEntity_Character_Unarmed.edds"
+    m_Image "{A1FEAA3146DDAF38}UI/Textures/EditorPreviews/Characters/CIV/Character_CIV_Randomized.edds"
+    m_aAuthoredLabels + {
+     1001 70 22 13
+    }
+    m_bUseUIInfoName 1
+    m_MilitarySymbol SCR_MilitarySymbol "{563682D06ED5ACD9}" {
+     m_Identity CIVILIAN
+     m_Icons UNARMED
+    }
+   }
+  }
+  SCR_GroupIdentityComponent "{56366C5C50AD3CF2}" {
+   m_MilitarySymbol SCR_MilitarySymbol "{56366C5C4E32A359}" {
+    m_Identity CIVILIAN
+   }
+   m_bForced 1
+  }
+ }
  m_faction "CIV"
 }

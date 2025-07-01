@@ -1,5 +1,16 @@
 SCR_AIGroup : "{1DB5C3A7F8BC1686}Prefabs/Groups/CIV/Group_CIV_Base.et" {
  ID "0000000000000001"
+ components {
+  SCR_EditableGroupComponent "{50D291F6C83FA532}" {
+   m_UIInfo SCR_EditableGroupUIInfo "{5298E609432D192D}" {
+    Name "#PRTC-Group_Civilian_3x"
+    Icon "{C431FD61793AA13F}UI/Textures/Editor/EditableEntities/Characters/EditableEntity_Random.edds"
+    m_aAuthoredLabels + {
+     290
+    }
+   }
+  }
+ }
  m_aUnitPrefabSlots {
   "{22E43956740A6794}Prefabs/Characters/Factions/CIV/GenericCivilians/Character_CIV_Randomized.et" "{22E43956740A6794}Prefabs/Characters/Factions/CIV/GenericCivilians/Character_CIV_Randomized.et" "{22E43956740A6794}Prefabs/Characters/Factions/CIV/GenericCivilians/Character_CIV_Randomized.et"
  }

@@ -29,8 +29,14 @@ SCR_FactionManager : "{A242612865F2A48E}Prefabs/MP/Managers/Factions/FactionMana
    m_sFactionBackground "{81BF3B1DCC106577}UI/Textures/DeployMenu/Loadout-BG/Loadout_BG_FIA.imageset"
   }
   SCR_Faction "{65BD08321E6B6038}" : "{E5B2FC4A0D01E456}Configs/Factions/RURAL.conf" {
+   m_aFriendlyFactionsIds {
+    "URBAN"
+   }
   }
   SCR_Faction "{65BD08321BDDBDF1}" : "{FFF1E35BF8F3312D}Configs/Factions/URBAN.conf" {
+   m_aFriendlyFactionsIds {
+    "RURAL"
+   }
   }
   SCR_Faction "{65BD08321444E389}" : "{5C630F7CDC94DACA}Configs/Factions/GANG.conf" {
    m_bIsPlayable 0

@@ -1,8 +1,6 @@
 SCR_ChimeraCharacter : "{37578B1666981FCE}Prefabs/Characters/Core/Character_Base.et" {
  ID "60E2B3CB4A780B93"
  components {
-  ChimeraAIControlComponent "{520EA1D2DB109F34}" {
-  }
   SCR_CharacterFactionAffiliationComponent "{60E2B3CB579FEA75}" {
    "faction affiliation" "URBAN"
   }
@@ -13,11 +11,12 @@ SCR_ChimeraCharacter : "{37578B1666981FCE}Prefabs/Characters/Core/Character_Base
     m_Image "{3AF0BB06FEAC0CC2}UI/Textures/EditorPreviews/Characters/CIV/Character_CIV_4.edds"
     m_sFaction "URBAN"
     m_aAuthoredLabels {
-     2 70 910214 22
+     2 70 1001 22 910214
     }
     m_aAutoLabels {
     }
    }
+   m_PrefabGroup "{F7306A9B1A7A9303}Prefabs/Groups/INDFOR/URBAN/Group_URBAN_Base.et"
   }
   CharacterWeaponSlotComponent "{520EA1D2F659CFAB}" {
    WeaponType Handgun

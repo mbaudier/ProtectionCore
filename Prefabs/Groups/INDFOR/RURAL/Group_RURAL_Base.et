@@ -10,10 +10,12 @@ SCR_AIGroup : "{000CD338713F2B5A}Prefabs/AI/Groups/Group_Base.et" {
     m_Image "{130450729A459E97}UI/Textures/EditorPreviews/Characters/CIV/Character_CIV_CottonShirt_5.edds"
     m_sFaction "RURAL"
     m_aAuthoredLabels + {
-     910213 1001
+     1001 22 910213
     }
+    m_bUseUIInfoName 1
     m_MilitarySymbol SCR_MilitarySymbol "{563682D06ED5ACD9}" {
      m_Identity CIVILIAN
+     m_Icons UNARMED
     }
    }
   }

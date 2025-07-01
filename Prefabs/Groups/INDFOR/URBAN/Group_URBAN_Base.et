@@ -10,10 +10,12 @@ SCR_AIGroup : "{000CD338713F2B5A}Prefabs/AI/Groups/Group_Base.et" {
     m_Image "{3AF0BB06FEAC0CC2}UI/Textures/EditorPreviews/Characters/CIV/Character_CIV_4.edds"
     m_sFaction "URBAN"
     m_aAuthoredLabels + {
-     910214 1001
+     1001 22 910214
     }
+    m_bUseUIInfoName 1
     m_MilitarySymbol SCR_MilitarySymbol "{563682D06ED5ACD9}" {
      m_Identity CIVILIAN
+     m_Icons UNARMED
     }
    }
   }

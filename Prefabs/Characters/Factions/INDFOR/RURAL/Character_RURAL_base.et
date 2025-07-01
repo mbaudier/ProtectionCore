@@ -11,11 +11,12 @@ SCR_ChimeraCharacter : "{37578B1666981FCE}Prefabs/Characters/Core/Character_Base
     m_Image "{130450729A459E97}UI/Textures/EditorPreviews/Characters/CIV/Character_CIV_CottonShirt_5.edds"
     m_sFaction "RURAL"
     m_aAuthoredLabels + {
-     2 910213 22
+     2 1001 22 910213
     }
     m_aAutoLabels {
     }
    }
+   m_PrefabGroup "{9A23B03EC08610D5}Prefabs/Groups/INDFOR/RURAL/Group_RURAL_Base.et"
   }
   CharacterWeaponSlotComponent "{520EA1D2F659CFAB}" {
    WeaponType Handgun
