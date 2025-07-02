@@ -1,8 +1,0 @@
-SCR_PlayerController : "{A1AE127F16DD352E}Prefabs/Characters/Core/DefaultPlayerControllerMP_Factions.et" {
- ID "1A9BA6BEFA06E3B1"
- components {
-  SCR_PlayerControllerCommandingComponent "{5A7CC0F22BDDB868}" {
-   m_sCommandingConfigActionPair "{772828E5A635A070}Configs/Commanding/ProtectionCommandingMenuActionConfigPairs.conf"
-  }
- }
-}

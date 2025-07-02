@@ -1,11 +1,5 @@
-SCR_FactionManager : "{A242612865F2A48E}Prefabs/MP/Managers/Factions/FactionManager_Base.et" {
+SCR_FactionManager : "{E70679F5E0A515AC}Prefabs/MP/Managers/Factions/FactionManager_Protection.et" {
  ID "56B2B4776E6E4499"
- components {
-  ARGEO_ProtectionFactionManagerComponent "{65BD0832072A1BC8}" {
-   m_sProtectedFaction "PROTECTED"
-   m_bAlliesCanBeRecruited 1
-  }
- }
  Factions {
   SCR_Faction "{56DEAC40D2DBC8B1}" : "{5EB46557DF2AA24F}Configs/Factions/US.conf" {
    m_bIsPlayable 0

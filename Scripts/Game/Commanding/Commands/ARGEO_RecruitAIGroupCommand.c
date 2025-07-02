@@ -2,6 +2,11 @@
 [BaseContainerProps(), SCR_BaseGroupCommandTitleField("m_sCommandName")]
 class ARGEO_RecruitAIGroupCommand : ARGEO_BaseAddAIGroupCommand
 {
+	override bool IsFeatureEnabled()
+	{
+		return true;
+	}
+
 	override bool CanBeShownForFaction(notnull SCR_Faction controlledEntityFaction, notnull SCR_Faction faction)
 	{
 		if(faction == controlledEntityFaction)

@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{CF862129A8426292}Prefabs/MP/Campaign/ProtectionCampaignFactionManager.et"
+ Name "{FDDB712823199E09}Prefabs/ScenarioFramework/ProtectionGameModeSF.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

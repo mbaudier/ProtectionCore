@@ -1,0 +1,89 @@
+GenericEntity AreaWarCrimesCriminal : "{C72F956E4AC6A6E7}Prefabs/Systems/ScenarioFramework/Components/Area.et" {
+ components {
+  SCR_ScenarioFrameworkArea "{59E8CDC50969206E}" {
+   m_sFactionKey "US"
+  }
+ }
+ coords 3264.612 2 2906.048
+ {
+  $grp GenericEntity : "{2008B4EE6C4D528E}Prefabs/Systems/ScenarioFramework/Components/LayerTaskKill.et" {
+   KillCivilian {
+    components {
+     SCR_ScenarioFrameworkLayerTaskKill "{5B02763B6A6D6C4B}" {
+      m_sTaskTitle "Kill Civilian"
+      m_sTaskDescription "Expected: war crime notification"
+     }
+    }
+    coords 0 -0 0
+    {
+     GenericEntity SlotKillCivilian : "{C70DC6CBD1AAEC9A}Prefabs/Systems/ScenarioFramework/Components/SlotKill.et" {
+      components {
+       SCR_ScenarioFrameworkSlotKill "{5B02763C1EAA0BF1}" {
+        m_sObjectToSpawn "{22E43956740A6794}Prefabs/Characters/Factions/CIV/GenericCivilians/Character_CIV_Randomized.et"
+       }
+      }
+      coords -4.384 -0 2.335
+     }
+    }
+   }
+   KillAlly {
+    components {
+     SCR_ScenarioFrameworkLayerTaskKill "{5B02763B6A6D6C4B}" {
+      m_sTaskTitle "Kill Ally"
+      m_sTaskDescription "Expected: war crime notification"
+     }
+    }
+    coords 0 -0 0
+    {
+     GenericEntity SlotKillAlly : "{C70DC6CBD1AAEC9A}Prefabs/Systems/ScenarioFramework/Components/SlotKill.et" {
+      components {
+       SCR_ScenarioFrameworkSlotKill "{5B02763C1EAA0BF1}" {
+        m_sObjectToSpawn "{2F912ED6E399FF47}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Unarmed.et"
+       }
+      }
+      coords 1.586 0 5.311
+     }
+    }
+   }
+   KillUnarmedEnnemy {
+    components {
+     SCR_ScenarioFrameworkLayerTaskKill "{5B02763B6A6D6C4B}" {
+      m_sTaskTitle "Kill Unarmed Enemy"
+      m_sTaskDescription "Expected: war crime notification"
+     }
+    }
+    coords 0 -0 0
+    {
+     GenericEntity SlotKillUnarmedEnemy : "{C70DC6CBD1AAEC9A}Prefabs/Systems/ScenarioFramework/Components/SlotKill.et" {
+      components {
+       SCR_ScenarioFrameworkSlotKill "{5B02763C1EAA0BF1}" {
+        m_sObjectToSpawn "{98EB9CDD85B8C92C}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Unarmed.et"
+       }
+      }
+      coords -1.162 0 4.592
+     }
+    }
+   }
+  }
+  GenericEntity WarCrimesStart : "{5F9FFF4BF027B3A3}Prefabs/Systems/ScenarioFramework/Components/Layer.et" {
+   coords 0 -0 0
+   {
+    GenericEntity WarCrimesSpawn : "{AA01691FDC4E9167}Prefabs/Systems/ScenarioFramework/Components/Slot.et" {
+     components {
+      SCR_ScenarioFrameworkSlotBase "{5A22E1D67E712EC8}" {
+       m_aPlugins {
+        SCR_ScenarioFrameworkPluginSpawnPoint "{65C4B74FBE35E26F}" {
+         m_Info SCR_UIInfo "{65C4CB626EABDBA8}" {
+          Name "Test War Crimes"
+         }
+        }
+       }
+       m_sObjectToSpawn "{E7F4D5562F48DDE4}Prefabs/MP/Spawning/SpawnPoint_Base.et"
+      }
+     }
+     coords 5.685 0.001 -5.084
+    }
+   }
+  }
+ }
+}

@@ -9,8 +9,9 @@ class ARGEO_BaseAddAIGroupCommand : SCR_BaseGroupCommand
 	private bool m_bProtectionEnabled = true;
 	
 	/// To be overridden
-	protected void PostRecruitment(int count)
+	protected bool IsFeatureEnabled()
 	{
+		return false;
 	}
 	
 	/// To be overridden
@@ -35,6 +36,12 @@ class ARGEO_BaseAddAIGroupCommand : SCR_BaseGroupCommand
 	{
 		return true;
 	}
+
+	/// To be overridden
+	protected void PostRecruitment(int count)
+	{
+	}
+	
 
 	// TODO comment
 	protected void AddAIAgent(SCR_PlayerControllerGroupComponent groupController, int playerID, SCR_ChimeraCharacter character)
@@ -230,8 +237,11 @@ class ARGEO_BaseAddAIGroupCommand : SCR_BaseGroupCommand
 		
 		//
 		// Protection specific
-		//				
-		if(m_bApplyToGroup) // do not show whole group command if alone
+		//
+		if (!IsFeatureEnabled())
+			return false;
+						
+		if (m_bApplyToGroup) // do not show whole group command if alone
 		{
 			SCR_AIGroup currentGroup = GetGroupFromCharacter(character);
 			if(!currentGroup)
@@ -239,14 +249,18 @@ class ARGEO_BaseAddAIGroupCommand : SCR_BaseGroupCommand
 			if(currentGroup.GetAgentsCount() < 2)
 				return false;
 		}
+		
 		SCR_Faction faction = SCR_Faction.Cast(character.GetFaction());
 		if (!faction)
 			return false;
+		
 		SCR_Faction controlledEntityFaction = SCR_Faction.Cast(playerController.GetLocalControlledEntityFaction());
 		if (!controlledEntityFaction)
 			return false;
+		
 		if (!CanBeShownForFaction(controlledEntityFaction, faction))
 			return false;
+		
 		if (!CanBeShownForCharacter(character))
 			return false;
 		//

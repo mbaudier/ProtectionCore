@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{48E64DB069A7CBAD}Prefabs/Characters/Core/DefaultPlayerControllerMP_Factions_Protection.et"
+ Name "{E70679F5E0A515AC}Prefabs/MP/Managers/Factions/FactionManager_Protection.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

@@ -23,7 +23,6 @@ SCR_GameModeEditor : "{D2DE7F43D48A3667}Prefabs/MP/Modes/Editor/GameMode_Editor.
    m_iMaxAIPerGroup -1
   }
  }
- PlayerControllerPrefab "{48E64DB069A7CBAD}Prefabs/Characters/Core/DefaultPlayerControllerMP_Factions_Protection.et"
  m_eTestGameFlags SpawnAI
  {
   SCR_FactionManager "65BD0E78396CF47C" : "{6B8E0BC290FDBB18}Prefabs/MP/Managers/Factions/FactionManager_Editor_Protection.et" {

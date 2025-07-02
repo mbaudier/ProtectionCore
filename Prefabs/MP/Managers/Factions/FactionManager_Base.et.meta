@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{9CFFA6EF6EF7A721}Prefabs/Weapons/Rifles/M16/Variants/Rifle_M16A2_M203_suppressor_4x20_OliveGreen_Sand_Stripes.et"
+ Name "{A242612865F2A48E}Prefabs/MP/Managers/Factions/FactionManager_Base.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }
