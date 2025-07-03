@@ -57,6 +57,17 @@ GenericEntity AreaWarCrimesCriminal : "{C72F956E4AC6A6E7}Prefabs/Systems/Scenari
     }
     coords 0 0 0
     {
+     GenericEntity ArmedEnemy : "{8D43830F02C3F114}Prefabs/Systems/ScenarioFramework/Components/SlotAI.et" {
+      components {
+       SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+        m_sObjectToSpawn "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et"
+       }
+       Hierarchy "{5A26B3E02E941739}" {
+        Enabled 0
+       }
+      }
+      coords 7.005 -0 -2.179
+     }
      GenericEntity SlotKillUnarmedEnemy : "{C70DC6CBD1AAEC9A}Prefabs/Systems/ScenarioFramework/Components/SlotKill.et" {
       components {
        SCR_ScenarioFrameworkSlotKill "{5B02763C1EAA0BF1}" {

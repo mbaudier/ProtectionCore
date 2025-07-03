@@ -103,16 +103,25 @@ class ARGEO_WarCrimesComponent : SCR_BaseGameModeComponent
 
 	bool IsDisarmed(SCR_ChimeraCharacter character)
 	{
-		CharacterPerceivableComponent perceivableComp = CharacterPerceivableComponent.Cast(character.FindComponent(CharacterPerceivableComponent));
-		if (perceivableComp)
-		{
-			if(perceivableComp.IsDisarmed())
-				return true;
-		}
+//		CharacterPerceivableComponent perceivableComp = CharacterPerceivableComponent.Cast(character.FindComponent(CharacterPerceivableComponent));
+//		if (perceivableComp)
+//		{
+//			if(perceivableComp.IsDisarmed())
+//				return true;
+//		}
+		
 		CharacterWeaponManagerComponent weaponManager = CharacterWeaponManagerComponent.Cast(character.FindComponent(CharacterWeaponManagerComponent));
-		WeaponSlotComponent weapon = weaponManager.GetCurrentSlot();
-		// TODO check other visible slots
-		bool disarmed = !weapon;
+		if (!weaponManager)
+			return true;
+
+		array<IEntity> weapons = {};
+		int weaponsCount = 	weaponManager.GetWeaponsList(weapons);
+		bool disarmed = weaponsCount == 0;
+		
+//		WeaponSlotComponent weapon = weaponManager.GetCurrentSlot();
+//		weaponManager.GetCurrentWeapon();
+//		bool disarmed = !weapon;
+
 		return disarmed;
 	}
 	
