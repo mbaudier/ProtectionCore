@@ -166,8 +166,6 @@ SCR_BaseGameMode : "{ECEEDB2D3737204B}Prefabs/Systems/ScenarioFramework/GameMode
    m_SpawnLogic SCR_MenuSpawnLogic "{5D36888CC966608A}" {
    }
   }
-  SCR_TimeAndWeatherHandlerComponent "{65B323FCA270F580}" {
-  }
  }
  m_eTestGameFlags 7
  m_bAllowFactionChange 0
