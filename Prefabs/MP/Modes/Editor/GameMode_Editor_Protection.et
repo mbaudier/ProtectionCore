@@ -22,6 +22,10 @@ SCR_GameModeEditor : "{D2DE7F43D48A3667}Prefabs/MP/Modes/Editor/GameMode_Editor.
    m_sCommandsConfigPath "{4615FA289AC337D6}Configs/Commanding/ProtectionCommands.conf"
    m_iMaxAIPerGroup -1
   }
+  SCR_PerceivedFactionManagerComponent "{61AA7E6E0C6A76F9}" {
+   m_ePunishmentKillingWhileDisguised WARCRIME
+   m_bPerceivedFactionChangesAffectsAI 1
+  }
  }
  m_eTestGameFlags SpawnAI
  {

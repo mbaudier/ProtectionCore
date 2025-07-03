@@ -8,6 +8,12 @@ modded enum SCR_EDataStats
 	PROTECTED_AI_KILLS, //!< Protected AI kills
 	HDC_KILLS, //!< Hors de combat human kills
 	HDC_AI_KILLS, //!< Hors de combat AI kills
-	DISGUISED_KILLER, //!< Killer was desguised as enemy
-	PERFIDY_KILLER, //!< Killerwas desguised as protected
+	
+	DISGUISED_KILLER, //!< Killer was disguised as enemy
+	PERFIDY_KILLER, //!< Killer was disguised as protected
+
+	WARCRIME_HARMING_PROTECTED, //!< Harming protected
+	WARCRIME_HARMING_HDC, //!< Harming hors de combat
+	WARCRIME_DISGUISED, //!< Killing while disguised as enemy
+	WARCRIME_PERFIDY, //!< Killing while disguised as protected
 }

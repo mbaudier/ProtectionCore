@@ -1,0 +1,7 @@
+SCR_PlayerController {
+ ID "1A9BA6BEFA06E3B1"
+ components {
+  ARGEO_WarCrimesHintComponent "{65C6EA5A83E27277}" {
+  }
+ }
+}

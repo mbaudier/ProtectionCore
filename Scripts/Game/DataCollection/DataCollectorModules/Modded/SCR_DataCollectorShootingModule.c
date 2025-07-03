@@ -17,7 +17,7 @@ modded class SCR_DataCollectorShootingModule
 		}
 		
 		IEntity victimEntity = AIEntity;
-		evaluateLegalCrime(instigatorContextData, victimEntity, true, killerData);
+		EvaluateLegalCrime(instigatorContextData, victimEntity, killerEntity, true, killerData);
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -44,85 +44,143 @@ modded class SCR_DataCollectorShootingModule
 		SCR_ECharacterControlType victimControlType = instigatorContextData.GetVictimCharacterControlType();
 		bool isVictimAI = (victimControlType == SCR_ECharacterControlType.POSSESSED_AI);
 
-		evaluateLegalCrime(instigatorContextData, victimEntity, isVictimAI, killerData);
+		EvaluateLegalCrime(instigatorContextData, victimEntity, killerEntity, isVictimAI, killerData);
 	}
 	
-	protected bool evaluateLegalCrime(notnull SCR_InstigatorContextData instigatorContextData, IEntity victimEntity, bool isVictimAI, SCR_PlayerData killerData)
+	protected bool EvaluateLegalCrime(notnull SCR_InstigatorContextData instigatorContextData, IEntity victimEntity, IEntity killerEntity, bool isVictimAI, SCR_PlayerData killerData)
 	{
+		// Note: killerData != null is the marker for player-specific logic
+		
 		ARGEO_WarCrimesComponent warCrimesComponent = ARGEO_WarCrimesComponent.GetInstance();
+		if (!warCrimesComponent)
+			return true; // TODO call vanilla logic?
 		
+		bool killedByEnemy = instigatorContextData.HasAnyVictimKillerRelation(SCR_ECharacterDeathStatusRelations.KILLED_BY_ENEMY_PLAYER)
+		 || instigatorContextData.HasAnyVictimKillerRelation(SCR_ECharacterDeathStatusRelations.KILLED_BY_ENEMY_AI);
+		
+		// we assume legal kill, then systematically check potential crimes
 		bool isLegalKill = true;
-		
-		if(warCrimesComponent.IsProtected(victimEntity))
+
+		// check non-combatant killed		
+		if (warCrimesComponent.IsProtected(victimEntity))
 		{	
 			isLegalKill = false;
-			if(killerData)
-				if(isVictimAI)
+			if (killerData)
+				if (isVictimAI)
 					killerData.AddStat(SCR_EDataStats.PROTECTED_AI_KILLS);
 				else
 					killerData.AddStat(SCR_EDataStats.PROTECTED_KILLS);
 		}
-		else if(warCrimesComponent.IsHorsDecombat(victimEntity) && warCrimesComponent.IsKillingHorsDeCombatWarCrime())
+		// check hors de combat killed
+		else if(killedByEnemy
+		 && warCrimesComponent.IsHorsDecombat(victimEntity)
+		 && warCrimesComponent.IsKillingHorsDeCombatWarCrime())
 		{	
 			isLegalKill = false;
-			if(killerData)
-				if(isVictimAI)
+			if (killerData)
+				if (isVictimAI)
 					killerData.AddStat(SCR_EDataStats.HDC_AI_KILLS);
 				else
 					killerData.AddStat(SCR_EDataStats.HDC_KILLS);
 		}
 
-		if (instigatorContextData.HasAnyVictimKillerRelation(SCR_ECharacterDeathStatusRelations.KILLED_BY_ENEMY_PLAYER))
+		// check disguised or perfidy
+		if (killedByEnemy)
 		{
-			if (instigatorContextData.IsEnemyKillPunished(SCR_EDisguisedKillingPunishment.WARCRIME))
-			{ 
-				isLegalKill = false;
-				// TODO check faction in order to add proper stat
-			}			
+			SCR_PerceivedFactionManagerComponent perceivedFactionManager = SCR_PerceivedFactionManagerComponent.GetInstance();
+			SCR_CharacterFactionAffiliationComponent killerFactionAffiliation = SCR_CharacterFactionAffiliationComponent.Cast(killerEntity.FindComponent(SCR_CharacterFactionAffiliationComponent));
+			if (perceivedFactionManager 
+			 && perceivedFactionManager.GetCharacterPerceivedFactionOutfitType() != SCR_EPerceivedFactionOutfitType.DISABLED
+			 && killerFactionAffiliation)
+			{
+				if (killerFactionAffiliation.HasPerceivedFaction()
+				 && SCR_Enum.HasPartialFlag(perceivedFactionManager.GetPunishmentKillingWhileDisguisedFlags(), SCR_EDisguisedKillingPunishment.WARCRIME))
+				{
+					if(instigatorContextData.GetKillerDisguiseType() == SCR_ECharacterDisguiseType.HOSTILE_FACTION)
+					{
+						isLegalKill = false;
+						if (killerData)
+							killerData.AddStat(SCR_EDataStats.DISGUISED_KILLER);
+					}
+					else
+					{
+						bool isPerfidy = false;
+						SCR_Faction killerPerceivedFaction = SCR_Faction.Cast(killerFactionAffiliation.GetPerceivedFaction());
+						if (killerPerceivedFaction)
+						{
+							if (!killerPerceivedFaction.IsMilitary())
+								isPerfidy = true;
+						}
+						else
+						{
+							isPerfidy = instigatorContextData.GetKillerDisguiseType() != SCR_ECharacterDisguiseType.DEFAULT_FACTION;
+						}
+						
+						if (isPerfidy)
+						{
+							isLegalKill = false;
+							if (killerData)
+								killerData.AddStat(SCR_EDataStats.PERFIDY_KILLER);
+						}
+					}
+					
+				}
+			}
+		
+//			if (instigatorContextData.IsEnemyKillPunished(SCR_EDisguisedKillingPunishment.WARCRIME))
+//			{ 
+//				isLegalKill = false;
+//			}			
 		}
-		else // friendly fire
+		
+		// check friendly fire
+		if (!killedByEnemy)
 		{
-			if (instigatorContextData.DoesPlayerKillCountAsTeamKill(true, true))
+			if (!warCrimesComponent.IsProtected(victimEntity) // already checked, do not count twice
+				&& instigatorContextData.DoesPlayerKillCountAsTeamKill(true, true))
 			{
 				isLegalKill = false;
-				if(killerData)
-					if(isVictimAI)
+				if (killerData)
+					if (isVictimAI)
 						killerData.AddStat(SCR_EDataStats.ALLIED_AI_KILLS);
 					else
 						killerData.AddStat(SCR_EDataStats.ALLIED_KILLS);
 			}
 			else
 			{
-				return true; // ignore friendly kill
+				 // completely ignore friendly kill, no stats will be gathered
+				return true;
 			}
 		}
 		
-		if(isLegalKill)
+		if (isLegalKill)
 		{	
-			if(killerData)
+			if (killerData)
 			{
 				if (isVictimAI)
 					killerData.AddStat(SCR_EDataStats.LEGAL_AI_KILLS);
 				else
 					killerData.AddStat(SCR_EDataStats.LEGAL_KILLS);
 				
+			}
+		}
+
+		// compatibility with vanilla
+		if (warCrimesComponent.TreatAllWarCrimesAsFriendlyKills() && killerData)
+		{
+			if (isLegalKill)
+			{	
 				if (isVictimAI)
 					killerData.AddStat(SCR_EDataStats.AI_KILLS);
 				else
 					killerData.AddStat(SCR_EDataStats.KILLS);
 			}
-		}
-		else
-		{
-			if(killerData)
+			else
 			{
-				if(warCrimesComponent.TreatAllWarCrimesAsFriendlyKills())
-				{
-					if (isVictimAI)
-						killerData.AddStat(SCR_EDataStats.FRIENDLY_AI_KILLS);
-					else
-						killerData.AddStat(SCR_EDataStats.FRIENDLY_KILLS);
-				}
+				if (isVictimAI)
+					killerData.AddStat(SCR_EDataStats.FRIENDLY_AI_KILLS);
+				else
+					killerData.AddStat(SCR_EDataStats.FRIENDLY_KILLS);
 			}
 		}
 		

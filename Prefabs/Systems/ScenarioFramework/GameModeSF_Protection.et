@@ -1,6 +1,10 @@
 SCR_BaseGameMode : "{ECEEDB2D3737204B}Prefabs/Systems/ScenarioFramework/GameModeSF.et" {
  ID "56B2B479C6B96951"
  components {
+  ARGEO_WarCrimesComponent "{657D06928358A762}" {
+   m_bKillingHorsDeCombatIsWarCrime 1
+   m_bTreatAllWarCrimesAsFriendlyKills 0
+  }
   SCR_CampaignBuildingManagerComponent "{65B2F52D1CFFC5DF}" {
    m_sFreeRoamBuildingClientTrigger "{5E191CEAF4B95816}Prefabs/MP/FreeRoamBuildingClientTrigger.et"
    m_BudgetType CAMPAIGN
@@ -152,6 +156,11 @@ SCR_BaseGameMode : "{ECEEDB2D3737204B}Prefabs/Systems/ScenarioFramework/GameMode
   }
   SCR_NametagConfigComponent "{571AA9E54FC9210D}" {
    m_sConfigPath "{5B6640F98711544D}Configs/NameTags/NametagSingleFriendly.conf"
+  }
+  SCR_PerceivedFactionManagerComponent "{61AA7E6E0C6A76F9}" {
+   m_eCharacterPerceivedFactionOutfitType HIGHEST_VALUE
+   m_ePunishmentKillingWhileDisguised WARCRIME
+   m_bPerceivedFactionChangesAffectsAI 1
   }
   SCR_RespawnSystemComponent "{56B2B4793051E7C9}" {
    m_SpawnLogic SCR_MenuSpawnLogic "{5D36888CC966608A}" {

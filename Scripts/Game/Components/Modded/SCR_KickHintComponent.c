@@ -1,0 +1,7 @@
+modded enum SCR_ECrimeNotification
+{
+	NON_COMBATANT_KILL,
+	HORS_DE_COMBAT_KILL,
+	DISGUISED,
+	PERFIDY,
+}

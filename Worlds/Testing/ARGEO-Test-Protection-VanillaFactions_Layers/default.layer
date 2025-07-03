@@ -47,6 +47,9 @@ ScriptedChatEntity ScriptedChatEntity : "{F69BC912AC8236F9}Prefabs/MP/ScriptedCh
 }
 SCR_BaseGameMode GameModeSF_Protection : "{FDDB712823199E09}Prefabs/Systems/ScenarioFramework/GameModeSF_Protection.et" {
  components {
+  ARGEO_WarCrimesComponent "{657D06928358A762}" {
+   m_bPlayableFactionsFriendlyToNonMilitary 0
+  }
   SCR_FactionAliasComponent "{65C52753ABFAF394}" {
    m_aFactionAliases {
     SCR_ScenarioFrameworkFactionAliasConfig "{65C52753AAC8BAE2}" {
@@ -57,6 +60,11 @@ SCR_BaseGameMode GameModeSF_Protection : "{FDDB712823199E09}Prefabs/Systems/Scen
      m_sAlias "Legal"
      m_sFactionKey "USSR"
     }
+   }
+  }
+  SCR_RespawnSystemComponent "{56B2B4793051E7C9}" {
+   m_SpawnLogic SCR_MenuSpawnLogic "{5D36888CC966608A}" {
+    m_sForcedFaction "US"
    }
   }
  }

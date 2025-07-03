@@ -94,5 +94,78 @@ StringTable {
    Author "argeo"
    LastChanged "argeo"
   }
+  CustomStringTableItem "{65C6EA469E55E208}" {
+   Id "PRTC-WarCrime_Disguised_Title"
+   Target_en_us "Disguised As Hostile Faction"
+   Modified 1707548880
+   Author "argeo"
+   LastChanged "argeo"
+  }
+  CustomStringTableItem "{65C6EA5B7674FE36}" {
+   Id "PRTC-WarCrime_HdcKill_Text"
+   Target_en_us "You have killed an \"hors de combat\" enemy soldier. This is a war crime, as per Rule 47: \"Attacks against Persons Hors de Combat\"."\
+   "See https://ihl-databases.icrc.org"
+   Modified 1707551669
+   Author "argeo"
+   LastChanged "argeo"
+  }
+  CustomStringTableItem "{65C6EA58554F5A8D}" {
+   Id "PRTC-WarCrime_HdcKill_Title"
+   Target_en_us "Hors De Combat Enemy Killed"
+   Modified 1707542188
+   Author "argeo"
+   LastChanged "argeo"
+  }
+  CustomStringTableItem "{65C6EA596E02D3D9}" {
+   Id "PRTC-WarCrime_Multiple_Text"
+   Target_en_us "You have committed multiple war crimes."\
+   "See https://ihl-databases.icrc.org"
+   Modified 1707551648
+   Author "argeo"
+   LastChanged "argeo"
+  }
+  CustomStringTableItem "{65C6EA5976013AF9}" {
+   Id "PRTC-WarCrime_Multiple_Title"
+   Target_en_us "Multiple War Crimes"
+   Modified 1707536941
+   Author "argeo"
+   LastChanged "argeo"
+  }
+  CustomStringTableItem "{65C6EA7BF34FB521}" {
+   Id "PRTC-WarCrime_Perfidy_Title"
+   Target_en_us "Perfidy"
+   Modified 1707551267
+   Author "argeo"
+   LastChanged "argeo"
+  }
+  CustomStringTableItem "{65C6EA5B9A772165}" {
+   Id "PRTC-WarCrime_ProtectedKill_Text"
+   Target_en_us "You have killed a non-combatant. This is a war crime, as per Rule 1: \"The Principle of Distinction between Civilians and Combatants\"."\
+   "See https://ihl-databases.icrc.org"
+   Modified 1707551683
+   Author "argeo"
+   LastChanged "argeo"
+  }
+  CustomStringTableItem "{65C6EA5BA159F0BC}" {
+   Id "PRTC-WarCrime_ProtectedKill_Title"
+   Target_en_us "Non-Combatant Killed"
+   Modified 1707542152
+   Author "argeo"
+   LastChanged "argeo"
+  }
+  CustomStringTableItem "{65C6EA466DEE2265}" {
+   Id "PRTC-WarCrime_Rule_Nbr"
+   Target_en_us "Rule"
+   Modified 1707551015
+   Author "argeo"
+   LastChanged "argeo"
+  }
+  CustomStringTableItem "{65C6EA59E9D51C4D}" {
+   Id "PRTC-WarCrime_Title_Prefix"
+   Target_en_us "War Crime: "
+   Modified 1707536734
+   Author "argeo"
+   LastChanged "argeo"
+  }
  }
 }

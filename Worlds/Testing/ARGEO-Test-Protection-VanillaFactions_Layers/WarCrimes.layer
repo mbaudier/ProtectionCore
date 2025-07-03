@@ -1,3 +1,6 @@
+GenericEntity : "{22D2EFA80AC9DBD0}Prefabs/Compositions/Slotted/SlotFlatSmall/SupplyCache_S_FIA_03.et" {
+ coords 3287.621 2 2892.946
+}
 GenericEntity AreaWarCrimesCriminal : "{C72F956E4AC6A6E7}Prefabs/Systems/ScenarioFramework/Components/Area.et" {
  components {
   SCR_ScenarioFrameworkArea "{59E8CDC50969206E}" {
@@ -14,7 +17,7 @@ GenericEntity AreaWarCrimesCriminal : "{C72F956E4AC6A6E7}Prefabs/Systems/Scenari
       m_sTaskDescription "Expected: war crime notification"
      }
     }
-    coords 0 -0 0
+    coords 0 0 0
     {
      GenericEntity SlotKillCivilian : "{C70DC6CBD1AAEC9A}Prefabs/Systems/ScenarioFramework/Components/SlotKill.et" {
       components {
@@ -22,7 +25,7 @@ GenericEntity AreaWarCrimesCriminal : "{C72F956E4AC6A6E7}Prefabs/Systems/Scenari
         m_sObjectToSpawn "{22E43956740A6794}Prefabs/Characters/Factions/CIV/GenericCivilians/Character_CIV_Randomized.et"
        }
       }
-      coords -4.384 -0 2.335
+      coords -4.384 0 2.335
      }
     }
    }
@@ -33,7 +36,7 @@ GenericEntity AreaWarCrimesCriminal : "{C72F956E4AC6A6E7}Prefabs/Systems/Scenari
       m_sTaskDescription "Expected: war crime notification"
      }
     }
-    coords 0 -0 0
+    coords 0 0 0
     {
      GenericEntity SlotKillAlly : "{C70DC6CBD1AAEC9A}Prefabs/Systems/ScenarioFramework/Components/SlotKill.et" {
       components {
@@ -41,7 +44,7 @@ GenericEntity AreaWarCrimesCriminal : "{C72F956E4AC6A6E7}Prefabs/Systems/Scenari
         m_sObjectToSpawn "{2F912ED6E399FF47}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Unarmed.et"
        }
       }
-      coords 1.586 0 5.311
+      coords -2.874 0 3.101
      }
     }
    }
@@ -52,7 +55,7 @@ GenericEntity AreaWarCrimesCriminal : "{C72F956E4AC6A6E7}Prefabs/Systems/Scenari
       m_sTaskDescription "Expected: war crime notification"
      }
     }
-    coords 0 -0 0
+    coords 0 0 0
     {
      GenericEntity SlotKillUnarmedEnemy : "{C70DC6CBD1AAEC9A}Prefabs/Systems/ScenarioFramework/Components/SlotKill.et" {
       components {
@@ -66,8 +69,20 @@ GenericEntity AreaWarCrimesCriminal : "{C72F956E4AC6A6E7}Prefabs/Systems/Scenari
    }
   }
   GenericEntity WarCrimesStart : "{5F9FFF4BF027B3A3}Prefabs/Systems/ScenarioFramework/Components/Layer.et" {
-   coords 0 -0 0
+   coords 1.976 0 -2.806
    {
+    GenericEntity : "{2F17BFBCDB329CCA}Prefabs/Props/Military/Compositions/US/ArsenalBox_US_Weapons.et" {
+     coords 8.229 0 -4.804
+     angleY 70.474
+    }
+    GenericEntity : "{372DCA487884C4E8}Prefabs/Props/Military/Compositions/USSR/ArsenalBox_USSR_Weapons.et" {
+     coords 4.157 0 -7.4
+     angleY 69.842
+    }
+    GenericEntity : "{A28E5D231A74D95D}Prefabs/Props/Military/Compositions/US/ArsenalBox_US_Equipment.et" {
+     coords 7.349 0 -2.943
+     angleY 57.747
+    }
     GenericEntity WarCrimesSpawn : "{AA01691FDC4E9167}Prefabs/Systems/ScenarioFramework/Components/Slot.et" {
      components {
       SCR_ScenarioFrameworkSlotBase "{5A22E1D67E712EC8}" {
@@ -83,7 +98,32 @@ GenericEntity AreaWarCrimesCriminal : "{C72F956E4AC6A6E7}Prefabs/Systems/Scenari
      }
      coords 5.685 0.001 -5.084
     }
+    GenericEntity : "{F542F974956C255F}Prefabs/Props/Military/Compositions/CIV/ArsenalBox_CIV.et" {
+     coords 7.215 0 -8.256
+    }
+    GenericEntity : "{FE8505D4F04785F8}Prefabs/Props/Military/Compositions/USSR/ArsenalBox_USSR_Equipment.et" {
+     coords 3.103 0.001 -4.862
+     angleY 66.737
+    }
    }
   }
+ }
+}
+$grp SCR_DestructibleEntity : "{DEF98342630E1591}Prefabs/Structures/Walls/Net/NetFence_04/NetFence_04_8m.et" {
+ {
+  coords 3258.417 0.001 2909.502
+  angleY -30.554
+ }
+ {
+  coords 3265.357 0 2913.499
+  angleY 59.895
+ }
+ {
+  coords 3269.351 0.001 2906.473
+  angleY 150.352
+ }
+ {
+  coords 3262.443 0.922 2902.445
+  angleY -119.143
  }
 }
