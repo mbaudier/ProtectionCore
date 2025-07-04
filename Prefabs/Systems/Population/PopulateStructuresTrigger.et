@@ -11,12 +11,16 @@ ARGEO_PopulateStructuresTriggerEntity {
  coords 85.936 4.138 76.567
  TriggerShapeType Sphere
  SphereRadius 100
- ShapeColor 0.502 0 0.376 1
+ DrawShape 1
+ ShapeColor 0.3765 0.4706 0.749 0.5
  TriggerActivationType "All changes"
  PeriodicQueries 1
+ ClassesFilter {
+  "ARGEO_BuildingHouseholdEntity"
+ }
  PrefabsFilter {
   PrefabFilter "{64A73B9AB27616E7}" {
-   Prefab "{EFA00582842D41D0}Prefabs/Systems/Population/BuildingHousehold_Base.et"
+   Prefab "{DD346352F0F30A7C}Prefabs/Systems/AmbientVehicles/AmbientVehicleSpawnpoint_Base.et"
    CheckPrefabHierarchy 1
   }
  }

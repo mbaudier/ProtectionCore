@@ -79,7 +79,7 @@ GenericEntity AreaCommanding : "{C72F956E4AC6A6E7}Prefabs/Systems/ScenarioFramew
       SCR_ScenarioFrameworkSlotBase "{5A22E1D67E712EC8}" {
        m_aPlugins {
         SCR_ScenarioFrameworkPluginSpawnPoint "{65C4B74FBE35E26F}" {
-         m_sFaction "USSR"
+         m_sFaction "Legal"
          m_Info SCR_UIInfo "{65C4CB626EABDBA8}" {
           Name "Test Commanding"
          }

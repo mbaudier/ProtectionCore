@@ -30,9 +30,12 @@ ARGEO_PopulateLocationTriggerEntity {
  ShapeColor 0.502 0 0.376 1
  TriggerActivationType "All changes"
  PeriodicQueries 1
+ ClassesFilter {
+  "ARGEO_BuildingHouseholdEntity"
+ }
  PrefabsFilter {
   PrefabFilter "{65BAF43501A46566}" {
-   Prefab "{EFA00582842D41D0}Prefabs/Systems/Population/BuildingHousehold_Base.et"
+   Prefab "{DD346352F0F30A7C}Prefabs/Systems/AmbientVehicles/AmbientVehicleSpawnpoint_Base.et"
    CheckPrefabHierarchy 1
   }
  }

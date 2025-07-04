@@ -31,6 +31,20 @@ RadioManagerEntity RadioManager : "{B8E09FAB91C4ECCD}Prefabs/Radio/RadioManager.
  coords 1891.659 11.959 1826.161
 }
 SCR_FactionManager FactionManager_USxUSSR : "{E70679F5E0A515AC}Prefabs/MP/Managers/Factions/FactionManager_Protection.et" {
+ components {
+  SCR_FactionAliasComponent "{65C88D95376F76C5}" {
+   m_aFactionAliases {
+    SCR_ScenarioFrameworkFactionAliasConfig "{65C88D95312E2E68}" {
+     m_sAlias "Criminal"
+     m_sFactionKey "US"
+    }
+    SCR_ScenarioFrameworkFactionAliasConfig "{65C88D952C5FA90C}" {
+     m_sAlias "Legal"
+     m_sFactionKey "USSR"
+    }
+   }
+  }
+ }
  coords 1891.659 11.714 1824.161
  Factions {
   SCR_Faction "{65C5010C02CD64A0}" : "{5EB46557DF2AA24F}Configs/Factions/US.conf" {
@@ -47,6 +61,9 @@ ScriptedChatEntity ScriptedChatEntity : "{F69BC912AC8236F9}Prefabs/MP/ScriptedCh
 }
 SCR_BaseGameMode GameModeSF_Protection : "{FDDB712823199E09}Prefabs/Systems/ScenarioFramework/GameModeSF_Protection.et" {
  components {
+  ARGEO_PopulationComponent "{657F0CE6ADBB46C4}" {
+   m_fGlobalBuildingsOccupation 100
+  }
   ARGEO_WarCrimesComponent "{657D06928358A762}" {
    m_bPlayableFactionsFriendlyToNonMilitary 0
   }
@@ -64,7 +81,6 @@ SCR_BaseGameMode GameModeSF_Protection : "{FDDB712823199E09}Prefabs/Systems/Scen
   }
   SCR_RespawnSystemComponent "{56B2B4793051E7C9}" {
    m_SpawnLogic SCR_MenuSpawnLogic "{5D36888CC966608A}" {
-    m_sForcedFaction "US"
    }
   }
  }

@@ -45,6 +45,8 @@ class ARGEO_PopulatedTerritory
 	
 	int PopulateRandomSpawnPoints(int toPopulateSpawnPointsCount)
 	{
+		ARGEO_PopulationComponent populationComponent = ARGEO_PopulationComponent.GetInstance();
+		
 		array<ARGEO_PopulatedSpawnPointComponent> spawnPoints = {};
 		foreach (ARGEO_BuildingHouseholdEntity buildingHousehold : m_aBuildingHouseholds)
 		{
@@ -62,41 +64,42 @@ class ARGEO_PopulatedTerritory
 			
 			int index = Math.RandomInt(0, spawnPoints.Count());
 			ARGEO_PopulatedSpawnPointComponent spawnPoint = spawnPoints[index];
-			GenericEntity owner = spawnPoint.GetOwner();
-			FactionAffiliationComponent factionAffiliation = FactionAffiliationComponent.Cast(owner.FindComponent(FactionAffiliationComponent));		
+			FactionAffiliationComponent factionAffiliation = FactionAffiliationComponent.Cast(spawnPoint.GetOwner().FindComponent(FactionAffiliationComponent));		
 			if (factionAffiliation)
 			{
-				int randomWeight = Math.RandomIntInclusive(0, m_iTotalWeight);
-		
-				int checkedWeight = 0;
+				populationComponent.OptionallySetPopulationFactionByKey(factionAffiliation, GetRandomFactionKey());		
+				spawnPoint.EnableSpawn();
 				
-				FactionKey factionKey;
-				foreach (FactionKey f, int weight : m_mFactionWeights)
-				{
-					checkedWeight += weight;
-					if (randomWeight <= checkedWeight)
-					{
-						factionKey = f;
-						break; // m_mFactionWeights
-					}
-				}
-
-				if(factionKey)
-					factionAffiliation.SetAffiliatedFactionByKey(factionKey);		
+				spawnPointCount++;
+				spawnPoints.Remove(index);
 			}
-			spawnPoint.EnableSpawn();
-			
-			spawnPointCount++;
-			spawnPoints.Remove(index);
 		}
 		
-		// in case we are updating, make sure all other spawn points are disabled
+		// make sure all other spawn points are disabled
 		foreach (ARGEO_PopulatedSpawnPointComponent spawnPoint : spawnPoints)
 		{
 			spawnPoint.DisableSpawn();
 		}
 		
 		return spawnPointCount;
+	}
+
+	FactionKey GetRandomFactionKey()
+	{
+		int randomWeight = Math.RandomIntInclusive(0, m_iTotalWeight);
+		
+		int checkedWeight = 0;		
+		FactionKey factionKey;
+		foreach (FactionKey f, int weight : m_mFactionWeights)
+		{
+			checkedWeight += weight;
+			if (randomWeight <= checkedWeight)
+			{
+				factionKey = f;
+				break; // m_mFactionWeights
+			}
+		}
+		return factionKey;	
 	}
 	
 	void ChangeSafetyStatus(ARGEO_PopulationSafetyStatus safetyStatus)

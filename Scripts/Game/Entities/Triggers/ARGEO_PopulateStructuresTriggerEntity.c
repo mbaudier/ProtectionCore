@@ -12,33 +12,43 @@ class ARGEO_PopulateStructuresTriggerEntity : ScriptedGameTriggerEntity
 	{
 		super.OnActivate(ent);
 		
+		ARGEO_PopulationComponent populationComponent = ARGEO_PopulationComponent.GetInstance();
+		
+		// Check if faction forced
 		FactionKey triggerFactionKey;
 		FactionAffiliationComponent triggerFactionAffiliation = FactionAffiliationComponent.Cast(this.FindComponent(FactionAffiliationComponent));
 		if (triggerFactionAffiliation)
 		{
 			triggerFactionKey = triggerFactionAffiliation.GetAffiliatedFactionKey();
 		}
-		
-		ARGEO_BuildingHouseholdEntity buildingHousehold = ARGEO_BuildingHouseholdEntity.Cast(ent);
-		if (!buildingHousehold || buildingHousehold.GetPopulatedTerritoryID())
-			return;
-		buildingHousehold.SetPopulatedTerritoryID(m_sPopulatedTerritoryID);
 
-		ARGEO_PopulationComponent populationComponent = ARGEO_PopulationComponent.GetInstance();
-		populationComponent.RegisterBuildingHousehold(buildingHousehold);
-		if (triggerFactionKey)
-		{
-			array<ARGEO_PopulatedSpawnPointComponent> spawnPoints = {};
-			buildingHousehold.GetSpawnPoints(spawnPoints);
-			foreach (ARGEO_PopulatedSpawnPointComponent spawnPoint : spawnPoints)
+		// Structural entities
+		ARGEO_BuildingHouseholdEntity buildingHousehold = ARGEO_BuildingHouseholdEntity.Cast(ent);
+		if (buildingHousehold && !buildingHousehold.GetPopulatedTerritoryID())
+		{	
+			if (triggerFactionKey)
 			{
-				FactionAffiliationComponent factionAffiliation = FactionAffiliationComponent.Cast(spawnPoint.GetOwner().FindComponent(FactionAffiliationComponent));		
-				if (factionAffiliation)
+				array<ARGEO_PopulatedSpawnPointComponent> spawnPoints = {};
+				buildingHousehold.GetSpawnPoints(spawnPoints);
+				foreach (ARGEO_PopulatedSpawnPointComponent spawnPoint : spawnPoints)
 				{
-					factionAffiliation.SetAffiliatedFactionByKey(triggerFactionKey);
+					FactionAffiliationComponent factionAffiliation = FactionAffiliationComponent.Cast(spawnPoint.GetOwner().FindComponent(FactionAffiliationComponent));		
+					if (factionAffiliation)
+						factionAffiliation.SetAffiliatedFactionByKey(triggerFactionKey);
 				}
 			}
+			buildingHousehold.SetPopulatedTerritoryID(m_sPopulatedTerritoryID);
+			populationComponent.RegisterBuildingHousehold(buildingHousehold);
+			return;
 		}
+		
+		// Ambient vehicle
+		SCR_AmbientVehicleSpawnPointComponent vehicleSpawnPoint = SCR_AmbientVehicleSpawnPointComponent.Cast(ent.FindComponent(SCR_AmbientVehicleSpawnPointComponent));
+		if (vehicleSpawnPoint)
+		{
+			populationComponent.RegisterAmbientVehicle(m_sPopulatedTerritoryID, vehicleSpawnPoint);
+		}
+		
 	}
 	
 	override event protected void OnQueryFinished(bool bIsEmpty)
