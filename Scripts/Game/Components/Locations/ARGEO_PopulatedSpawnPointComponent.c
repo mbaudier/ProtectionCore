@@ -66,13 +66,13 @@ class ARGEO_PopulatedSpawnPointComponent : SCR_AmbientPatrolSpawnPointComponent
 	private void DoActivateGroup()
 	{
 		super.ActivateGroup();
-		Print("Populated spawn point - " + GetOwner().GetID() + " - activated");
+		Print("Populated spawn point - " + GetOwner().GetID() + " - activated", LogLevel.DEBUG);
 	}
 
 	override void DeactivateGroup()
 	{
 		super.DeactivateGroup();
-		Print("Populated spawn point - " + GetOwner().GetID() + " - deactivated");
+		Print("Populated spawn point - " + GetOwner().GetID() + " - deactivated", LogLevel.DEBUG);
 	}
 		
 	bool IsSpawnEnabled()
