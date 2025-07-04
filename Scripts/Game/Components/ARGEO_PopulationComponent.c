@@ -94,7 +94,7 @@ class ARGEO_PopulationComponent : SCR_BaseGameModeComponent
 		if (!populatedTerritory)
 			return;
 		populatedTerritory.AddBuildingHousehold(buildingHousehold);
-		Print("Registered household in " + populatedTerritoryID + " with " + buildingHousehold.GetSpawnPointsCount() + " spawn points");
+		Print("Registered household in " + populatedTerritoryID + " with " + buildingHousehold.GetSpawnPointsCount() + " spawn points", LogLevel.DEBUG);
 		
 		if (m_bPopulationAppliedOnce)
 			ApplyPopulation(); // update 
@@ -110,7 +110,7 @@ class ARGEO_PopulationComponent : SCR_BaseGameModeComponent
 		ARGEO_PopulatedTerritory populatedTerritory = GetPopulatedTerritory(populatedTerritoryID);
 		if (!populatedTerritory)
 			return;
-		Print("Vehicle spawnpoint found for territory " + populatedTerritoryID);
+		Print("Vehicle spawnpoint found for territory " + populatedTerritoryID, LogLevel.SPAM);
 		FactionAffiliationComponent vehicleFactionAffiliation = FactionAffiliationComponent.Cast(vehicleSpawnPoint.GetOwner().FindComponent(FactionAffiliationComponent));
 		OptionallySetPopulationFactionByKey(vehicleFactionAffiliation, populatedTerritory.GetRandomFactionKey());
 	}
@@ -241,17 +241,27 @@ class ARGEO_PopulationComponent : SCR_BaseGameModeComponent
 			return; // was explicitly set
 		
 		Faction factionToSet = null;
+		Faction currentFaction = null;
 		foreach (Faction faction : m_aPopulationFactions)
 		{
+			if (faction.GetFactionKey() == factionAffiliation.GetAffiliatedFactionKey())
+			{
+				currentFaction = faction;
+			}
+			
 			if (faction.GetFactionKey() == factionKey)
 			{
 				factionToSet = faction;
-				break; // m_aPopulationFactions
 			}
 		}
 		
+		if (currentFaction)
+			return; // a registered population faction was explicitly set
+		
 		if (factionToSet)
 			factionAffiliation.SetAffiliatedFaction(factionToSet);
+		else if (factionAffiliation.GetAffiliatedFactionKey()) // typically a CIV ambient vehicle
+			factionAffiliation.SetAffiliatedFaction(m_DefaultPopulationFaction);
 		else
 			Print("Faction " + factionKey + " is not a population faction", LogLevel.WARNING);
 	}

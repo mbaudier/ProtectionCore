@@ -5,7 +5,6 @@ GenericEntity : "{07555910A43107F9}Prefabs/World/Locations/Common/Urban/Location
    ID "6590DA5EF53AFBA0"
    coords 0 0 0
    SphereRadius 400
-   DrawShape 0
   }
  }
 }

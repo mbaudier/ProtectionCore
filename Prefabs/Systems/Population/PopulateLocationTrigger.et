@@ -27,7 +27,7 @@ ARGEO_PopulateLocationTriggerEntity {
  coords 85.936 4.138 76.567
  TriggerShapeType Sphere
  SphereRadius 100
- ShapeColor 0.502 0 0.376 1
+ ShapeColor 0.3763 0.4678 0.7454 0.6275
  TriggerActivationType "All changes"
  PeriodicQueries 1
  ClassesFilter {

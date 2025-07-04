@@ -33,8 +33,7 @@ class ARGEO_PopulateStructuresTriggerEntity : ScriptedGameTriggerEntity
 				foreach (ARGEO_PopulatedSpawnPointComponent spawnPoint : spawnPoints)
 				{
 					FactionAffiliationComponent factionAffiliation = FactionAffiliationComponent.Cast(spawnPoint.GetOwner().FindComponent(FactionAffiliationComponent));		
-					if (factionAffiliation)
-						factionAffiliation.SetAffiliatedFactionByKey(triggerFactionKey);
+					populationComponent.OptionallySetPopulationFactionByKey(factionAffiliation, triggerFactionKey);
 				}
 			}
 			buildingHousehold.SetPopulatedTerritoryID(m_sPopulatedTerritoryID);
@@ -46,6 +45,11 @@ class ARGEO_PopulateStructuresTriggerEntity : ScriptedGameTriggerEntity
 		SCR_AmbientVehicleSpawnPointComponent vehicleSpawnPoint = SCR_AmbientVehicleSpawnPointComponent.Cast(ent.FindComponent(SCR_AmbientVehicleSpawnPointComponent));
 		if (vehicleSpawnPoint)
 		{
+			if (triggerFactionKey)
+			{
+				FactionAffiliationComponent factionAffiliation = FactionAffiliationComponent.Cast(vehicleSpawnPoint.GetOwner().FindComponent(FactionAffiliationComponent));		
+				populationComponent.OptionallySetPopulationFactionByKey(factionAffiliation, triggerFactionKey);
+			}
 			populationComponent.RegisterAmbientVehicle(m_sPopulatedTerritoryID, vehicleSpawnPoint);
 		}
 		
