@@ -12,7 +12,7 @@ GenericEntity : "{5F9FFF4BF027B3A3}Prefabs/Systems/ScenarioFramework/Components/
       }
      }
     }
-    coords 11.379 0 -1.145
+    coords 11.379 15 -1.145
    }
    SlotWaypoint3 {
     ID "65CA83CD6665C956"
@@ -23,7 +23,7 @@ GenericEntity : "{5F9FFF4BF027B3A3}Prefabs/Systems/ScenarioFramework/Components/
       }
      }
     }
-    coords 37.962 0 13.178
+    coords 37.962 15 13.178
    }
    SlotWaypoint11 {
     ID "65CA83CE3551759B"
@@ -34,7 +34,7 @@ GenericEntity : "{5F9FFF4BF027B3A3}Prefabs/Systems/ScenarioFramework/Components/
       }
      }
     }
-    coords 21.783 0 33.434
+    coords 21.783 15 33.434
    }
    SlotWaypoint7 {
     ID "65CA83CE807608D0"
@@ -45,7 +45,7 @@ GenericEntity : "{5F9FFF4BF027B3A3}Prefabs/Systems/ScenarioFramework/Components/
       }
      }
     }
-    coords -29.225 0 -35.814
+    coords -29.225 15 -35.814
    }
    SlotWaypoint6 {
     ID "65CA83CE8076090C"
@@ -56,7 +56,7 @@ GenericEntity : "{5F9FFF4BF027B3A3}Prefabs/Systems/ScenarioFramework/Components/
       }
      }
     }
-    coords 1.142 0 -51.221
+    coords 1.142 15 -51.221
    }
    SlotWaypoint9 {
     ID "65CA83CE80760919"
@@ -67,7 +67,7 @@ GenericEntity : "{5F9FFF4BF027B3A3}Prefabs/Systems/ScenarioFramework/Components/
       }
      }
     }
-    coords -29.323 0 28.574
+    coords -29.323 15 28.574
    }
    SlotWaypoint8 {
     ID "65CA83CE80760932"
@@ -78,7 +78,7 @@ GenericEntity : "{5F9FFF4BF027B3A3}Prefabs/Systems/ScenarioFramework/Components/
       }
      }
     }
-    coords -2.642 0 -21.491
+    coords -2.642 15 -21.491
    }
    SlotWaypoint5 {
     ID "65CA83CEA67079B7"
@@ -89,7 +89,7 @@ GenericEntity : "{5F9FFF4BF027B3A3}Prefabs/Systems/ScenarioFramework/Components/
       }
      }
     }
-    coords 22 0 -28.391
+    coords 22 15 -28.391
    }
    SlotWaypoint4 {
     ID "65CA83CEB45FC193"
@@ -100,7 +100,7 @@ GenericEntity : "{5F9FFF4BF027B3A3}Prefabs/Systems/ScenarioFramework/Components/
       }
      }
     }
-    coords 0.751 0 27.396
+    coords 0.751 15 27.396
    }
    SlotWaypoint10 {
     ID "65CA83CEE099790B"
@@ -111,7 +111,7 @@ GenericEntity : "{5F9FFF4BF027B3A3}Prefabs/Systems/ScenarioFramework/Components/
       }
      }
     }
-    coords -17.084 0 2.677
+    coords -17.084 15 2.677
    }
   }
  }

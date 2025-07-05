@@ -1,6 +1,8 @@
 class ARGEO_PopulatedTerritory
 {
-	string m_sID;
+	static const string EVENT_SAFETY_STATUS_CHANGED = "OnSafetyStatusChanged";
+	
+	private string m_sID;
 	
 	protected EventHandlerManagerComponent m_EventHandlerMgr;
 	
@@ -11,6 +13,9 @@ class ARGEO_PopulatedTerritory
 	private int m_iTotalWeight = 0;
 	
 	private ARGEO_PopulationSafetyStatus m_SafetyStatus = ARGEO_PopulationSafetyStatus.SAFE;
+	
+	private int m_iBuildingDestroyedCount = 0;
+	private int m_iBuildingDamageCount = 0;
 	
 	void ARGEO_PopulatedTerritory(string populatedTerritoryID)
 	{
@@ -40,7 +45,7 @@ class ARGEO_PopulatedTerritory
 		m_iSpawnPointsCount += buildingHousehold.GetSpawnPointsCount();
 		
 		if (m_EventHandlerMgr)
-			m_EventHandlerMgr.RegisterScriptHandler("OnSafetyStatusChanged", buildingHousehold, buildingHousehold.OnSafetyStatusChanged);
+			m_EventHandlerMgr.RegisterScriptHandler(EVENT_SAFETY_STATUS_CHANGED, buildingHousehold, buildingHousehold.OnSafetyStatusChanged);
 	}
 	
 	int PopulateRandomSpawnPoints(int toPopulateSpawnPointsCount)
@@ -102,13 +107,38 @@ class ARGEO_PopulatedTerritory
 		return factionKey;	
 	}
 	
+	//
+	// SAFETY
+	//
 	void ChangeSafetyStatus(ARGEO_PopulationSafetyStatus safetyStatus)
 	{
 		if (m_SafetyStatus == safetyStatus)
 			return;
+		ARGEO_PopulationSafetyStatus previousStatus = m_SafetyStatus;
 		m_SafetyStatus = safetyStatus;
+		Print("Safety status of territory " + m_sID + " changed from " + previousStatus + " to " + m_SafetyStatus);
 		
-		m_EventHandlerMgr.RaiseEvent("OnSafetyStatusChanged", 1, safetyStatus);
+		m_EventHandlerMgr.RaiseEvent(EVENT_SAFETY_STATUS_CHANGED, 1, m_SafetyStatus);
+	}
+	
+	float GetBuildingDestroyedCount()
+	{
+		return m_iBuildingDestroyedCount;
+	}
+	
+	void IncreaseBuildingDestroyedCount()
+	{
+		m_iBuildingDestroyedCount++;
+	}
+	
+	float GetBuildingDamageCount()
+	{
+		return m_iBuildingDamageCount;
+	}
+	
+	void IncreaseBuildingDamageCount()
+	{
+		m_iBuildingDamageCount++;
 	}
 	
 	//
@@ -119,14 +149,24 @@ class ARGEO_PopulatedTerritory
 		return m_sID;
 	}
 	
-	int GetSpawnPointsCount()
+	float GetSpawnPointsCount()
 	{
 		return m_iSpawnPointsCount;
+	}
+	
+	float GetBuildingHouseholdsCount()
+	{
+		return m_aBuildingHouseholds.Count();
 	}
 	
 	int GetTotalWeight()
 	{
 		return m_iTotalWeight;
+	}
+	
+	ARGEO_PopulationSafetyStatus GetSafetyStatus()
+	{
+		return m_SafetyStatus;
 	}
 }
 
@@ -136,5 +176,5 @@ enum ARGEO_PopulationSafetyStatus
 	DANGEROUS,
 	TENSE,
 	SAFE,
-	PEACEFUL
+	PEACE
 }

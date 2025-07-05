@@ -57,8 +57,6 @@ class ARGEO_PopulateStructuresTriggerEntity : ScriptedGameTriggerEntity
 	
 	override event protected void OnQueryFinished(bool bIsEmpty)
 	{
-		//s_iTotalPopulation = s_iTotalPopulation + m_iPopulationCount;
-		//Print("Populate structures trigger - " + m_sLocationName + " : " + m_iPopulationCount + " people " + m_sFactionKey+ " - Total: " + s_iTotalPopulation);
 		EnablePeriodicQueries(false);
 	}
 

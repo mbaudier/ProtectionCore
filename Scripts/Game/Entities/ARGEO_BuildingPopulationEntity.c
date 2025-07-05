@@ -29,7 +29,6 @@ class ARGEO_BuildingPopulationEntity: GenericEntity
 	{
 		if (state != EDamageState.DESTROYED)
 			return;
-		Print("Building destroyed!");
 		ARGEO_PopulationComponent populationComp = ARGEO_PopulationComponent.GetInstance();
 		if (!populationComp)
 			return;
@@ -38,7 +37,6 @@ class ARGEO_BuildingPopulationEntity: GenericEntity
 	
 	protected void OnBuildingDamaged(notnull BaseDamageContext damageContext)
 	{
-		Print("Building damaged!");
 		ARGEO_PopulationComponent populationComp = ARGEO_PopulationComponent.GetInstance();
 		if (!populationComp)
 			return;

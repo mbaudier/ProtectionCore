@@ -11,43 +11,27 @@ class ARGEO_PopulatedSpawnPointComponent : SCR_AmbientPatrolSpawnPointComponent
 	
 	private bool m_bSpawnEnabled = false;
 	
-	override void PrepareWaypoints()
+	protected AIAgent m_Person;
+	
+	override void SpawnPatrol()
 	{
-		super.PrepareWaypoints();
+		super.SpawnPatrol();
 		
-		// !! we need at least two waypoints in prefabs hierarchy so that a cycle waypoint is created
-		AIWaypointCycle wp = AIWaypointCycle.Cast(m_Waypoint);
-		if(wp)
-		{	
-			array<AIWaypoint> waypoints = {};
-			wp.GetWaypoints(waypoints);
-			
-			// TODO make it more robust
-			m_ToHomeWP = waypoints[0];
-			m_DailyLifeWP = AIWaypointCycle.Cast(waypoints[1]);
-			
-			// checks
-			SCR_AmbientPatrolSpawnPointComponentClass componentData = SCR_AmbientPatrolSpawnPointComponentClass.Cast(GetComponentData(GetOwner()));
-			if (!componentData)
-				return;			
-			Resource waypointResource = Resource.Load(componentData.GetDefaultWaypointPrefab());			
-			if (!waypointResource || !waypointResource.IsValid())
-				return;
-			EntitySpawnParams params = EntitySpawnParams();
-			params.TransformMode = ETransformMode.WORLD;
-			params.Transform[3] = GetOwner().GetOrigin();
-			
-			m_StayAtHomeWP = SCR_TimedWaypoint.Cast(GetGame().SpawnEntityPrefab(waypointResource, null, params));
-			
-			float meanTimeAtHome = 380;
-			float timeAtHome =  Math.RandomGaussFloat(Math.Sqrt(meanTimeAtHome), meanTimeAtHome);
-			m_StayAtHomeWP.SetHoldingTime(timeAtHome);
-			// stay at home is before daily life
-			waypoints.InsertAt(m_StayAtHomeWP, 1);
-			wp.SetWaypoints(waypoints);
-		}
+		if (!m_Group)
+			return;
+		m_Group.GetOnAgentAdded().Insert(OnAgentAdded);
 	}
-
+	
+	protected void OnAgentAdded(AIAgent agent)
+	{
+		if (m_Person)
+		{
+			Print("Person agent is already set", LogLevel.ERROR);
+			return;
+		}
+		m_Person = agent;
+	}
+	
 	override void ActivateGroup()
 	{
 		// since there may be a lot of civilians in the same area, smooth activation
@@ -106,5 +90,54 @@ class ARGEO_PopulatedSpawnPointComponent : SCR_AmbientPatrolSpawnPointComponent
 			// workaround for when bases cleared it as remnants
 			m_iMembersAlive = -1;
 		}
+	}
+	
+	//
+	// DAILY LIFE
+	//
+	override void PrepareWaypoints()
+	{
+		super.PrepareWaypoints();
+		
+		// !! we need at least two waypoints in prefabs hierarchy so that a cycle waypoint is created
+		AIWaypointCycle wp = AIWaypointCycle.Cast(m_Waypoint);
+		if(wp)
+		{	
+			array<AIWaypoint> waypoints = {};
+			wp.GetWaypoints(waypoints);
+			
+			// TODO make it more robust
+			m_ToHomeWP = waypoints[0];
+			m_DailyLifeWP = AIWaypointCycle.Cast(waypoints[1]);
+			
+			// checks
+			SCR_AmbientPatrolSpawnPointComponentClass componentData = SCR_AmbientPatrolSpawnPointComponentClass.Cast(GetComponentData(GetOwner()));
+			if (!componentData)
+				return;			
+			Resource waypointResource = Resource.Load(componentData.GetDefaultWaypointPrefab());			
+			if (!waypointResource || !waypointResource.IsValid())
+				return;
+			EntitySpawnParams params = EntitySpawnParams();
+			params.TransformMode = ETransformMode.WORLD;
+			params.Transform[3] = GetOwner().GetOrigin();
+			
+			m_StayAtHomeWP = SCR_TimedWaypoint.Cast(GetGame().SpawnEntityPrefab(waypointResource, null, params));
+			
+			float meanTimeAtHome = 380;
+			float timeAtHome =  Math.RandomGaussFloat(Math.Sqrt(meanTimeAtHome), meanTimeAtHome);
+			m_StayAtHomeWP.SetHoldingTime(timeAtHome);
+			// stay at home is before daily life
+			waypoints.InsertAt(m_StayAtHomeWP, 1);
+			wp.SetWaypoints(waypoints);
+		}
+	}
+	
+	//
+	// ACCESSORS
+	//
+	AIAgent GetAgent()
+	{
+		SCR_ChimeraAIAgent chimeraAgent = SCR_ChimeraAIAgent.Cast(m_Person);
+		return m_Person;
 	}
 }

@@ -117,6 +117,56 @@ class ARGEO_PopulationComponent : SCR_BaseGameModeComponent
 	
 	
 	//
+	// EVENTS
+	//
+	void NotifyBuildingDestroyed(ARGEO_BuildingPopulationEntity building)
+	{
+		string populatedTerritoryID = building.GetPopulatedTerritoryID();
+		ARGEO_PopulatedTerritory populatedTerritory = GetPopulatedTerritory(populatedTerritoryID);
+		if (!populatedTerritory)
+			return;
+		populatedTerritory.IncreaseBuildingDestroyedCount();
+		EvaluateSafetyStatus(populatedTerritory);
+	}
+	
+	void NotifyBuildingDamaged(ARGEO_BuildingPopulationEntity building, BaseDamageContext damageContext)
+	{
+		string populatedTerritoryID = building.GetPopulatedTerritoryID();
+		ARGEO_PopulatedTerritory populatedTerritory = GetPopulatedTerritory(populatedTerritoryID);
+		if (!populatedTerritory)
+			return;
+		populatedTerritory.IncreaseBuildingDamageCount();
+		EvaluateSafetyStatus(populatedTerritory);
+	}
+	
+	//
+	// SAFETY
+	//
+	void EvaluateSafetyStatus(ARGEO_PopulatedTerritory populatedTerritory)
+	{
+		ARGEO_PopulationSafetyStatus currentStatus = populatedTerritory.GetSafetyStatus();
+		ARGEO_PopulationSafetyStatus newStatus = currentStatus;
+		
+		// TODO make it configurable
+		
+		bool tense = populatedTerritory.GetBuildingDamageCount() > 0;
+		if (newStatus > ARGEO_PopulationSafetyStatus.TENSE && tense)
+			newStatus = ARGEO_PopulationSafetyStatus.TENSE;
+
+		bool dangerous = populatedTerritory.GetBuildingDamageCount() / populatedTerritory.GetBuildingHouseholdsCount() > 1
+		 || populatedTerritory.GetBuildingDestroyedCount() > 0;
+		if (newStatus > ARGEO_PopulationSafetyStatus.DANGEROUS && dangerous)
+			newStatus = ARGEO_PopulationSafetyStatus.DANGEROUS;
+		
+		bool unlivable = populatedTerritory.GetBuildingDestroyedCount() / populatedTerritory.GetBuildingHouseholdsCount() > 0.2;
+		if (unlivable)
+			newStatus = ARGEO_PopulationSafetyStatus.UNLIVABLE;
+		
+		if (newStatus != currentStatus)
+			populatedTerritory.ChangeSafetyStatus(newStatus);
+	}
+
+	//
 	// DISPLACEMENT
 	//
 	ARGEO_CivicCenterEntity GetClosestCivicCenter(vector pos)
@@ -142,32 +192,7 @@ class ARGEO_PopulationComponent : SCR_BaseGameModeComponent
 		}
 		return best;
 	}
-	
-	//
-	// EVENTS
-	//
-	void NotifyBuildingDestroyed(ARGEO_BuildingPopulationEntity building)
-	{
-		string populatedTerritoryID = building.GetPopulatedTerritoryID();
-		ARGEO_PopulatedTerritory populatedTerritory = GetPopulatedTerritory(populatedTerritoryID);
-		if (!populatedTerritory)
-			return;
-		populatedTerritory.ChangeSafetyStatus(ARGEO_PopulationSafetyStatus.DANGEROUS);
-	}
-	
-	void NotifyBuildingDamaged(ARGEO_BuildingPopulationEntity building, BaseDamageContext damageContext)
-	{
-		ARGEO_BuildingHouseholdEntity household = ARGEO_BuildingHouseholdEntity.Cast(building);
-		if (household)
-		{
-			string populatedTerritoryID = building.GetPopulatedTerritoryID();
-			ARGEO_PopulatedTerritory populatedTerritory = GetPopulatedTerritory(populatedTerritoryID);
-			if (!populatedTerritory)
-				return;
-			populatedTerritory.ChangeSafetyStatus(ARGEO_PopulationSafetyStatus.DANGEROUS);
-		}
-	}
-	
+		
 	//
 	// ACCESSORS
 	//
@@ -231,7 +256,7 @@ class ARGEO_PopulationComponent : SCR_BaseGameModeComponent
 	}
 	
 	//
-	// STATIC UTILITIES
+	// UTILITIES
 	//
 	void OptionallySetPopulationFactionByKey(FactionAffiliationComponent factionAffiliation, FactionKey factionKey)
 	{

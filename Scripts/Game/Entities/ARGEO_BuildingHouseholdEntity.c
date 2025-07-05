@@ -5,8 +5,14 @@ class ARGEO_BuildingHouseholdEntityClass: ARGEO_BuildingPopulationEntityClass
 //! The link between people and a given building.
 class ARGEO_BuildingHouseholdEntity: ARGEO_BuildingPopulationEntity
 {
+	[Attribute("{BBF1B3890A3FAFD7}Prefabs/AI/Groups/Displaced_Group.et")]
+	protected ResourceName m_sDisplacedGroupPrefab;
+
 	private ref array<ARGEO_PopulatedSpawnPointComponent> m_aSpawnPoints = new array<ARGEO_PopulatedSpawnPointComponent>;
 
+	// Household is displaced together (also for performance reasons, reducing the number og active groups)
+	private SCR_AIGroup m_DisplacedGroup;
+	
 	override void EOnActivate(IEntity owner)
 	{
 		super.EOnActivate(owner);
@@ -45,34 +51,76 @@ class ARGEO_BuildingHouseholdEntity: ARGEO_BuildingPopulationEntity
 	//
 	void OnSafetyStatusChanged(ARGEO_PopulationSafetyStatus safetyStatus)
 	{
-		if (safetyStatus <= ARGEO_PopulationSafetyStatus.DANGEROUS)
+		// TODO partial exodus
+		if (safetyStatus <= ARGEO_PopulationSafetyStatus.TENSE)
 		{
-			ARGEO_PopulationComponent populationComp = ARGEO_PopulationComponent.GetInstance();
-			if (!populationComp)
-				return;
 			foreach (ARGEO_PopulatedSpawnPointComponent spawnPoint : m_aSpawnPoints)
 			{
-//				if (spawnPoint.GetMembersAlive() > 0)
-//				{
-					SCR_AIGroup group = spawnPoint.GetSpawnedGroup();
-					if (group)
+				AIAgent agent = spawnPoint.GetAgent();
+				ARGEO_CharacterProtectionComponent characterComp = ARGEO_CharacterProtectionComponent.FindFromAgent(agent);
+				if (!characterComp || characterComp.GetDisplacementStatus() < ARGEO_CharacterDisplacementStatus.NORMAL)
+					continue; // m_aSpawnPoints
+				
+				if (!m_DisplacedGroup) {
+					m_DisplacedGroup = CreateDisplacedGroup();
+					if (!m_DisplacedGroup)
 					{
-						array<AIWaypoint> wps = {};
-						group.GetWaypoints(wps);
-						foreach (AIWaypoint wp : wps)
-						{	
-							group.RemoveWaypoint(wp);			
-						}
-						ARGEO_CivicCenterEntity civicCenter = populationComp.GetClosestCivicCenter(group.GetCenterOfMass());
-						if (civicCenter)
-						{
-							AIWaypoint fleeTo = civicCenter.GetMoveToWaypoint();
-							group.AddWaypoint(fleeTo);
-							Print("Civilian fleeing to " + fleeTo.GetOrigin());
-						}
+						Print("Cannot create displaced group", LogLevel.ERROR);
 					}
-//				}
+					
+					UpdateFleeingTarget();
+				}
+				// We assume it will be removed from ambient group
+				// TODO verify the assumption
+				m_DisplacedGroup.AddAgent(agent);
+				m_DisplacedGroup.ActivateAllMembers();
+				characterComp.SetDisplacementStatus(ARGEO_CharacterDisplacementStatus.FLEEING);
+				
 			}
+		}
+	}
+	
+	protected void UpdateFleeingTarget()
+	{
+		ARGEO_PopulationComponent populationComp = ARGEO_PopulationComponent.GetInstance();
+		if (!populationComp)
+			return;
+		ARGEO_CivicCenterEntity civicCenter = populationComp.GetClosestCivicCenter(m_DisplacedGroup.GetCenterOfMass());
+		if (civicCenter)
+		{
+			AIWaypoint fleeTo = civicCenter.GetMoveToWaypoint();
+			if (fleeTo != m_DisplacedGroup.GetCurrentWaypoint())
+			{
+				ClearGroupWPs(m_DisplacedGroup);
+				m_DisplacedGroup.AddWaypoint(fleeTo);
+				Print("Civilian household fleeing to " + fleeTo.GetOrigin());
+			}
+		}
+	}
+	
+	protected SCR_AIGroup CreateDisplacedGroup()
+	{
+		EntitySpawnParams params = EntitySpawnParams();
+		params.TransformMode = ETransformMode.WORLD;
+		params.Transform[3] = this.GetOrigin();
+
+		IEntity groupEntity = GetGame().SpawnEntityPrefab(Resource.Load(m_sDisplacedGroupPrefab), null, params);
+		if (!groupEntity)
+			return null;
+		
+		SCR_AIGroup group = SCR_AIGroup.Cast(groupEntity);
+		if (!group)
+			return null;
+		return group;
+	}
+	
+	private void ClearGroupWPs(SCR_AIGroup group)
+	{
+		array<AIWaypoint> wps = {};
+		group.GetWaypoints(wps);
+		foreach (AIWaypoint wp : wps)
+		{	
+			group.RemoveWaypoint(wp);			
 		}
 	}
 	
