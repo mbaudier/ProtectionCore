@@ -1,0 +1,118 @@
+GenericEntity : "{5F9FFF4BF027B3A3}Prefabs/Systems/ScenarioFramework/Components/Layer.et" {
+ ID "59F0B4850F342318"
+ coords 0 0 0
+ {
+  $grp GenericEntity : "{EBD91177954E8236}Prefabs/Systems/ScenarioFramework/Components/SlotWaypoint.et" {
+   SlotWaypoint1 {
+    ID "65CA83CD32913937"
+    components {
+     SCR_ScenarioFrameworkSlotWaypoint "{5EEEE11FAD8EE85C}" {
+      m_Waypoint SCR_ScenarioFrameworkWaypointArtillerySupport "{65CA83CD1F8B0A5B}" {
+       m_iTargetShotCount 8
+      }
+     }
+    }
+    coords 11.379 0 -1.145
+   }
+   SlotWaypoint3 {
+    ID "65CA83CD6665C956"
+    components {
+     SCR_ScenarioFrameworkSlotWaypoint "{5EEEE11FAD8EE85C}" {
+      m_Waypoint SCR_ScenarioFrameworkWaypointArtillerySupport "{65CA83CD1F8B0A5B}" {
+       m_iTargetShotCount 8
+      }
+     }
+    }
+    coords 37.962 0 13.178
+   }
+   SlotWaypoint11 {
+    ID "65CA83CE3551759B"
+    components {
+     SCR_ScenarioFrameworkSlotWaypoint "{5EEEE11FAD8EE85C}" {
+      m_Waypoint SCR_ScenarioFrameworkWaypointArtillerySupport "{65CA83CD1F8B0A5B}" {
+       m_iTargetShotCount 8
+      }
+     }
+    }
+    coords 21.783 0 33.434
+   }
+   SlotWaypoint7 {
+    ID "65CA83CE807608D0"
+    components {
+     SCR_ScenarioFrameworkSlotWaypoint "{5EEEE11FAD8EE85C}" {
+      m_Waypoint SCR_ScenarioFrameworkWaypointArtillerySupport "{65CA83CD1F8B0A5B}" {
+       m_iTargetShotCount 8
+      }
+     }
+    }
+    coords -29.225 0 -35.814
+   }
+   SlotWaypoint6 {
+    ID "65CA83CE8076090C"
+    components {
+     SCR_ScenarioFrameworkSlotWaypoint "{5EEEE11FAD8EE85C}" {
+      m_Waypoint SCR_ScenarioFrameworkWaypointArtillerySupport "{65CA83CD1F8B0A5B}" {
+       m_iTargetShotCount 8
+      }
+     }
+    }
+    coords 1.142 0 -51.221
+   }
+   SlotWaypoint9 {
+    ID "65CA83CE80760919"
+    components {
+     SCR_ScenarioFrameworkSlotWaypoint "{5EEEE11FAD8EE85C}" {
+      m_Waypoint SCR_ScenarioFrameworkWaypointArtillerySupport "{65CA83CD1F8B0A5B}" {
+       m_iTargetShotCount 8
+      }
+     }
+    }
+    coords -29.323 0 28.574
+   }
+   SlotWaypoint8 {
+    ID "65CA83CE80760932"
+    components {
+     SCR_ScenarioFrameworkSlotWaypoint "{5EEEE11FAD8EE85C}" {
+      m_Waypoint SCR_ScenarioFrameworkWaypointArtillerySupport "{65CA83CD1F8B0A5B}" {
+       m_iTargetShotCount 8
+      }
+     }
+    }
+    coords -2.642 0 -21.491
+   }
+   SlotWaypoint5 {
+    ID "65CA83CEA67079B7"
+    components {
+     SCR_ScenarioFrameworkSlotWaypoint "{5EEEE11FAD8EE85C}" {
+      m_Waypoint SCR_ScenarioFrameworkWaypointArtillerySupport "{65CA83CD1F8B0A5B}" {
+       m_iTargetShotCount 8
+      }
+     }
+    }
+    coords 22 0 -28.391
+   }
+   SlotWaypoint4 {
+    ID "65CA83CEB45FC193"
+    components {
+     SCR_ScenarioFrameworkSlotWaypoint "{5EEEE11FAD8EE85C}" {
+      m_Waypoint SCR_ScenarioFrameworkWaypointArtillerySupport "{65CA83CD1F8B0A5B}" {
+       m_iTargetShotCount 8
+      }
+     }
+    }
+    coords 0.751 0 27.396
+   }
+   SlotWaypoint10 {
+    ID "65CA83CEE099790B"
+    components {
+     SCR_ScenarioFrameworkSlotWaypoint "{5EEEE11FAD8EE85C}" {
+      m_Waypoint SCR_ScenarioFrameworkWaypointArtillerySupport "{65CA83CD1F8B0A5B}" {
+       m_iTargetShotCount 8
+      }
+     }
+    }
+    coords -17.084 0 2.677
+   }
+  }
+ }
+}
