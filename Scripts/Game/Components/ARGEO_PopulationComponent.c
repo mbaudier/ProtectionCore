@@ -60,8 +60,8 @@ class ARGEO_PopulationComponent : SCR_BaseGameModeComponent
 			Print("Default population faction" + m_DefaultPopulationFaction + " was not found", LogLevel.ERROR);
 
 		// apply population after the backend delay also used by the ambient patrol system
-		GetGame().GetCallqueue().CallLater(ApplyPopulation, 10000);
-		//GetGame().GetCallqueue().CallLater(ApplyPopulation, SCR_GameModeCampaign.BACKEND_DELAY);
+		//GetGame().GetCallqueue().CallLater(ApplyPopulation, 10000);
+		GetGame().GetCallqueue().CallLater(ApplyPopulation, SCR_GameModeCampaign.BACKEND_DELAY);
 	}
 	
 	void ApplyPopulation()
