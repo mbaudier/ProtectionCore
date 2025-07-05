@@ -1,0 +1,17 @@
+MetaFileClass {
+ Name "{B05B1BC6F2EFC4C1}PrefabsEditable/Auto/Compositions/Misc/SubCompositions/Tents/E_EmergencyResponseCenter_S_US.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass PS5 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+ }
+}

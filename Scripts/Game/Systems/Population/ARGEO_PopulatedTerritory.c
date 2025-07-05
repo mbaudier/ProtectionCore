@@ -1,6 +1,9 @@
 class ARGEO_PopulatedTerritory
 {
 	static const string EVENT_SAFETY_STATUS_CHANGED = "OnSafetyStatusChanged";
+
+	static const string EVENT_CIVIC_CENTER_CREATED = "OnCivicCenterCreated";
+	static const string EVENT_CIVIC_CENTER_DESTROYED = "OnCivicCenterDestroyed";
 	
 	private string m_sID;
 	
@@ -45,7 +48,11 @@ class ARGEO_PopulatedTerritory
 		m_iSpawnPointsCount += buildingHousehold.GetSpawnPointsCount();
 		
 		if (m_EventHandlerMgr)
+		{
 			m_EventHandlerMgr.RegisterScriptHandler(EVENT_SAFETY_STATUS_CHANGED, buildingHousehold, buildingHousehold.OnSafetyStatusChanged);
+			m_EventHandlerMgr.RegisterScriptHandler(EVENT_CIVIC_CENTER_CREATED, buildingHousehold, buildingHousehold.OnCivicCenterCreated);
+			m_EventHandlerMgr.RegisterScriptHandler(EVENT_CIVIC_CENTER_DESTROYED, buildingHousehold, buildingHousehold.OnCivicCenterDestroyed);
+		}
 	}
 	
 	int PopulateRandomSpawnPoints(int toPopulateSpawnPointsCount)
@@ -167,6 +174,11 @@ class ARGEO_PopulatedTerritory
 	ARGEO_PopulationSafetyStatus GetSafetyStatus()
 	{
 		return m_SafetyStatus;
+	}
+	
+	EventHandlerManagerComponent GetEventHandlerManager()
+	{
+		return m_EventHandlerMgr;
 	}
 }
 

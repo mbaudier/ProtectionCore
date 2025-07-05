@@ -1,0 +1,17 @@
+MetaFileClass {
+ Name "{19A7E021834CF20F}Prefabs/Compositions/Slotted/SlotFlatMedium/EmergencyResponseCenter_M_Base.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass PS5 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+ }
+}

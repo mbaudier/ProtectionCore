@@ -1,0 +1,8 @@
+GenericEntity : "{19A7E021834CF20F}Prefabs/Compositions/Slotted/SlotFlatMedium/EmergencyResponseCenter_M_Base.et" {
+ ID "5282DCB5DFC8538F"
+ components {
+  FactionAffiliationComponent "{65CB02F20700170B}" {
+   "faction affiliation" "US"
+  }
+ }
+}

@@ -53,6 +53,19 @@ class ARGEO_CivicCenterEntity: ARGEO_BuildingPopulationEntity
 			return;
 		populationComp.RegisterCivicCenter(this);
 	}
+
+	//
+	// EVENTS
+	//
+	override void OnBuildingDestroyed(EDamageState state)
+	{
+		super.OnBuildingDestroyed(state);
+		
+		ARGEO_PopulationComponent populationComp = ARGEO_PopulationComponent.GetInstance();
+		if (!populationComp) // typically in workbnech
+			return;
+		populationComp.UnregisterCivicCenter(this);
+	}
 	
 	//
 	// ACCESSOR

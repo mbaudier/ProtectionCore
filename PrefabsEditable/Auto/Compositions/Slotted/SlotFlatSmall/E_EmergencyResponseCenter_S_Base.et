@@ -1,0 +1,667 @@
+GenericEntity : "{C0EB5039FEB95354}Prefabs/Compositions/Misc/SubCompositions/Tents/Tent_Medical_FIA_01.et" {
+ ID "5282DCB5DFC8538F"
+ components {
+  FactionAffiliationComponent "{65CB0C2BB1A81B58}" {
+  }
+  SCR_CampaignBuildingCompositionComponent "{65CB145AE4270897}" {
+   m_AudioSourceConfigurationSpawn SCR_AudioSourceConfiguration "{65CB145AD3FA7847}" {
+    m_sSoundProject "{F76981ECA6DC2674}Sounds/Editor/BaseBuilding/Editor_BaseBuilding.acp"
+    m_sSoundEventName "SOUND_BUILD_LIVING_QUARTER_SMALL"
+   }
+   m_AudioSourceConfigurationDespawn SCR_AudioSourceConfiguration "{65CB145A38FEFE5B}" {
+    m_sSoundProject "{F76981ECA6DC2674}Sounds/Editor/BaseBuilding/Editor_BaseBuilding.acp"
+    m_sSoundEventName "SOUND_DESTROY_GENERIC"
+    m_eFlags 5
+   }
+  }
+  SCR_EditableEntityComponent "{620EE566A8F8C260}" : "{996046FE206C699A}Prefabs/Editor/Components/Default_SCR_EditableEntityComponent.ct" {
+   m_UIInfo SCR_EditableEntityUIInfo "{5298E609432D192D}" {
+    Name "#PRTC-EditableEntity_EmergencyResponseCenter_S_Name"
+    Icon "{9164E45B9A237FE9}UI/Textures/Editor/EditableEntities/Characters/EditableEntity_Character_Unarmed.edds"
+    m_Image "{EC27A7624CA1930E}UI/Textures/EditorPreviews/Auto/Structures/Military/Camps/TentFIA_01/E_TentFIA_01_medical_foundation.edds"
+    m_aAuthoredLabels {
+     24 90 28 22
+    }
+    m_aAutoLabels {
+     1 123
+    }
+    m_EntityBudgetCost {
+     SCR_EntityBudgetValue "{65CB0DBBDF305C36}" {
+      m_BudgetType CAMPAIGN
+      m_Value 200
+     }
+    }
+    m_EntityChildrenBudgetCost {
+     SCR_EntityBudgetValue "{65CB02F77147C8D3}" {
+      m_BudgetType SYSTEMS
+      m_Value 1
+     }
+     SCR_EntityBudgetValue "{65CB02F77147C8C0}" {
+      m_BudgetType PROPS
+      m_Value 29
+     }
+    }
+    m_SlotPrefab "{588A3DAF0296B0C1}PrefabsEditable/Slots/Flat/E_SlotFlatSmall.et"
+   }
+   m_Flags 1793
+  }
+  SCR_EditorLinkComponent "{65CB02F77147C8CB}" {
+   m_bRandomizeVariants 0
+   m_aEntries {
+    SCR_EditorLinkEntry "{65CB02F77147C8C8}" {
+     m_Prefab "{D069490ED407EE4E}PrefabsEditable/Auto/Props/Military/Arsenal/AmmoBoxes/FIA/E_AmmoBoxArsenal_Medical_FIA.et"
+     m_vPosition -0.403 0.173 -2.36
+     m_vAngles 0 0.161 0
+     m_fScale 1
+    }
+    SCR_EditorLinkEntry "{65CB02F77147C8F3}" {
+     m_Prefab "{F41584AC0B158EA6}PrefabsEditable/Auto/Props/Garbage/Medical/E_GarbageMedicalUSSR_01.et"
+     m_vPosition 1.928 0.184 0.893
+     m_vAngles 0 -62.941 0
+     m_fScale 1
+    }
+    SCR_EditorLinkEntry "{65CB02F77147C8F5}" {
+     m_Prefab "{455F381CB2C222BF}PrefabsEditable/Auto/Props/Military/Furniture/E_ChairMilitary_USSR_01.et"
+     m_vPosition 0.749 0.17 -2.182
+     m_vAngles 0 -20.576 0
+     m_fScale 1
+    }
+    SCR_EditorLinkEntry "{65CB02F77147C8F8}" {
+     m_Prefab "{71A2EA8497BB7905}PrefabsEditable/Auto/Compositions/Misc/SubCompositions/E_Cabinet_Books_USSR_01.et"
+     m_vPosition 2.406 0.167 -0.075
+     m_vAngles 0 -90 0
+     m_fScale 1
+    }
+    SCR_EditorLinkEntry "{65CB02F77147C8FC}" {
+     m_Prefab "{029CE13B9B940D8C}PrefabsEditable/Auto/Compositions/Misc/SubCompositions/E_Table_Desk_USSR_04.et"
+     m_vPosition 1.128 0.184 -2.353
+     m_vAngles 0 -2.493 0
+     m_fScale 1
+    }
+    SCR_EditorLinkEntry "{65CB02F77147C8E0}" {
+     m_Prefab "{58D920FC3C3BEA9A}PrefabsEditable/Auto/Props/Garbage/Military/Food/E_GarbageFoodMilitaryUSSR_01.et"
+     m_vPosition 1.825 0.173 1.127
+     m_vAngles 0 -116.833 0
+     m_fScale 1
+    }
+    SCR_EditorLinkEntry "{65CB02F77147C8E4}" {
+     m_Prefab "{D0C2CAE6D483DB3F}PrefabsEditable/Auto/Props/Civilian/E_Bucket_01.et"
+     m_vPosition 2.136 0.164 -0.997
+     m_vAngles 0 36.69 0
+     m_fScale 1
+    }
+    SCR_EditorLinkEntry "{65CB02F77147C8E8}" {
+     m_Prefab "{D0C2CAE6D483DB3F}PrefabsEditable/Auto/Props/Civilian/E_Bucket_01.et"
+     m_vPosition -2.334 0.301 -0.451
+     m_vAngles -78.231 -34.553 0
+     m_fScale 1
+    }
+    SCR_EditorLinkEntry "{65CB02F77147C8EE}" {
+     m_Prefab "{43BF97296AF29CEE}PrefabsEditable/Auto/Props/Military/Furniture/E_CotMilitary_USSR_01.et"
+     m_vPosition -2.415 0.162 1.821
+     m_vAngles 0 -90.728 0
+     m_fScale 1
+    }
+    SCR_EditorLinkEntry "{65CB02F77147C913}" {
+     m_Prefab "{43BF97296AF29CEE}PrefabsEditable/Auto/Props/Military/Furniture/E_CotMilitary_USSR_01.et"
+     m_vPosition 2.403 0.174 1.651
+     m_vAngles 0 -88.09 0
+     m_fScale 1
+    }
+    SCR_EditorLinkEntry "{65CB02F77147C91B}" {
+     m_Prefab "{43BF97296AF29CEE}PrefabsEditable/Auto/Props/Military/Furniture/E_CotMilitary_USSR_01.et"
+     m_vPosition 2.417 0.162 -1.725
+     m_vAngles 0 89.272 0
+     m_fScale 1
+    }
+    SCR_EditorLinkEntry "{65CB02F77147C91A}" {
+     m_Prefab "{AD7E9FAFD4AB1847}PrefabsEditable/Auto/Compositions/Misc/CustomEntities/DestructionEntities/E_TentFIA_01_medical_CompositionDestruction.et"
+     m_vPosition 0 0 0
+     m_vAngles 0 0 0
+     m_fScale 1
+    }
+    SCR_EditorLinkEntry "{65CB02F77147C91C}" {
+     m_Prefab "{DCAA087B0C711079}PrefabsEditable/Auto/Compositions/Misc/SubCompositions/E_Bed_Blankets_USSR_01.et"
+     m_vPosition -2.385 0.167 -1.65
+     m_vAngles 0 92.206 0
+     m_fScale 1
+    }
+    SCR_EditorLinkEntry "{65CB02F77147C903}" {
+     m_Prefab "{A6B64088150FB748}PrefabsEditable/Auto/Compositions/Misc/SubCompositions/E_Chair_Medical_USSR_01.et"
+     m_vPosition -2.31 0.186 0.177
+     m_vAngles 0 -11.986 0
+     m_fScale 1
+    }
+    SCR_EditorLinkEntry "{65CB02F77147C906}" {
+     m_Prefab "{9841B04CB7D10188}PrefabsEditable/Auto/Props/Garbage/Medical/E_GarbageMedicalUSSR_02.et"
+     m_vPosition -1.699 0.191 0.859
+     m_vAngles 0 41.182 0
+     m_fScale 1
+    }
+   }
+  }
+  SCR_PreviewEntityComponent "{620EE566A8E190B5}" : "{6CADA7A88A6265FD}Prefabs/Editor/Components/PreviewEntityComponentClass.ct" {
+   m_bRuntime 0
+   m_aEntries {
+    SCR_BasePreviewEntry "{65CB02F77147C90C}" {
+     m_iParentID -1
+     m_Mesh ""
+     m_Flags 258
+     m_Shape MESH
+     m_iPivotID ""
+     m_vScale 1 1 1
+     m_vPosition 0 0 0
+     m_vAngles 0 0 0
+    }
+    SCR_BasePreviewEntry "{65CB02F77147C932}" {
+     m_iParentID 0
+     m_Mesh "{FE31750973EA92C7}Assets/Props/Military/AmmoBox/EquipmentBoxWooden_01/EquipmentBoxWooden_Medical_01.xob"
+     m_Flags EDITABLE
+     m_Shape MESH
+     m_iPivotID ""
+     m_vScale 1 1 1
+     m_vPosition -0.403 0.173 -2.36
+     m_vAngles 0 0.161 0
+    }
+    SCR_BasePreviewEntry "{65CB02F77147C935}" {
+     m_iParentID 0
+     m_Mesh "{CC619CAF759D91D7}Assets/Props/Garbage/Medical/GarbageMedical_01/GarbageMedicalUSSR_01.xob"
+     m_Flags 0
+     m_Shape MESH
+     m_iPivotID ""
+     m_vScale 1 1 1
+     m_vPosition 1.928 0.184 0.893
+     m_vAngles 0 -62.941 0
+    }
+    SCR_BasePreviewEntry "{65CB02F77147C938}" {
+     m_iParentID 0
+     m_Mesh "{B4D812579BA957C6}Assets/Props/Military/Furniture/USSR/ChairMilitary_USSR_01.xob"
+     m_Flags 0
+     m_Shape MESH
+     m_iPivotID ""
+     m_vScale 1 1 1
+     m_vPosition 0.749 0.17 -2.182
+     m_vAngles 0 -20.576 0
+    }
+    SCR_BasePreviewEntry "{65CB02F77147C93C}" {
+     m_iParentID 0
+     m_Mesh "{D63E152388599576}Assets/Props/Military/Furniture/USSR/TableMilitary_USSR_02_cabinet.xob"
+     m_Flags EDITABLE
+     m_Shape MESH
+     m_iPivotID ""
+     m_vScale 1 1 1
+     m_vPosition 2.406 0.167 -0.075
+     m_vAngles 0 -90 0
+    }
+    SCR_BasePreviewEntry "{65CB02F77147C921}" {
+     m_iParentID 4
+     m_Mesh "{74A0A675F1DD4092}Assets/Props/Civilian/Ashtray_01/Ashtray_01_Full.xob"
+     m_Flags 0
+     m_Shape MESH
+     m_iPivotID ""
+     m_vScale 1 1 1
+     m_vPosition 0.275 0.901 -0.184
+     m_vAngles 0 -41.037 0
+    }
+    SCR_BasePreviewEntry "{65CB02F77147C92C}" {
+     m_iParentID 4
+     m_Mesh "{4D9DE6B5DC6FF8BA}Assets/Props/Civilian/Notebook_01/Notebook_01_Double.xob"
+     m_Flags 0
+     m_Shape MESH
+     m_iPivotID ""
+     m_vScale 1 1 1
+     m_vPosition -0.203 0.902 0.141
+     m_vAngles 0 178.185 0
+    }
+    SCR_BasePreviewEntry "{65CB02F77147C950}" {
+     m_iParentID 4
+     m_Mesh "{789311902B5FF0FF}Assets/Props/Civilian/Notebook_01/Notebook_01_Single.xob"
+     m_Flags 0
+     m_Shape MESH
+     m_iPivotID ""
+     m_vScale 1 1 1
+     m_vPosition -0.211 0.939 0.13
+     m_vAngles 0 180 0
+    }
+    SCR_BasePreviewEntry "{65CB02F77147C956}" {
+     m_iParentID 4
+     m_Mesh "{789311902B5FF0FF}Assets/Props/Civilian/Notebook_01/Notebook_01_Single.xob"
+     m_Flags 0
+     m_Shape MESH
+     m_iPivotID ""
+     m_vScale 1 1 1
+     m_vPosition 0.267 0.902 0.159
+     m_vAngles 0 -85.434 0
+    }
+    SCR_BasePreviewEntry "{65CB02F77147C955}" {
+     m_iParentID 4
+     m_Mesh "{18C18306E74F0F50}Assets/Props/Civilian/Notebook_01/Notebook_01_Stack.xob"
+     m_Flags 0
+     m_Shape MESH
+     m_iPivotID ""
+     m_vScale 1 1 1
+     m_vPosition 0.078 0.902 -0.051
+     m_vAngles 0 -165 0
+    }
+    SCR_BasePreviewEntry "{65CB02F77147C954}" {
+     m_iParentID 0
+     m_Mesh "{8996CA7B010FEBA4}Assets/Props/Military/Furniture/USSR/TableMilitary_USSR_02.xob"
+     m_Flags EDITABLE
+     m_Shape MESH
+     m_iPivotID ""
+     m_vScale 1 1 1
+     m_vPosition 1.128 0.184 -2.353
+     m_vAngles 0 -2.493 0
+    }
+    SCR_BasePreviewEntry "{65CB02F77147C95A}" {
+     m_iParentID 10
+     m_Mesh "{1E7E855124A9C21B}Assets/Props/Civilian/Notebook_01/Notebook_01_Open.xob"
+     m_Flags 0
+     m_Shape MESH
+     m_iPivotID ""
+     m_vScale 1 1 1
+     m_vPosition -0.386 0.899 0.088
+     m_vAngles 0 -171.888 0
+    }
+    SCR_BasePreviewEntry "{65CB02F77147C958}" {
+     m_iParentID 10
+     m_Mesh "{7298541AEA061B58}Assets/Props/Civilian/LampKerosene_01/LampKerosene_01.xob"
+     m_Flags 0
+     m_Shape MESH
+     m_iPivotID ""
+     m_vScale 1 1 1
+     m_vPosition 0.279 0.901 -0.251
+     m_vAngles 0 11.569 0
+    }
+    SCR_BasePreviewEntry "{65CB02F77147C95C}" {
+     m_iParentID 10
+     m_Mesh "{7911F0FC89C55C52}Assets/Props/Military/Manuals/Manual_Soviet_01/Manual_Soviet_01.xob"
+     m_Flags 0
+     m_Shape MESH
+     m_iPivotID ""
+     m_vScale 1 1 1
+     m_vPosition 0.465 0.974 0.073
+     m_vAngles 0 -69.385 0
+    }
+    SCR_BasePreviewEntry "{65CB02F77147C942}" {
+     m_iParentID 10
+     m_Mesh "{18C18306E74F0F50}Assets/Props/Civilian/Notebook_01/Notebook_01_Stack.xob"
+     m_Flags 0
+     m_Shape MESH
+     m_iPivotID ""
+     m_vScale 1 1 1
+     m_vPosition 0.518 0.902 0.033
+     m_vAngles 0 165 0
+    }
+    SCR_BasePreviewEntry "{65CB02F771473975}" {
+     m_iParentID 10
+     m_Mesh "{74A0A675F1DD4092}Assets/Props/Civilian/Ashtray_01/Ashtray_01_Full.xob"
+     m_Flags 0
+     m_Shape MESH
+     m_iPivotID ""
+     m_vScale 1 1 1
+     m_vPosition 0.039 0.899 -0.179
+     m_vAngles 0 -40.737 0
+    }
+    SCR_BasePreviewEntry "{65CB02F771473977}" {
+     m_iParentID 0
+     m_Mesh "{2BEC56BD5F4ED59B}Assets/Props/Garbage/Military/Food/GarbageFoodMilitary_01/GarbageFoodMilitaryUSSR_01.xob"
+     m_Flags 0
+     m_Shape MESH
+     m_iPivotID ""
+     m_vScale 1 1 1
+     m_vPosition 1.825 0.173 1.127
+     m_vAngles 0 -116.833 0
+    }
+    SCR_BasePreviewEntry "{65CB02F77147397C}" {
+     m_iParentID 0
+     m_Mesh "{8D4E2E836BBABBDD}Assets/Props/Civilian/Bucket_01/Bucket_01.xob"
+     m_Flags 0
+     m_Shape MESH
+     m_iPivotID ""
+     m_vScale 1 1 1
+     m_vPosition 2.136 0.164 -0.997
+     m_vAngles 0 36.69 0
+    }
+    SCR_BasePreviewEntry "{65CB02F771473978}" {
+     m_iParentID 0
+     m_Mesh "{8D4E2E836BBABBDD}Assets/Props/Civilian/Bucket_01/Bucket_01.xob"
+     m_Flags 0
+     m_Shape MESH
+     m_iPivotID ""
+     m_vScale 1 1 1
+     m_vPosition -2.334 0.301 -0.451
+     m_vAngles -78.231 -34.553 0
+    }
+    SCR_BasePreviewEntry "{65CB02F771473979}" {
+     m_iParentID 0
+     m_Mesh "{6E47500CEEB8FC30}Assets/Props/Military/Furniture/USSR/CotMilitary_USSR_01.xob"
+     m_Flags 0
+     m_Shape MESH
+     m_iPivotID ""
+     m_vScale 1 1 1
+     m_vPosition -2.415 0.162 1.821
+     m_vAngles 0 -90.728 0
+    }
+    SCR_BasePreviewEntry "{65CB02F771473942}" {
+     m_iParentID 0
+     m_Mesh "{6E47500CEEB8FC30}Assets/Props/Military/Furniture/USSR/CotMilitary_USSR_01.xob"
+     m_Flags 0
+     m_Shape MESH
+     m_iPivotID ""
+     m_vScale 1 1 1
+     m_vPosition 2.403 0.174 1.651
+     m_vAngles 0 -88.09 0
+    }
+    SCR_BasePreviewEntry "{65CB02F771476D71}" {
+     m_iParentID 0
+     m_Mesh "{6E47500CEEB8FC30}Assets/Props/Military/Furniture/USSR/CotMilitary_USSR_01.xob"
+     m_Flags 0
+     m_Shape MESH
+     m_iPivotID ""
+     m_vScale 1 1 1
+     m_vPosition 2.417 0.162 -1.725
+     m_vAngles 0 89.272 0
+    }
+    SCR_BasePreviewEntry "{65CB02F771476D70}" {
+     m_iParentID 0
+     m_Mesh ""
+     m_Flags EDITABLE
+     m_Shape MESH
+     m_iPivotID ""
+     m_vScale 1 1 1
+     m_vPosition 0 0 0
+     m_vAngles 0 0 0
+    }
+    SCR_BasePreviewEntry "{65CB02F771476D7E}" {
+     m_iParentID 22
+     m_Mesh "{454CCBB26BB830DB}Assets/Structures/Military/Camps/TentUSSR_01/TentUSSR_01.xob"
+     m_Flags 0
+     m_Shape MESH
+     m_iPivotID ""
+     m_vScale 1 1 1
+     m_vPosition 0 0.1 0
+     m_vAngles 0 0 0
+    }
+    SCR_BasePreviewEntry "{65CB02F771476D7A}" {
+     m_iParentID 23
+     m_Mesh ""
+     m_Flags 0
+     m_Shape MESH
+     m_iPivotID ""
+     m_vScale 1 1 1
+     m_vPosition 0 0 0
+     m_vAngles 0 0 0
+    }
+    SCR_BasePreviewEntry "{65CB02F771476D79}" {
+     m_iParentID 23
+     m_Mesh "{A9C84183EA1C4E97}Assets/Structures/Military/Camps/TentUSSR_01/TentUSSR_01_floor.xob"
+     m_Flags 0
+     m_Shape MESH
+     m_iPivotID ""
+     m_vScale 1 1 1
+     m_vPosition 0 0 0
+     m_vAngles 0 0 0
+    }
+    SCR_BasePreviewEntry "{65CB02F771476D64}" {
+     m_iParentID 22
+     m_Mesh "{60C5903D34298D9A}Assets/Props/Fabric/RedCrossCloth/RedCrossClothSoviet_01_big/RedCrossClothSoviet_01_big.xob"
+     m_Flags 0
+     m_Shape MESH
+     m_iPivotID ""
+     m_vScale 1 1 1
+     m_vPosition 0 0.1 0
+     m_vAngles 0 0 0
+    }
+    SCR_BasePreviewEntry "{65CB02F771476D60}" {
+     m_iParentID 22
+     m_Mesh "{B56A3191B96761B5}Assets/Structures/Military/Camps/Foundation_TentUSSR_01/Foundation_TentUSSR_01.xob"
+     m_Flags 0
+     m_Shape MESH
+     m_iPivotID ""
+     m_vScale 1 1 1
+     m_vPosition 0 0.1 0
+     m_vAngles 0 0 0
+    }
+    SCR_BasePreviewEntry "{65CB02F771476D9F}" {
+     m_iParentID 0
+     m_Mesh "{6E47500CEEB8FC30}Assets/Props/Military/Furniture/USSR/CotMilitary_USSR_01.xob"
+     m_Flags EDITABLE
+     m_Shape MESH
+     m_iPivotID ""
+     m_vScale 1 1 1
+     m_vPosition -2.385 0.167 -1.65
+     m_vAngles 0 92.206 0
+    }
+    SCR_BasePreviewEntry "{65CB02F771476D9E}" {
+     m_iParentID 28
+     m_Mesh "{B8AA18B725C167A5}Assets/Structures/Military/Camps/Canvas_Cover/CanvasCover_Folded.xob"
+     m_Flags 0
+     m_Shape MESH
+     m_iPivotID ""
+     m_vScale 1 1 1
+     m_vPosition -0.467 0.487 0.027
+     m_vAngles 0 -90 0
+    }
+    SCR_BasePreviewEntry "{65CB02F771476D9A}" {
+     m_iParentID 28
+     m_Mesh "{B8AA18B725C167A5}Assets/Structures/Military/Camps/Canvas_Cover/CanvasCover_Folded.xob"
+     m_Flags 0
+     m_Shape MESH
+     m_iPivotID ""
+     m_vScale 1 1 1
+     m_vPosition -0.467 0.564 0.027
+     m_vAngles 0 -90 0
+    }
+    SCR_BasePreviewEntry "{65CB02F771476D99}" {
+     m_iParentID 28
+     m_Mesh "{B8AA18B725C167A5}Assets/Structures/Military/Camps/Canvas_Cover/CanvasCover_Folded.xob"
+     m_Flags 0
+     m_Shape MESH
+     m_iPivotID ""
+     m_vScale 1 1 1
+     m_vPosition 0.366 0.564 0.027
+     m_vAngles 0 90 0
+    }
+    SCR_BasePreviewEntry "{65CB02F771476D98}" {
+     m_iParentID 28
+     m_Mesh "{B8AA18B725C167A5}Assets/Structures/Military/Camps/Canvas_Cover/CanvasCover_Folded.xob"
+     m_Flags 0
+     m_Shape MESH
+     m_iPivotID ""
+     m_vScale 1 1 1
+     m_vPosition 0.366 0.487 0.027
+     m_vAngles 0 90 0
+    }
+    SCR_BasePreviewEntry "{65CB02F7714767E5}" {
+     m_iParentID 0
+     m_Mesh "{B4D812579BA957C6}Assets/Props/Military/Furniture/USSR/ChairMilitary_USSR_01.xob"
+     m_Flags EDITABLE
+     m_Shape MESH
+     m_iPivotID ""
+     m_vScale 1 1 1
+     m_vPosition -2.31 0.186 0.177
+     m_vAngles 0 -11.986 0
+    }
+    SCR_BasePreviewEntry "{65CB02F7714767FB}" {
+     m_iParentID 33
+     m_Mesh "{CC619CAF759D91D7}Assets/Props/Garbage/Medical/GarbageMedical_01/GarbageMedicalUSSR_01.xob"
+     m_Flags 0
+     m_Shape MESH
+     m_iPivotID ""
+     m_vScale 1 1 1
+     m_vPosition -0.005 0.5 0.013
+     m_vAngles 0 11.866 0
+    }
+    SCR_BasePreviewEntry "{65CB02F77146A2E8}" {
+     m_iParentID 0
+     m_Mesh "{A58CD4C22135264F}Assets/Props/Garbage/Medical/GarbageMedical_01/GarbageMedicalUSSR_02.xob"
+     m_Flags 0
+     m_Shape MESH
+     m_iPivotID ""
+     m_vScale 1 1 1
+     m_vPosition -1.699 0.191 0.859
+     m_vAngles 0 41.182 0
+    }
+   }
+  }
+ }
+ {
+  GenericEntity {
+   ID "5D1EB45699903DC2"
+   Flags 1048576
+  }
+  GenericEntity {
+   ID "5D1EB45699903E8D"
+   Flags 1048576
+  }
+  GenericEntity {
+   ID "5D1EB45699903E9A"
+   Flags 1048576
+  }
+  GenericEntity {
+   ID "5D1EB45699903EA8"
+   Flags 1048576
+  }
+  GenericEntity {
+   ID "5D1EB45699903F77"
+   Flags 1048576
+  }
+  GenericEntity {
+   ID "620EDD9E1E6C1946"
+   Flags 1048576
+  }
+  StaticModelEntity {
+   ID "5D1EB45699903DA6"
+   Flags 1048576
+   {
+    GenericEntity {
+     ID "5A5344E28C6C28E7"
+     Flags 1048576
+    }
+    GenericEntity {
+     ID "5CC49DC4689E9375"
+     Flags 1048576
+    }
+    SCR_DestructibleBuildingEntity {
+     ID "5A5344E28C6C28D8"
+     Flags 1048576
+     {
+      GenericEntity {
+       ID "5A04A8A7E0A45E71"
+       Flags 1048576
+      }
+      GenericEntity {
+       ID "5EE8A8192EB5D6DC"
+       Flags 1048576
+      }
+     }
+    }
+   }
+  }
+  StaticModelEntity {
+   ID "5D1EB45699903E35"
+   Flags 1048576
+  }
+  StaticModelEntity {
+   ID "5D1EB45699903E4B"
+   Flags 1048576
+   {
+    GameEntity {
+     ID "5CB0F589903FBFBF"
+     Flags 1048576
+    }
+    GenericEntity {
+     ID "5CB0F589903FBFB0"
+     Flags 1048576
+    }
+    GenericEntity {
+     ID "5CB0F589903FBFB4"
+     Flags 1048576
+    }
+    GenericEntity {
+     ID "5CB0F589903FBFB6"
+     Flags 1048576
+    }
+    GenericEntity {
+     ID "5CB0F589903FBFBC"
+     Flags 1048576
+    }
+   }
+  }
+  StaticModelEntity {
+   ID "5D1EB45699903E67"
+   Flags 1048576
+   {
+    GenericEntity {
+     ID "5CB0F58C8E020658"
+     Flags 1048576
+    }
+    GenericEntity {
+     ID "5CB0F58C8E020659"
+     Flags 1048576
+    }
+    GenericEntity {
+     ID "5CB0F58C8E02065A"
+     Flags 1048576
+    }
+    GenericEntity {
+     ID "5CB0F58C8E0207A0"
+     Flags 1048576
+    }
+    GenericEntity {
+     ID "5CB0F58C8E0207A5"
+     Flags 1048576
+    }
+   }
+  }
+  StaticModelEntity {
+   ID "5D1EB45699903EC8"
+   Flags 1048576
+  }
+  StaticModelEntity {
+   ID "5D1EB45699903EFC"
+   Flags 1048576
+  }
+  StaticModelEntity {
+   ID "5D1EB45699903F0D"
+   Flags 1048576
+   {
+    GenericEntity {
+     ID "5CB0F585380C48B0"
+     Flags 1048576
+    }
+    GenericEntity {
+     ID "5CB0F585380C48B1"
+     Flags 1048576
+    }
+    GenericEntity {
+     ID "5CB0F585380C48B2"
+     Flags 1048576
+    }
+    GenericEntity {
+     ID "5CB0F585380C48B3"
+     Flags 1048576
+    }
+   }
+  }
+  StaticModelEntity {
+   ID "5D1EB45699903F1A"
+   Flags 1048576
+   {
+    GenericEntity {
+     ID "5CB0F58CE79FFBDB"
+     Flags 1048576
+    }
+   }
+  }
+  StaticModelEntity {
+   ID "5D1EB45699903F20"
+   Flags 1048576
+  }
+  ARGEO_CivicCenterEntity : "{2BCCF9E4BF5F8258}Prefabs/Systems/Population/CivicCenter_Base.et" {
+   ID "65CB14583ECF776D"
+   coords 0 0 0
+  }
+ }
+}

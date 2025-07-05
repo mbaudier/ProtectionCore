@@ -1,0 +1,16 @@
+GenericEntity : "{67D8AF8E3F05F4F1}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatSmall/E_EmergencyResponseCenter_S_Base.et" {
+ ID "5282DCB5DFC8538F"
+ components {
+  FactionAffiliationComponent "{65CB0C2BB1A81B58}" {
+   "faction affiliation" "US"
+  }
+  SCR_EditableEntityComponent "{620EE566A8F8C260}" {
+   m_UIInfo SCR_EditableEntityUIInfo "{5298E609432D192D}" {
+    m_sFaction "US"
+    m_aAuthoredLabels + {
+     11
+    }
+   }
+  }
+ }
+}

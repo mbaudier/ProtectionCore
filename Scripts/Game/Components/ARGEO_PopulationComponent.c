@@ -100,9 +100,28 @@ class ARGEO_PopulationComponent : SCR_BaseGameModeComponent
 			ApplyPopulation(); // update 
 	}
 	
-	void RegisterCivicCenter(notnull ARGEO_CivicCenterEntity civiCenter)
+	void RegisterCivicCenter(notnull ARGEO_CivicCenterEntity civicCenter)
 	{
-		m_aCivicCenters.Insert(civiCenter);
+		m_aCivicCenters.Insert(civicCenter);
+		Print("Registered civic center at position " + civicCenter.GetOrigin());
+		
+		// notify
+		foreach (ARGEO_PopulatedTerritory populatedTerritory : m_aPopulatedTerritories)
+		{
+			populatedTerritory.GetEventHandlerManager().RaiseEvent(ARGEO_PopulatedTerritory.EVENT_CIVIC_CENTER_CREATED, 1, civicCenter);
+		}
+	}
+	
+	void UnregisterCivicCenter(notnull ARGEO_CivicCenterEntity civicCenter)
+	{
+		m_aCivicCenters.RemoveItem(civicCenter);
+		Print("Unregistered civic center at position " + civicCenter.GetOrigin());
+		
+		// notify
+		foreach (ARGEO_PopulatedTerritory populatedTerritory : m_aPopulatedTerritories)
+		{
+			populatedTerritory.GetEventHandlerManager().RaiseEvent(ARGEO_PopulatedTerritory.EVENT_CIVIC_CENTER_DESTROYED, 1, civicCenter);
+		}
 	}
 	
 	void RegisterAmbientVehicle(string populatedTerritoryID, notnull SCR_AmbientVehicleSpawnPointComponent vehicleSpawnPoint)

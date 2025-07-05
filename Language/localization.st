@@ -9,6 +9,13 @@ StringTable {
    Author "argeo"
    LastChanged "argeo"
   }
+  CustomStringTableItem "{65CB0DB987E80469}" {
+   Id "PRTC-EditableEntity_EmergencyResponseCenter_S_Name"
+   Target_en_us "Emergency Response Center"
+   Modified 1707806253
+   Author "argeo"
+   LastChanged "argeo"
+  }
   CustomStringTableItem "{65C2CB2AC6F5BBD6}" {
    Id "PRTC-Group_Civilian_2x"
    Target_en_us "Two Civilians"
