@@ -58,6 +58,22 @@ StringTable {
    Author "argeo"
    LastChanged "argeo"
   }
+  CustomStringTableItem "{65CD0DC4C2E79F74}" {
+   Id "PRTC-Hint_Command_Protect_Text"
+   Target_en_us "You can \"protect\" civilians with the command menu, just like you would recruit AI soldiers."\
+   ""\
+   "When non-combatants are protected within such a commanded group, they gain a special status and even criminal enemies won't target them."
+   Modified 1707943519
+   Author "argeo"
+   LastChanged "argeo"
+  }
+  CustomStringTableItem "{65CD0DC4D3CFBB31}" {
+   Id "PRTC-Hint_Command_Protect_Title"
+   Target_en_us "Protecting Non-Combatants"
+   Modified 1707943445
+   Author "argeo"
+   LastChanged "argeo"
+  }
   CustomStringTableItem "{65B676E94E15AB59}" {
    Id "PRTC-Protect_Action"
    Target_en_us "Protect"
