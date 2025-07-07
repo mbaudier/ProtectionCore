@@ -175,7 +175,8 @@ class ARGEO_BaseAddAIGroupCommand : SCR_BaseGroupCommand
 			array<AIAgent> commandedA = {};
 			commandedGroup.GetAgents(commandedA);
 			int index = 0;
-			foreach(AIAgent a:commandedA) {
+			foreach (AIAgent a : commandedA)
+			{
 				SCR_ChimeraCharacter c = SCR_ChimeraCharacter.Cast(a.GetControlledEntity());
 				Print(" " + index + " - " + c.GetFactionKey());
 				index++;
