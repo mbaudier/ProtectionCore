@@ -60,6 +60,9 @@ class ARGEO_CivicCenterEntity: ARGEO_BuildingPopulationEntity
 	override void OnBuildingDestroyed(EDamageState state)
 	{
 		super.OnBuildingDestroyed(state);
+
+		if (state != EDamageState.DESTROYED)
+			return;
 		
 		ARGEO_PopulationComponent populationComp = ARGEO_PopulationComponent.GetInstance();
 		if (!populationComp) // typically in workbnech
