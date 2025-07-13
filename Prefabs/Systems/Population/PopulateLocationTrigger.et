@@ -31,7 +31,7 @@ ARGEO_PopulateLocationTriggerEntity {
  TriggerActivationType "All changes"
  PeriodicQueries 1
  ClassesFilter {
-  "ARGEO_BuildingHouseholdEntity"
+  "ARGEO_BuildingHouseholdEntity" "ARGEO_WarCrimeEntity"
  }
  PrefabsFilter {
   PrefabFilter "{65BAF43501A46566}" {

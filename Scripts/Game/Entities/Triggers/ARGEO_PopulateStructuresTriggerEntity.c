@@ -53,11 +53,16 @@ class ARGEO_PopulateStructuresTriggerEntity : ScriptedGameTriggerEntity
 			populationComponent.RegisterAmbientVehicle(m_sPopulatedTerritoryID, vehicleSpawnPoint);
 		}
 		
+		ARGEO_WarCrimeEntity warCrimeEntity = ARGEO_WarCrimeEntity.Cast(ent);
+		if (warCrimeEntity)
+		{
+			Print("New war crime in " + m_sPopulatedTerritoryID);
+		}
 	}
 	
 	override event protected void OnQueryFinished(bool bIsEmpty)
 	{
-		EnablePeriodicQueries(false);
+		//EnablePeriodicQueries(false);
 	}
 
 }

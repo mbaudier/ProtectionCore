@@ -5,7 +5,6 @@ class ARGEO_WarCrimesComponentClass : SCR_BaseGameModeComponentClass
 
 class ARGEO_WarCrimesComponent : SCR_BaseGameModeComponent
 {
-
 	[Attribute("0", desc: "Killing an unarmed or wounded enemy is a war crime (IHL DB - Rule 47).", category: "War Crimes")]
 	protected bool m_bKillingHorsDeCombatIsWarCrime;
 
@@ -15,8 +14,10 @@ class ARGEO_WarCrimesComponent : SCR_BaseGameModeComponent
 	[Attribute("1", desc: "All war crimes will be considered as friendly kills (behavior of Arma Reforger currently).", category: "Compatibility")]
 	protected bool m_bTreatAllWarCrimesAsFriendlyKills;
 
+	[Attribute("{5A45CA8948A1D825}Prefabs/Systems/WarCrimes/WarCrime_Base.et")]
+	protected ResourceName m_sWarCrimePrefab;
+
 	protected static ARGEO_WarCrimesComponent s_Instance;
-	
 	
 	static ARGEO_WarCrimesComponent GetInstance()
 	{
@@ -64,6 +65,21 @@ class ARGEO_WarCrimesComponent : SCR_BaseGameModeComponent
 	override void OnGameStateChanged(SCR_EGameModeState state)
 	{
 		Print("Protection manager game state changed " + state);
+	}
+	
+	//
+	// NOTIFICATIONS
+	//
+	void RegisterWarCrime(SCR_ECrimeNotification crime, notnull SCR_InstigatorContextData instigatorContextData)
+	{
+		EntitySpawnParams params = EntitySpawnParams();
+		params.TransformMode = ETransformMode.WORLD;
+		params.Transform[3] = instigatorContextData.GetVictimEntity().GetOrigin();
+
+		ARGEO_WarCrimeEntity warCrimeEntity = ARGEO_WarCrimeEntity.Cast(GetGame().SpawnEntityPrefab(Resource.Load(m_sWarCrimePrefab), null, params));
+		if (!warCrimeEntity)
+			return;
+		warCrimeEntity.SetCrime(crime);
 	}
 
 	//

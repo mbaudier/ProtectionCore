@@ -65,6 +65,8 @@ modded class SCR_DataCollectorShootingModule
 		if (warCrimesComponent.IsProtected(victimEntity))
 		{	
 			isLegalKill = false;
+			warCrimesComponent.RegisterWarCrime(SCR_ECrimeNotification.NON_COMBATANT_KILL, instigatorContextData);
+			
 			if (killerData)
 				if (isVictimAI)
 					killerData.AddStat(SCR_EDataStats.PROTECTED_AI_KILLS);
