@@ -3,7 +3,13 @@ SCR_ChimeraCharacter : "{9377B9F8B8CA717A}Prefabs/Characters/Factions/INDFOR/RUR
  components {
   SCR_EditableCharacterComponent "{520EA1D2F659C85C}" {
    m_UIInfo SCR_EditableEntityUIInfo "{5298E609432D192D}" {
-    Name "Farmer 02"
+    Name "(Character_RURAL_Farmer02)"
+    m_Image "{CA6914E2A5226649}UI/Textures/EditorPreviews/Characters/Factions/INDFOR/RURAL/Character_RURAL_Farmer02.edds"
+    m_aAuthoredLabels +{
+    }
+    m_aAutoLabels {
+     122
+    }
    }
   }
   BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
@@ -15,20 +21,10 @@ SCR_ChimeraCharacter : "{9377B9F8B8CA717A}Prefabs/Characters/Factions/INDFOR/RUR
      Prefab "{00ECD7EB467C97D7}Prefabs/Characters/Uniforms/Shirt_CottonShirt_01/Shirt_CottonShirt_01_V3_Dirty.et"
     }
     LoadoutSlotInfo Pants {
-     Prefab "{6B7F32F1F8A191B0}Prefabs/Characters/Uniforms/Pants_Pilot_USSR_01/Pants_Pilot_USSR_01_tucked.et"
+     Prefab "{6925E6C63EBCF623}Prefabs/Characters/Uniforms/Pants_Trousers_01/Pants_Trousers_01_DarkBrown.et"
     }
     LoadoutSlotInfo Boots {
      Prefab "{4C6029AB8BF5C044}Prefabs/Characters/Footwear/CombatBoots_Soviet_01_Dirty.et"
-    }
-   }
-  }
-  SCR_InventoryStorageManagerComponent "{520EA1D2DB118DE5}" {
-   InitialInventoryItems {
-    ItemsInitConfigurationItem "{65BAF421D144C2B0}" {
-     TargetStorage "Pants/Pants_Pilot_USSR_01_tucked.et"
-     PrefabsToSpawn {
-      "{575EA58E67448C2A}Prefabs/Items/Equipment/Flashlights/Flashlight_Soviet_01/Flashlight_Soviet_01.et"
-     }
     }
    }
   }

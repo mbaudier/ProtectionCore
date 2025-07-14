@@ -1,6 +1,0 @@
-SCR_AIGroup : "{9A23B03EC08610D5}Prefabs/Groups/INDFOR/RURAL/Group_RURAL_Base.et" {
- ID "0000000000000001"
- m_aUnitPrefabSlots {
-  "{60DDAC39C11FF042}Prefabs/Characters/Factions/INDFOR/RURAL/Character_RURAL_Farmer01.et" "{60DDAC39C11FF042}Prefabs/Characters/Factions/INDFOR/RURAL/Character_RURAL_Farmer01.et" "{0C8998D97DDB7F6C}Prefabs/Characters/Factions/INDFOR/RURAL/Character_RURAL_Farmer02.et" "{E915D420713EE807}Prefabs/Characters/Factions/INDFOR/RURAL/Character_RURAL_Farmer03.et" "{D421F11804526130}Prefabs/Characters/Factions/INDFOR/RURAL/Character_RURAL_Farmer04.et" "{31BDBDE108B7F65B}Prefabs/Characters/Factions/INDFOR/RURAL/Character_RURAL_Farmer05.et"
- }
-}

@@ -17,13 +17,13 @@ SCR_ChimeraCharacter : "{70697C21DE7AE2ED}Prefabs/Characters/Factions/INDFOR/URB
   BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
    Slots {
     LoadoutSlotInfo Hat {
-     Prefab "{8F5261C6B57B95C8}Prefabs/Characters/HeadGear/Hat_Hard_01/Hat_Hard_01_yellow.et"
+     Prefab "{DF26044449C06EAB}Prefabs/Characters/HeadGear/Hat_Hard_01/Hat_Hard_01_white.et"
     }
     LoadoutSlotInfo Jacket {
-     Prefab "{E44990162EBC47B7}Prefabs/Characters/Uniforms/Jacket_M88_base.et"
+     Prefab "{3C44AF5729CA80AB}Prefabs/Characters/Uniforms/Shirt_Turtleneck_01/Shirt_Turtleneck_01_beige_Dirty.et"
     }
     LoadoutSlotInfo Pants {
-     Prefab "{CF185061C5C13DBF}Prefabs/Characters/Uniforms/Pants_Fisherman_01/Pants_Fisherman_01_yellow.et"
+     Prefab "{5B29F970DC4022D5}Prefabs/Characters/Uniforms/Pants_Fisherman_01/Pants_Fisherman_01_orange.et"
     }
     LoadoutSlotInfo Boots {
      Prefab "{DAAFD15478BDE1C3}Prefabs/Characters/Footwear/CombatBoots_US_01.et"

@@ -17,7 +17,7 @@ SCR_ChimeraCharacter : "{70697C21DE7AE2ED}Prefabs/Characters/Factions/INDFOR/URB
   BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
    Slots {
     LoadoutSlotInfo Jacket {
-     Prefab "{B0F4EAC29E9058EA}Prefabs/Characters/Uniforms/Shirt_Turtleneck_01/Shirt_Turtleneck_01_grey.et"
+     Prefab "{6A3F994EFFE22995}Prefabs/Characters/Uniforms/Shirt_Turtleneck_01/Shirt_Turtleneck_01_DarkBlue.et"
     }
     LoadoutSlotInfo Pants {
      Prefab "{65B7093231FBF67E}Prefabs/Characters/Uniforms/Pants_Trousers_01/Pants_Trousers_01_LightBrown.et"

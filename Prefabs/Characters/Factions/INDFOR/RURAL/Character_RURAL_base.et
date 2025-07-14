@@ -8,7 +8,7 @@ SCR_ChimeraCharacter : "{37578B1666981FCE}Prefabs/Characters/Core/Character_Base
    m_UIInfo SCR_EditableEntityUIInfo "{5298E609432D192D}" {
     Name "Rural civilian"
     Icon "{9164E45B9A237FE9}UI/Textures/Editor/EditableEntities/Characters/EditableEntity_Character_Unarmed.edds"
-    m_Image "{130450729A459E97}UI/Textures/EditorPreviews/Characters/CIV/Character_CIV_CottonShirt_5.edds"
+    m_Image "{E0E7B854470821EB}UI/Textures/EditorPreviews/System/editorPreviewTemplate.edds"
     m_sFaction "RURAL"
     m_aAuthoredLabels + {
      2 1001 22 910213

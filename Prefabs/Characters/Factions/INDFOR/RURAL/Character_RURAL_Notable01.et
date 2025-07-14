@@ -3,7 +3,13 @@ SCR_ChimeraCharacter : "{9377B9F8B8CA717A}Prefabs/Characters/Factions/INDFOR/RUR
  components {
   SCR_EditableCharacterComponent "{520EA1D2F659C85C}" {
    m_UIInfo SCR_EditableEntityUIInfo "{5298E609432D192D}" {
-    Name "Notable 01"
+    Name "(Character_RURAL_Notable01)"
+    m_Image "{D4EACC52EF8BD6C1}UI/Textures/EditorPreviews/Characters/Factions/INDFOR/RURAL/Character_RURAL_Notable01.edds"
+    m_aAuthoredLabels +{
+    }
+    m_aAutoLabels {
+     122
+    }
    }
   }
   BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
@@ -12,13 +18,13 @@ SCR_ChimeraCharacter : "{9377B9F8B8CA717A}Prefabs/Characters/Factions/INDFOR/RUR
      Prefab "{D8D9EE7F3966589E}Prefabs/Characters/HeadGear/Hat_Knitted_01/Hat_Knitted_01_red.et"
     }
     LoadoutSlotInfo Jacket {
-     Prefab "{6A3F994EFFE22995}Prefabs/Characters/Uniforms/Shirt_Turtleneck_01/Shirt_Turtleneck_01_DarkBlue.et"
+     Prefab "{B0F4EAC29E9058EA}Prefabs/Characters/Uniforms/Shirt_Turtleneck_01/Shirt_Turtleneck_01_grey.et"
     }
     LoadoutSlotInfo Pants {
-     Prefab "{65B7093231FBF67E}Prefabs/Characters/Uniforms/Pants_Trousers_01/Pants_Trousers_01_LightBrown.et"
+     Prefab "{6925E6C63EBCF623}Prefabs/Characters/Uniforms/Pants_Trousers_01/Pants_Trousers_01_DarkBrown.et"
     }
     LoadoutSlotInfo Boots {
-     Prefab "{C7923961D7235D70}Prefabs/Characters/Footwear/CombatBoots_Soviet_01.et"
+     Prefab "{4C6029AB8BF5C044}Prefabs/Characters/Footwear/CombatBoots_Soviet_01_Dirty.et"
     }
    }
   }

@@ -5,8 +5,79 @@ SCR_AIGroup : "{F7306A9B1A7A9303}Prefabs/Groups/INDFOR/URBAN/Group_URBAN_Base.et
    m_UIInfo SCR_EditableGroupUIInfo "{5298E609432D192D}" {
     Name "#PRTC-Group_Urban_3x"
     Icon "{C431FD61793AA13F}UI/Textures/Editor/EditableEntities/Characters/EditableEntity_Random.edds"
+    m_Image "{BE42AA8D23A6504E}UI/Textures/EditorPreviews/Groups/INDFOR/URBAN/Group_URBAN_3x.edds"
     m_aAuthoredLabels + {
      290
+    }
+    m_aAutoLabels {
+     71
+    }
+    m_EntityBudgetCost {
+     SCR_EntityBudgetValue "{65DCDC67F87C2E3B}" {
+      m_BudgetType CAMPAIGN
+      m_Value 1
+     }
+     SCR_EntityBudgetValue "{65DCDC67F86B2586}" {
+      m_BudgetType AI_SERVER
+      m_Value 0
+     }
+    }
+    m_EntityChildrenBudgetCost {
+     SCR_EntityBudgetValue "{65DCDC67F801BC08}" {
+      m_BudgetType AI
+      m_Value 3
+     }
+    }
+    m_MilitarySymbol SCR_MilitarySymbol "{65DCE27256269126}" {
+     m_Identity CIVILIAN
+     m_Dimension LAND
+     m_Icons 0
+     m_Amplifier NONE
+    }
+   }
+  }
+  SCR_PreviewEntityComponent "{65DCDC67F866D647}" : "{6CADA7A88A6265FD}Prefabs/Editor/Components/PreviewEntityComponentClass.ct" {
+   m_bRuntime 0
+   m_aEntries {
+    SCR_BasePreviewEntry "{65DCDC67F85D2B56}" {
+     m_iParentID -1
+     m_Mesh ""
+     m_Flags 259
+     m_Shape MESH
+     m_iPivotID ""
+     m_vScale 1 1 1
+     m_vPosition 0 -5 0
+     m_vAngles 0 0 0
+    }
+    SCR_BasePreviewEntry "{65DCDC67FBB17153}" {
+     m_iParentID 0
+     m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
+     m_Flags 0
+     m_Shape PREFAB
+     m_iPivotID ""
+     m_vScale 1 1 1
+     m_vPosition 0 0 0
+     m_vAngles 0 0 0
+    }
+    SCR_BasePreviewEntry "{65DCDC67FB970AC1}" {
+     m_iParentID 0
+     m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
+     m_Flags 0
+     m_Shape PREFAB
+     m_iPivotID ""
+     m_vScale 1 1 1
+     m_vPosition 0 0 -3
+     m_vAngles 0 0 0
+    }
+    SCR_BasePreviewEntry "{65DCDC67FBED1AB1}" {
+     m_iParentID 0
+     m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
+     m_Flags 0
+     m_Shape PREFAB
+     m_iPivotID ""
+     m_vScale 1 1 1
+     m_vPosition 0 0 -6
+     m_vAngles 0 0 0
     }
    }
   }

@@ -3,7 +3,13 @@ SCR_ChimeraCharacter : "{9377B9F8B8CA717A}Prefabs/Characters/Factions/INDFOR/RUR
  components {
   SCR_EditableCharacterComponent "{520EA1D2F659C85C}" {
    m_UIInfo SCR_EditableEntityUIInfo "{5298E609432D192D}" {
-    Name "Fisherman 01"
+    Name "(Character_RURAL_Fisherman01)"
+    m_Image "{E3118C359ABC4E7D}UI/Textures/EditorPreviews/Characters/Factions/INDFOR/RURAL/Character_RURAL_Fisherman01.edds"
+    m_aAuthoredLabels +{
+    }
+    m_aAutoLabels {
+     122
+    }
    }
   }
   BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
@@ -18,7 +24,7 @@ SCR_ChimeraCharacter : "{9377B9F8B8CA717A}Prefabs/Characters/Factions/INDFOR/RUR
      Prefab "{CF185061C5C13DBF}Prefabs/Characters/Uniforms/Pants_Fisherman_01/Pants_Fisherman_01_yellow.et"
     }
     LoadoutSlotInfo Boots {
-     Prefab "{C7923961D7235D70}Prefabs/Characters/Footwear/CombatBoots_Soviet_01.et"
+     Prefab "{4C6029AB8BF5C044}Prefabs/Characters/Footwear/CombatBoots_Soviet_01_Dirty.et"
     }
    }
   }

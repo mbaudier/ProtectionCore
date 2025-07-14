@@ -5,12 +5,15 @@ SCR_ChimeraCharacter : "{9377B9F8B8CA717A}Prefabs/Characters/Factions/INDFOR/RUR
    m_UIInfo SCR_EditableEntityUIInfo "{5298E609432D192D}" {
     Name "#PRTC-Random_Rural_Name"
     Icon "{C431FD61793AA13F}UI/Textures/Editor/EditableEntities/Characters/EditableEntity_Random.edds"
+    m_Image "{B496E1B3FC326DCB}UI/Textures/EditorPreviews/Characters/Factions/INDFOR/RURAL/Character_RURAL_Randomized.edds"
     m_aAuthoredLabels + {
      290
     }
+    m_aAutoLabels {
+     122
+    }
    }
    m_VariantData SCR_EditableEntityVariantData "{628C93B55880DADE}" {
-    m_bRandomizeDefaultVariant 0
     m_aVariants {
      SCR_EditableEntityVariant "{628C93B5275EA704}" {
       m_sVariantPrefab "{8541E0C0CDFA6729}Prefabs/Characters/Factions/INDFOR/RURAL/Character_RURAL_Farmer00.et"
@@ -30,12 +33,19 @@ SCR_ChimeraCharacter : "{9377B9F8B8CA717A}Prefabs/Characters/Factions/INDFOR/RUR
      SCR_EditableEntityVariant "{628C93B5164A3D3F}" {
       m_sVariantPrefab "{31BDBDE108B7F65B}Prefabs/Characters/Factions/INDFOR/RURAL/Character_RURAL_Farmer05.et"
      }
-     SCR_EditableEntityVariant "{628C93B51CED77C1}" {
-      m_sVariantPrefab "{5460268B4DBF78E3}Prefabs/Characters/Factions/INDFOR/RURAL/Character_RURAL_Notable01.et"
-     }
-     SCR_EditableEntityVariant "{628C93B5E81AD9E7}" {
-      m_sVariantPrefab "{7D6EE6863B754543}Prefabs/Characters/Factions/INDFOR/RURAL/Character_RURAL_Worker01.et"
-     }
+    }
+   }
+  }
+  BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
+   Slots {
+    LoadoutSlotInfo Jacket {
+     Prefab "{810C95A02A459359}Prefabs/Characters/Uniforms/Shirt_CottonShirt_01/Shirt_CottonShirt_01_V5_Dirty.et"
+    }
+    LoadoutSlotInfo Pants {
+     Prefab "{6925E6C63EBCF623}Prefabs/Characters/Uniforms/Pants_Trousers_01/Pants_Trousers_01_DarkBrown.et"
+    }
+    LoadoutSlotInfo Boots {
+     Prefab "{4C6029AB8BF5C044}Prefabs/Characters/Footwear/CombatBoots_Soviet_01_Dirty.et"
     }
    }
   }

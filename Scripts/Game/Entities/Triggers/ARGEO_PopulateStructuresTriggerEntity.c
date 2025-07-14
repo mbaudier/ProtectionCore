@@ -13,6 +13,8 @@ class ARGEO_PopulateStructuresTriggerEntity : ScriptedGameTriggerEntity
 		super.OnActivate(ent);
 		
 		ARGEO_PopulationComponent populationComponent = ARGEO_PopulationComponent.GetInstance();
+		if (!populationComponent) // typically in workbench
+			return;
 		
 		// Check if faction forced
 		FactionKey triggerFactionKey;

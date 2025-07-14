@@ -1,6 +1,0 @@
-SCR_AIGroup : "{9A23B03EC08610D5}Prefabs/Groups/INDFOR/RURAL/Group_RURAL_Base.et" {
- ID "0000000000000001"
- m_aUnitPrefabSlots {
-  "{74DF5613F8551847}Prefabs/Characters/Factions/INDFOR/RURAL/Character_RURAL_Randomized.et" "{74DF5613F8551847}Prefabs/Characters/Factions/INDFOR/RURAL/Character_RURAL_Randomized.et" "{74DF5613F8551847}Prefabs/Characters/Factions/INDFOR/RURAL/Character_RURAL_Randomized.et" "{74DF5613F8551847}Prefabs/Characters/Factions/INDFOR/RURAL/Character_RURAL_Randomized.et"
- }
-}
