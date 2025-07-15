@@ -1,0 +1,9 @@
+GenericEntity : "{7FE30F5687748FDA}Prefabs/World/Locations/Common/Urban/LocationUrbanTown.et" {
+ ID "5278CCE9842C9D03"
+ {
+  ARGEO_PopulateLocationTriggerEntity {
+   ID "6590DA5EF53AFBA0"
+   m_sPopulatedTerritoryID "Saint-Philippe"
+  }
+ }
+}

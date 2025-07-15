@@ -1,0 +1,9 @@
+GenericEntity : "{A32CF2CDFDC85277}Prefabs/World/Locations/Common/Urban/LocationUrbanSettlement.et" {
+ ID "5278CCE9842C9D03"
+ {
+  ARGEO_PopulateLocationTriggerEntity {
+   ID "6590DA5ED74C6814"
+   m_sPopulatedTerritoryID "LesCreux"
+  }
+ }
+}

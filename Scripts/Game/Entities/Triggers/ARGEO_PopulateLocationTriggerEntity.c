@@ -6,6 +6,7 @@ class ARGEO_PopulateLocationTriggerEntityClass : ARGEO_PopulateStructuresTrigger
 class ARGEO_PopulateLocationTriggerEntity : ARGEO_PopulateStructuresTriggerEntity
 {
 	private string m_sLocationName;
+	private string m_sLocationPrefabName;
 	
 	private ref ARGEO_PopulatedTerritory m_PopulatedTerritory;
 	
@@ -15,15 +16,31 @@ class ARGEO_PopulateLocationTriggerEntity : ARGEO_PopulateStructuresTriggerEntit
 	{
 		super.OnInit(owner);
 			
-		string parentName = "N/A";
+		// Try to detect territory ID based on location prefab
 		IEntity parent = owner.GetParent();
 		if (parent)
 		{
-			parentName = parent.GetName();
+			m_sLocationName = parent.GetName();
+			
+			EntityPrefabData parentPrefabData = parent.GetPrefabData();
+			if (parentPrefabData)
+			{
+				string fullName = parentPrefabData.GetPrefabName();
+				int slashIndex = fullName.LastIndexOf("/");
+				int dotIndex = fullName.LastIndexOf(".");
+				if (dotIndex > slashIndex)
+					m_sLocationPrefabName = fullName.Substring(slashIndex + 1, dotIndex - slashIndex - 1);
+			}
 		}
-		m_sLocationName = parentName;
-		if (!m_sPopulatedTerritoryID)
+		
+		if (!m_sPopulatedTerritoryID) // Everon
+			m_sPopulatedTerritoryID = m_sLocationPrefabName;
+		
+		if (!m_sPopulatedTerritoryID) // Arland
 			m_sPopulatedTerritoryID = m_sLocationName;
+		
+		// TODO Use home trritory config for the logic
+		// TODO Use Levenstein, etc. distances provided by SCR_StringHelper?
 
 		m_EventHandlerMgr = EventHandlerManagerComponent.Cast(owner.FindComponent(EventHandlerManagerComponent));
 	}
