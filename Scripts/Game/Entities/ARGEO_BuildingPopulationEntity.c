@@ -5,23 +5,37 @@ class ARGEO_BuildingPopulationEntityClass: GenericEntityClass
 //! The link between people and a given building.
 class ARGEO_BuildingPopulationEntity: GenericEntity
 {
-	private SCR_DestructibleBuildingComponent m_DestructibleBuildingComp;
+	protected SCR_DestructibleBuildingComponent m_DestructibleBuildingComp;
+	protected SCR_CampaignBuildingCompositionComponent m_CampaignBuildingCompositionComp;
 
 	private string m_sPopulatedTerritoryID;
+	
+	//
+	// LIFECYCLE
+	//
 	
 	override void EOnActivate(IEntity owner)
 	{
 		super.EOnActivate(owner);
 
 		m_DestructibleBuildingComp = FindDestructibleBuildingComp(owner);
-		if(m_DestructibleBuildingComp)
+		if (m_DestructibleBuildingComp)
 		{
 			m_DestructibleBuildingComp.GetOnDamageStateChanged().Insert(OnBuildingDestroyed);
 			m_DestructibleBuildingComp.GetOnDamage().Insert(OnBuildingDamaged);
 		}
-		//Print("Household post-init");
+		
+		m_CampaignBuildingCompositionComp = FindCampaignBuildingCompositionComp(owner);
+		if (m_CampaignBuildingCompositionComp)
+		{
+			m_CampaignBuildingCompositionComp.GetOnCompositionSpawned().Insert(OnCompositionSpawned);
+		}
 		
 	}
+	
+	//
+	// CALLBACKS
+	//
 	
 	//------------------------------------------------------------------------------------------------
 	//! Called when the related building is destroyed, making the related people displaced persons.
@@ -43,6 +57,15 @@ class ARGEO_BuildingPopulationEntity: GenericEntity
 		populationComp.NotifyBuildingDamaged(this, damageContext);
 	}
 	
+	//! To be overridden
+	protected void OnCompositionSpawned(bool arg)
+	{
+	}
+	
+	//
+	// UTILITIES
+	//
+	
 	private SCR_DestructibleBuildingComponent FindDestructibleBuildingComp(IEntity current)
 	{
 		if (!current)
@@ -55,6 +78,20 @@ class ARGEO_BuildingPopulationEntity: GenericEntity
 		IEntity parent = current.GetParent();
 		// recursive call
 		return FindDestructibleBuildingComp(parent);
+	}
+	
+	private SCR_CampaignBuildingCompositionComponent FindCampaignBuildingCompositionComp(IEntity current)
+	{
+		if (!current)
+			return null;
+		
+		SCR_CampaignBuildingCompositionComponent res = SCR_CampaignBuildingCompositionComponent.Cast(current.FindComponent(SCR_CampaignBuildingCompositionComponent));
+		if (res)
+			return res;
+		
+		IEntity parent = current.GetParent();
+		// recursive call
+		return FindCampaignBuildingCompositionComp(parent);
 	}
 	
 	//

@@ -5,53 +5,27 @@ class ARGEO_CivicCenterEntityClass: ARGEO_BuildingPopulationEntityClass
 //! The link between people and a given building.
 class ARGEO_CivicCenterEntity: ARGEO_BuildingPopulationEntity
 {
-	private ref array<SCR_AIWaypoint> m_aWaypoints = new array<SCR_AIWaypoint>;
-	private AIWaypoint m_MoveTo;
+	[Attribute("{750A8D1695BD6998}Prefabs/AI/Waypoints/AIWaypoint_Move.et")]
+	protected ResourceName m_sMoveToWaypointPrefab;
+
+	private SCR_AIWaypoint m_MoveTo;
 
 	override void EOnActivate(IEntity owner)
 	{
 		super.EOnActivate(owner);
 		
-		// Find populated spawn points
-		array<IEntity> queue = {owner};
-		IEntity processedEntity;
-		IEntity nextInHierarchy;
-		
-		while (!queue.IsEmpty())
-		{
-			processedEntity = queue[0];
-			queue.Remove(0);
-			
-			SCR_AIWaypoint waypoint = SCR_AIWaypoint.Cast(processedEntity);
-			if (!m_MoveTo)
-			{
-				// TODO deal with other kind of waypoints
-				m_MoveTo = waypoint
-			}
-			 
-			if (waypoint) {
-				m_aWaypoints.Insert(waypoint);
-				nextInHierarchy = null;// no need to go deeper
-			}
-			else
-			{
-				nextInHierarchy = processedEntity.GetChildren();
-			}
-			
-			while (nextInHierarchy)
-			{
-				queue.Insert(nextInHierarchy);
-				nextInHierarchy = nextInHierarchy.GetSibling();
-			}
-		}
-		
-//		if (!m_MoveTo)
-//			m_MoveTo = new SCR_AIWaypoint();
+		// Target waypoint for fleeing civilians
+		EntitySpawnParams params = EntitySpawnParams();
+		params.TransformMode = ETransformMode.WORLD;
+		params.Transform[3] = this.GetOrigin();
+		m_MoveTo = SCR_AIWaypoint.Cast(GetGame().SpawnEntityPrefab(Resource.Load(m_sMoveToWaypointPrefab), null, params));
 
 		ARGEO_PopulationComponent populationComp = ARGEO_PopulationComponent.GetInstance();
 		if (!populationComp) // typically in workbnech
 			return;
-		populationComp.RegisterCivicCenter(this);
+		
+		if (!m_CampaignBuildingCompositionComp)
+			populationComp.RegisterCivicCenter(this);
 	}
 
 	//
@@ -69,11 +43,20 @@ class ARGEO_CivicCenterEntity: ARGEO_BuildingPopulationEntity
 			return;
 		populationComp.UnregisterCivicCenter(this);
 	}
+
+	override void OnCompositionSpawned(bool arg)
+	{
+		ARGEO_PopulationComponent populationComp = ARGEO_PopulationComponent.GetInstance();
+		if (!populationComp) // typically in workbnech
+			return;
+
+		populationComp.RegisterCivicCenter(this);
+	}
 	
 	//
 	// ACCESSOR
 	//
-	AIWaypoint GetMoveToWaypoint()
+	SCR_AIWaypoint GetMoveToWaypoint()
 	{
 		return m_MoveTo;
 	}
