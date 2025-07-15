@@ -1,4 +1,4 @@
-ARGEO_PopulateStructuresTriggerEntity {
+ARGEO_PopulatedTerritoryTriggerEntity {
  ID "64A6DA3F48F0A6A9"
  components {
   FactionAffiliationComponent "{65B5068E3672FD54}" {
@@ -14,8 +14,9 @@ ARGEO_PopulateStructuresTriggerEntity {
  ShapeColor 0.3763 0.4678 0.7454 0.3765
  TriggerActivationType "All changes"
  PeriodicQueries 1
+ UpdatePeriod 10
  ClassesFilter {
-  "ARGEO_BuildingHouseholdEntity"
+  "ARGEO_BuildingHouseholdEntity" "ARGEO_WarCrimeEntity"
  }
  PrefabsFilter {
   PrefabFilter "{64A73B9AB27616E7}" {

@@ -1,7 +1,7 @@
 GenericEntity : "{97CA105CBFA5884E}Prefabs/World/Locations/Common/Urban/LocationUrbanVillage.et" {
  ID "5278CCE9842C9D03"
  {
-  ARGEO_PopulateLocationTriggerEntity {
+  ARGEO_PopulatedLocationTriggerEntity {
    ID "6590DA516C75CE71"
    m_sPopulatedTerritoryID "Entre-Deux"
   }

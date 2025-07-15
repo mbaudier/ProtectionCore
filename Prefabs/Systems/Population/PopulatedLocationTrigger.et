@@ -1,0 +1,22 @@
+ARGEO_PopulatedLocationTriggerEntity : "{D48BC61D01C94A5D}Prefabs/Systems/Population/PopulatedTerritoryTrigger.et" {
+ ID "65BAF43501A46520"
+ components {
+  EventHandlerManagerComponent "{65BAF435745D7734}" {
+   EventHandlers {
+    BaseEventHandler "{65BAF4354401ECEF}" {
+     EventName "OnBuildingDestroyed"
+    }
+    BaseEventHandler "{65BAF4345AC3535F}" {
+     EventName "OnBuildingDamaged"
+    }
+    BaseEventHandler "{65BAF434529EB08C}" {
+     EventName "OnSafetyStatusChanged"
+    }
+    BaseEventHandler "{65BAF4344B570791}" {
+     EventName "OnWarCrimeCommitted"
+    }
+   }
+  }
+ }
+ coords 85.936 4.138 76.567
+}

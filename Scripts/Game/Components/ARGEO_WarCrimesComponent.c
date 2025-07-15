@@ -19,17 +19,14 @@ class ARGEO_WarCrimesComponent : SCR_BaseGameModeComponent
 
 	protected static ARGEO_WarCrimesComponent s_Instance;
 	
-	static ARGEO_WarCrimesComponent GetInstance()
-	{
-		return s_Instance;
-	}
-
+	//
+	// LIFECYCLE
+	//
 	override void OnGameModeStart()
 	{
 		if (!s_Instance)
 			s_Instance = this;
 
-		Print("Protection manager game mode started");
 		if (m_bPlayableFactionsFriendlyToNonMilitary)
 		{
 			SCR_FactionManager factionManager = SCR_FactionManager.Cast(GetGame().GetFactionManager());
@@ -60,11 +57,6 @@ class ARGEO_WarCrimesComponent : SCR_BaseGameModeComponent
 			}
 			factionManager.RequestUpdateAllTargetsFactions();
 		}
-	}
-	
-	override void OnGameStateChanged(SCR_EGameModeState state)
-	{
-		Print("Protection manager game state changed " + state);
 	}
 	
 	//
@@ -133,10 +125,6 @@ class ARGEO_WarCrimesComponent : SCR_BaseGameModeComponent
 		array<IEntity> weapons = {};
 		int weaponsCount = 	weaponManager.GetWeaponsList(weapons);
 		bool disarmed = weaponsCount == 0;
-		
-//		WeaponSlotComponent weapon = weaponManager.GetCurrentSlot();
-//		weaponManager.GetCurrentWeapon();
-//		bool disarmed = !weapon;
 
 		return disarmed;
 	}
@@ -152,5 +140,10 @@ class ARGEO_WarCrimesComponent : SCR_BaseGameModeComponent
 	bool TreatAllWarCrimesAsFriendlyKills()
 	{
 		return m_bTreatAllWarCrimesAsFriendlyKills;
+	}
+	
+	static ARGEO_WarCrimesComponent GetInstance()
+	{
+		return s_Instance;
 	}
 }

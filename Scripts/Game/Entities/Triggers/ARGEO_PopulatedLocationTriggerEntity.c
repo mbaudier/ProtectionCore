@@ -1,9 +1,9 @@
 [EntityEditorProps(category: "GameScripted/Triggers", description: "")]
-class ARGEO_PopulateLocationTriggerEntityClass : ARGEO_PopulateStructuresTriggerEntityClass
+class ARGEO_PopulatedLocationTriggerEntityClass : ARGEO_PopulatedTerritoryTriggerEntityClass
 {
 }
 
-class ARGEO_PopulateLocationTriggerEntity : ARGEO_PopulateStructuresTriggerEntity
+class ARGEO_PopulatedLocationTriggerEntity : ARGEO_PopulatedTerritoryTriggerEntity
 {
 	private string m_sLocationName;
 	private string m_sLocationPrefabName;

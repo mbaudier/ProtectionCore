@@ -23,7 +23,7 @@ class ARGEO_PopulationComponent : SCR_BaseGameModeComponent
 	private bool m_bPopulationAppliedOnce = false;
 	
 	//
-	// LIFE CYLE
+	// LIFECYLE
 	//
 	override void OnPostInit(IEntity owner)
 	{
@@ -215,20 +215,10 @@ class ARGEO_PopulationComponent : SCR_BaseGameModeComponent
 	//
 	// ACCESSORS
 	//
-//	FactionKey GetDefaultPopulationFactionKey()
-//	{
-//		return m_sDefaultFaction;
-//	}
-	
 	float GetGlobalBuildingsOccupation()
 	{
 		return m_fGlobalBuildingsOccupation;
 	}
-	
-//	bool PopulateOutsidePopulatedAreas()
-//	{
-//		return m_bPopulateOutsidePopulatedAreas;
-//	}
 	
 	ARGEO_PopulatedTerritory GetPopulatedTerritory(string populatedTerritoryID)
 	{

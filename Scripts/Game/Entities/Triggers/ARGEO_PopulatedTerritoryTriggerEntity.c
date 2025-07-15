@@ -1,9 +1,9 @@
 [EntityEditorProps(category: "GameScripted/Triggers", description: "")]
-class ARGEO_PopulateStructuresTriggerEntityClass : ScriptedGameTriggerEntityClass
+class ARGEO_PopulatedTerritoryTriggerEntityClass : ScriptedGameTriggerEntityClass
 {
 }
 
-class ARGEO_PopulateStructuresTriggerEntity : ScriptedGameTriggerEntity
+class ARGEO_PopulatedTerritoryTriggerEntity : ScriptedGameTriggerEntity
 {
 	[Attribute(desc: "ID of the populated territory to attach to.", category: "Population")]
 	protected string m_sPopulatedTerritoryID;	
