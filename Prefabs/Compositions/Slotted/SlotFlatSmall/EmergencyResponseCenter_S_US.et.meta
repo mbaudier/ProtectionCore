@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{67D8AF8E3F05F4F1}PrefabsEditable/Auto/Compositions/Misc/SubCompositions/Tents/E_EmergencyResponseCenter_S_Base.et"
+ Name "{850461BA2DE146B6}Prefabs/Compositions/Slotted/EmergencyResponseCenter_S_US.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

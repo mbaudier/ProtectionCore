@@ -104,7 +104,7 @@ class ARGEO_BuildingHouseholdEntity: ARGEO_BuildingPopulationEntity
 		ARGEO_CivicCenterEntity civicCenter = populationComp.GetClosestCivicCenter(m_DisplacedGroup.GetCenterOfMass());
 		if (civicCenter)
 		{
-			AIWaypoint fleeTo = civicCenter.GetMoveToWaypoint();
+			SCR_AIWaypoint fleeTo = civicCenter.GetMoveToWaypoint();
 			if (fleeTo != m_DisplacedGroup.GetCurrentWaypoint())
 			{
 				ClearGroupWPs(m_DisplacedGroup);

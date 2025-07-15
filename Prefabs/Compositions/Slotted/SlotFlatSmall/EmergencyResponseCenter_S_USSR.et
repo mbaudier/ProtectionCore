@@ -1,0 +1,39 @@
+GenericEntity : "{6E9190BC2713551D}Prefabs/Compositions/Slotted/BuildableComposition_Base.et" {
+ ID "5282DCB5DFC8538F"
+ components {
+  FactionAffiliationComponent "{65DED1D84E0F90B0}" {
+   "faction affiliation" "USSR"
+  }
+  SCR_CampaignBuildingCompositionComponent "{5E96A067C097D570}" {
+   m_AudioSourceConfigurationSpawn SCR_AudioSourceConfiguration "{5E96A067C355978C}" {
+    m_sSoundEventName "SOUND_BUILD_LIVING_QUARTER_SMALL"
+   }
+  }
+  Hierarchy "{65DED1D9E37D6432}" {
+   Enabled 1
+  }
+ }
+ coords 64 0 64
+ {
+  ARGEO_CivicCenterEntity : "{2BCCF9E4BF5F8258}Prefabs/Systems/Population/CivicCenter_Base.et" {
+   ID "65DED1D9FE44FDB0"
+   coords 0 0 0
+  }
+  GenericEntity : "{4BD4ADE130847295}Prefabs/Structures/Signs/Military/Supplies/Sign_SupplyStorage_02_Hospital_USSR.et" {
+   ID "65DEEBBC74C1BF6B"
+   components {
+    Hierarchy "{65DEEBBC1B8038CB}" {
+    }
+   }
+   coords -3.493 0.093 3.27
+  }
+  GenericEntity : "{5A25DAC561B3BFF8}Prefabs/Compositions/Misc/SubCompositions/Tents/Tent_Medical_USSR_01.et" {
+   ID "65DED1D9CBADA351"
+   coords 0 0 0
+  }
+  GenericEntity : "{9F02ADA64E819E05}Prefabs/Compositions/Misc/SubCompositions/Storage/Slotted/Storage_Supplies_USSR_03.et" {
+   ID "65DED1D35F16C2A2"
+   coords -4.045 -0.074 -0.126
+  }
+ }
+}

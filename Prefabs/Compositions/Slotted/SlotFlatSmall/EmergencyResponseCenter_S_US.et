@@ -1,0 +1,38 @@
+GenericEntity : "{6E9190BC2713551D}Prefabs/Compositions/Slotted/BuildableComposition_Base.et" {
+ ID "5282DCB5DFC8538F"
+ components {
+  FactionAffiliationComponent "{65DEF8C60E16934D}" {
+   "faction affiliation" "US"
+  }
+  SCR_CampaignBuildingCompositionComponent "{5E96A067C097D570}" {
+   m_AudioSourceConfigurationSpawn SCR_AudioSourceConfiguration "{5E96A067C355978C}" {
+    m_sSoundEventName "SOUND_BUILD_LIVING_QUARTER_SMALL"
+   }
+  }
+  Hierarchy "{65DF14A53FFA1CBB}" {
+  }
+ }
+ coords 64 0 64
+ {
+  ARGEO_CivicCenterEntity : "{2BCCF9E4BF5F8258}Prefabs/Systems/Population/CivicCenter_Base.et" {
+   ID "65DEF8C5AB140504"
+   coords 0 0 0
+  }
+  GenericEntity : "{36B55E2B9C47373C}Prefabs/Compositions/Misc/SubCompositions/Tents/Tent_Medical_US_01.et" {
+   ID "65DEF8C5B0656E39"
+   coords 0 0 0
+  }
+  GenericEntity : "{43F30ACA843EF605}Prefabs/Compositions/Misc/SubCompositions/Storage/Slotted/Storage_Supplies_US_03.et" {
+   ID "65DEF8C64B3906FA"
+   coords -4.11 -0.261 0.02
+  }
+  GenericEntity : "{FFB132CEFD1E6D48}Prefabs/Structures/Signs/Military/Supplies/Sign_SupplyStorage_02_Hospital_US.et" {
+   ID "65DEF8C66270A319"
+   components {
+    Hierarchy "{65DF14A53FFC084F}" {
+    }
+   }
+   coords -4.041 -0.02 3.35
+  }
+ }
+}
