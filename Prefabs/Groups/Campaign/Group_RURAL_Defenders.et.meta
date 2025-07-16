@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{23B86204C0EE1A00}Prefabs/Characters/Factions/INDFOR/URBAN/Campaign_URBAN_AI.et"
+ Name "{8339A1B6584BD32C}Prefabs/Groups/INDFOR/RURAL/Group_RURAL_Defenders.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

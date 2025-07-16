@@ -1,8 +1,0 @@
-SCR_ChimeraCharacter : "{5B46A00AC2E7626D}Prefabs/Characters/Factions/INDFOR/URBAN/Character_URBAN_Guy00.et" {
- ID "520EC961A090B1EE"
- components {
-  ChimeraAIControlComponent "{520EA1D2DB109F34}" {
-   EnableAI 1
-  }
- }
-}

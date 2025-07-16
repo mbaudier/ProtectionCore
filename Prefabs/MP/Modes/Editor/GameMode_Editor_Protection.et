@@ -2,7 +2,6 @@ SCR_GameModeEditor : "{D2DE7F43D48A3667}Prefabs/MP/Modes/Editor/GameMode_Editor.
  ID "56B2B479C6B96951"
  components {
   ARGEO_PopulationComponent "{657F0CE6ADBB46C4}" {
-   m_sDefaultCivilianFactionKey "RURAL"
    m_fGlobalBuildingsOccupation 70
   }
   ARGEO_WarCrimesComponent "{657D06928358A762}" {
@@ -19,15 +18,13 @@ SCR_GameModeEditor : "{D2DE7F43D48A3667}Prefabs/MP/Modes/Editor/GameMode_Editor.
   }
   SCR_CommandingManagerComponent "{65BD0832A38DBBC4}" {
    m_sAIGroupPrefab "{4A9D83DCB0619829}Prefabs/AI/Groups/Commanded_Group.et"
-   m_sCommandsConfigPath "{4615FA289AC337D6}Configs/Commanding/ProtectionCommands.conf"
-   m_iMaxAIPerGroup -1
+   m_iMaxAIPerGroup 32
   }
   SCR_PerceivedFactionManagerComponent "{61AA7E6E0C6A76F9}" {
    m_ePunishmentKillingWhileDisguised WARCRIME
    m_bPerceivedFactionChangesAffectsAI 1
   }
  }
- m_eTestGameFlags SpawnAI
  {
   SCR_FactionManager "65BD0E78396CF47C" : "{6B8E0BC290FDBB18}Prefabs/MP/Managers/Factions/FactionManager_Editor_Protection.et" {
    ID "65BD08333C3BDCE4"

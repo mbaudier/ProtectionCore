@@ -6,7 +6,6 @@ SCR_BaseGameMode : "{ECEEDB2D3737204B}Prefabs/Systems/ScenarioFramework/GameMode
   }
   ARGEO_WarCrimesComponent "{657D06928358A762}" {
    m_bKillingHorsDeCombatIsWarCrime 1
-   m_bTreatAllWarCrimesAsFriendlyKills 0
   }
   SCR_CampaignBuildingManagerComponent "{65B2F52D1CFFC5DF}" {
    m_sFreeRoamBuildingClientTrigger "{5E191CEAF4B95816}Prefabs/MP/FreeRoamBuildingClientTrigger.et"

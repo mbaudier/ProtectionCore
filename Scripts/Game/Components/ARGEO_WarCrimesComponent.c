@@ -8,14 +8,14 @@ class ARGEO_WarCrimesComponent : SCR_BaseGameModeComponent
 	[Attribute("0", desc: "Killing an unarmed or wounded enemy is a war crime (IHL DB - Rule 47).", category: "War Crimes")]
 	protected bool m_bKillingHorsDeCombatIsWarCrime;
 
-	[Attribute("1", desc: "Force playable factions to be friendly to non-military factions (IHL DB - Rule 1).", category: "Consider Arma Reforger EULAs before changing")]
-	protected bool m_bPlayableFactionsFriendlyToNonMilitary;
+	[Attribute("{5A45CA8948A1D825}Prefabs/Systems/WarCrimes/WarCrime_Base.et", desc: "The prefab that will be spawned when a war cime is committed, to be used in triggers or to document atrocities a posteriori.", category: "Integration")]
+	protected ResourceName m_sWarCrimePrefab;
 
 	[Attribute("1", desc: "All war crimes will be considered as friendly kills (behavior of Arma Reforger currently).", category: "Compatibility")]
 	protected bool m_bTreatAllWarCrimesAsFriendlyKills;
 
-	[Attribute("{5A45CA8948A1D825}Prefabs/Systems/WarCrimes/WarCrime_Base.et")]
-	protected ResourceName m_sWarCrimePrefab;
+	[Attribute("1", desc: "Force playable factions to be friendly to non-military factions (IHL DB - Rule 1).", category: "Consider Arma Reforger EULAs Before Changing This")]
+	protected bool m_bPlayableFactionsFriendlyToNonMilitary;
 
 	protected static ARGEO_WarCrimesComponent s_Instance;
 	
