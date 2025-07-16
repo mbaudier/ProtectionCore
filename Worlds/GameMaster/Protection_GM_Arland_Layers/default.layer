@@ -23,16 +23,11 @@ PerceptionManager PerceptionManager : "{028DAEAD63E056BE}Prefabs/World/Game/Perc
 SCR_GameModeEditor GameMode_Editor_Protection : "{4E2FCFA7A56E4550}Prefabs/MP/Modes/Editor/GameMode_Editor_Protection.et" {
  coords 2632.74 110.311 2395.879
  {
-  SCR_FactionManager "65BD0E7860203504" {
+  SCR_FactionManager FactionManager {
    ID "65BD08333C3BDCE4"
-   Factions {
-    SCR_Faction "{65BD08321444E389}" {
-     m_bIsPlayable 0
-    }
-    SCR_Faction "{65BD083211A6C7EF}" {
-     m_bIsPlayable 0
-    }
-   }
+  }
+  SCR_LoadoutManager LoadoutManager {
+   ID "65BD0833320A5AF4"
   }
  }
 }

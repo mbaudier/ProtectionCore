@@ -16,6 +16,16 @@ SCR_LoadoutManager : "{AA4E7419A1FF65B0}Prefabs/MP/Managers/Loadouts/LoadoutMana
    m_sLoadoutResource "{84B40583F4D1B7A3}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Rifleman.et"
    m_sAffiliatedFaction "FIA"
   }
+  SCR_FactionPlayerLoadout "{65BD083263A78CE0}" {
+   m_sLoadoutName "#AR-Random_Civilian_Name"
+   m_sLoadoutResource "{74DF5613F8551847}Prefabs/Characters/Factions/INDFOR/RURAL/Character_RURAL_Randomized.et"
+   m_sAffiliatedFaction "RURAL"
+  }
+  SCR_FactionPlayerLoadout "{65BD083241C11A7F}" {
+   m_sLoadoutName "#AR-Random_Civilian_Name"
+   m_sLoadoutResource "{7610A160BBEC575F}Prefabs/Characters/Factions/INDFOR/URBAN/Character_URBAN_Guy_Randomized.et"
+   m_sAffiliatedFaction "URBAN"
+  }
   SCR_PlayerArsenalLoadout "{65BD083263A78CE8}" {
    m_sLoadoutName "#AR-Loadout_Editor_SavedArsenalLoadout_Name"
    m_sLoadoutResource "{836E7E39AAC5888B}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Base.et"
@@ -31,30 +41,20 @@ SCR_LoadoutManager : "{AA4E7419A1FF65B0}Prefabs/MP/Managers/Loadouts/LoadoutMana
    m_sLoadoutResource "{7A9EE19AB67B298B}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_base.et"
    m_sAffiliatedFaction "FIA"
   }
-  SCR_FactionPlayerLoadout "{65BD083263A78CE0}" {
-   m_sLoadoutName "#AR-Random_Civilian_Name"
-   m_sLoadoutResource "{74DF5613F8551847}Prefabs/Characters/Factions/INDFOR/RURAL/Character_RURAL_Randomized.et"
-   m_sAffiliatedFaction "RURAL"
-  }
-  SCR_FactionPlayerLoadout "{65BD083241C11A7F}" {
-   m_sLoadoutName "#AR-Random_Civilian_Name"
-   m_sLoadoutResource "{74DF5613F8551847}Prefabs/Characters/Factions/INDFOR/RURAL/Character_RURAL_Randomized.et"
-   m_sAffiliatedFaction "URBAN"
-  }
-  SCR_PlayerArsenalLoadout "{65BD0833AA3B3F82}" {
-   m_sLoadoutName "#AR-Loadout_Editor_NewArsenalLoadout_Name"
-   m_sLoadoutResource "{76313550750181EA}Prefabs/Characters/Factions/INDFOR/GANG/Character_GANG_Gangsta02.et"
-   m_sAffiliatedFaction "GANG"
-  }
-  SCR_FactionPlayerLoadout "{65BD083384713B01}" {
-   m_sLoadoutName "#AR-Loadout_Editor_NewArsenalLoadout_Name"
-   m_sLoadoutResource "{FC0F7D05A318F84F}Prefabs/Characters/Factions/OPFOR/REDPEACE/Character_REDPEACE_Rifleman.et"
-   m_sAffiliatedFaction "REDPEACE"
-  }
   SCR_PlayerArsenalLoadout "{65BD083263A78CDA}" {
    m_sLoadoutName "#AR-Loadout_Editor_SavedArsenalLoadout_Name"
    m_sLoadoutResource "{99F600AD4C6BA6A4}Prefabs/Characters/Factions/CIV/Character_CIV_base.et"
    m_sAffiliatedFaction "CIV"
+  }
+  SCR_PlayerArsenalLoadout "{65E0E1409EB6BD28}" {
+   m_sLoadoutName "#AR-Loadout_Editor_SavedArsenalLoadout_Name"
+   m_sLoadoutResource "{9377B9F8B8CA717A}Prefabs/Characters/Factions/INDFOR/RURAL/Character_RURAL_base.et"
+   m_sAffiliatedFaction "RURAL"
+  }
+  SCR_PlayerArsenalLoadout "{65E0E1408D13EB27}" {
+   m_sLoadoutName "#AR-Loadout_Editor_SavedArsenalLoadout_Name"
+   m_sLoadoutResource "{70697C21DE7AE2ED}Prefabs/Characters/Factions/INDFOR/URBAN/Character_URBAN_base.et"
+   m_sAffiliatedFaction "URBAN"
   }
  }
 }

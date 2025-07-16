@@ -4,23 +4,28 @@ SCR_FactionManager : "{E70679F5E0A515AC}Prefabs/MP/Managers/Factions/FactionMana
   SCR_Faction "{56DEAC40D2DBC8B1}" : "{5EB46557DF2AA24F}Configs/Factions/US.conf" {
    m_bIsPlayable 0
    m_aFriendlyFactionsIds {
-    "RURAL" "URBAN" "REDPEACE" "GANG"
+    "RURAL" "URBAN"
    }
    m_sFactionBackground "{F8AC305446D5D480}UI/Textures/DeployMenu/Loadout-BG/Loadout_US_BG.imageset"
   }
   SCR_Faction "{56DEAC40D3C2E623}" : "{09727032415AC39B}Configs/Factions/USSR.conf" {
    m_bIsPlayable 0
    m_aFriendlyFactionsIds {
-    "RURAL" "URBAN" "REDPEACE" "GANG"
+    "RURAL" "URBAN"
    }
    m_sFactionBackground "{21533F2089005056}UI/Textures/DeployMenu/Loadout-BG/Loadout_BG_USSR.imageset"
   }
   SCR_Faction "{56DEAC40D132400B}" : "{8053DB656DD18B14}Configs/Factions/FIA.conf" {
    m_bIsPlayable 0
    m_aFriendlyFactionsIds {
-    "RURAL" "URBAN" "REDPEACE"
+    "RURAL" "URBAN"
    }
    m_sFactionBackground "{81BF3B1DCC106577}UI/Textures/DeployMenu/Loadout-BG/Loadout_BG_FIA.imageset"
+  }
+  SCR_Faction "{65E0E141A3B86C4E}" : "{3FA20B01D950D31F}Configs/Factions/CIV.conf" {
+   m_aFriendlyFactionsIds + {
+    "RURAL" "URBAN"
+   }
   }
   SCR_Faction "{65BD08321E6B6038}" : "{E5B2FC4A0D01E456}Configs/Factions/RURAL.conf" {
    m_aFriendlyFactionsIds {
@@ -30,18 +35,6 @@ SCR_FactionManager : "{E70679F5E0A515AC}Prefabs/MP/Managers/Factions/FactionMana
   SCR_Faction "{65BD08321BDDBDF1}" : "{FFF1E35BF8F3312D}Configs/Factions/URBAN.conf" {
    m_aFriendlyFactionsIds {
     "RURAL"
-   }
-  }
-  SCR_Faction "{65BD08321444E389}" : "{5C630F7CDC94DACA}Configs/Factions/GANG.conf" {
-   m_bIsPlayable 0
-   m_aFriendlyFactionsIds {
-    "RURAL" "URBAN"
-   }
-  }
-  SCR_Faction "{65BD083211A6C7EF}" : "{B709EDB4147259CD}Configs/Factions/REDPEACE.conf" {
-   m_bIsPlayable 0
-   m_aFriendlyFactionsIds {
-    "RURAL" "URBAN"
    }
   }
  }
