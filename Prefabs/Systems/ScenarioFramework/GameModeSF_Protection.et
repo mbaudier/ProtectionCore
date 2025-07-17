@@ -6,6 +6,8 @@ SCR_BaseGameMode : "{ECEEDB2D3737204B}Prefabs/Systems/ScenarioFramework/GameMode
   }
   ARGEO_WarCrimesComponent "{657D06928358A762}" {
    m_bKillingHorsDeCombatIsWarCrime 1
+   m_bKillingWhileDisguisedIsWarCrime 1
+   m_bPerfidyIsWarCrime 1
   }
   SCR_CampaignBuildingManagerComponent "{65B2F52D1CFFC5DF}" {
    m_sFreeRoamBuildingClientTrigger "{5E191CEAF4B95816}Prefabs/MP/FreeRoamBuildingClientTrigger.et"
@@ -18,7 +20,7 @@ SCR_BaseGameMode : "{ECEEDB2D3737204B}Prefabs/Systems/ScenarioFramework/GameMode
   }
   SCR_CommandingManagerComponent "{64AD03B2FC3136C6}" {
    m_sAIGroupPrefab "{4A9D83DCB0619829}Prefabs/AI/Groups/Commanded_Group.et"
-   m_iMaxAIPerGroup -1
+   m_iMaxAIPerGroup 32
   }
   SCR_NametagConfigComponent "{571AA9E54FC9210D}" {
    m_sConfigPath "{5B6640F98711544D}Configs/NameTags/NametagSingleFriendly.conf"

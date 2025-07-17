@@ -29,6 +29,13 @@ class ARGEO_PopulationComponent : SCR_BaseGameModeComponent
 	{
 		if (!s_Instance)
 			s_Instance = this;
+
+		SCR_MissionHeader header = SCR_MissionHeader.Cast(GetGame().GetMissionHeader());
+		if (header)
+		{
+			if (header.m_fGlobalBuildingsOccupation != 0)
+				m_fGlobalBuildingsOccupation = header.m_fGlobalBuildingsOccupation;
+		}
 		Print("Global building occupation: " + m_fGlobalBuildingsOccupation + "%");
 	}
 

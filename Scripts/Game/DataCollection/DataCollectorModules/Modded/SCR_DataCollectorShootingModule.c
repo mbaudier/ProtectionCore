@@ -98,11 +98,14 @@ modded class SCR_DataCollectorShootingModule
 				if (killerFactionAffiliation.HasPerceivedFaction()
 				 && SCR_Enum.HasPartialFlag(perceivedFactionManager.GetPunishmentKillingWhileDisguisedFlags(), SCR_EDisguisedKillingPunishment.WARCRIME))
 				{
-					if(instigatorContextData.GetKillerDisguiseType() == SCR_ECharacterDisguiseType.HOSTILE_FACTION)
+					if (instigatorContextData.GetKillerDisguiseType() == SCR_ECharacterDisguiseType.HOSTILE_FACTION)
 					{
-						isLegalKill = false;
-						if (killerData)
-							killerData.AddStat(SCR_EDataStats.DISGUISED_KILLER);
+						if (warCrimesComponent.IsKillingWhileDisguisedWarCrime())
+						{
+							isLegalKill = false;
+							if (killerData)
+								killerData.AddStat(SCR_EDataStats.DISGUISED_KILLER);
+						}
 					}
 					else
 					{
@@ -118,7 +121,8 @@ modded class SCR_DataCollectorShootingModule
 							isPerfidy = instigatorContextData.GetKillerDisguiseType() != SCR_ECharacterDisguiseType.DEFAULT_FACTION;
 						}
 						
-						if (isPerfidy)
+						if (isPerfidy && warCrimesComponent.IsPerfidyWarCrime()
+						)
 						{
 							isLegalKill = false;
 							if (killerData)

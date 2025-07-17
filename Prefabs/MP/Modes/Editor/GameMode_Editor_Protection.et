@@ -6,6 +6,8 @@ SCR_GameModeEditor : "{D2DE7F43D48A3667}Prefabs/MP/Modes/Editor/GameMode_Editor.
   }
   ARGEO_WarCrimesComponent "{657D06928358A762}" {
    m_bKillingHorsDeCombatIsWarCrime 1
+   m_bKillingWhileDisguisedIsWarCrime 1
+   m_bPerfidyIsWarCrime 1
   }
   SCR_CampaignBuildingManagerComponent "{65BD0832A38DBBD1}" {
    m_sFreeRoamBuildingClientTrigger "{5E191CEAF4B95816}Prefabs/MP/FreeRoamBuildingClientTrigger.et"
@@ -19,6 +21,9 @@ SCR_GameModeEditor : "{D2DE7F43D48A3667}Prefabs/MP/Modes/Editor/GameMode_Editor.
   SCR_CommandingManagerComponent "{65BD0832A38DBBC4}" {
    m_sAIGroupPrefab "{4A9D83DCB0619829}Prefabs/AI/Groups/Commanded_Group.et"
    m_iMaxAIPerGroup 32
+  }
+  SCR_NametagConfigComponent "{571AA9E54FC9210D}" {
+   m_sConfigPath "{5B6640F98711544D}Configs/NameTags/NametagSingleFriendly.conf"
   }
   SCR_PerceivedFactionManagerComponent "{61AA7E6E0C6A76F9}" {
    m_ePunishmentKillingWhileDisguised WARCRIME

@@ -5,10 +5,16 @@ class ARGEO_WarCrimesComponentClass : SCR_BaseGameModeComponentClass
 
 class ARGEO_WarCrimesComponent : SCR_BaseGameModeComponent
 {
-	[Attribute("0", desc: "Killing an unarmed or wounded enemy is a war crime (IHL DB - Rule 47).", category: "War Crimes")]
+	[Attribute("0", desc: "Killing an unarmed or wounded enemy is a war crime (ihl-databases.icrc.org - Rule 47).", category: "War Crimes")]
 	protected bool m_bKillingHorsDeCombatIsWarCrime;
 
-	[Attribute("{5A45CA8948A1D825}Prefabs/Systems/WarCrimes/WarCrime_Base.et", desc: "The prefab that will be spawned when a war cime is committed, to be used in triggers or to document atrocities a posteriori.", category: "Integration")]
+	[Attribute("0", desc: "Killing while disguised is war crime (ihl-databases.icrc.org - Rule 62).", category: "War Crimes")]
+	protected bool m_bKillingWhileDisguisedIsWarCrime;
+
+	[Attribute("0", desc: "Perfidy, that is killing while disguised as protected, is war crime (ihl-databases.icrc.org - Rule 65).", category: "War Crimes")]
+	protected bool m_bPerfidyIsWarCrime;
+
+	[Attribute("{5A45CA8948A1D825}Prefabs/Systems/WarCrimes/WarCrime_Base.et", desc: "The prefab that will be spawned when a war cime is committed, to be used in triggers or to investigate atrocities a posteriori.", category: "Integration")]
 	protected ResourceName m_sWarCrimePrefab;
 
 	[Attribute("1", desc: "All war crimes will be considered as friendly kills (behavior of Arma Reforger currently).", category: "Compatibility")]
@@ -135,6 +141,16 @@ class ARGEO_WarCrimesComponent : SCR_BaseGameModeComponent
 	bool IsKillingHorsDeCombatWarCrime()
 	{
 		return m_bKillingHorsDeCombatIsWarCrime;
+	}
+	
+	bool IsKillingWhileDisguisedWarCrime()
+	{
+		return m_bKillingWhileDisguisedIsWarCrime;
+	}
+	
+	bool IsPerfidyWarCrime()
+	{
+		return m_bPerfidyIsWarCrime;
 	}
 	
 	bool TreatAllWarCrimesAsFriendlyKills()
