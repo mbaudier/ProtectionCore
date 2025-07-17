@@ -32,6 +32,9 @@ RadioManagerEntity RadioManager : "{B8E09FAB91C4ECCD}Prefabs/Radio/RadioManager.
 }
 SCR_FactionManager FactionManager_USxUSSR : "{E70679F5E0A515AC}Prefabs/MP/Managers/Factions/FactionManager_Protection.et" {
  components {
+  ARGEO_ProtectionFactionManagerComponent "{65C4FA10B63E5205}" {
+   m_bEnemiesCanBeCaptured 1
+  }
   SCR_FactionAliasComponent "{65C88D95376F76C5}" {
    m_aFactionAliases {
     SCR_ScenarioFrameworkFactionAliasConfig "{65C88D95312E2E68}" {
@@ -55,6 +58,14 @@ SCR_FactionManager FactionManager_USxUSSR : "{E70679F5E0A515AC}Prefabs/MP/Manage
   }
  }
  m_bCanChangeFactionsPlayable 0
+ m_aRanks {
+  SCR_RankID "{5CB0777E83631136}" {
+   m_iRequiredXP -201
+  }
+  SCR_RankID "{5CB0777E828E61F3}" {
+   m_iRequiredXP -200
+  }
+ }
 }
 ScriptedChatEntity ScriptedChatEntity : "{F69BC912AC8236F9}Prefabs/MP/ScriptedChatEntity.et" {
  coords 1891.659 12.175 1828.161
@@ -62,7 +73,7 @@ ScriptedChatEntity ScriptedChatEntity : "{F69BC912AC8236F9}Prefabs/MP/ScriptedCh
 SCR_BaseGameMode GameModeSF_Protection : "{FDDB712823199E09}Prefabs/Systems/ScenarioFramework/GameModeSF_Protection.et" {
  components {
   ARGEO_PopulationComponent "{657F0CE6ADBB46C4}" {
-   m_fGlobalBuildingsOccupation 100
+   m_fGlobalBuildingsOccupation 70
   }
   ARGEO_WarCrimesComponent "{657D06928358A762}" {
    m_bPlayableFactionsFriendlyToNonMilitary 0
@@ -79,9 +90,14 @@ SCR_BaseGameMode GameModeSF_Protection : "{FDDB712823199E09}Prefabs/Systems/Scen
     }
    }
   }
+  SCR_PerceivedFactionManagerComponent "{61AA7E6E0C6A76F9}" {
+   m_ePunishmentKillingWhileDisguised 3
+  }
   SCR_RespawnSystemComponent "{56B2B4793051E7C9}" {
    m_SpawnLogic SCR_MenuSpawnLogic "{5D36888CC966608A}" {
    }
+  }
+  SCR_XPHandlerComponent "{65E2E753776A9B9B}" {
   }
  }
  coords 1891.659 11.326 1821.161

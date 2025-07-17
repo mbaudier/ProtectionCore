@@ -20,6 +20,12 @@ class ARGEO_WarCrimesComponent : SCR_BaseGameModeComponent
 	[Attribute("1", desc: "All war crimes will be considered as friendly kills (behavior of Arma Reforger currently).", category: "Compatibility")]
 	protected bool m_bTreatAllWarCrimesAsFriendlyKills;
 
+	[Attribute("1", desc: "Career/kick statistics use vanilla logic.", category: "Compatibility")]
+	protected bool m_bVanillaLogicForStatistics;
+
+	[Attribute("1", desc: "XP rewards use vanilla logic.", category: "Compatibility")]
+	protected bool m_bVanillaLogicForXP;
+
 	[Attribute("1", desc: "Force playable factions to be friendly to non-military factions (IHL DB - Rule 1).", category: "Consider Arma Reforger EULAs Before Changing This")]
 	protected bool m_bPlayableFactionsFriendlyToNonMilitary;
 
@@ -83,6 +89,196 @@ class ARGEO_WarCrimesComponent : SCR_BaseGameModeComponent
 	//
 	// RULES
 	//
+	bool EvaluateKillLegalityStats(notnull SCR_InstigatorContextData instigatorContextData, SCR_PlayerData killerData)
+	{
+		return EvaluateKillLegality(instigatorContextData, true, killerData, null);
+	}
+	
+	bool EvaluateKillLegalityXP(notnull SCR_InstigatorContextData instigatorContextData, SCR_XPHandlerComponent xpHandlerComp)
+	{
+		return EvaluateKillLegality(instigatorContextData, false, null, xpHandlerComp);
+	}
+
+	//! Centralize the complex logic of evaluating kill legality across statistics, notifications and XP rewards	
+	protected bool EvaluateKillLegality(notnull SCR_InstigatorContextData instigatorContextData, bool register, SCR_PlayerData killerData, SCR_XPHandlerComponent xpHandlerComp)
+	{
+		IEntity victimEntity = instigatorContextData.GetVictimEntity();
+		IEntity killerEntity = instigatorContextData.GetKillerEntity();
+		int killerId = instigatorContextData.GetKillerPlayerID();
+
+		SCR_ECharacterControlType victimControlType = instigatorContextData.GetVictimCharacterControlType();
+		bool isVictimAI = (victimControlType == SCR_ECharacterControlType.POSSESSED_AI) || (victimControlType == SCR_ECharacterControlType.AI);
+				
+		bool killedByEnemy = instigatorContextData.HasAnyVictimKillerRelation(SCR_ECharacterDeathStatusRelations.KILLED_BY_ENEMY_PLAYER)
+		 || instigatorContextData.HasAnyVictimKillerRelation(SCR_ECharacterDeathStatusRelations.KILLED_BY_ENEMY_AI);
+		
+		// we assume legal kill, then systematically check potential crimes
+		bool isLegalKill = true;
+
+		// check non-combatant killed		
+		if (IsProtected(victimEntity))
+		{	
+			isLegalKill = false;
+			if (register)
+				RegisterWarCrime(SCR_ECrimeNotification.NON_COMBATANT_KILL, instigatorContextData);
+			
+			if (killerData)
+				if (isVictimAI)
+					killerData.AddStat(SCR_EDataStats.PROTECTED_AI_KILLS);
+				else
+					killerData.AddStat(SCR_EDataStats.PROTECTED_KILLS);
+			
+			if (xpHandlerComp)
+				xpHandlerComp.AwardXP(killerId, SCR_EXPRewards.NON_COMBATANT_KILL);
+		}
+		// check hors de combat killed
+		else if(killedByEnemy
+		 && IsHorsDecombat(victimEntity)
+		 && IsKillingHorsDeCombatWarCrime())
+		{	
+			isLegalKill = false;
+			if (register)
+				RegisterWarCrime(SCR_ECrimeNotification.HORS_DE_COMBAT_KILL, instigatorContextData);
+
+			if (killerData)
+				if (isVictimAI)
+					killerData.AddStat(SCR_EDataStats.HDC_AI_KILLS);
+				else
+					killerData.AddStat(SCR_EDataStats.HDC_KILLS);
+
+			if (xpHandlerComp)
+				xpHandlerComp.AwardXP(killerId, SCR_EXPRewards.HORS_DE_COMBAT_KILL);
+		}
+
+		// check disguised or perfidy
+		if (killedByEnemy)
+		{
+			SCR_PerceivedFactionManagerComponent perceivedFactionManager = SCR_PerceivedFactionManagerComponent.GetInstance();
+			SCR_CharacterFactionAffiliationComponent killerFactionAffiliation = SCR_CharacterFactionAffiliationComponent.Cast(killerEntity.FindComponent(SCR_CharacterFactionAffiliationComponent));
+			if (perceivedFactionManager 
+			 && perceivedFactionManager.GetCharacterPerceivedFactionOutfitType() != SCR_EPerceivedFactionOutfitType.DISABLED
+			 && killerFactionAffiliation)
+			{
+				if (killerFactionAffiliation.HasPerceivedFaction()
+				 && SCR_Enum.HasPartialFlag(perceivedFactionManager.GetPunishmentKillingWhileDisguisedFlags(), SCR_EDisguisedKillingPunishment.WARCRIME))
+				{
+					if (instigatorContextData.GetKillerDisguiseType() == SCR_ECharacterDisguiseType.HOSTILE_FACTION)
+					{
+						if (IsKillingWhileDisguisedWarCrime())
+						{
+							isLegalKill = false;
+							if (register)
+								RegisterWarCrime(SCR_ECrimeNotification.KILLING_WHILE_DISGUISED, instigatorContextData);
+
+							if (killerData)
+								killerData.AddStat(SCR_EDataStats.DISGUISED_KILLER);
+
+							if (xpHandlerComp)
+								xpHandlerComp.AwardXP(killerId, SCR_EXPRewards.KILLING_WHILE_DISGUISED);
+						}
+					}
+					else
+					{
+						bool isPerfidy = false;
+						SCR_Faction killerPerceivedFaction = SCR_Faction.Cast(killerFactionAffiliation.GetPerceivedFaction());
+						if (killerPerceivedFaction)
+						{
+							if (!killerPerceivedFaction.IsMilitary())
+								isPerfidy = true;
+						}
+						else
+						{
+							isPerfidy = instigatorContextData.GetKillerDisguiseType() != SCR_ECharacterDisguiseType.DEFAULT_FACTION;
+						}
+						
+						if (isPerfidy && IsPerfidyWarCrime())
+						{
+							isLegalKill = false;
+							if (register)
+								RegisterWarCrime(SCR_ECrimeNotification.PERFIDY, instigatorContextData);
+							
+							if (killerData)
+								killerData.AddStat(SCR_EDataStats.PERFIDY_KILLER);
+						
+							if (xpHandlerComp)
+								xpHandlerComp.AwardXP(killerId, SCR_EXPRewards.PERFIDY);
+						}
+					}
+					
+				}
+			}
+		}
+		
+		// check friendly fire
+		if (!killedByEnemy)
+		{
+			if (!IsProtected(victimEntity) // already checked, do not count twice
+				&& instigatorContextData.DoesPlayerKillCountAsTeamKill(true, true))
+			{
+				isLegalKill = false;
+				if (register)
+					RegisterWarCrime(SCR_ECrimeNotification.TEAMKILL, instigatorContextData);
+				
+				if (killerData)
+					if (isVictimAI)
+						killerData.AddStat(SCR_EDataStats.ALLIED_AI_KILLS);
+					else
+						killerData.AddStat(SCR_EDataStats.ALLIED_KILLS);
+				
+				if (xpHandlerComp)
+					xpHandlerComp.AwardXP(killerId, SCR_EXPRewards.FRIENDLY_KILL);
+			}
+			else
+			{
+				 // completely ignore friendly kill, no stats or XP will be gathered
+				return true;
+			}
+		}
+		
+		// it was a legal kill, process positive stats and XP
+		if (isLegalKill)
+		{	
+			if (killerData)
+			{
+				if (isVictimAI)
+					killerData.AddStat(SCR_EDataStats.LEGAL_AI_KILLS);
+				else
+					killerData.AddStat(SCR_EDataStats.LEGAL_KILLS);
+				
+			}
+			
+			if (xpHandlerComp)
+			{
+				SCR_ChimeraCharacter instigatorChar = SCR_ChimeraCharacter.Cast(instigatorContextData.GetKillerEntity());
+				if (instigatorChar && instigatorChar.IsInVehicle())
+					xpHandlerComp.AwardXP(killerId, SCR_EXPRewards.ENEMY_KILL_VEH);
+				else 
+					xpHandlerComp.AwardXP(killerId, SCR_EXPRewards.ENEMY_KILL);
+			}
+		}
+
+		// compatibility with vanilla
+		if (TreatAllWarCrimesAsFriendlyKills() && killerData)
+		{
+			if (isLegalKill)
+			{	
+				if (isVictimAI)
+					killerData.AddStat(SCR_EDataStats.AI_KILLS);
+				else
+					killerData.AddStat(SCR_EDataStats.KILLS);
+			}
+			else
+			{
+				if (isVictimAI)
+					killerData.AddStat(SCR_EDataStats.FRIENDLY_AI_KILLS);
+				else
+					killerData.AddStat(SCR_EDataStats.FRIENDLY_KILLS);
+			}
+		}
+		
+		return isLegalKill;		
+	}
+
 	bool IsProtected(IEntity entity)
 	{		
 		SCR_ChimeraCharacter character = SCR_ChimeraCharacter.Cast(entity);
@@ -156,6 +352,16 @@ class ARGEO_WarCrimesComponent : SCR_BaseGameModeComponent
 	bool TreatAllWarCrimesAsFriendlyKills()
 	{
 		return m_bTreatAllWarCrimesAsFriendlyKills;
+	}
+	
+	bool UseVanillaLogicForXP()
+	{
+		return m_bVanillaLogicForXP;
+	}
+	
+	bool UseVanillaLogicForStatistics()
+	{
+		return m_bVanillaLogicForStatistics;
 	}
 	
 	static ARGEO_WarCrimesComponent GetInstance()

@@ -47,7 +47,7 @@ class ARGEO_WarCrimesHintComponent : ScriptComponent
 					msg += "\n- #PRTC-WarCrime_ProtectedKill_Title (#PRTC-WarCrime_Rule_Nbr 1)";
 				else if (SCR_ECrimeNotification.HORS_DE_COMBAT_KILL == crime)
 					msg += "\n- #PRTC-WarCrime_HdcKill_Title (#PRTC-WarCrime_Rule_Nbr 47)";
-				else if (SCR_ECrimeNotification.DISGUISED == crime)
+				else if (SCR_ECrimeNotification.KILLING_WHILE_DISGUISED == crime)
 					msg += "\n- #PRTC-WarCrime_Disguised_Title (#PRTC-WarCrime_Rule_Nbr 62)";
 				else if (SCR_ECrimeNotification.PERFIDY == crime)
 					msg += "\n- #PRTC-WarCrime_Perfidy_Title (#PRTC-WarCrime_Rule_Nbr 65)";

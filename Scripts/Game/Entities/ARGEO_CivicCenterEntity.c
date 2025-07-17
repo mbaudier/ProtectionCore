@@ -5,8 +5,14 @@ class ARGEO_CivicCenterEntityClass: ARGEO_BuildingPopulationEntityClass
 //! The link between people and a given building.
 class ARGEO_CivicCenterEntity: ARGEO_BuildingPopulationEntity
 {
-	[Attribute("{750A8D1695BD6998}Prefabs/AI/Waypoints/AIWaypoint_Move.et")]
+	protected float m_iDischargeRadius = 200;
+	
+	[Attribute("0", desc: "Force composition to immediately register", category: "Logic")]
+	protected bool m_bForceRegister;
+
+	[Attribute("{750A8D1695BD6998}Prefabs/AI/Waypoints/AIWaypoint_Move.et", desc:"Destination to move to", category: "Prefabs")]
 	protected ResourceName m_sMoveToWaypointPrefab;
+
 
 	private SCR_AIWaypoint m_MoveTo;
 
@@ -24,7 +30,7 @@ class ARGEO_CivicCenterEntity: ARGEO_BuildingPopulationEntity
 		if (!populationComp) // typically in workbnech
 			return;
 		
-		if (!m_CampaignBuildingCompositionComp)
+		if (m_bForceRegister || !m_CampaignBuildingCompositionComp)
 			populationComp.RegisterCivicCenter(this);
 	}
 
@@ -59,5 +65,10 @@ class ARGEO_CivicCenterEntity: ARGEO_BuildingPopulationEntity
 	SCR_AIWaypoint GetMoveToWaypoint()
 	{
 		return m_MoveTo;
+	}
+	
+	int GetDischargeRadius()
+	{
+		return m_iDischargeRadius;
 	}
 }

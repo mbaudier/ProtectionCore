@@ -8,6 +8,9 @@ SCR_GameModeEditor : "{D2DE7F43D48A3667}Prefabs/MP/Modes/Editor/GameMode_Editor.
    m_bKillingHorsDeCombatIsWarCrime 1
    m_bKillingWhileDisguisedIsWarCrime 1
    m_bPerfidyIsWarCrime 1
+   m_bTreatAllWarCrimesAsFriendlyKills 0
+   m_bVanillaLogicForStatistics 0
+   m_bVanillaLogicForXP 0
   }
   SCR_CampaignBuildingManagerComponent "{65BD0832A38DBBD1}" {
    m_sFreeRoamBuildingClientTrigger "{5E191CEAF4B95816}Prefabs/MP/FreeRoamBuildingClientTrigger.et"

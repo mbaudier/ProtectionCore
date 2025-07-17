@@ -195,30 +195,50 @@ class ARGEO_PopulationComponent : SCR_BaseGameModeComponent
 	//
 	// DISPLACEMENT
 	//
-	ARGEO_CivicCenterEntity GetClosestCivicCenter(vector pos)
+	ARGEO_CivicCenterEntity GetNearestCivicCenter(vector pos)
 	{
 		ARGEO_CivicCenterEntity best;
-		float closest;
+		float nearest;
 		foreach (ARGEO_CivicCenterEntity civicCenter : m_aCivicCenters)
 		{	
 			float distanceSq = vector.DistanceSqXZ(pos, civicCenter.GetOrigin());
 			if (!best)
 			{
 				best = civicCenter;
-				closest = distanceSq;
+				nearest = distanceSq;
 			}
 			else
 			{
-				if(closest > distanceSq)
+				if(nearest > distanceSq)
 				{
 					best = civicCenter;
-					closest = distanceSq;
+					nearest = distanceSq;
 				}		
 			}
 		}
 		return best;
 	}
-		
+
+	bool CanNonCombatantBeDischarged(SCR_ChimeraCharacter character)
+	{
+		ARGEO_CivicCenterEntity civicCenter = GetNearestCivicCenter(character.GetOrigin());
+		if (civicCenter)
+		{
+			float distance = vector.DistanceXZ(character.GetOrigin(), civicCenter.GetOrigin());
+			return distance <= civicCenter.GetDischargeRadius();
+		}
+		return false;
+	}
+			
+	bool CanPrisonerBeDischarged(SCR_ChimeraCharacter character)
+	{
+		// TODO Implement a system for prison, etc.
+		ARGEO_CivicCenterEntity civicCenter = GetNearestCivicCenter(character.GetOrigin());
+		if (civicCenter)
+			return vector.DistanceXZ(character.GetOrigin(), civicCenter.GetOrigin()) <= civicCenter.GetDischargeRadius();
+		return false;
+	}
+			
 	//
 	// ACCESSORS
 	//

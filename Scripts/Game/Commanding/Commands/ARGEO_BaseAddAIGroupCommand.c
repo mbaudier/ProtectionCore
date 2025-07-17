@@ -38,7 +38,7 @@ class ARGEO_BaseAddAIGroupCommand : SCR_BaseGroupCommand
 	}
 
 	/// To be overridden
-	protected void PostRecruitment(int count)
+	protected void PostRecruitment(int playerID, int count)
 	{
 	}
 	
@@ -54,6 +54,7 @@ class ARGEO_BaseAddAIGroupCommand : SCR_BaseGroupCommand
 		}
 		
 		groupController.RequestAddAIAgent(character, playerID);
+		SCR_AIGroup commandedGroup = groupController.GetPlayersGroup().GetSlave();
 		
 		// faction has now been set to recruiter's faction, set it to either PROTECTED or original:
 		Faction factionToSet = currentFaction;// can be NULL
@@ -68,12 +69,13 @@ class ARGEO_BaseAddAIGroupCommand : SCR_BaseGroupCommand
 				{
 					// TODO use updated faction callback
 					characterProtectionComponent.SetPreProtectionFaction(currentFaction);
+					
+					//commandedGroup.GetOnAgentRemoved().Insert(OnAgentRemoved);
 				}
 			}
 		}
 		factionAffiliation.SetAffiliatedFaction(factionToSet);
 		
-		AIGroup commandedGroup = groupController.GetPlayersGroup().GetSlave();
 		if (GroupContainsProtected(commandedGroup))
 		{
 			// set column formation when protecting
@@ -91,7 +93,16 @@ class ARGEO_BaseAddAIGroupCommand : SCR_BaseGroupCommand
 			// TODO sort military before and after protected
 		}
 	}
-	
+
+	protected void OnAgentRemoved(SCR_AIGroup group, AIAgent agent)
+	{
+		IEntity character = agent.GetControlledEntity();
+		ARGEO_CharacterProtectionComponent characterProtectionComponent = ARGEO_CharacterProtectionComponent.Cast(character.FindComponent(ARGEO_CharacterProtectionComponent));
+		if (characterProtectionComponent && characterProtectionComponent.IsProtected())
+		{
+			// TODO auto-reset faction?
+		}
+	}		
 	//
 	// FORKED LOGIC
 	//
@@ -123,7 +134,7 @@ class ARGEO_BaseAddAIGroupCommand : SCR_BaseGroupCommand
 		{
 			if (ProcessPlayer(character, targetPlayerID))
 			{
-				PostRecruitment(1);
+				PostRecruitment(playerID, 1);
 				return true;
 			}
 			else
@@ -169,18 +180,18 @@ class ARGEO_BaseAddAIGroupCommand : SCR_BaseGroupCommand
 				
 			}
 			
-			PostRecruitment(count);	
+			PostRecruitment(playerID, count);	
 				
 			// DEBUG list the whole group
-			array<AIAgent> commandedA = {};
-			commandedGroup.GetAgents(commandedA);
-			int index = 0;
-			foreach (AIAgent a : commandedA)
-			{
-				SCR_ChimeraCharacter c = SCR_ChimeraCharacter.Cast(a.GetControlledEntity());
-				Print(" " + index + " - " + c.GetFactionKey());
-				index++;
-			}		
+//			array<AIAgent> commandedA = {};
+//			commandedGroup.GetAgents(commandedA);
+//			int index = 0;
+//			foreach (AIAgent a : commandedA)
+//			{
+//				SCR_ChimeraCharacter c = SCR_ChimeraCharacter.Cast(a.GetControlledEntity());
+//				Print(" " + index + " - " + c.GetFactionKey());
+//				index++;
+//			}		
 			
 			return true;
 		}
@@ -341,7 +352,6 @@ class ARGEO_BaseAddAIGroupCommand : SCR_BaseGroupCommand
 				array<SCR_AIGroup> groups = groupManager.GetPlayableGroupsByFaction(ff);
 				if (groups)
 				{		
-					// FIXME understand why it sometimes crashes (groups is null)
 					if (ff.IsPlayable() && ff.IsMilitary() && groupController.IsAICharacterInAnyGroup(character, ff))
 						return true;
 				}

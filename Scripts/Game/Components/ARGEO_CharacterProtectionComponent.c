@@ -5,6 +5,8 @@ class ARGEO_CharacterProtectionComponentClass : GameComponentClass
 
 class ARGEO_CharacterProtectionComponent : GameComponent
 {
+	protected bool m_bProtected = false;
+	
 	protected Faction m_PreProtectionFaction;
 	
 	protected ARGEO_CharacterDisplacementStatus m_DisplacementStatus = ARGEO_CharacterDisplacementStatus.NORMAL;
@@ -20,6 +22,15 @@ class ARGEO_CharacterProtectionComponent : GameComponent
 	void SetPreProtectionFaction(Faction preProtectionFaction)
 	{
 		m_PreProtectionFaction = preProtectionFaction;
+		if (preProtectionFaction)
+			m_bProtected = true;
+		else
+			m_bProtected = false;
+	}
+	
+	bool IsProtected()
+	{
+		return m_bProtected;
 	}
 	
 	ARGEO_CharacterDisplacementStatus GetDisplacementStatus()

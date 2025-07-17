@@ -21,14 +21,23 @@ class ARGEO_CaptureAIGroupCommand : ARGEO_BaseAddAIGroupCommand
 
 	override bool CanBeShownForCharacter(notnull SCR_ChimeraCharacter targetCharacter)
 	{
-		return ARGEO_WarCrimesComponent.GetInstance().IsDisarmed(targetCharacter);
+		ARGEO_WarCrimesComponent warCrimesComp = ARGEO_WarCrimesComponent.GetInstance();
+		if (warCrimesComp)
+			return warCrimesComp.IsDisarmed(targetCharacter);
+		return false;
 	}
 	
-	override void PostRecruitment(int count)
+	override void PostRecruitment(int playerID, int count)
 	{
-		if (count == 1)
-			SCR_HintManagerComponent.GetInstance().ShowCustomHint("Enemy captured", "Captured", 3.0);	
-		else	
-			SCR_HintManagerComponent.GetInstance().ShowCustomHint("Group of enemies captured", "Captured", 3.0);	
+		SCR_XPHandlerComponent xpComp = SCR_XPHandlerComponent.Cast(GetGame().GetGameMode().FindComponent(SCR_XPHandlerComponent));
+		if (xpComp)
+			xpComp.AwardXP(playerID, SCR_EXPRewards.CAPTURE_PRISONER);
+//		else
+//		{
+//			if (count == 1)
+//				SCR_HintManagerComponent.GetInstance().ShowCustomHint("Enemy captured", "Captured", 3.0);	
+//			else	
+//				SCR_HintManagerComponent.GetInstance().ShowCustomHint("Group of enemies captured", "Captured", 3.0);	
+//		}
 	}
 }

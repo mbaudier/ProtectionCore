@@ -8,6 +8,9 @@ SCR_BaseGameMode : "{ECEEDB2D3737204B}Prefabs/Systems/ScenarioFramework/GameMode
    m_bKillingHorsDeCombatIsWarCrime 1
    m_bKillingWhileDisguisedIsWarCrime 1
    m_bPerfidyIsWarCrime 1
+   m_bTreatAllWarCrimesAsFriendlyKills 0
+   m_bVanillaLogicForStatistics 0
+   m_bVanillaLogicForXP 0
   }
   SCR_CampaignBuildingManagerComponent "{65B2F52D1CFFC5DF}" {
    m_sFreeRoamBuildingClientTrigger "{5E191CEAF4B95816}Prefabs/MP/FreeRoamBuildingClientTrigger.et"

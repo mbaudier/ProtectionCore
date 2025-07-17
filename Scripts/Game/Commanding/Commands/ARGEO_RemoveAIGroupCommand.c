@@ -31,11 +31,50 @@ class ARGEO_RemoveAIGroupCommand : SCR_BaseGroupCommand
 		//
 		FactionAffiliationComponent factionAffiliation = FactionAffiliationComponent.Cast(character.FindComponent(FactionAffiliationComponent));
 		ARGEO_CharacterProtectionComponent characterProtectionComponent = ARGEO_CharacterProtectionComponent.Cast(character.FindComponent(ARGEO_CharacterProtectionComponent));
-		if (factionAffiliation && characterProtectionComponent)
+		if (factionAffiliation && characterProtectionComponent && characterProtectionComponent.IsProtected())
 		{
+			bool canBeDischarged = false;
+			ARGEO_PopulationComponent populationComp = ARGEO_PopulationComponent.GetInstance();
+			SCR_XPHandlerComponent xpComp = SCR_XPHandlerComponent.Cast(GetGame().GetGameMode().FindComponent(SCR_XPHandlerComponent));
+
+			SCR_Faction controlledEntityFaction = SCR_Faction.Cast(playerController.GetLocalControlledEntityFaction());
+
 			// TODO use updated faction callback
 			Faction preProtectionFaction = characterProtectionComponent.GetPreProtectionFaction();
+			if (controlledEntityFaction && controlledEntityFaction.IsFactionEnemy(preProtectionFaction)) // prisoner
+			{
+				if (populationComp)
+					canBeDischarged = populationComp.CanPrisonerBeDischarged(character);
+
+				if (canBeDischarged)
+				{
+					if (xpComp)
+						xpComp.AwardXP(playerID, SCR_EXPRewards.DISCHARGE_PRISONER);
+					
+					// stay PROTECTED and wait
+					// TODO extend logic to priuson, disappearing, etc.
+					return true;
+				}
+				else
+				{
+					if (xpComp)
+						xpComp.AwardXP(playerID, SCR_EXPRewards.ABANDON_PRISONER);
+				}
+			}
+			else // non-combatants
+			{
+				if (populationComp)
+					canBeDischarged = populationComp.CanNonCombatantBeDischarged(character);
+				
+				if (canBeDischarged)
+					xpComp.AwardXP(playerID, SCR_EXPRewards.DISCHARGE_NON_COMBATANT);
+				else
+					xpComp.AwardXP(playerID, SCR_EXPRewards.ABANDON_NON_COMBATANT);
+			}
+			
+			// set faction back to original
 			factionAffiliation.SetAffiliatedFaction(preProtectionFaction);
+			characterProtectionComponent.SetPreProtectionFaction(null);
 		}
 		//
 				

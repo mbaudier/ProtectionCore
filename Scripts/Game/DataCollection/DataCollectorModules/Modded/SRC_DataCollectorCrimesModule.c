@@ -28,6 +28,13 @@ modded class SCR_DataCollectorCrimesModule
 	//! Second add to the score given the current crimes: PointsOfCrime * CRIME_ACCELERATION_FACTOR
 	override void EvaluatePlayerCrimes(int playerId, bool evaluatePunishment = true)
 	{
+		ARGEO_WarCrimesComponent warCrimeComp = ARGEO_WarCrimesComponent.GetInstance();
+		if (!warCrimeComp || warCrimeComp.UseVanillaLogicForStatistics())
+		{
+			vanilla.EvaluatePlayerCrimes(playerId, evaluatePunishment);
+			return;
+		}
+		
 		SCR_PlayerData playerData = GetGame().GetDataCollector().GetPlayerData(playerId, false);
 		if (!playerData)
 			return;
@@ -124,7 +131,7 @@ modded class SCR_DataCollectorCrimesModule
 		{
 			playerData.AddStat(SCR_EDataStats.WARCRIME_DISGUISED,
 			 disguisedPoints - (proportionalityPoints * disguisedPoints/warCrimesPoints), false);
-			crimeNotifications.Insert(SCR_ECrimeNotification.DISGUISED);
+			crimeNotifications.Insert(SCR_ECrimeNotification.KILLING_WHILE_DISGUISED);
 		}
 
 		if (perfidyPoints > 0)
