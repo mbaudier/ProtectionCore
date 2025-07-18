@@ -10,7 +10,7 @@ class ARGEO_BuildingHouseholdEntity: ARGEO_BuildingPopulationEntity
 
 	private ref array<ARGEO_PopulatedSpawnPointComponent> m_aSpawnPoints = new array<ARGEO_PopulatedSpawnPointComponent>;
 
-	// Household is displaced together (also for performance reasons, reducing the number og active groups)
+	// Household is displaced together (also for performance reasons, reducing the number of active groups)
 	private SCR_AIGroup m_DisplacedGroup = null;
 	
 	override void EOnActivate(IEntity owner)
@@ -49,10 +49,17 @@ class ARGEO_BuildingHouseholdEntity: ARGEO_BuildingPopulationEntity
 	//
 	// EVENTS
 	//
-	void OnSafetyStatusChanged(ARGEO_PopulationSafetyStatus safetyStatus)
+	void OnSafetyStatusChanged(ARGEO_EPopulationSafetyStatus safetyStatus)
 	{
-		// TODO partial exodus
-		if (safetyStatus <= ARGEO_PopulationSafetyStatus.TENSE)
+		if (HasFled())
+			return;
+		
+		ARGEO_PopulationComponent populationComp = ARGEO_PopulationComponent.GetInstance();
+		if (!populationComp)
+			return;
+		
+		bool shouldFlee = populationComp.ShouldFlee(this);
+		if (shouldFlee)
 		{
 			foreach (ARGEO_PopulatedSpawnPointComponent spawnPoint : m_aSpawnPoints)
 			{
@@ -112,6 +119,11 @@ class ARGEO_BuildingHouseholdEntity: ARGEO_BuildingPopulationEntity
 				Print("Civilian household fleeing to " + fleeTo.GetOrigin());
 			}
 		}
+		else // no civic center available
+		{
+			// TODO scatter them?
+			ClearGroupWPs(m_DisplacedGroup);
+		}
 	}
 	
 	protected SCR_AIGroup CreateDisplacedGroup()
@@ -138,6 +150,11 @@ class ARGEO_BuildingHouseholdEntity: ARGEO_BuildingPopulationEntity
 		{	
 			group.RemoveWaypoint(wp);			
 		}
+	}
+		
+	bool HasFled()
+	{
+		return m_DisplacedGroup != null;
 	}
 	
 	//

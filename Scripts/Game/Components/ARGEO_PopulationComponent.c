@@ -12,6 +12,22 @@ class ARGEO_PopulationComponent : SCR_BaseGameModeComponent
 
 	[Attribute(defvalue: "0", UIWidgets.Slider, desc: "Buildings occupation ratio, in percentage.", params: "0 100 1", category: "Population")]
 	protected float m_fGlobalBuildingsOccupation;
+	
+	[Attribute(defvalue: "20", UIWidgets.Slider, desc: "Which percentage of the buildings must be destroyed to trigger UNLIVABLE status.", params: "0 100 1", category: "Populated Territory Safety Status")]
+	protected float m_fProportionOfDestroyedBuildingUnlivable;
+	
+	[Attribute(defvalue: "10", UIWidgets.Slider, desc: "Ratio in percentage of the number of (all) war crimes to the original population triggering UNLIVABLE status.", params: "0 100 1", category: "Populated Territory Safety Status")]
+	protected float m_fProportionOfWarCrimesUnlivable;
+	
+	[Attribute(defvalue: "20", UIWidgets.Slider, desc: "Probability for an houshold to flee by TENSE status, in percentage.", params: "0 100 1", category: "Displacement Probability")]
+	protected float m_fProbabilityToFleeWhenTense;
+	
+	[Attribute(defvalue: "60", UIWidgets.Slider, desc: "Probability for an houshold to flee by DANGEROUS status, in percentage.", params: "0 100 1", category: "Displacement Probability")]
+	protected float m_fProbabilityToFleeWhenDangerous;
+	
+	[Attribute(defvalue: "90", UIWidgets.Slider, desc: "Probability for an houshold to flee by UNLIVABLE status, in percentage.", params: "0 100 1", category: "Displacement Probability")]
+	protected float m_fProbabilityToFleeWhenUnlivable;
+	
 
 	protected static ARGEO_PopulationComponent s_Instance;
 	
@@ -96,7 +112,7 @@ class ARGEO_PopulationComponent : SCR_BaseGameModeComponent
 	//
 	void RegisterBuildingHousehold(notnull ARGEO_BuildingHouseholdEntity buildingHousehold)
 	{
-		string populatedTerritoryID = buildingHousehold.GetPopulatedTerritoryID();
+		ARGEO_PopulatedTerritoryID populatedTerritoryID = buildingHousehold.GetPopulatedTerritoryID();
 		ARGEO_PopulatedTerritory populatedTerritory = GetPopulatedTerritory(populatedTerritoryID);
 		if (!populatedTerritory)
 			return;
@@ -119,7 +135,7 @@ class ARGEO_PopulationComponent : SCR_BaseGameModeComponent
 		}
 	}
 	
-	void UnregisterCivicCenter(notnull ARGEO_CivicCenterEntity civicCenter)
+	void CivicCenterDestroyed(notnull ARGEO_CivicCenterEntity civicCenter)
 	{
 		m_aCivicCenters.RemoveItem(civicCenter);
 		Print("Unregistered civic center at position " + civicCenter.GetOrigin());
@@ -129,9 +145,16 @@ class ARGEO_PopulationComponent : SCR_BaseGameModeComponent
 		{
 			populatedTerritory.GetEventHandlerManager().RaiseEvent(ARGEO_PopulatedTerritory.EVENT_CIVIC_CENTER_DESTROYED, 1, civicCenter);
 		}
+		
+		ARGEO_PopulatedTerritoryID populatedTerritoryID = civicCenter.GetPopulatedTerritoryID();
+		ARGEO_PopulatedTerritory populatedTerritory = GetPopulatedTerritory(populatedTerritoryID);
+		if (!populatedTerritory)
+			return;
+		if (populatedTerritory.GetSafetyStatus() > ARGEO_EPopulationSafetyStatus.DANGEROUS)
+			populatedTerritory.ChangeSafetyStatus(ARGEO_EPopulationSafetyStatus.DANGEROUS);
 	}
 	
-	void RegisterAmbientVehicle(string populatedTerritoryID, notnull SCR_AmbientVehicleSpawnPointComponent vehicleSpawnPoint)
+	void RegisterAmbientVehicle(ARGEO_PopulatedTerritoryID populatedTerritoryID, notnull SCR_AmbientVehicleSpawnPointComponent vehicleSpawnPoint)
 	{
 		ARGEO_PopulatedTerritory populatedTerritory = GetPopulatedTerritory(populatedTerritoryID);
 		if (!populatedTerritory)
@@ -147,7 +170,7 @@ class ARGEO_PopulationComponent : SCR_BaseGameModeComponent
 	//
 	void NotifyBuildingDestroyed(ARGEO_BuildingPopulationEntity building)
 	{
-		string populatedTerritoryID = building.GetPopulatedTerritoryID();
+		ARGEO_PopulatedTerritoryID populatedTerritoryID = building.GetPopulatedTerritoryID();
 		ARGEO_PopulatedTerritory populatedTerritory = GetPopulatedTerritory(populatedTerritoryID);
 		if (!populatedTerritory)
 			return;
@@ -157,11 +180,24 @@ class ARGEO_PopulationComponent : SCR_BaseGameModeComponent
 	
 	void NotifyBuildingDamaged(ARGEO_BuildingPopulationEntity building, BaseDamageContext damageContext)
 	{
-		string populatedTerritoryID = building.GetPopulatedTerritoryID();
+		ARGEO_PopulatedTerritoryID populatedTerritoryID = building.GetPopulatedTerritoryID();
 		ARGEO_PopulatedTerritory populatedTerritory = GetPopulatedTerritory(populatedTerritoryID);
 		if (!populatedTerritory)
 			return;
 		populatedTerritory.IncreaseBuildingDamageCount();
+		EvaluateSafetyStatus(populatedTerritory);
+	}
+	
+	void NotifyWarCrime(ARGEO_PopulatedTerritoryID populatedTerritoryID, ARGEO_WarCrimeEntity warCrime)
+	{
+		ARGEO_PopulatedTerritory populatedTerritory = GetPopulatedTerritory(populatedTerritoryID);
+		if (!populatedTerritory)
+			return;
+		
+		if (SCR_ECrimeNotification.TEAMKILL == warCrime.GetCrime())
+			return; // team kills do not really affect the population
+		
+		populatedTerritory.IncreaseWarCrimeCount();
 		EvaluateSafetyStatus(populatedTerritory);
 	}
 	
@@ -170,23 +206,23 @@ class ARGEO_PopulationComponent : SCR_BaseGameModeComponent
 	//
 	void EvaluateSafetyStatus(ARGEO_PopulatedTerritory populatedTerritory)
 	{
-		ARGEO_PopulationSafetyStatus currentStatus = populatedTerritory.GetSafetyStatus();
-		ARGEO_PopulationSafetyStatus newStatus = currentStatus;
-		
-		// TODO make it configurable
+		ARGEO_EPopulationSafetyStatus currentStatus = populatedTerritory.GetSafetyStatus();
+		ARGEO_EPopulationSafetyStatus newStatus = currentStatus;
 		
 		bool tense = populatedTerritory.GetBuildingDamageCount() > 0;
-		if (newStatus > ARGEO_PopulationSafetyStatus.TENSE && tense)
-			newStatus = ARGEO_PopulationSafetyStatus.TENSE;
+		if (newStatus > ARGEO_EPopulationSafetyStatus.TENSE && tense)
+			newStatus = ARGEO_EPopulationSafetyStatus.TENSE;
 
 		bool dangerous = populatedTerritory.GetBuildingDamageCount() / populatedTerritory.GetBuildingHouseholdsCount() > 1
-		 || populatedTerritory.GetBuildingDestroyedCount() > 0;
-		if (newStatus > ARGEO_PopulationSafetyStatus.DANGEROUS && dangerous)
-			newStatus = ARGEO_PopulationSafetyStatus.DANGEROUS;
+		 || populatedTerritory.GetBuildingDestroyedCount() > 0
+		 || populatedTerritory.GetWarCrimeCount() > 0;
+		if (newStatus > ARGEO_EPopulationSafetyStatus.DANGEROUS && dangerous)
+			newStatus = ARGEO_EPopulationSafetyStatus.DANGEROUS;
 		
-		bool unlivable = populatedTerritory.GetBuildingDestroyedCount() / populatedTerritory.GetBuildingHouseholdsCount() > 0.2;
+		bool unlivable = populatedTerritory.GetBuildingDestroyedCount() / populatedTerritory.GetBuildingHouseholdsCount() > (m_fProportionOfDestroyedBuildingUnlivable / 100)
+		 || populatedTerritory.GetWarCrimeCount() / populatedTerritory.GetOriginalPopulation() > (m_fProportionOfWarCrimesUnlivable / 100);
 		if (unlivable)
-			newStatus = ARGEO_PopulationSafetyStatus.UNLIVABLE;
+			newStatus = ARGEO_EPopulationSafetyStatus.UNLIVABLE;
 		
 		if (newStatus != currentStatus)
 			populatedTerritory.ChangeSafetyStatus(newStatus);
@@ -195,6 +231,26 @@ class ARGEO_PopulationComponent : SCR_BaseGameModeComponent
 	//
 	// DISPLACEMENT
 	//
+	bool ShouldFlee(ARGEO_BuildingHouseholdEntity household)
+	{
+		ARGEO_PopulatedTerritoryID populatedTerritoryID = household.GetPopulatedTerritoryID();
+		ARGEO_PopulatedTerritory populatedTerritory = GetPopulatedTerritory(populatedTerritoryID);
+		if (!populatedTerritory || household.HasFled())
+			return false; // should not happen
+		
+		int rand = Math.RandomInt(0, 100);
+		ARGEO_EPopulationSafetyStatus status = populatedTerritory.GetSafetyStatus(); 
+		switch(status)
+		{
+			case ARGEO_EPopulationSafetyStatus.PEACE: return false;
+			case ARGEO_EPopulationSafetyStatus.SAFE: return false;
+			case ARGEO_EPopulationSafetyStatus.TENSE: return rand < m_fProbabilityToFleeWhenTense;
+			case ARGEO_EPopulationSafetyStatus.DANGEROUS: return rand < m_fProbabilityToFleeWhenDangerous;
+			case ARGEO_EPopulationSafetyStatus.UNLIVABLE: return rand < m_fProbabilityToFleeWhenUnlivable;
+		}
+		return false;
+	}
+	
 	ARGEO_CivicCenterEntity GetNearestCivicCenter(vector pos)
 	{
 		ARGEO_CivicCenterEntity best;
@@ -247,7 +303,7 @@ class ARGEO_PopulationComponent : SCR_BaseGameModeComponent
 		return m_fGlobalBuildingsOccupation;
 	}
 	
-	ARGEO_PopulatedTerritory GetPopulatedTerritory(string populatedTerritoryID)
+	ARGEO_PopulatedTerritory GetPopulatedTerritory(ARGEO_PopulatedTerritoryID populatedTerritoryID)
 	{
 		if (!populatedTerritoryID)
 			return null;

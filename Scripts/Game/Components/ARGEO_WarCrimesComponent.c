@@ -17,7 +17,7 @@ class ARGEO_WarCrimesComponent : SCR_BaseGameModeComponent
 	[Attribute("{5A45CA8948A1D825}Prefabs/Systems/WarCrimes/WarCrime_Base.et", desc: "The prefab that will be spawned when a war cime is committed, to be used in triggers or to investigate atrocities a posteriori.", category: "Integration")]
 	protected ResourceName m_sWarCrimePrefab;
 
-	[Attribute("1", desc: "All war crimes will be considered as friendly kills (behavior of Arma Reforger currently).", category: "Compatibility")]
+	[Attribute("1", desc: "All war crimes will also be considered as vanilla friendly kills in statistics, for compatibility with mods expecting that.", category: "Compatibility")]
 	protected bool m_bTreatAllWarCrimesAsFriendlyKills;
 
 	[Attribute("1", desc: "Career/kick statistics use vanilla logic.", category: "Compatibility")]
@@ -25,6 +25,9 @@ class ARGEO_WarCrimesComponent : SCR_BaseGameModeComponent
 
 	[Attribute("1", desc: "XP rewards use vanilla logic.", category: "Compatibility")]
 	protected bool m_bVanillaLogicForXP;
+
+	[Attribute("1", desc: "Scoring use vanilla logic.", category: "Compatibility")]
+	protected bool m_bVanillaLogicForScoring;
 
 	[Attribute("1", desc: "Force playable factions to be friendly to non-military factions (IHL DB - Rule 1).", category: "Consider Arma Reforger EULAs Before Changing This")]
 	protected bool m_bPlayableFactionsFriendlyToNonMilitary;
@@ -83,24 +86,58 @@ class ARGEO_WarCrimesComponent : SCR_BaseGameModeComponent
 		ARGEO_WarCrimeEntity warCrimeEntity = ARGEO_WarCrimeEntity.Cast(GetGame().SpawnEntityPrefab(Resource.Load(m_sWarCrimePrefab), null, params));
 		if (!warCrimeEntity)
 			return;
+		
 		warCrimeEntity.SetCrime(crime);
+
+		// criminal
+		FactionAffiliationComponent criminalFactionComp = FactionAffiliationComponent.Cast(instigatorContextData.GetKillerEntity().FindComponent(FactionAffiliationComponent));
+		if (criminalFactionComp)
+			warCrimeEntity.SetCriminalFactionKey(criminalFactionComp.GetAffiliatedFactionKey());		
+		CharacterIdentityComponent criminalCharacterIdentity = CharacterIdentityComponent.Cast(instigatorContextData.GetKillerEntity().FindComponent(CharacterIdentityComponent));
+		if (criminalCharacterIdentity)
+			warCrimeEntity.SetCriminalIdentity(criminalCharacterIdentity.GetIdentity().GetSurname(), criminalCharacterIdentity.GetIdentity().GetName());
+		
+		// victim
+		// we gather more identity information, as it will be happen only once
+		FactionAffiliationComponent victimFactionComp = FactionAffiliationComponent.Cast(instigatorContextData.GetVictimEntity().FindComponent(FactionAffiliationComponent));
+		if (victimFactionComp)
+			warCrimeEntity.SetVictimFactionKey(victimFactionComp.GetAffiliatedFactionKey());
+		CharacterIdentityComponent victimCharacterIdentity = CharacterIdentityComponent.Cast(instigatorContextData.GetVictimEntity().FindComponent(CharacterIdentityComponent));
+		if (victimCharacterIdentity)
+		{
+			string surname = victimCharacterIdentity.GetIdentity().GetSurname();
+			string givenName = victimCharacterIdentity.GetIdentity().GetName();
+			SCR_ExtendedCharacterIdentityComponent victimExtendedCharacterIdentity = SCR_ExtendedCharacterIdentityComponent.Cast(instigatorContextData.GetVictimEntity().FindComponent(SCR_ExtendedCharacterIdentityComponent));
+			if (victimExtendedCharacterIdentity)
+				warCrimeEntity.SetVictimIdentity(surname, givenName, victimExtendedCharacterIdentity.GetGender(), victimExtendedCharacterIdentity.GetExtendedIdentity(), victimExtendedCharacterIdentity.GetIdentityBio());
+			else
+				warCrimeEntity.SetVictimIdentity(surname, givenName, SCR_EIdentityGender.NEUTRAL, null, null);
+		}
+		
+		// cannot be modified from now on
+		warCrimeEntity.SetImmutable();	
 	}
 
 	//
-	// RULES
+	// KILL LEGALITY
 	//
 	bool EvaluateKillLegalityStats(notnull SCR_InstigatorContextData instigatorContextData, SCR_PlayerData killerData)
 	{
-		return EvaluateKillLegality(instigatorContextData, true, killerData, null);
+		return EvaluateKillLegality(instigatorContextData, true, killerData, null, null);
 	}
 	
 	bool EvaluateKillLegalityXP(notnull SCR_InstigatorContextData instigatorContextData, SCR_XPHandlerComponent xpHandlerComp)
 	{
-		return EvaluateKillLegality(instigatorContextData, false, null, xpHandlerComp);
+		return EvaluateKillLegality(instigatorContextData, false, null, xpHandlerComp, null);
 	}
 
-	//! Centralize the complex logic of evaluating kill legality across statistics, notifications and XP rewards	
-	protected bool EvaluateKillLegality(notnull SCR_InstigatorContextData instigatorContextData, bool register, SCR_PlayerData killerData, SCR_XPHandlerComponent xpHandlerComp)
+	bool EvaluateKillLegalityScoring(notnull SCR_InstigatorContextData instigatorContextData, SCR_BaseScoringSystemComponent scoringSystemComp)
+	{
+		return EvaluateKillLegality(instigatorContextData, false, null, null, scoringSystemComp);
+	}
+
+	//! Centralize the complex logic of evaluating kill legality across statistics, notifications and XP rewards.
+	protected bool EvaluateKillLegality(notnull SCR_InstigatorContextData instigatorContextData, bool register, SCR_PlayerData killerData, SCR_XPHandlerComponent xpHandlerComp, SCR_BaseScoringSystemComponent scoringSystemComp)
 	{
 		IEntity victimEntity = instigatorContextData.GetVictimEntity();
 		IEntity killerEntity = instigatorContextData.GetKillerEntity();
@@ -116,7 +153,7 @@ class ARGEO_WarCrimesComponent : SCR_BaseGameModeComponent
 		bool isLegalKill = true;
 
 		// check non-combatant killed		
-		if (IsProtected(victimEntity))
+		if (IsNonCombatant(victimEntity))
 		{	
 			isLegalKill = false;
 			if (register)
@@ -130,6 +167,9 @@ class ARGEO_WarCrimesComponent : SCR_BaseGameModeComponent
 			
 			if (xpHandlerComp)
 				xpHandlerComp.AwardXP(killerId, SCR_EXPRewards.NON_COMBATANT_KILL);
+			
+			if (scoringSystemComp && killerId != 0)
+				scoringSystemComp.AddNonCombatantKill(killerId);
 		}
 		// check hors de combat killed
 		else if(killedByEnemy
@@ -148,6 +188,9 @@ class ARGEO_WarCrimesComponent : SCR_BaseGameModeComponent
 
 			if (xpHandlerComp)
 				xpHandlerComp.AwardXP(killerId, SCR_EXPRewards.HORS_DE_COMBAT_KILL);
+
+			if (scoringSystemComp && killerId != 0)
+				scoringSystemComp.AddHorsDeCombatKill(killerId);
 		}
 
 		// check disguised or perfidy
@@ -212,7 +255,7 @@ class ARGEO_WarCrimesComponent : SCR_BaseGameModeComponent
 		// check friendly fire
 		if (!killedByEnemy)
 		{
-			if (!IsProtected(victimEntity) // already checked, do not count twice
+			if (!IsNonCombatant(victimEntity) // already checked, do not count twice
 				&& instigatorContextData.DoesPlayerKillCountAsTeamKill(true, true))
 			{
 				isLegalKill = false;
@@ -227,6 +270,9 @@ class ARGEO_WarCrimesComponent : SCR_BaseGameModeComponent
 				
 				if (xpHandlerComp)
 					xpHandlerComp.AwardXP(killerId, SCR_EXPRewards.FRIENDLY_KILL);
+
+				if (scoringSystemComp && killerId != 0)
+					scoringSystemComp.AddTeamKill(killerId);
 			}
 			else
 			{
@@ -235,7 +281,7 @@ class ARGEO_WarCrimesComponent : SCR_BaseGameModeComponent
 			}
 		}
 		
-		// it was a legal kill, process positive stats and XP
+		// it was a legal kill, process positive stats, XP and scoring
 		if (isLegalKill)
 		{	
 			if (killerData)
@@ -255,6 +301,9 @@ class ARGEO_WarCrimesComponent : SCR_BaseGameModeComponent
 				else 
 					xpHandlerComp.AwardXP(killerId, SCR_EXPRewards.ENEMY_KILL);
 			}
+			
+			if (scoringSystemComp && killerId != 0)
+				scoringSystemComp.AddKill(killerId);
 		}
 
 		// compatibility with vanilla
@@ -279,7 +328,7 @@ class ARGEO_WarCrimesComponent : SCR_BaseGameModeComponent
 		return isLegalKill;		
 	}
 
-	bool IsProtected(IEntity entity)
+	bool IsNonCombatant(IEntity entity)
 	{		
 		SCR_ChimeraCharacter character = SCR_ChimeraCharacter.Cast(entity);
 		if(character)
@@ -354,14 +403,19 @@ class ARGEO_WarCrimesComponent : SCR_BaseGameModeComponent
 		return m_bTreatAllWarCrimesAsFriendlyKills;
 	}
 	
+	bool UseVanillaLogicForStatistics()
+	{
+		return m_bVanillaLogicForStatistics;
+	}
+	
 	bool UseVanillaLogicForXP()
 	{
 		return m_bVanillaLogicForXP;
 	}
 	
-	bool UseVanillaLogicForStatistics()
+	bool UseVanillaLogicForScoring()
 	{
-		return m_bVanillaLogicForStatistics;
+		return m_bVanillaLogicForScoring;
 	}
 	
 	static ARGEO_WarCrimesComponent GetInstance()

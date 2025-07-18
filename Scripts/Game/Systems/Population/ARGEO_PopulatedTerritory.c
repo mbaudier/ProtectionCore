@@ -1,3 +1,5 @@
+typedef string ARGEO_PopulatedTerritoryID;
+
 class ARGEO_PopulatedTerritory
 {
 	static const string EVENT_SAFETY_STATUS_CHANGED = "OnSafetyStatusChanged";
@@ -5,7 +7,7 @@ class ARGEO_PopulatedTerritory
 	static const string EVENT_CIVIC_CENTER_CREATED = "OnCivicCenterCreated";
 	static const string EVENT_CIVIC_CENTER_DESTROYED = "OnCivicCenterDestroyed";
 	
-	private string m_sID;
+	private ARGEO_PopulatedTerritoryID m_sID;
 	
 	protected EventHandlerManagerComponent m_EventHandlerMgr;
 	
@@ -14,13 +16,15 @@ class ARGEO_PopulatedTerritory
 	
 	private int m_iSpawnPointsCount = 0;
 	private int m_iTotalWeight = 0;
+	private int m_iOriginalPopulation = 0;
 	
-	private ARGEO_PopulationSafetyStatus m_SafetyStatus = ARGEO_PopulationSafetyStatus.SAFE;
+	private ARGEO_EPopulationSafetyStatus m_SafetyStatus = ARGEO_EPopulationSafetyStatus.SAFE;
 	
 	private int m_iBuildingDestroyedCount = 0;
 	private int m_iBuildingDamageCount = 0;
+	private int m_iWarCrimeCount = 0;
 	
-	void ARGEO_PopulatedTerritory(string populatedTerritoryID)
+	void ARGEO_PopulatedTerritory(ARGEO_PopulatedTerritoryID populatedTerritoryID)
 	{
 		m_sID = populatedTerritoryID;
 	}
@@ -55,7 +59,7 @@ class ARGEO_PopulatedTerritory
 		}
 	}
 	
-	int PopulateRandomSpawnPoints(int toPopulateSpawnPointsCount)
+	void PopulateRandomSpawnPoints(int toPopulateSpawnPointsCount)
 	{
 		ARGEO_PopulationComponent populationComponent = ARGEO_PopulationComponent.GetInstance();
 		
@@ -93,7 +97,9 @@ class ARGEO_PopulatedTerritory
 			spawnPoint.DisableSpawn();
 		}
 		
-		return spawnPointCount;
+		m_iOriginalPopulation = spawnPointCount;
+		
+		Print("Populated territory " + m_sID + " with a population of " + m_iOriginalPopulation);
 	}
 
 	FactionKey GetRandomFactionKey()
@@ -117,11 +123,11 @@ class ARGEO_PopulatedTerritory
 	//
 	// SAFETY
 	//
-	void ChangeSafetyStatus(ARGEO_PopulationSafetyStatus safetyStatus)
+	void ChangeSafetyStatus(ARGEO_EPopulationSafetyStatus safetyStatus)
 	{
 		if (m_SafetyStatus == safetyStatus)
 			return;
-		ARGEO_PopulationSafetyStatus previousStatus = m_SafetyStatus;
+		ARGEO_EPopulationSafetyStatus previousStatus = m_SafetyStatus;
 		m_SafetyStatus = safetyStatus;
 		Print("Safety status of territory " + m_sID + " changed from " + previousStatus + " to " + m_SafetyStatus);
 		
@@ -148,10 +154,20 @@ class ARGEO_PopulatedTerritory
 		m_iBuildingDamageCount++;
 	}
 	
+	float GetWarCrimeCount()
+	{
+		return m_iWarCrimeCount;
+	}
+	
+	void IncreaseWarCrimeCount()
+	{
+		m_iWarCrimeCount++;
+	}
+	
 	//
 	// ACCESSORS
 	//
-	string GetPopulatedTerritoryID()
+	ARGEO_PopulatedTerritoryID GetPopulatedTerritoryID()
 	{
 		return m_sID;
 	}
@@ -166,12 +182,17 @@ class ARGEO_PopulatedTerritory
 		return m_aBuildingHouseholds.Count();
 	}
 	
-	int GetTotalWeight()
+	float GetTotalWeight()
 	{
 		return m_iTotalWeight;
 	}
 	
-	ARGEO_PopulationSafetyStatus GetSafetyStatus()
+	float GetOriginalPopulation()
+	{
+		return m_iOriginalPopulation;
+	}
+	
+	ARGEO_EPopulationSafetyStatus GetSafetyStatus()
 	{
 		return m_SafetyStatus;
 	}
@@ -182,7 +203,7 @@ class ARGEO_PopulatedTerritory
 	}
 }
 
-enum ARGEO_PopulationSafetyStatus
+enum ARGEO_EPopulationSafetyStatus
 {
 	UNLIVABLE,
 	DANGEROUS,

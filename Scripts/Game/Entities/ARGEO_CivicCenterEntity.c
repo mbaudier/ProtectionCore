@@ -47,7 +47,7 @@ class ARGEO_CivicCenterEntity: ARGEO_BuildingPopulationEntity
 		ARGEO_PopulationComponent populationComp = ARGEO_PopulationComponent.GetInstance();
 		if (!populationComp) // typically in workbnech
 			return;
-		populationComp.UnregisterCivicCenter(this);
+		populationComp.CivicCenterDestroyed(this);
 	}
 
 	override void OnCompositionSpawned(bool arg)

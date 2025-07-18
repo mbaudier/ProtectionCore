@@ -8,7 +8,7 @@ class ARGEO_BuildingPopulationEntity: GenericEntity
 	protected SCR_DestructibleBuildingComponent m_DestructibleBuildingComp;
 	protected SCR_CampaignBuildingCompositionComponent m_CampaignBuildingCompositionComp;
 
-	private string m_sPopulatedTerritoryID;
+	private ARGEO_PopulatedTerritoryID m_sPopulatedTerritoryID;
 	
 	//
 	// LIFECYCLE
@@ -97,14 +97,14 @@ class ARGEO_BuildingPopulationEntity: GenericEntity
 	//
 	// ACCESSORS
 	//
-	void SetPopulatedTerritoryID(string populatedTerritoryID)
+	void SetPopulatedTerritoryID(ARGEO_PopulatedTerritoryID populatedTerritoryID)
 	{
 		if (m_sPopulatedTerritoryID)
 			return; // TODO warning?
 		m_sPopulatedTerritoryID = populatedTerritoryID;
 	}
 	
-	string GetPopulatedTerritoryID()
+	ARGEO_PopulatedTerritoryID GetPopulatedTerritoryID()
 	{
 		return m_sPopulatedTerritoryID;
 	}

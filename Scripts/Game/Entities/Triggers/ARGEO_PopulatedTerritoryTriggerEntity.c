@@ -6,7 +6,7 @@ class ARGEO_PopulatedTerritoryTriggerEntityClass : ScriptedGameTriggerEntityClas
 class ARGEO_PopulatedTerritoryTriggerEntity : ScriptedGameTriggerEntity
 {
 	[Attribute(desc: "ID of the populated territory to attach to.", category: "Population")]
-	protected string m_sPopulatedTerritoryID;	
+	protected ARGEO_PopulatedTerritoryID m_sPopulatedTerritoryID;	
 
 	override protected event void OnActivate(IEntity ent)
 	{
@@ -15,6 +15,10 @@ class ARGEO_PopulatedTerritoryTriggerEntity : ScriptedGameTriggerEntity
 		ARGEO_PopulationComponent populationComponent = ARGEO_PopulationComponent.GetInstance();
 		if (!populationComponent) // typically in workbench
 			return;
+		
+		//
+		// Structural - Happens only once
+		//
 		
 		// Check if faction forced
 		FactionKey triggerFactionKey;
@@ -55,6 +59,11 @@ class ARGEO_PopulatedTerritoryTriggerEntity : ScriptedGameTriggerEntity
 			populationComponent.RegisterAmbientVehicle(m_sPopulatedTerritoryID, vehicleSpawnPoint);
 		}
 		
+		//
+		// Monitoring - Can happen any time
+		//
+		
+		// War crime entities
 		ARGEO_WarCrimeEntity warCrimeEntity = ARGEO_WarCrimeEntity.Cast(ent);
 		if (warCrimeEntity)
 		{

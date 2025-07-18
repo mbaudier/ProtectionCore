@@ -78,6 +78,34 @@ GenericEntity AreaWarCrimesCriminal : "{C72F956E4AC6A6E7}Prefabs/Systems/Scenari
      }
     }
    }
+   KillEnemy {
+    components {
+     SCR_ScenarioFrameworkLayerTaskKill "{5B02763B6A6D6C4B}" {
+      m_eActivationType ON_TRIGGER_ACTIVATION
+     }
+    }
+    coords 10.6 0 -0.98
+    {
+     GenericEntity SlotKillEnemy : "{C70DC6CBD1AAEC9A}Prefabs/Systems/ScenarioFramework/Components/SlotKill.et" {
+      components {
+       SCR_ScenarioFrameworkSlotKill "{5B02763C1EAA0BF1}" {
+        m_sFactionKey "Legal"
+        m_aFactionSwitchedObjects {
+         SCR_ScenarioFrameworkFactionSwitchedObject "{65E52ADAD4231151}" {
+          m_sFactionKey "USSR"
+          m_sObjectToSpawn "{5117311FB822FD1F}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Officer.et"
+         }
+         SCR_ScenarioFrameworkFactionSwitchedObject "{65E52ADAC6F72F8C}" {
+          m_sFactionKey "US"
+          m_sObjectToSpawn "{DE15FB5FAFC3E63F}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Officer.et"
+         }
+        }
+       }
+      }
+      coords 0.393 0 0.959
+     }
+    }
+   }
   }
   GenericEntity WarCrimesStart : "{5F9FFF4BF027B3A3}Prefabs/Systems/ScenarioFramework/Components/Layer.et" {
    coords 1.976 0 -2.806

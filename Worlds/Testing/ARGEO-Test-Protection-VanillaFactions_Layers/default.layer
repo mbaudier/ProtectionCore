@@ -97,6 +97,13 @@ SCR_BaseGameMode GameModeSF_Protection : "{FDDB712823199E09}Prefabs/Systems/Scen
    m_SpawnLogic SCR_MenuSpawnLogic "{5D36888CC966608A}" {
    }
   }
+  SCR_ScoringSystemComponent "{65E52ADA7481D8EB}" {
+   m_aActions {
+    EndGameAction "{65E52ADA65A1A53E}" {
+     m_iScoreLimit 3
+    }
+   }
+  }
   SCR_XPHandlerComponent "{65E2E753776A9B9B}" {
   }
  }

@@ -11,6 +11,7 @@ SCR_GameModeEditor : "{D2DE7F43D48A3667}Prefabs/MP/Modes/Editor/GameMode_Editor.
    m_bTreatAllWarCrimesAsFriendlyKills 0
    m_bVanillaLogicForStatistics 0
    m_bVanillaLogicForXP 0
+   m_bVanillaLogicForScoring 0
   }
   SCR_CampaignBuildingManagerComponent "{65BD0832A38DBBD1}" {
    m_sFreeRoamBuildingClientTrigger "{5E191CEAF4B95816}Prefabs/MP/FreeRoamBuildingClientTrigger.et"
@@ -33,6 +34,7 @@ SCR_GameModeEditor : "{D2DE7F43D48A3667}Prefabs/MP/Modes/Editor/GameMode_Editor.
    m_bPerceivedFactionChangesAffectsAI 1
   }
  }
+ m_eTestGameFlags SpawnAI
  {
   SCR_FactionManager "65BD0E78396CF47C" : "{6B8E0BC290FDBB18}Prefabs/MP/Managers/Factions/FactionManager_Editor_Protection.et" {
    ID "65BD08333C3BDCE4"

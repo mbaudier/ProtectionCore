@@ -11,6 +11,7 @@ SCR_BaseGameMode : "{ECEEDB2D3737204B}Prefabs/Systems/ScenarioFramework/GameMode
    m_bTreatAllWarCrimesAsFriendlyKills 0
    m_bVanillaLogicForStatistics 0
    m_bVanillaLogicForXP 0
+   m_bVanillaLogicForScoring 0
   }
   SCR_CampaignBuildingManagerComponent "{65B2F52D1CFFC5DF}" {
    m_sFreeRoamBuildingClientTrigger "{5E191CEAF4B95816}Prefabs/MP/FreeRoamBuildingClientTrigger.et"
@@ -38,6 +39,5 @@ SCR_BaseGameMode : "{ECEEDB2D3737204B}Prefabs/Systems/ScenarioFramework/GameMode
    }
   }
  }
- m_eTestGameFlags 7
- m_bAllowFactionChange 0
+ m_eTestGameFlags SpawnAI
 }
