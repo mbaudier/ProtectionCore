@@ -55,6 +55,10 @@ GenericEntity : "{F8D85655F3C403E9}Prefabs/Compositions/Slotted/SlotFlatSmall/Em
   }
  }
  {
+  ARGEO_CivicCenterEntity {
+   ID "65DED1D9FE44FDB0"
+   m_bDelayRegistration 1
+  }
   GenericEntity {
    ID "65DED1D35F16C2A2"
    Flags 1048576

@@ -7,31 +7,105 @@ class ARGEO_CivicCenterEntity: ARGEO_BuildingPopulationEntity
 {
 	protected float m_iDischargeRadius = 200;
 	
-	[Attribute("0", desc: "Force composition to immediately register", category: "Logic")]
-	protected bool m_bForceRegister;
+	[Attribute("0", desc: "Delay the registration as civic center until the editable building is built", category: "Logic")]
+	protected bool m_bDelayRegistration;
 
-	[Attribute("{750A8D1695BD6998}Prefabs/AI/Waypoints/AIWaypoint_Move.et", desc:"Destination to move to", category: "Prefabs")]
-	protected ResourceName m_sMoveToWaypointPrefab;
+	[Attribute("{4080EBB873179873}Prefabs/AI/Waypoints/AIWaypoint_RegisterToCivicCenter.et", desc:"Register to this civic center", category: "Waypoints Prefabs")]
+	protected ResourceName m_sRegisterWaypointPrefab;
 
+	[Attribute("{FAD1D789EE291964}Prefabs/AI/Waypoints/AIWaypoint_Defend_Large.et", desc:"Loiter near the civic center", category: "Waypoints Prefabs")]
+	protected ResourceName m_sLoiterWaypointPrefab;
 
-	private SCR_AIWaypoint m_MoveTo;
+	[Attribute("{531EC45063C1F57B}Prefabs/AI/Waypoints/AIWaypoint_Wait.et", desc:"Wait near the civic center", category: "Waypoints Prefabs")]
+	protected ResourceName m_sWaitWaypointPrefab;
+
+	[Attribute("{C40316EE26846CAB}Prefabs/AI/Waypoints/AIWaypoint_GetOut.et", desc:"Get out of vehicle", category: "Waypoints Prefabs")]
+	protected ResourceName m_sLeaveVehicleWaypointPrefab;
+
+	protected SCR_AIWaypoint m_RegisterWP;
+	protected SCR_AIWaypoint m_LoiterWP;
+	protected SCR_AIWaypoint m_WaitWP;
+	protected SCR_AIWaypoint m_LeaveVehicleWP;
+	
+	protected ref array<SCR_ChimeraCharacter> m_aRegisteredNonCombatants = new array<SCR_ChimeraCharacter>;
+	protected ref array<SCR_ChimeraCharacter> m_aRegisteredPrisoners = new array<SCR_ChimeraCharacter>;
 
 	override void EOnActivate(IEntity owner)
 	{
 		super.EOnActivate(owner);
 		
-		// Target waypoint for fleeing civilians
+		// Waypoints
 		EntitySpawnParams params = EntitySpawnParams();
 		params.TransformMode = ETransformMode.WORLD;
 		params.Transform[3] = this.GetOrigin();
-		m_MoveTo = SCR_AIWaypoint.Cast(GetGame().SpawnEntityPrefab(Resource.Load(m_sMoveToWaypointPrefab), null, params));
+		m_RegisterWP = SCR_AIWaypoint.Cast(GetGame().SpawnEntityPrefab(Resource.Load(m_sRegisterWaypointPrefab), null, params));
+		m_LoiterWP = SCR_AIWaypoint.Cast(GetGame().SpawnEntityPrefab(Resource.Load(m_sLoiterWaypointPrefab), null, params));
+		m_WaitWP = SCR_AIWaypoint.Cast(GetGame().SpawnEntityPrefab(Resource.Load(m_sWaitWaypointPrefab), null, params));
+		m_LeaveVehicleWP = SCR_AIWaypoint.Cast(GetGame().SpawnEntityPrefab(Resource.Load(m_sLeaveVehicleWaypointPrefab), null, params));
 
 		ARGEO_PopulationComponent populationComp = ARGEO_PopulationComponent.GetInstance();
 		if (!populationComp) // typically in workbnech
 			return;
 		
-		if (m_bForceRegister || !m_CampaignBuildingCompositionComp)
+		if (!m_bDelayRegistration)
 			populationComp.RegisterCivicCenter(this);
+	}
+	
+	//
+	// NON-COMBATANTS MANAGEMENT
+	//
+	void RegisterNonCombatant(IEntity nonCombatant)
+	{
+		SCR_ChimeraCharacter character = SCR_ChimeraCharacter.Cast(nonCombatant);
+		if (!character)
+			return;
+		
+		m_aRegisteredNonCombatants.Insert(character);
+		
+		ARGEO_CharacterProtectionComponent characterProtectionComp = ARGEO_CharacterProtectionComponent.Cast(character.FindComponent(ARGEO_CharacterProtectionComponent));
+		if (characterProtectionComp)
+			characterProtectionComp.SetDisplacementStatus(ARGEO_ECharacterDisplacementStatus.DISPLACED, this);
+		
+		AIControlComponent aiControlComp = AIControlComponent.Cast(character.FindComponent(AIControlComponent));
+		if (aiControlComp)
+		{
+			AIAgent agent = aiControlComp.GetAIAgent();
+			if (agent)
+			{
+				// we assume that an agent always have a group
+				agent.GetParentGroup().AddWaypoint(m_LeaveVehicleWP);
+				agent.GetParentGroup().AddWaypoint(m_LoiterWP);
+			}
+		}
+
+	}
+
+	//
+	// PRISONERS MANAGEMENT
+	//
+	void RegisterPrisoner(IEntity prisoner)
+	{
+		SCR_ChimeraCharacter character = SCR_ChimeraCharacter.Cast(prisoner);
+		if (!character)
+			return;
+		
+		m_aRegisteredPrisoners.Insert(character);
+		
+		ARGEO_CharacterProtectionComponent characterProtectionComp = ARGEO_CharacterProtectionComponent.Cast(character.FindComponent(ARGEO_CharacterProtectionComponent));
+		if (characterProtectionComp)
+			characterProtectionComp.SetPOWStatus(true, this);
+		
+		// TODO make it disappear after a while
+		AIControlComponent aiControlComp = AIControlComponent.Cast(character.FindComponent(AIControlComponent));
+		if (aiControlComp)
+		{
+			AIAgent agent = aiControlComp.GetAIAgent();
+			if (agent)
+			{
+				// we assume that an agent always havea group
+				agent.GetParentGroup().AddWaypoint(m_WaitWP);
+			}
+		}
 	}
 
 	//
@@ -56,15 +130,16 @@ class ARGEO_CivicCenterEntity: ARGEO_BuildingPopulationEntity
 		if (!populationComp) // typically in workbnech
 			return;
 
-		populationComp.RegisterCivicCenter(this);
+		if(m_bDelayRegistration)
+			populationComp.RegisterCivicCenter(this);
 	}
 	
 	//
 	// ACCESSOR
 	//
-	SCR_AIWaypoint GetMoveToWaypoint()
+	SCR_AIWaypoint GetFleeToWP()
 	{
-		return m_MoveTo;
+		return m_RegisterWP;
 	}
 	
 	int GetDischargeRadius()

@@ -95,6 +95,7 @@ SCR_BaseGameMode GameModeSF_Protection : "{FDDB712823199E09}Prefabs/Systems/Scen
   }
   SCR_RespawnSystemComponent "{56B2B4793051E7C9}" {
    m_SpawnLogic SCR_MenuSpawnLogic "{5D36888CC966608A}" {
+    m_sForcedFaction "Legal"
    }
   }
   SCR_ScoringSystemComponent "{65E52ADA7481D8EB}" {

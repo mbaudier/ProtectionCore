@@ -4,46 +4,42 @@ class ARGEO_BaseAddAIGroupCommand : SCR_BaseGroupCommand
 	[Attribute(defvalue: "0", desc: "Apply to the whole AI group of the target")]
 	protected bool m_bApplyToGroup;
 	
-	// caches to avoid testing repeatedly whether a protected faction is available
-	private ARGEO_ProtectionFactionManagerComponent m_ProtectionFactionManagerComponent = NULL;
-	private bool m_bProtectionEnabled = true;
-	
-	/// To be overridden
+	//! Whether this command is enabled at game level. To be overridden.
 	protected bool IsFeatureEnabled()
 	{
 		return false;
 	}
 	
-	/// To be overridden
+	//! Whether this command is relevant for this factions combination. To be overridden.
 	protected bool CanBeShownForFaction(notnull SCR_Faction controlledEntityFaction, notnull SCR_Faction faction)
 	{
 		return false;
 	}
 	
-	/// To be overridden
+	//! Whether this command is relevant for this character. To be overridden.
 	protected bool CanBeShownForCharacter(notnull SCR_ChimeraCharacter targetCharacter)
 	{
 		return true;
 	}
 	
+	//! Whether this command applies to a real player. Currently always false.
 	protected bool ProcessPlayer(notnull SCR_ChimeraCharacter character, int targetPlayerID)
 	{
 		return false;
 	}
 	
-	/// Will set the faction to protected faction
+	//! If true, target will be affiliated to the protected faction.
 	protected bool IsProtecting()
 	{
 		return true;
 	}
 
-	/// To be overridden
+	//! Callback after the recruitment has happened. To be overridden.
 	protected void PostRecruitment(int playerID, int count)
 	{
 	}
-	
 
-	// TODO comment
+	//! 
 	protected void AddAIAgent(SCR_PlayerControllerGroupComponent groupController, int playerID, SCR_ChimeraCharacter character)
 	{
 		Faction currentFaction = NULL;
@@ -55,42 +51,16 @@ class ARGEO_BaseAddAIGroupCommand : SCR_BaseGroupCommand
 		
 		groupController.RequestAddAIAgent(character, playerID);
 		SCR_AIGroup commandedGroup = groupController.GetPlayersGroup().GetSlave();
+		//commandedGroup.GetOnAgentRemoved().Insert(OnAgentRemoved);
 		
 		// faction has now been set to recruiter's faction, set it to either PROTECTED or original:
-		Faction factionToSet = currentFaction;// can be NULL
-		if (IsProtecting() && m_bProtectionEnabled)
+		if (IsProtecting())
 		{
-			Faction protectedFaction = GetProtectedFaction();
-			if (protectedFaction)
-			{
-				factionToSet = protectedFaction;
-				ARGEO_CharacterProtectionComponent characterProtectionComponent = ARGEO_CharacterProtectionComponent.Cast(character.FindComponent(ARGEO_CharacterProtectionComponent));
-				if (characterProtectionComponent)
-				{
-					// TODO use updated faction callback
-					characterProtectionComponent.SetPreProtectionFaction(currentFaction);
-					
-					//commandedGroup.GetOnAgentRemoved().Insert(OnAgentRemoved);
-				}
-			}
+			ARGEO_ProtectionFactionManagerComponent.SetProtected(character, currentFaction);
 		}
-		factionAffiliation.SetAffiliatedFaction(factionToSet);
-		
-		if (GroupContainsProtected(commandedGroup))
+		else // set back to original faction
 		{
-			// set column formation when protecting
-			// FIXME understand why it is not working
-			AIFormationComponent aiFormation = AIFormationComponent.Cast(commandedGroup.FindComponent(AIFormationComponent));
-			if (aiFormation)
-			{
-				string formationName = SCR_Enum.GetEnumName(SCR_EAIGroupFormation, SCR_EAIGroupFormation.Column);
-				aiFormation.SetFormation(formationName);
-			}
-			AIGroupMovementComponent groupMovement = AIGroupMovementComponent.Cast(commandedGroup.FindComponent(AIGroupMovementComponent));
-			if (groupMovement)
-				groupMovement.SetFormationDisplacement(0);
-			//aiFormation.SetFormation("Column");
-			// TODO sort military before and after protected
+			factionAffiliation.SetAffiliatedFaction(currentFaction);
 		}
 	}
 
@@ -100,9 +70,10 @@ class ARGEO_BaseAddAIGroupCommand : SCR_BaseGroupCommand
 		ARGEO_CharacterProtectionComponent characterProtectionComponent = ARGEO_CharacterProtectionComponent.Cast(character.FindComponent(ARGEO_CharacterProtectionComponent));
 		if (characterProtectionComponent && characterProtectionComponent.IsProtected())
 		{
-			// TODO auto-reset faction?
+			ARGEO_ProtectionFactionManagerComponent.UnsetProtected(character);
 		}
-	}		
+	}
+	
 	//
 	// FORKED LOGIC
 	//
@@ -295,49 +266,7 @@ class ARGEO_BaseAddAIGroupCommand : SCR_BaseGroupCommand
 	
 	//
 	// UTILITIES
-	//
-	
-	private bool GroupContainsProtected(AIGroup commandedGroup)
-	{
-		if (commandedGroup) {
-			Faction protectedFaction = GetProtectedFaction();
-			array<AIAgent> agents = {};
-			commandedGroup.GetAgents(agents);
-			foreach (AIAgent agent:agents) {
-				FactionAffiliationComponent fac = FactionAffiliationComponent.Cast(agent.GetControlledEntity().FindComponent(FactionAffiliationComponent));
-				Faction faction = fac.GetAffiliatedFaction();
-				if (protectedFaction == faction)
-					return true;
-			}
-		}
-		return false;
-	}
-	
-	private Faction GetProtectedFaction()
-	{
-		if (!m_bProtectionEnabled)
-			return NULL;
-		
-		if (!m_ProtectionFactionManagerComponent)
-		{
-			FactionManager factionManager = GetGame().GetFactionManager();
-			m_ProtectionFactionManagerComponent = ARGEO_ProtectionFactionManagerComponent.Cast(factionManager.FindComponent(ARGEO_ProtectionFactionManagerComponent));
-			if (m_ProtectionFactionManagerComponent)
-			{
-				Faction protectionFaction = m_ProtectionFactionManagerComponent.GetProtectedFaction();
-				if (!protectionFaction)
-					m_bProtectionEnabled = false;
-				else
-					return protectionFaction;
-			}
-			else
-			{
-				m_bProtectionEnabled = false;
-			}
-		}
-		return m_ProtectionFactionManagerComponent.GetProtectedFaction();
-	}
-	
+	//	
 	private bool IsCharacterInAnyGroup(SCR_PlayerControllerGroupComponent groupController, SCR_ChimeraCharacter character)
 	{
 		SCR_FactionManager factionManager = SCR_FactionManager.Cast(GetGame().GetFactionManager());

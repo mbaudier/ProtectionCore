@@ -129,7 +129,7 @@ class ARGEO_PopulatedTerritory
 			return;
 		ARGEO_EPopulationSafetyStatus previousStatus = m_SafetyStatus;
 		m_SafetyStatus = safetyStatus;
-		Print("Safety status of territory " + m_sID + " changed from " + previousStatus + " to " + m_SafetyStatus);
+		Print("Safety status of territory " + m_sID + " changed from " + SCR_Enum.GetEnumName(ARGEO_EPopulationSafetyStatus, previousStatus) + " to " + SCR_Enum.GetEnumName(ARGEO_EPopulationSafetyStatus, m_SafetyStatus));
 		
 		m_EventHandlerMgr.RaiseEvent(EVENT_SAFETY_STATUS_CHANGED, 1, m_SafetyStatus);
 	}

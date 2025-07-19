@@ -9,7 +9,10 @@ class ARGEO_CharacterProtectionComponent : GameComponent
 	
 	protected Faction m_PreProtectionFaction;
 	
-	protected ARGEO_CharacterDisplacementStatus m_DisplacementStatus = ARGEO_CharacterDisplacementStatus.NORMAL;
+	protected ARGEO_ECharacterDisplacementStatus m_DisplacementStatus = ARGEO_ECharacterDisplacementStatus.NORMAL;
+	protected bool m_bIsPOW = false;
+	
+	protected ARGEO_CivicCenterEntity m_PlaceOfRegistration;
 	
 	//
 	// ACCESSORS
@@ -22,25 +25,43 @@ class ARGEO_CharacterProtectionComponent : GameComponent
 	void SetPreProtectionFaction(Faction preProtectionFaction)
 	{
 		m_PreProtectionFaction = preProtectionFaction;
-		if (preProtectionFaction)
+		if (m_PreProtectionFaction)
 			m_bProtected = true;
 		else
 			m_bProtected = false;
 	}
+	
 	
 	bool IsProtected()
 	{
 		return m_bProtected;
 	}
 	
-	ARGEO_CharacterDisplacementStatus GetDisplacementStatus()
+	ARGEO_ECharacterDisplacementStatus GetDisplacementStatus()
 	{
 		return m_DisplacementStatus;
 	}
 	
-	void SetDisplacementStatus(ARGEO_CharacterDisplacementStatus displacementStatus)
+	void SetDisplacementStatus(ARGEO_ECharacterDisplacementStatus displacementStatus, ARGEO_CivicCenterEntity placeOfRegistration)
 	{
 		m_DisplacementStatus = displacementStatus;
+		m_PlaceOfRegistration = placeOfRegistration;
+	}
+	
+	bool IsPOW()
+	{
+		return m_bIsPOW;
+	}
+	
+	void SetPOWStatus(bool isPOW, ARGEO_CivicCenterEntity placeOfRegistration)
+	{
+		m_bIsPOW = isPOW;
+		m_PlaceOfRegistration = placeOfRegistration;
+	}
+	
+	ARGEO_CivicCenterEntity GetPlaceOfRegistration()
+	{
+		return m_PlaceOfRegistration;
 	}
 
 	//
@@ -57,7 +78,7 @@ class ARGEO_CharacterProtectionComponent : GameComponent
 	}
 }
 
-enum ARGEO_CharacterDisplacementStatus
+enum ARGEO_ECharacterDisplacementStatus
 {
 	FLEEING,
 	DISPLACED,

@@ -33,7 +33,6 @@ class ARGEO_RemoveAIGroupCommand : SCR_BaseGroupCommand
 		ARGEO_CharacterProtectionComponent characterProtectionComponent = ARGEO_CharacterProtectionComponent.Cast(character.FindComponent(ARGEO_CharacterProtectionComponent));
 		if (factionAffiliation && characterProtectionComponent && characterProtectionComponent.IsProtected())
 		{
-			bool canBeDischarged = false;
 			ARGEO_PopulationComponent populationComp = ARGEO_PopulationComponent.GetInstance();
 			SCR_XPHandlerComponent xpComp = SCR_XPHandlerComponent.Cast(GetGame().GetGameMode().FindComponent(SCR_XPHandlerComponent));
 
@@ -43,10 +42,17 @@ class ARGEO_RemoveAIGroupCommand : SCR_BaseGroupCommand
 			Faction preProtectionFaction = characterProtectionComponent.GetPreProtectionFaction();
 			if (controlledEntityFaction && controlledEntityFaction.IsFactionEnemy(preProtectionFaction)) // prisoner
 			{
+				ARGEO_CivicCenterEntity civicCenter;
 				if (populationComp)
-					canBeDischarged = populationComp.CanPrisonerBeDischarged(character);
+				{
+					civicCenter = populationComp.CanNonCombatantBeDischarged(character);
+					if (civicCenter)
+					{
+						civicCenter.RegisterPrisoner(character);
+					}
+				}
 
-				if (canBeDischarged)
+				if (civicCenter)
 				{
 					if (xpComp)
 						xpComp.AwardXP(playerID, SCR_EXPRewards.DISCHARGE_PRISONER);
@@ -63,18 +69,24 @@ class ARGEO_RemoveAIGroupCommand : SCR_BaseGroupCommand
 			}
 			else // non-combatants
 			{
+				ARGEO_CivicCenterEntity civicCenter;
 				if (populationComp)
-					canBeDischarged = populationComp.CanNonCombatantBeDischarged(character);
+				{
+					civicCenter = populationComp.CanNonCombatantBeDischarged(character);
+					if (civicCenter)
+					{
+						civicCenter.RegisterNonCombatant(character);
+					}
+				}
 				
-				if (canBeDischarged)
+				if (civicCenter)
 					xpComp.AwardXP(playerID, SCR_EXPRewards.DISCHARGE_NON_COMBATANT);
 				else
 					xpComp.AwardXP(playerID, SCR_EXPRewards.ABANDON_NON_COMBATANT);
 			}
 			
 			// set faction back to original
-			factionAffiliation.SetAffiliatedFaction(preProtectionFaction);
-			characterProtectionComponent.SetPreProtectionFaction(null);
+			ARGEO_ProtectionFactionManagerComponent.UnsetProtected(character);
 		}
 		//
 				

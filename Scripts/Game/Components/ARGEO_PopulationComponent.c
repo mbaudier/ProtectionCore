@@ -275,24 +275,29 @@ class ARGEO_PopulationComponent : SCR_BaseGameModeComponent
 		return best;
 	}
 
-	bool CanNonCombatantBeDischarged(SCR_ChimeraCharacter character)
+	ARGEO_CivicCenterEntity CanNonCombatantBeDischarged(IEntity character)
 	{
 		ARGEO_CivicCenterEntity civicCenter = GetNearestCivicCenter(character.GetOrigin());
 		if (civicCenter)
 		{
 			float distance = vector.DistanceXZ(character.GetOrigin(), civicCenter.GetOrigin());
-			return distance <= civicCenter.GetDischargeRadius();
+			if(distance <= civicCenter.GetDischargeRadius())
+				return civicCenter;
 		}
-		return false;
+		return null;
 	}
 			
-	bool CanPrisonerBeDischarged(SCR_ChimeraCharacter character)
+	ARGEO_CivicCenterEntity CanPrisonerBeDischarged(IEntity character)
 	{
 		// TODO Implement a system for prison, etc.
 		ARGEO_CivicCenterEntity civicCenter = GetNearestCivicCenter(character.GetOrigin());
 		if (civicCenter)
-			return vector.DistanceXZ(character.GetOrigin(), civicCenter.GetOrigin()) <= civicCenter.GetDischargeRadius();
-		return false;
+		{
+			float distance = vector.DistanceXZ(character.GetOrigin(), civicCenter.GetOrigin());
+			if(distance <= civicCenter.GetDischargeRadius())
+				return civicCenter;
+		}
+		return null;
 	}
 			
 	//

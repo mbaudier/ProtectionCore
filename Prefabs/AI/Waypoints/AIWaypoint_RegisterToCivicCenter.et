@@ -1,0 +1,8 @@
+ARGEO_RegisterToCivicCenterWaypoint {
+ ID "65E6C2CFA982822A"
+ coords 2687.019 389.014 5186.562
+ Type "Register To Civic Center"
+ Title "Move to a civic center and register there"
+ AIBehaviorTreeMoveTo "{A3755C1F88DED8D6}AI/BehaviorTrees/Waypoints/WP_Move.bt"
+ CompletionRadius 20
+}

@@ -82,11 +82,11 @@ GenericEntity AreaCommanding : "{C72F956E4AC6A6E7}Prefabs/Systems/ScenarioFramew
         m_aFactionSwitchedObjects {
          SCR_ScenarioFrameworkFactionSwitchedObject "{65E31839F5FE4E2C}" {
           m_sFactionKey "US"
-          m_sObjectToSpawn "{FF7BB2F4C012B969}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatSmall/E_EmergencyResponseCenter_S_US.et"
+          m_sObjectToSpawn "{850461BA2DE146B6}Prefabs/Compositions/Slotted/SlotFlatSmall/EmergencyResponseCenter_S_US.et"
          }
          SCR_ScenarioFrameworkFactionSwitchedObject "{65E31839E596F259}" {
           m_sFactionKey "USSR"
-          m_sObjectToSpawn "{1A4947C79F64D9B8}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatSmall/E_EmergencyResponseCenter_S_USSR.et"
+          m_sObjectToSpawn "{F8D85655F3C403E9}Prefabs/Compositions/Slotted/SlotFlatSmall/EmergencyResponseCenter_S_USSR.et"
          }
         }
        }
