@@ -5,6 +5,7 @@ SCR_ChimeraCharacter : "{70697C21DE7AE2ED}Prefabs/Characters/Factions/INDFOR/URB
    m_UIInfo SCR_EditableEntityUIInfo "{5298E609432D192D}" {
     Name "#PRTC-Random_Hipster_Name"
     Icon "{C431FD61793AA13F}UI/Textures/Editor/EditableEntities/Characters/EditableEntity_Random.edds"
+    m_Image "{7C3BEA128088426F}UI/Textures/EditorPreviews/Characters/Factions/INDFOR/URBAN/Character_URBAN_Hipster_Randomized.edds"
     m_aAuthoredLabels + {
      290
     }
@@ -18,6 +19,19 @@ SCR_ChimeraCharacter : "{70697C21DE7AE2ED}Prefabs/Characters/Factions/INDFOR/URB
      SCR_EditableEntityVariant "{65BD2C0CC685D4FC}" {
       m_sVariantPrefab "{A88EA3003DFC55A5}Prefabs/Characters/Factions/INDFOR/URBAN/Character_URBAN_Hipster01.et"
      }
+    }
+   }
+  }
+  BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
+   Slots {
+    LoadoutSlotInfo Jacket {
+     Prefab "{EB0D74A43F74B522}Prefabs/Characters/Uniforms/Jacket_Denim_01/Jacket_Denim_01_strippedShirt.et"
+    }
+    LoadoutSlotInfo Pants {
+     Prefab "{401072A652DD9849}Prefabs/Characters/Uniforms/Pants_Suit_01/Pants_Suit_01_grey_V1.et"
+    }
+    LoadoutSlotInfo Boots {
+     Prefab "{DAAFD15478BDE1C3}Prefabs/Characters/Footwear/CombatBoots_US_01.et"
     }
    }
   }

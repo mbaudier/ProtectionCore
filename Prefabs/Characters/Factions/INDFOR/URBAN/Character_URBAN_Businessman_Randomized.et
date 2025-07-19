@@ -5,6 +5,7 @@ SCR_ChimeraCharacter : "{70697C21DE7AE2ED}Prefabs/Characters/Factions/INDFOR/URB
    m_UIInfo SCR_EditableEntityUIInfo "{5298E609432D192D}" {
     Name "#PRTC-Random_Businessman_Name"
     Icon "{C431FD61793AA13F}UI/Textures/Editor/EditableEntities/Characters/EditableEntity_Random.edds"
+    m_Image "{8D89EBAABF49FC6E}UI/Textures/EditorPreviews/Characters/Factions/INDFOR/URBAN/Character_URBAN_Businessman_Randomized.edds"
     m_aAuthoredLabels + {
      290
     }
@@ -21,6 +22,19 @@ SCR_ChimeraCharacter : "{70697C21DE7AE2ED}Prefabs/Characters/Factions/INDFOR/URB
      SCR_EditableEntityVariant "{65BD2C0CEE9AB767}" {
       m_sVariantPrefab "{8AA5799597126801}Prefabs/Characters/Factions/INDFOR/URBAN/Character_URBAN_Businessman02.et"
      }
+    }
+   }
+  }
+  BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
+   Slots {
+    LoadoutSlotInfo Jacket {
+     Prefab "{E652D625A46A00FC}Prefabs/Characters/Uniforms/Jacket_Suit_01/Jacket_Suit_01_Grey_V1.et"
+    }
+    LoadoutSlotInfo Pants {
+     Prefab "{401072A652DD9849}Prefabs/Characters/Uniforms/Pants_Suit_01/Pants_Suit_01_grey_V1.et"
+    }
+    LoadoutSlotInfo Boots {
+     Prefab "{DAAFD15478BDE1C3}Prefabs/Characters/Footwear/CombatBoots_US_01.et"
     }
    }
   }

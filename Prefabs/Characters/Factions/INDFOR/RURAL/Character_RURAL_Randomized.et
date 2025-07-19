@@ -33,11 +33,20 @@ SCR_ChimeraCharacter : "{9377B9F8B8CA717A}Prefabs/Characters/Factions/INDFOR/RUR
      SCR_EditableEntityVariant "{628C93B5164A3D3F}" {
       m_sVariantPrefab "{31BDBDE108B7F65B}Prefabs/Characters/Factions/INDFOR/RURAL/Character_RURAL_Farmer05.et"
      }
+     SCR_EditableEntityVariant "{65E728EF4BDF16C1}" {
+      m_sVariantPrefab "{7D6EE6863B754543}Prefabs/Characters/Factions/INDFOR/RURAL/Character_RURAL_Worker01.et"
+     }
+     SCR_EditableEntityVariant "{65E728EF7FE3D5D9}" {
+      m_sVariantPrefab "{5460268B4DBF78E3}Prefabs/Characters/Factions/INDFOR/RURAL/Character_RURAL_Notable01.et"
+     }
     }
    }
   }
   BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
    Slots {
+    LoadoutSlotInfo Hat {
+     Prefab "{5977C0A606B65E6D}Prefabs/Characters/HeadGear/Hat_TruckerCap_01/Hat_TruckerCap_01_moto.et"
+    }
     LoadoutSlotInfo Jacket {
      Prefab "{810C95A02A459359}Prefabs/Characters/Uniforms/Shirt_CottonShirt_01/Shirt_CottonShirt_01_V5_Dirty.et"
     }

@@ -4,7 +4,6 @@ SCR_ChimeraCharacter : "{9377B9F8B8CA717A}Prefabs/Characters/Factions/INDFOR/RUR
   SCR_EditableCharacterComponent "{520EA1D2F659C85C}" {
    m_UIInfo SCR_EditableEntityUIInfo "{5298E609432D192D}" {
     Name "(Character_RURAL_Farmer01)"
-    m_Image "{94813DA11AAFE846}UI/Textures/EditorPreviews/Characters/Factions/INDFOR/RURAL/Character_RURAL_Farmer01.edds"
     m_aAuthoredLabels +{
     }
     m_aAutoLabels {

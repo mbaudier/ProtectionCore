@@ -4,6 +4,7 @@ SCR_ChimeraCharacter : "{70697C21DE7AE2ED}Prefabs/Characters/Factions/INDFOR/URB
   SCR_EditableCharacterComponent "{520EA1D2F659C85C}" {
    m_UIInfo SCR_EditableEntityUIInfo "{5298E609432D192D}" {
     Name "#PRTC-Random_Guy_Name"
+    m_Image "{CA91F12AAC640C48}UI/Textures/EditorPreviews/Characters/Factions/INDFOR/URBAN/Character_URBAN_Guy_Randomized.edds"
     m_aAuthoredLabels + {
      290
     }
@@ -23,6 +24,19 @@ SCR_ChimeraCharacter : "{70697C21DE7AE2ED}Prefabs/Characters/Factions/INDFOR/URB
      SCR_EditableEntityVariant "{65BD2C0CDA0C3A8B}" {
       m_sVariantPrefab "{91B7CCB279B0FC3A}Prefabs/Characters/Factions/INDFOR/URBAN/Character_URBAN_Guy03.et"
      }
+    }
+   }
+  }
+  BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
+   Slots {
+    LoadoutSlotInfo Jacket {
+     Prefab "{6A3F994EFFE22995}Prefabs/Characters/Uniforms/Shirt_Turtleneck_01/Shirt_Turtleneck_01_DarkBlue.et"
+    }
+    LoadoutSlotInfo Pants {
+     Prefab "{65B7093231FBF67E}Prefabs/Characters/Uniforms/Pants_Trousers_01/Pants_Trousers_01_LightBrown.et"
+    }
+    LoadoutSlotInfo Boots {
+     Prefab "{DAAFD15478BDE1C3}Prefabs/Characters/Footwear/CombatBoots_US_01.et"
     }
    }
   }
