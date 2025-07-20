@@ -5,6 +5,7 @@ SCR_FactionManager : "{A242612865F2A48E}Prefabs/MP/Managers/Factions/FactionMana
    m_bForceProtectedFactionFriendlyToAll 1
    m_bAlliesCanBeRecruited 1
    m_bNonCombattantsCanBeProtected 1
+   m_bEnemiesCanBeCaptured 1
   }
  }
 }
