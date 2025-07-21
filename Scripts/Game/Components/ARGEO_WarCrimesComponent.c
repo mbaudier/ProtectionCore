@@ -32,7 +32,11 @@ class ARGEO_WarCrimesComponent : SCR_BaseGameModeComponent
 	[Attribute("1", desc: "Force playable factions to be friendly to non-military factions (IHL DB - Rule 1).", category: "Consider Arma Reforger EULAs Before Changing This")]
 	protected bool m_bPlayableFactionsFriendlyToNonMilitary;
 
+	static const string EVENT_WAR_CRIME_CREATED = "OnWarCrimeCreated";
+
 	protected static ARGEO_WarCrimesComponent s_Instance;
+	
+	protected ref array<EventHandlerManagerComponent> m_aEventBus = new array<EventHandlerManagerComponent>();
 	
 	//
 	// LIFECYCLE
@@ -71,6 +75,14 @@ class ARGEO_WarCrimesComponent : SCR_BaseGameModeComponent
 				}
 			}
 			factionManager.RequestUpdateAllTargetsFactions();
+		}
+		
+		// event bus
+		array<Managed> arr = {};
+		GetGame().GetGameMode().FindComponents(EventHandlerManagerComponent, arr);
+		foreach (Managed m : arr)
+		{
+			m_aEventBus.Insert(EventHandlerManagerComponent.Cast(m));
 		}
 	}
 	
@@ -115,7 +127,12 @@ class ARGEO_WarCrimesComponent : SCR_BaseGameModeComponent
 		}
 		
 		// cannot be modified from now on
-		warCrimeEntity.SetImmutable();	
+		warCrimeEntity.SetImmutable();
+		
+		foreach (EventHandlerManagerComponent eventHandlerManager : m_aEventBus)
+		{
+			eventHandlerManager.RaiseEvent(EVENT_WAR_CRIME_CREATED, 1, warCrimeEntity);
+		}
 	}
 
 	//

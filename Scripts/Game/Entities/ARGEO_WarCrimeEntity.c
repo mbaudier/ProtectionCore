@@ -114,7 +114,7 @@ sealed class ARGEO_WarCrimeEntity: GenericEntity
 	private bool CheckImmutable()
 	{
 		if (immutable)
-			Print("War crime cannot be modified a posterior.", LogLevel.WARNING);
+			Print("War crime cannot be modified a posteriori.", LogLevel.WARNING);
 		return immutable;
 	}
 	
@@ -134,8 +134,9 @@ sealed class ARGEO_WarCrimeEntity: GenericEntity
 		if (!context.IsValid())
 			return false;
 
-		context.WriteValue("position", GetOrigin());
-		context.WriteValue("crime", m_iCrime);
+		context.WriteValue("origin", GetOrigin());
+		string crime = SCR_Enum.GetEnumName(SCR_ECrimeNotification, m_iCrime);
+		context.WriteValue("crime", crime);
 
 		return true;
 	}
@@ -145,10 +146,19 @@ sealed class ARGEO_WarCrimeEntity: GenericEntity
 		if (!context.IsValid())
 			return false;
 
-		vector position;
-		context.ReadValue("position", position);
-		context.ReadValue("crime", m_iCrime);
-
+		vector origin;
+		context.ReadValue("origin", origin);
+		SetOrigin(origin);
+		
+		string crime;
+		context.ReadValue("crime", crime);
+		array<string> stringValues = {};
+		SCR_Enum.GetEnumNames(SCR_ECrimeNotification, stringValues);
+		foreach (int i, string str : stringValues)
+			if (str == crime)
+				m_iCrime = i;
+		// FIXME Deal with unkown value
+		// TODO Already set to immutable?
 		return true;
 	}
 }
