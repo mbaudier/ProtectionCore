@@ -58,12 +58,48 @@ StringTable {
    Author "argeo"
    LastChanged "argeo"
   }
+  CustomStringTableItem "{65EE818992ADDC55}" {
+   Id "PRTC-Hint_Build_EmergencyResponseCenter_Text"
+   Target_en_us "An emergency response center is a temporary \"civic center\" which is able to take care of displaced civilians (and POW)."\
+   ""\
+   "When fleeing, civilians will try to reach te nearest civic center, usually a municipal building in a bigger town. By building an emergency response center you can direct them away from the fighting."
+   Modified 1710130655
+   Author "argeo"
+   LastChanged "argeo"
+  }
+  CustomStringTableItem "{65EE8189AEE31B8F}" {
+   Id "PRTC-Hint_Build_EmergencyResponseCenter_Title"
+   Target_en_us "Building An Emergency Response Center"
+   Modified 1710130538
+   Author "argeo"
+   LastChanged "argeo"
+  }
+  CustomStringTableItem "{65EE818AB4AC8050}" {
+   Id "PRTC-Hint_Command_Capture_Text"
+   Target_en_us "You can capture AI enemies with the command menu, just like you would recruit AI soldiers."\
+   ""\
+   "When enemies are captured within such a commanded group, they gain a special status and AIs from your own faction won't target them."\
+   ""\
+   "You can at some point discharge them in the immediate vicinity of a civic center (either a municipal building or an emergency response center)."
+   Modified 1710130235
+   Author "argeo"
+   LastChanged "argeo"
+  }
+  CustomStringTableItem "{65EE818B493ED0CC}" {
+   Id "PRTC-Hint_Command_Capture_Title"
+   Target_en_us "Capturing Enemies"
+   Modified 1710129995
+   Author "argeo"
+   LastChanged "argeo"
+  }
   CustomStringTableItem "{65CD0DC4C2E79F74}" {
    Id "PRTC-Hint_Command_Protect_Text"
    Target_en_us "You can \"protect\" civilians with the command menu, just like you would recruit AI soldiers."\
    ""\
-   "When non-combatants are protected within such a commanded group, they gain a special status and even criminal enemies won't target them."
-   Modified 1707943519
+   "When non-combatants are protected within such a commanded group, they gain a special status and even criminal enemies won't target them."\
+   ""\
+   "You can at some point discharge them in the immediate vicinity of a civic center (either a municipal building or an emergency response center)."
+   Modified 1710130254
    Author "argeo"
    LastChanged "argeo"
   }
