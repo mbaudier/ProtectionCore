@@ -35,7 +35,8 @@ class ARGEO_BuildingHouseholdEntity: ARGEO_BuildingPopulationEntity
 			
 			ARGEO_PopulatedSpawnPointComponent spawnPoint = ARGEO_PopulatedSpawnPointComponent.Cast(processedEntity.FindComponent(ARGEO_PopulatedSpawnPointComponent));
 			 
-			if (spawnPoint) {
+			if (spawnPoint)
+			{
 				m_aSpawnPoints.Insert(spawnPoint);
 				nextInHierarchy = null;// no need to go deeper
 			}
