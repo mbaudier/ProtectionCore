@@ -21,6 +21,11 @@ PerceptionManager PerceptionManager : "{028DAEAD63E056BE}Prefabs/World/Game/Perc
  coords 2631.93 110.391 2395.717
 }
 SCR_GameModeEditor GameMode_Editor_Protection : "{4E2FCFA7A56E4550}Prefabs/MP/Modes/Editor/GameMode_Editor_Protection.et" {
+ components {
+  ARGEO_PopulationComponent "{657F0CE6ADBB46C4}" {
+   m_fGlobalBuildingsOccupation 100
+  }
+ }
  coords 2632.74 110.311 2395.879
  {
   SCR_FactionManager FactionManager {

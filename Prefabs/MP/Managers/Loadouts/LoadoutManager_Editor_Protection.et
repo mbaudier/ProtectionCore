@@ -41,11 +41,6 @@ SCR_LoadoutManager : "{AA4E7419A1FF65B0}Prefabs/MP/Managers/Loadouts/LoadoutMana
    m_sLoadoutResource "{7A9EE19AB67B298B}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_base.et"
    m_sAffiliatedFaction "FIA"
   }
-  SCR_PlayerArsenalLoadout "{65BD083263A78CDA}" {
-   m_sLoadoutName "#AR-Loadout_Editor_SavedArsenalLoadout_Name"
-   m_sLoadoutResource "{99F600AD4C6BA6A4}Prefabs/Characters/Factions/CIV/Character_CIV_base.et"
-   m_sAffiliatedFaction "CIV"
-  }
   SCR_PlayerArsenalLoadout "{65E0E1409EB6BD28}" {
    m_sLoadoutName "#AR-Loadout_Editor_SavedArsenalLoadout_Name"
    m_sLoadoutResource "{9377B9F8B8CA717A}Prefabs/Characters/Factions/INDFOR/RURAL/Character_RURAL_base.et"

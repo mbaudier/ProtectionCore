@@ -50,7 +50,10 @@ class ARGEO_PopulationComponent : SCR_BaseGameModeComponent
 		if (header)
 		{
 			if (header.m_fGlobalBuildingsOccupation != 0)
+			{		
 				m_fGlobalBuildingsOccupation = header.m_fGlobalBuildingsOccupation;
+				Print("Global building occupation set from mission header with value '" + header.m_fGlobalBuildingsOccupation + "'");
+			}
 		}
 		Print("Global building occupation: " + m_fGlobalBuildingsOccupation + "%");
 	}

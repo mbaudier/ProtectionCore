@@ -8,17 +8,17 @@ class ARGEO_ProtectionFactionManagerComponent : SCR_BaseFactionManagerComponent
 	[Attribute("CIV", desc: "Possibly virtual faction temporarily assigned when civilians, POW, etc. are protected.", category: "Protection")]
 	private FactionKey m_sProtectedFaction;
 	
-	[Attribute("0", desc: "Force the protected faction to be friendly to all.", category: "Protection")]
+	[Attribute("0", desc: "Force the protected faction to be friendly to all. DO NOT CHANGE UNLESS YOU KNOW WHAT YOU ARE DOING.", category: "Protection")]
 	private bool m_bForceProtectedFactionFriendlyToAll;
 	
 	
 	[Attribute("0", desc: "Soldiers from friendly military factions can be recruited.", category: "Commanding")]
 	private bool m_bAlliesCanBeRecruited;
 
-	[Attribute("0", desc: "Non-combattants can be protected (\"recruited\" into the commanded group).", category: "Commanding")]
+	[Attribute("0", desc: "Non-combattants can be protected (\"recruited\" into the AI commanded group).", category: "Commanding")]
 	private bool m_bNonCombattantsCanBeProtected;
 	
-	[Attribute("0", desc: "Enemy soldiers can be captured (\"recruited\" into the commanded group).", category: "Commanding")]
+	[Attribute("0", desc: "Enemy soldiers can be captured (\"recruited\" into the AI commanded group).", category: "Commanding")]
 	private bool m_bEnemiesCanBeCaptured;
 	
 	private static SCR_Faction s_ProtectedFaction;
