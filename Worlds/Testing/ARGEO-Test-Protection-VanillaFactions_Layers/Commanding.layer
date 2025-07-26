@@ -33,6 +33,9 @@ GenericEntity AreaCommanding : "{C72F956E4AC6A6E7}Prefabs/Systems/ScenarioFramew
          }
         }
        }
+       Hierarchy "{5A26B3E02E941739}" {
+        Enabled 0
+       }
       }
       coords -25.65 1.268 -92.775
      }
@@ -58,7 +61,6 @@ GenericEntity AreaCommanding : "{C72F956E4AC6A6E7}Prefabs/Systems/ScenarioFramew
     GenericEntity SlotCommandMixed : "{A44004A770A5D8BE}Prefabs/Systems/ScenarioFramework/Components/SlotMoveTo.et" {
      components {
       SCR_ScenarioFrameworkSlotExtraction "{5A1EEEC837EEA27B}" {
-       m_bShowDebugShapesDuringRuntime 1
        m_aPlugins {
         SCR_ScenarioFrameworkPluginTrigger "{5A6C6D099D49E4BA}" {
          m_eActivationPresence ANY_CHARACTER
