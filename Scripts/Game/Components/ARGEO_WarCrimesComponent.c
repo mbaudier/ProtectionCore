@@ -29,7 +29,7 @@ class ARGEO_WarCrimesComponent : SCR_BaseGameModeComponent
 	[Attribute("1", desc: "Scoring use vanilla logic.", category: "Compatibility")]
 	protected bool m_bVanillaLogicForScoring;
 
-	[Attribute("1", desc: "Force playable factions to be friendly to non-military factions (IHL DB - Rule 1).", category: "Consider Arma Reforger EULAs Before Changing This")]
+	[Attribute("1", desc: "Force playable factions to be friendly to non-military factions (ihl-databases.icrc.org - Rule 1).", category: "Consider Arma Reforger EULAs Before Changing This")]
 	protected bool m_bPlayableFactionsFriendlyToNonMilitary;
 
 	static const string EVENT_WAR_CRIME_CREATED = "OnWarCrimeCreated";

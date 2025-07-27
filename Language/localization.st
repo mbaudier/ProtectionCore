@@ -2,10 +2,25 @@ StringTable {
  ItemClassName "CustomStringTableItem"
  Items {
   CustomStringTableItem "{65B676E8BDA1367B}" {
-   Id "PRTC-Capture_Action"
+   Id "PRTC-Action_Capture"
    Target_en_us "Capture"
    Target_fr_fr "Capture"
-   Modified 1706457275
+   Modified 1710655624
+   Author "argeo"
+   LastChanged "argeo"
+  }
+  CustomStringTableItem "{65B676E94E15AB59}" {
+   Id "PRTC-Action_Protect"
+   Target_en_us "Protect"
+   Target_fr_fr "Protège"
+   Modified 1710655611
+   Author "argeo"
+   LastChanged "argeo"
+  }
+  CustomStringTableItem "{65F683AE031121E9}" {
+   Id "PRTC-Action_ProtectGroup"
+   Target_en_us "Protect Group"
+   Modified 1710655643
    Author "argeo"
    LastChanged "argeo"
   }
@@ -107,14 +122,6 @@ StringTable {
    Id "PRTC-Hint_Command_Protect_Title"
    Target_en_us "Protecting Non-Combatants"
    Modified 1707943445
-   Author "argeo"
-   LastChanged "argeo"
-  }
-  CustomStringTableItem "{65B676E94E15AB59}" {
-   Id "PRTC-Protect_Action"
-   Target_en_us "Protect"
-   Target_fr_fr "Protège"
-   Modified 1706457258
    Author "argeo"
    LastChanged "argeo"
   }

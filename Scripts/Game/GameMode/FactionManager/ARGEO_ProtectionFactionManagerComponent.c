@@ -11,7 +11,6 @@ class ARGEO_ProtectionFactionManagerComponent : SCR_BaseFactionManagerComponent
 	[Attribute("0", desc: "Force the protected faction to be friendly to all. DO NOT CHANGE UNLESS YOU KNOW WHAT YOU ARE DOING.", category: "Protection")]
 	private bool m_bForceProtectedFactionFriendlyToAll;
 	
-	
 	[Attribute("0", desc: "Soldiers from friendly military factions can be recruited.", category: "Commanding")]
 	private bool m_bAlliesCanBeRecruited;
 

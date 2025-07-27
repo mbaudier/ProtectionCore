@@ -6,7 +6,7 @@ class ARGEO_PopulationComponentClass : SCR_BaseGameModeComponentClass
 class ARGEO_PopulationComponent : SCR_BaseGameModeComponent
 {
 	[Attribute("CIV", desc: "Default population faction.", category: "Population")]
-	protected FactionKey m_sDefaultFaction;
+	protected FactionKey m_sDefaultPopulationFaction;
 	
 	private Faction m_DefaultPopulationFaction;
 
@@ -67,7 +67,7 @@ class ARGEO_PopulationComponent : SCR_BaseGameModeComponent
 		for (int i = 0; i < factionManager.GetFactionsCount(); i++)
 		{
 			Faction faction = factionManager.GetFactionByIndex(i);	
-			if (faction.GetFactionKey() == m_sDefaultFaction)
+			if (faction.GetFactionKey() == m_sDefaultPopulationFaction)
 			{
 				m_DefaultPopulationFaction = faction;
 				m_aPopulationFactions.Insert(m_DefaultPopulationFaction);
