@@ -1,24 +1,26 @@
-SCR_AIWorld SCR_AIWorld_Arland : "{01DC74137CFDDB6A}Prefabs/AI/SCR_AIWorld_Arland.et" {
+SCR_AIWorld SCR_AIWorld_Eden : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
  components {
   NavmeshWorldComponent "{5584F30E67F617AD}" {
    NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
-    NavmeshFilesConfig BaseNavmeshFilesConfig "{60B8A2995A7E8BC2}" {
-     NavmeshFile "{D8EF7131FB31AF97}worlds/GameMaster/Navmeshes/GM_Arland.nmn"
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60B8A297F9E52831}" {
+     NavmeshFile "{AD5F99CD7C59D5E0}worlds/GameMaster/Navmeshes/GM_Eden.nmn"
     }
    }
   }
   NavmeshWorldComponent "{5584F30EEFEE1223}" {
    NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
-    NavmeshFilesConfig BaseNavmeshFilesConfig "{60B8A299509CF377}" {
-     NavmeshFile "{A0AEEB1E7EF474FA}worlds/GameMaster/Navmeshes/GM_Arland_vehicles.nmn"
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60B8A297F3B4EE8A}" {
+     NavmeshFile "{C35ECF3276824654}worlds/GameMaster/Navmeshes/GM_Eden_vehicles.nmn"
     }
    }
   }
  }
- coords 2633.576 110.213 2395.986
+ coords 4618.625 81.607 6396.979
+ LimitOfSpawnedAIAgents 2000
+ "Active AI limit" 1000
 }
 PerceptionManager PerceptionManager : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
- coords 2631.93 110.391 2395.717
+ coords 4618.438 81.94 6397.97
 }
 SCR_GameModeEditor GameMode_Editor_Protection : "{4E2FCFA7A56E4550}Prefabs/MP/Modes/Editor/GameMode_Editor_Protection.et" {
  components {
@@ -26,5 +28,5 @@ SCR_GameModeEditor GameMode_Editor_Protection : "{4E2FCFA7A56E4550}Prefabs/MP/Mo
    m_fGlobalBuildingsOccupation 100
   }
  }
- coords 2632.74 110.311 2395.879
+ coords 4618.452 82.227 6398.944
 }
