@@ -1,5 +1,5 @@
 //------------------------------------------------------------------------------------------------
-//! Abstraction of the string use as ID for a territory.
+//! Abstraction of the string used as ID for a territory.
 typedef string ARGEO_PopulatedTerritoryID;
 
 //------------------------------------------------------------------------------------------------
