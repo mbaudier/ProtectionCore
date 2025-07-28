@@ -3,15 +3,23 @@ class ARGEO_PopulatedLocationTriggerEntityClass : ARGEO_PopulatedTerritoryTrigge
 {
 }
 
+//------------------------------------------------------------------------------------------------
+//! The main trigger related to a populated territory, as defined by its vanilla urban location.
 class ARGEO_PopulatedLocationTriggerEntity : ARGEO_PopulatedTerritoryTriggerEntity
 {
 	private string m_sLocationName;
+	
 	private string m_sLocationPrefabName;
 	
 	private ref ARGEO_PopulatedTerritory m_PopulatedTerritory;
 	
 	private EventHandlerManagerComponent m_EventHandlerMgr;
 
+	//
+	// LIFECYCLE
+	//
+	
+	//------------------------------------------------------------------------------------------------
 	override void OnInit(IEntity owner)
 	{
 		super.OnInit(owner);
@@ -45,6 +53,7 @@ class ARGEO_PopulatedLocationTriggerEntity : ARGEO_PopulatedTerritoryTriggerEnti
 		m_EventHandlerMgr = EventHandlerManagerComponent.Cast(owner.FindComponent(EventHandlerManagerComponent));
 	}
 
+	//------------------------------------------------------------------------------------------------
 	override void OnActivate(IEntity ent)
 	{
 		super.OnActivate(ent);
@@ -53,7 +62,7 @@ class ARGEO_PopulatedLocationTriggerEntity : ARGEO_PopulatedTerritoryTriggerEnti
 		if (!populationComp) // typically in workbnech
 			return;
 		
-		// FIXME better deal with lifecycle and init
+		// TODO better deal with lifecycle and init
 		m_PopulatedTerritory = populationComp.GetPopulatedTerritory(m_sPopulatedTerritoryID);
 		if (m_PopulatedTerritory && m_EventHandlerMgr)
 		{

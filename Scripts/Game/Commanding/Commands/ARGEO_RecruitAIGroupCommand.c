@@ -1,12 +1,15 @@
 //------------------------------------------------------------------------------------------------
+//! Command for recruiting an allied AI or group of AIs.
 [BaseContainerProps(), SCR_BaseGroupCommandTitleField("m_sCommandName")]
 class ARGEO_RecruitAIGroupCommand : ARGEO_BaseAddAIGroupCommand
 {
+	//------------------------------------------------------------------------------------------------
 	override bool IsFeatureEnabled()
 	{
 		return true;
 	}
 
+	//------------------------------------------------------------------------------------------------
 	override bool CanBeShownForFaction(notnull SCR_Faction controlledEntityFaction, notnull SCR_Faction faction)
 	{
 		if(faction == controlledEntityFaction)
@@ -23,9 +26,9 @@ class ARGEO_RecruitAIGroupCommand : ARGEO_BaseAddAIGroupCommand
 		return protectionFactionManagerComponent && protectionFactionManagerComponent.CanAlliesCanBeRecruited();
 	}
 
+	//------------------------------------------------------------------------------------------------
 	override bool IsProtecting()
 	{
 		return false;
-	}
-	
+	}	
 }

@@ -2,7 +2,8 @@ class ARGEO_WarCrimeEntityClass: GenericEntityClass
 {
 }
 
-//! A located war crime, so that it can activate trigger or be documented.
+//------------------------------------------------------------------------------------------------
+//! A located war crime, so that it can activate triggers or be investigated.
 sealed class ARGEO_WarCrimeEntity: GenericEntity
 {
 	private SCR_ECrimeNotification m_iCrime;
@@ -25,6 +26,7 @@ sealed class ARGEO_WarCrimeEntity: GenericEntity
 	//
 	// ACCESSORS
 	//
+	
 	void SetCrime(SCR_ECrimeNotification crime)
 	{
 		if (CheckImmutable())
@@ -129,6 +131,8 @@ sealed class ARGEO_WarCrimeEntity: GenericEntity
 	// SERIALIZATION
 	//
 	
+	//------------------------------------------------------------------------------------------------
+	//! Serializes to the provided context.
 	bool SerializationSave(BaseSerializationSaveContext context)
 	{
 		if (!context.IsValid())
@@ -141,6 +145,8 @@ sealed class ARGEO_WarCrimeEntity: GenericEntity
 		return true;
 	}
 
+	//------------------------------------------------------------------------------------------------
+	//! Deserializes from the provided context.
 	bool SerializationLoad(BaseSerializationLoadContext context)
 	{
 		if (!context.IsValid())

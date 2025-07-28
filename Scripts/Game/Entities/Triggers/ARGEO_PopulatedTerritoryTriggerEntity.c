@@ -3,11 +3,17 @@ class ARGEO_PopulatedTerritoryTriggerEntityClass : ScriptedGameTriggerEntityClas
 {
 }
 
+//------------------------------------------------------------------------------------------------
+//! A trigger related to a populated territory and responsible for populating the buildings.
 class ARGEO_PopulatedTerritoryTriggerEntity : ScriptedGameTriggerEntity
 {
 	[Attribute(desc: "ID of the populated territory to attach to.", category: "Population")]
 	protected ARGEO_PopulatedTerritoryID m_sPopulatedTerritoryID;	
 
+	//------------------------------------------------------------------------------------------------
+	//! During the first activation, configures the structural population-related entities,
+	//! such as houshols and ambient vehicles.
+	//! Then monitor for populated territory events such as war crimes.
 	override protected event void OnActivate(IEntity ent)
 	{
 		super.OnActivate(ent);
@@ -67,13 +73,21 @@ class ARGEO_PopulatedTerritoryTriggerEntity : ScriptedGameTriggerEntity
 		ARGEO_WarCrimeEntity warCrimeEntity = ARGEO_WarCrimeEntity.Cast(ent);
 		if (warCrimeEntity)
 		{
-			Print("New war crime in " + m_sPopulatedTerritoryID);
+			OnNewWarCrime(warCrimeEntity);
 		}
 	}
 	
+	//------------------------------------------------------------------------------------------------
+	//! Notified when a war crime entity has appeared in this trigger.
+	protected void OnNewWarCrime(notnull ARGEO_WarCrimeEntity warCrimeEntity)
+	{
+		Print("New war crime in " + m_sPopulatedTerritoryID);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	//! Unused for the time being.
 	override event protected void OnQueryFinished(bool bIsEmpty)
 	{
 		//EnablePeriodicQueries(false);
 	}
-
 }

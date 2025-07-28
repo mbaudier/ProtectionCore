@@ -1,7 +1,12 @@
 //------------------------------------------------------------------------------------------------
+//! Remove AIs from the commanded AI group, possibly discharging them if they are protected.
 [BaseContainerProps(), SCR_BaseGroupCommandTitleField("m_sCommandName")]
 class ARGEO_RemoveAIGroupCommand : SCR_BaseGroupCommand
 {
+	//
+	// FORKED VANILLA LOGIC
+	//
+	
 	//------------------------------------------------------------------------------------------------
 	override bool Execute(IEntity cursorTarget, IEntity target, vector targetPosition, int playerID, bool isClient)
 	{
@@ -27,7 +32,7 @@ class ARGEO_RemoveAIGroupCommand : SCR_BaseGroupCommand
 			groupController.RequestRemoveAgent(character, playerID);
 
 		//
-		// Protection specific
+		// Protection-specific
 		//
 		FactionAffiliationComponent factionAffiliation = FactionAffiliationComponent.Cast(character.FindComponent(FactionAffiliationComponent));
 		ARGEO_CharacterProtectionComponent characterProtectionComponent = ARGEO_CharacterProtectionComponent.Cast(character.FindComponent(ARGEO_CharacterProtectionComponent));
@@ -89,6 +94,8 @@ class ARGEO_RemoveAIGroupCommand : SCR_BaseGroupCommand
 			ARGEO_ProtectionFactionManagerComponent.UnsetProtected(character);
 		}
 		//
+		// End of Protection-specific
+		//
 				
 		return true;
 	}
@@ -122,9 +129,6 @@ class ARGEO_RemoveAIGroupCommand : SCR_BaseGroupCommand
 		
 		if (!CanRoleShow())
 			return false;
-		
-//		if (character.GetFaction() != playerController.GetLocalControlledEntityFaction())
-//			return false;
 		
 		int playerID = GetGame().GetPlayerController().GetPlayerId();
 		SCR_AIGroup playerGroup = groupManager.GetPlayerGroup(playerID);

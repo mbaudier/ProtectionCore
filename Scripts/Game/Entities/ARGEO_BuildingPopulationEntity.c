@@ -2,10 +2,12 @@ class ARGEO_BuildingPopulationEntityClass: GenericEntityClass
 {
 }
 
-//! The link between people and a given building.
+//------------------------------------------------------------------------------------------------
+//! Abstract class for entities related to a building and the population.
 class ARGEO_BuildingPopulationEntity: GenericEntity
 {
 	protected SCR_DestructibleBuildingComponent m_DestructibleBuildingComp;
+	
 	protected SCR_CampaignBuildingCompositionComponent m_CampaignBuildingCompositionComp;
 
 	private ARGEO_PopulatedTerritoryID m_sPopulatedTerritoryID;
@@ -14,6 +16,7 @@ class ARGEO_BuildingPopulationEntity: GenericEntity
 	// LIFECYCLE
 	//
 	
+	//------------------------------------------------------------------------------------------------
 	override void EOnActivate(IEntity owner)
 	{
 		super.EOnActivate(owner);
@@ -38,7 +41,7 @@ class ARGEO_BuildingPopulationEntity: GenericEntity
 	//
 	
 	//------------------------------------------------------------------------------------------------
-	//! Called when the related building is destroyed, making the related people displaced persons.
+	//! Called when the related building is destroyed.
 	protected void OnBuildingDestroyed(EDamageState state)
 	{
 		if (state != EDamageState.DESTROYED)
@@ -49,6 +52,8 @@ class ARGEO_BuildingPopulationEntity: GenericEntity
 		populationComp.NotifyBuildingDestroyed(this);
 	}
 	
+	//------------------------------------------------------------------------------------------------
+	//! Called when the related building is damaged.
 	protected void OnBuildingDamaged(notnull BaseDamageContext damageContext)
 	{
 		ARGEO_PopulationComponent populationComp = ARGEO_PopulationComponent.GetInstance();
@@ -57,7 +62,9 @@ class ARGEO_BuildingPopulationEntity: GenericEntity
 		populationComp.NotifyBuildingDamaged(this, damageContext);
 	}
 	
-	//! To be overridden
+	//------------------------------------------------------------------------------------------------
+	//! Called when a composition beeing built if effectively spawned. To be overridden.
+	//! \param arg See SCR_CampaignBuildingCompositionComponent.GetOnCompositionSpawned()
 	protected void OnCompositionSpawned(bool arg)
 	{
 	}
@@ -66,6 +73,7 @@ class ARGEO_BuildingPopulationEntity: GenericEntity
 	// UTILITIES
 	//
 	
+	//------------------------------------------------------------------------------------------------
 	private SCR_DestructibleBuildingComponent FindDestructibleBuildingComp(IEntity current)
 	{
 		if (!current)
@@ -80,6 +88,7 @@ class ARGEO_BuildingPopulationEntity: GenericEntity
 		return FindDestructibleBuildingComp(parent);
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	private SCR_CampaignBuildingCompositionComponent FindCampaignBuildingCompositionComp(IEntity current)
 	{
 		if (!current)

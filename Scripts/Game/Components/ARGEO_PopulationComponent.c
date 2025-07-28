@@ -3,6 +3,9 @@ class ARGEO_PopulationComponentClass : SCR_BaseGameModeComponentClass
 {
 }
 
+//------------------------------------------------------------------------------------------------
+//! Game component coordinating the automated population of buildings
+//! and the safety status of populated territories.
 class ARGEO_PopulationComponent : SCR_BaseGameModeComponent
 {
 	[Attribute("CIV", desc: "Default population faction.", category: "Population")]
@@ -28,12 +31,12 @@ class ARGEO_PopulationComponent : SCR_BaseGameModeComponent
 	[Attribute(defvalue: "90", UIWidgets.Slider, desc: "Probability for an houshold to flee by UNLIVABLE status, in percentage.", params: "0 100 1", category: "Displacement Probability")]
 	protected float m_fProbabilityToFleeWhenUnlivable;
 	
-
 	protected static ARGEO_PopulationComponent s_Instance;
 	
 	protected ref array<ref Faction> m_aPopulationFactions = new array<ref Faction>();
 	
 	protected ref array<ref ARGEO_PopulatedTerritory> m_aPopulatedTerritories = new array<ref ARGEO_PopulatedTerritory>;
+	
 	protected ref array<ARGEO_CivicCenterEntity> m_aCivicCenters = new array<ARGEO_CivicCenterEntity>;
 	
 	private bool m_bPopulationAppliedOnce = false;
@@ -41,11 +44,14 @@ class ARGEO_PopulationComponent : SCR_BaseGameModeComponent
 	//
 	// LIFECYLE
 	//
+	
+	//------------------------------------------------------------------------------------------------
 	override void OnPostInit(IEntity owner)
 	{
 		if (!s_Instance)
 			s_Instance = this;
 
+		// override configuration with mission header
 		SCR_MissionHeader header = SCR_MissionHeader.Cast(GetGame().GetMissionHeader());
 		if (header)
 		{
@@ -55,9 +61,11 @@ class ARGEO_PopulationComponent : SCR_BaseGameModeComponent
 				Print("Global building occupation set from mission header with value '" + header.m_fGlobalBuildingsOccupation + "'");
 			}
 		}
+		
 		Print("Global building occupation: " + m_fGlobalBuildingsOccupation + "%");
 	}
 
+	//------------------------------------------------------------------------------------------------
 	override void OnGameModeStart()
 	{
 		SCR_FactionManager factionManager = SCR_FactionManager.Cast(GetGame().GetFactionManager());
@@ -85,11 +93,16 @@ class ARGEO_PopulationComponent : SCR_BaseGameModeComponent
 		if (!m_DefaultPopulationFaction)
 			Print("Default population faction" + m_DefaultPopulationFaction + " was not found", LogLevel.ERROR);
 
-		// apply population after the backend delay also used by the ambient patrol system
-		//GetGame().GetCallqueue().CallLater(ApplyPopulation, 10000);
+		// apply population only after the backend delay also used by the ambient patrol system
 		GetGame().GetCallqueue().CallLater(ApplyPopulation, SCR_GameModeCampaign.BACKEND_DELAY);
 	}
 	
+	//
+	// AUTOMATED POPULATION
+	//
+	
+	//------------------------------------------------------------------------------------------------
+	//! The main logic of populating territories based on the relative weights of the factions.
 	void ApplyPopulation()
 	{
 		int totalSpawnPoints = 0;
@@ -113,6 +126,9 @@ class ARGEO_PopulationComponent : SCR_BaseGameModeComponent
 	//
 	// REGISTER
 	//
+	
+	//------------------------------------------------------------------------------------------------
+	//! Register a building that can be populated.
 	void RegisterBuildingHousehold(notnull ARGEO_BuildingHouseholdEntity buildingHousehold)
 	{
 		ARGEO_PopulatedTerritoryID populatedTerritoryID = buildingHousehold.GetPopulatedTerritoryID();
@@ -126,6 +142,8 @@ class ARGEO_PopulationComponent : SCR_BaseGameModeComponent
 			ApplyPopulation(); // update 
 	}
 	
+	//------------------------------------------------------------------------------------------------
+	//! Register a civic center to which the population can flee if needed.
 	void RegisterCivicCenter(notnull ARGEO_CivicCenterEntity civicCenter)
 	{
 		m_aCivicCenters.Insert(civicCenter);
@@ -138,7 +156,25 @@ class ARGEO_PopulationComponent : SCR_BaseGameModeComponent
 		}
 	}
 	
-	void CivicCenterDestroyed(notnull ARGEO_CivicCenterEntity civicCenter)
+	//------------------------------------------------------------------------------------------------
+	//! Registers an ambient vehicle, so that its faction can be set properly.
+	void RegisterAmbientVehicle(ARGEO_PopulatedTerritoryID populatedTerritoryID, notnull SCR_AmbientVehicleSpawnPointComponent vehicleSpawnPoint)
+	{
+		ARGEO_PopulatedTerritory populatedTerritory = GetPopulatedTerritory(populatedTerritoryID);
+		if (!populatedTerritory)
+			return;
+		Print("Vehicle spawnpoint found for territory " + populatedTerritoryID, LogLevel.SPAM);
+		FactionAffiliationComponent vehicleFactionAffiliation = FactionAffiliationComponent.Cast(vehicleSpawnPoint.GetOwner().FindComponent(FactionAffiliationComponent));
+		OptionallySetPopulationFactionByKey(vehicleFactionAffiliation, populatedTerritory.GetRandomFactionKey());
+	}
+	
+	//
+	// EVENTS
+	//
+	
+	//------------------------------------------------------------------------------------------------
+	//! Notifies that a civic center has been destroyed and is not available anymore.
+	void NotifyCivicCenterDestroyed(notnull ARGEO_CivicCenterEntity civicCenter)
 	{
 		m_aCivicCenters.RemoveItem(civicCenter);
 		Print("Unregistered civic center at position " + civicCenter.GetOrigin());
@@ -157,20 +193,8 @@ class ARGEO_PopulationComponent : SCR_BaseGameModeComponent
 			populatedTerritory.ChangeSafetyStatus(ARGEO_EPopulationSafetyStatus.DANGEROUS);
 	}
 	
-	void RegisterAmbientVehicle(ARGEO_PopulatedTerritoryID populatedTerritoryID, notnull SCR_AmbientVehicleSpawnPointComponent vehicleSpawnPoint)
-	{
-		ARGEO_PopulatedTerritory populatedTerritory = GetPopulatedTerritory(populatedTerritoryID);
-		if (!populatedTerritory)
-			return;
-		Print("Vehicle spawnpoint found for territory " + populatedTerritoryID, LogLevel.SPAM);
-		FactionAffiliationComponent vehicleFactionAffiliation = FactionAffiliationComponent.Cast(vehicleSpawnPoint.GetOwner().FindComponent(FactionAffiliationComponent));
-		OptionallySetPopulationFactionByKey(vehicleFactionAffiliation, populatedTerritory.GetRandomFactionKey());
-	}
-	
-	
-	//
-	// EVENTS
-	//
+	//------------------------------------------------------------------------------------------------
+	//! Notifies the destruction of a building, possibly changing the safety status of its territory.
 	void NotifyBuildingDestroyed(ARGEO_BuildingPopulationEntity building)
 	{
 		ARGEO_PopulatedTerritoryID populatedTerritoryID = building.GetPopulatedTerritoryID();
@@ -181,6 +205,8 @@ class ARGEO_PopulationComponent : SCR_BaseGameModeComponent
 		EvaluateSafetyStatus(populatedTerritory);
 	}
 	
+	//------------------------------------------------------------------------------------------------
+	//! Notifies the damage of a building, possibly changing the safety status of its territory.
 	void NotifyBuildingDamaged(ARGEO_BuildingPopulationEntity building, BaseDamageContext damageContext)
 	{
 		ARGEO_PopulatedTerritoryID populatedTerritoryID = building.GetPopulatedTerritoryID();
@@ -191,6 +217,10 @@ class ARGEO_PopulationComponent : SCR_BaseGameModeComponent
 		EvaluateSafetyStatus(populatedTerritory);
 	}
 	
+	//------------------------------------------------------------------------------------------------
+	//! Notifies a new war crime, possibly changing the safety status of the related territory.
+	//! \param populatedTerritoryID ID of the populated territory where the war crime happenned.
+	//! \param warCrime The war crime.
 	void NotifyWarCrime(ARGEO_PopulatedTerritoryID populatedTerritoryID, ARGEO_WarCrimeEntity warCrime)
 	{
 		ARGEO_PopulatedTerritory populatedTerritory = GetPopulatedTerritory(populatedTerritoryID);
@@ -207,6 +237,14 @@ class ARGEO_PopulationComponent : SCR_BaseGameModeComponent
 	//
 	// SAFETY
 	//
+	
+	//------------------------------------------------------------------------------------------------
+	//! Main logic evaluating the safety status of a given populated territory, based on
+	//! damages to buildings and committed war crimes. Currently, the status can only worsen.
+	//! A worsening of the safety status will indirectly trigger more civilians to flee the territory.
+	//! At this stage, this is mostly hardcoded based on the proportion of damaged buildings
+	//! and on the proportion of war crimes relative to the population.
+	//! It can be overridden as long as populatedTerritory.ChangeSafetyStatus() is called.
 	void EvaluateSafetyStatus(ARGEO_PopulatedTerritory populatedTerritory)
 	{
 		ARGEO_EPopulationSafetyStatus currentStatus = populatedTerritory.GetSafetyStatus();
@@ -234,6 +272,10 @@ class ARGEO_PopulationComponent : SCR_BaseGameModeComponent
 	//
 	// DISPLACEMENT
 	//
+	
+	//------------------------------------------------------------------------------------------------
+	//! Whether a given household should flee its territory, randomly based on the territory
+	//! safety status.
 	bool ShouldFlee(ARGEO_BuildingHouseholdEntity household)
 	{
 		ARGEO_PopulatedTerritoryID populatedTerritoryID = household.GetPopulatedTerritoryID();
@@ -254,6 +296,10 @@ class ARGEO_PopulationComponent : SCR_BaseGameModeComponent
 		return false;
 	}
 	
+	//------------------------------------------------------------------------------------------------
+	//! Finds the nearest civic center from a given position.
+	// \param pos A position in the world.
+	// \return The nearest civic center.
 	ARGEO_CivicCenterEntity GetNearestCivicCenter(vector pos)
 	{
 		ARGEO_CivicCenterEntity best;
@@ -278,6 +324,10 @@ class ARGEO_PopulationComponent : SCR_BaseGameModeComponent
 		return best;
 	}
 
+	//------------------------------------------------------------------------------------------------
+	//! Is this non-combatant close enough from a civic center to be discharged?
+	//! \param character The non-combatant character.
+	//! \return The civic center where to discharge or null if none close enough.
 	ARGEO_CivicCenterEntity CanNonCombatantBeDischarged(IEntity character)
 	{
 		ARGEO_CivicCenterEntity civicCenter = GetNearestCivicCenter(character.GetOrigin());
@@ -290,6 +340,10 @@ class ARGEO_PopulationComponent : SCR_BaseGameModeComponent
 		return null;
 	}
 			
+	//------------------------------------------------------------------------------------------------
+	//! Is this prisoner close enough from a civic center to be discharged?
+	//! \param character The prisoner character.
+	//! \return The civic center where to discharge or null if none close enough.
 	ARGEO_CivicCenterEntity CanPrisonerBeDischarged(IEntity character)
 	{
 		// TODO Implement a system for prison, etc.
@@ -306,11 +360,16 @@ class ARGEO_PopulationComponent : SCR_BaseGameModeComponent
 	//
 	// ACCESSORS
 	//
+	
+	//------------------------------------------------------------------------------------------------
+	//! Overall desentity of population, as a percentage of the maximum poissble.
 	float GetGlobalBuildingsOccupation()
 	{
 		return m_fGlobalBuildingsOccupation;
 	}
 	
+	//------------------------------------------------------------------------------------------------
+	//! Get the populated territory object with this ID, possibly lazy-initializing it.
 	ARGEO_PopulatedTerritory GetPopulatedTerritory(ARGEO_PopulatedTerritoryID populatedTerritoryID)
 	{
 		if (!populatedTerritoryID)
@@ -358,6 +417,9 @@ class ARGEO_PopulationComponent : SCR_BaseGameModeComponent
 	//
 	// UTILITIES
 	//
+	
+	//------------------------------------------------------------------------------------------------
+	//! Safely set a population faction by key. Will do nothing if it is not possible for some reason.
 	void OptionallySetPopulationFactionByKey(FactionAffiliationComponent factionAffiliation, FactionKey factionKey)
 	{
 		if (!factionKey || !factionAffiliation)
@@ -391,6 +453,8 @@ class ARGEO_PopulationComponent : SCR_BaseGameModeComponent
 			Print("Faction " + factionKey + " is not a population faction", LogLevel.WARNING);
 	}
 
+	//------------------------------------------------------------------------------------------------
+	//! The singleton instance.
 	static ARGEO_PopulationComponent GetInstance()
 	{
 		return s_Instance;

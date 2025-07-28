@@ -3,6 +3,9 @@ class ARGEO_ProtectionFactionManagerComponentClass: SCR_BaseFactionManagerCompon
 {
 };
 
+//------------------------------------------------------------------------------------------------
+//! Manages the (possibly virtual) protected faction,
+//! as well as which other factions than our own can be commanded.
 class ARGEO_ProtectionFactionManagerComponent : SCR_BaseFactionManagerComponent
 {
 	[Attribute("CIV", desc: "Possibly virtual faction temporarily assigned when civilians, POW, etc. are protected.", category: "Protection")]
@@ -22,6 +25,11 @@ class ARGEO_ProtectionFactionManagerComponent : SCR_BaseFactionManagerComponent
 	
 	private static SCR_Faction s_ProtectedFaction;
 
+	//
+	// LIFECYCLE
+	//
+	
+	//------------------------------------------------------------------------------------------------
 	override void OnFactionsInit(array<Faction> factions)
 	{
 		// find protected faction
@@ -57,6 +65,10 @@ class ARGEO_ProtectionFactionManagerComponent : SCR_BaseFactionManagerComponent
 		}
 	}
 	
+	//
+	// ACCESSORS
+	//
+	
 	static Faction GetProtectedFaction()
 	{
 		return s_ProtectedFaction;
@@ -78,8 +90,13 @@ class ARGEO_ProtectionFactionManagerComponent : SCR_BaseFactionManagerComponent
 	}
 	
 	//
-	// STATIC
+	// PROTECTED LOGIC
 	//
+	
+	//------------------------------------------------------------------------------------------------
+	//! Centralizes the logic when setting a character to protected status.
+	//! \param owner The character to protect.
+	//! \param preProtectionFaction The current faction affiliation of this character.
 	static void SetProtected(IEntity owner, Faction preProtectionFaction)
 	{
 		FactionAffiliationComponent factionAffiliation = FactionAffiliationComponent.Cast(owner.FindComponent(FactionAffiliationComponent));
@@ -108,6 +125,9 @@ class ARGEO_ProtectionFactionManagerComponent : SCR_BaseFactionManagerComponent
 			perceivableComponent.SetPerceivedFactionOverride(protectedFaction);
 	}
 	
+	//------------------------------------------------------------------------------------------------
+	//! Centralizes the logic when exiting a character from protected status.
+	//! \param owner The character to unprotect.
 	static void UnsetProtected(IEntity owner)
 	{
 		FactionAffiliationComponent factionAffiliation = FactionAffiliationComponent.Cast(owner.FindComponent(FactionAffiliationComponent));
@@ -131,6 +151,8 @@ class ARGEO_ProtectionFactionManagerComponent : SCR_BaseFactionManagerComponent
 			perceivableComponent.SetPerceivedFactionOverride(null);
 	}
 
+	//------------------------------------------------------------------------------------------------
+	//! Whether this AI group contains character with a protected status.
 	static bool GroupContainsProtected(AIGroup commandedGroup)
 	{
 		if (commandedGroup) {

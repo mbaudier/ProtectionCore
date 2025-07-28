@@ -2,7 +2,9 @@ class ARGEO_CivicCenterEntityClass: ARGEO_BuildingPopulationEntityClass
 {
 }
 
-//! The link between people and a given building.
+//------------------------------------------------------------------------------------------------
+//! A building (possibly temporary) where internally displaced persons and prisoners of war
+//! can be discharged, registered and managed.
 class ARGEO_CivicCenterEntity: ARGEO_BuildingPopulationEntity
 {
 	protected float m_iDischargeRadius = 200;
@@ -23,13 +25,22 @@ class ARGEO_CivicCenterEntity: ARGEO_BuildingPopulationEntity
 	protected ResourceName m_sLeaveVehicleWaypointPrefab;
 
 	protected SCR_AIWaypoint m_RegisterWP;
+	
 	protected SCR_AIWaypoint m_LoiterWP;
+	
 	protected SCR_AIWaypoint m_WaitWP;
+	
 	protected SCR_AIWaypoint m_LeaveVehicleWP;
 	
 	protected ref array<SCR_ChimeraCharacter> m_aRegisteredNonCombatants = new array<SCR_ChimeraCharacter>;
+	
 	protected ref array<SCR_ChimeraCharacter> m_aRegisteredPrisoners = new array<SCR_ChimeraCharacter>;
+	
+	//
+	// LIFECYCLE
+	//
 
+	//------------------------------------------------------------------------------------------------
 	override void EOnActivate(IEntity owner)
 	{
 		super.EOnActivate(owner);
@@ -54,6 +65,9 @@ class ARGEO_CivicCenterEntity: ARGEO_BuildingPopulationEntity
 	//
 	// NON-COMBATANTS MANAGEMENT
 	//
+	
+	//------------------------------------------------------------------------------------------------
+	//! Registers a displaced person to this civic center.
 	void RegisterNonCombatant(IEntity nonCombatant)
 	{
 		SCR_ChimeraCharacter character = SCR_ChimeraCharacter.Cast(nonCombatant);
@@ -83,6 +97,9 @@ class ARGEO_CivicCenterEntity: ARGEO_BuildingPopulationEntity
 	//
 	// PRISONERS MANAGEMENT
 	//
+	
+	//------------------------------------------------------------------------------------------------
+	//! Registers a prisoner of war to this civic center.
 	void RegisterPrisoner(IEntity prisoner)
 	{
 		SCR_ChimeraCharacter character = SCR_ChimeraCharacter.Cast(prisoner);
@@ -111,6 +128,8 @@ class ARGEO_CivicCenterEntity: ARGEO_BuildingPopulationEntity
 	//
 	// EVENTS
 	//
+	
+	//------------------------------------------------------------------------------------------------
 	override void OnBuildingDestroyed(EDamageState state)
 	{
 		super.OnBuildingDestroyed(state);
@@ -121,9 +140,12 @@ class ARGEO_CivicCenterEntity: ARGEO_BuildingPopulationEntity
 		ARGEO_PopulationComponent populationComp = ARGEO_PopulationComponent.GetInstance();
 		if (!populationComp) // typically in workbnech
 			return;
-		populationComp.CivicCenterDestroyed(this);
+		populationComp.NotifyCivicCenterDestroyed(this);
 	}
 
+	//------------------------------------------------------------------------------------------------
+	//! If delayed registration is enabled, the civic center will be usable only at this stage,
+	//! when it has been effectively built.
 	override void OnCompositionSpawned(bool arg)
 	{
 		ARGEO_PopulationComponent populationComp = ARGEO_PopulationComponent.GetInstance();
@@ -135,13 +157,16 @@ class ARGEO_CivicCenterEntity: ARGEO_BuildingPopulationEntity
 	}
 	
 	//
-	// ACCESSOR
+	// ACCESSORS
 	//
+	
 	SCR_AIWaypoint GetFleeToWP()
 	{
 		return m_RegisterWP;
 	}
 	
+	//------------------------------------------------------------------------------------------------
+	//! The maximum distance from which protected persons can be discharged.
 	int GetDischargeRadius()
 	{
 		return m_iDischargeRadius;

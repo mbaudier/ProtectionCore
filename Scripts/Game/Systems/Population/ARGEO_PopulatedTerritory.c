@@ -1,51 +1,58 @@
+//------------------------------------------------------------------------------------------------
+//! Abstraction of the string use as ID for a territory.
 typedef string ARGEO_PopulatedTerritoryID;
 
+//------------------------------------------------------------------------------------------------
+//! Plain object coordinating a populated territory.
+//! It contains states and logic which are independent of the mechanisms chosen
+//! for implementing the population (currently ambient patrol system + faction home territories).
 class ARGEO_PopulatedTerritory
 {
 	static const string EVENT_SAFETY_STATUS_CHANGED = "OnSafetyStatusChanged";
-
 	static const string EVENT_CIVIC_CENTER_CREATED = "OnCivicCenterCreated";
 	static const string EVENT_CIVIC_CENTER_DESTROYED = "OnCivicCenterDestroyed";
 	
 	private ARGEO_PopulatedTerritoryID m_sID;
 	
+	private ARGEO_EPopulationSafetyStatus m_SafetyStatus = ARGEO_EPopulationSafetyStatus.SAFE;
+	
+	//! The event handler for this territory. The assumption is that it would be more efficient
+	//! to have mulitple event handlers, most of them inactive (because there is not fighting)
+	//! rather than a single one at the population game component level.
 	protected EventHandlerManagerComponent m_EventHandlerMgr;
 	
 	protected ref map<FactionKey, int> m_mFactionWeights = new map<FactionKey, int>;
+	
 	protected ref array<ARGEO_BuildingHouseholdEntity> m_aBuildingHouseholds = new array<ARGEO_BuildingHouseholdEntity>;
 	
 	private int m_iSpawnPointsCount = 0;
+	
 	private int m_iTotalWeight = 0;
+	
 	private int m_iOriginalPopulation = 0;
-	
-	private ARGEO_EPopulationSafetyStatus m_SafetyStatus = ARGEO_EPopulationSafetyStatus.SAFE;
-	
+		
 	private int m_iBuildingDestroyedCount = 0;
+	
 	private int m_iBuildingDamageCount = 0;
+	
 	private int m_iWarCrimeCount = 0;
 	
+	//
+	// LIFECYCLE
+	//
+	
+	//------------------------------------------------------------------------------------------------
 	void ARGEO_PopulatedTerritory(ARGEO_PopulatedTerritoryID populatedTerritoryID)
 	{
 		m_sID = populatedTerritoryID;
 	}
 	
-	void SetEventHandler(EventHandlerManagerComponent eventHandlerMgr)
-	{
-		if (m_EventHandlerMgr)
-			if(m_EventHandlerMgr == eventHandlerMgr)
-				return;
-			else
-				Print("Event handler already set for populated territory " + m_sID, LogLevel.ERROR);
-		else 
-			m_EventHandlerMgr = eventHandlerMgr;
-	}
+	//
+	// POPULATION
+	//
 	
-	void SetFactionWeight(FactionKey factionKey, int weight)
-	{
-		m_mFactionWeights.Set(factionKey, weight);
-		m_iTotalWeight += weight;
-	}
-	
+	//------------------------------------------------------------------------------------------------
+	//! Configures a newly detected building household.
 	void AddBuildingHousehold(ARGEO_BuildingHouseholdEntity buildingHousehold)
 	{
 		m_aBuildingHouseholds.Insert(buildingHousehold);
@@ -59,6 +66,9 @@ class ARGEO_PopulatedTerritory
 		}
 	}
 	
+	//------------------------------------------------------------------------------------------------
+	//! Randomly populates spawn points according to the weights of the territory factions.
+	//! \param toPopulateSpawnPointsCount The targeted additional population count.
 	void PopulateRandomSpawnPoints(int toPopulateSpawnPointsCount)
 	{
 		ARGEO_PopulationComponent populationComponent = ARGEO_PopulationComponent.GetInstance();
@@ -102,6 +112,8 @@ class ARGEO_PopulatedTerritory
 		Print("Populated territory " + m_sID + " with a population of " + m_iOriginalPopulation);
 	}
 
+	//------------------------------------------------------------------------------------------------
+	//! Randomly chooses a faction key according to the weights of the territory factions.
 	FactionKey GetRandomFactionKey()
 	{
 		int randomWeight = Math.RandomIntInclusive(0, m_iTotalWeight);
@@ -123,6 +135,9 @@ class ARGEO_PopulatedTerritory
 	//
 	// SAFETY
 	//
+	
+	//------------------------------------------------------------------------------------------------
+	//! Changes the safety status of this territory and notifies it.
 	void ChangeSafetyStatus(ARGEO_EPopulationSafetyStatus safetyStatus)
 	{
 		if (m_SafetyStatus == safetyStatus)
@@ -167,6 +182,7 @@ class ARGEO_PopulatedTerritory
 	//
 	// ACCESSORS
 	//
+	
 	ARGEO_PopulatedTerritoryID GetPopulatedTerritoryID()
 	{
 		return m_sID;
@@ -201,13 +217,33 @@ class ARGEO_PopulatedTerritory
 	{
 		return m_EventHandlerMgr;
 	}
+	
+	void SetEventHandler(EventHandlerManagerComponent eventHandlerMgr)
+	{
+		if (m_EventHandlerMgr)
+			if(m_EventHandlerMgr == eventHandlerMgr)
+				return;
+			else
+				Print("Event handler already set for populated territory " + m_sID, LogLevel.ERROR);
+		else 
+			m_EventHandlerMgr = eventHandlerMgr;
+	}
+	
+	void SetFactionWeight(FactionKey factionKey, int weight)
+	{
+		m_mFactionWeights.Set(factionKey, weight);
+		m_iTotalWeight += weight;
+	}
 }
 
+//------------------------------------------------------------------------------------------------
+//! The population safety statuses, from worst to best.
+//! The change of this status will trigger part of the population to flee.
 enum ARGEO_EPopulationSafetyStatus
 {
-	UNLIVABLE,
-	DANGEROUS,
-	TENSE,
-	SAFE,
-	PEACE
+	UNLIVABLE, //!< Only crazy or crippled people would stay
+	DANGEROUS, //!< Most people would leave
+	TENSE, //!< Cautious people are starting to leave already
+	SAFE, //!< A war is going on, but this particular area is perfectly safe (default)
+	PEACE, //!< The war is over (or hasn't started yet)
 }

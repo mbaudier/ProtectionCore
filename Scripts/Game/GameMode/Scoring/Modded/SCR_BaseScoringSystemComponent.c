@@ -1,5 +1,12 @@
+//------------------------------------------------------------------------------------------------
+//! Extends the base scoring system with non combatant and hors de combat kills.
 modded class SCR_BaseScoringSystemComponent
 {
+	//
+	// NON COMBATANTS
+	//
+	
+	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
 	private void RpcDo_AddNonCombatantKill(int playerId, int factionIdx, int count)
 	{
@@ -16,6 +23,7 @@ modded class SCR_BaseScoringSystemComponent
 		}
 	}
 
+	//------------------------------------------------------------------------------------------------
 	void AddNonCombatantKill(int playerId, int count = 1)
 	{
 		// Server only
@@ -27,6 +35,11 @@ modded class SCR_BaseScoringSystemComponent
 		Rpc(RpcDo_AddTeamKill, playerId, factionIdx, count);
 	}
 
+	//
+	// HORS DE COMBAT
+	//
+	
+	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
 	private void RpcDo_AddHorsDeCombatKill(int playerId, int factionIdx, int count)
 	{
@@ -43,6 +56,7 @@ modded class SCR_BaseScoringSystemComponent
 		}
 	}
 
+	//------------------------------------------------------------------------------------------------
 	void AddHorsDeCombatKill(int playerId, int count = 1)
 	{
 		// Server only
@@ -53,5 +67,4 @@ modded class SCR_BaseScoringSystemComponent
 		RpcDo_AddHorsDeCombatKill(playerId, factionIdx, count);
 		Rpc(RpcDo_AddTeamKill, playerId, factionIdx, count);
 	}
-
 }

@@ -1,3 +1,5 @@
+//------------------------------------------------------------------------------------------------
+//! Extends player statistics with the additional Protection war crimes.
 modded enum SCR_EDataStats
 {
 	LEGAL_KILLS, //!< Legal enemy human kills

@@ -1,7 +1,10 @@
+//------------------------------------------------------------------------------------------------
+//! Delegates gathering of kills and war crimes statistics to the war crimes game component.
 [BaseContainerProps()]
 modded class SCR_DataCollectorShootingModule
 {
 
+	//------------------------------------------------------------------------------------------------
 	override void OnAIKilled(IEntity AIEntity, IEntity killerEntity, notnull Instigator instigator, notnull SCR_InstigatorContextData instigatorContextData)
 	{
 		super.OnAIKilled(AIEntity, killerEntity, instigator, instigatorContextData);

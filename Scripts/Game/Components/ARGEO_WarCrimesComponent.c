@@ -1,8 +1,11 @@
-[ComponentEditorProps(category: "GameScripted/GameMode", description: "")]
+[ComponentEditorProps(category: "GameScripted/GameMode", description: "Singleton centralizing war crimes management.")]
 class ARGEO_WarCrimesComponentClass : SCR_BaseGameModeComponentClass
 {
 }
 
+//------------------------------------------------------------------------------------------------
+//! Game component centralizing the evaluation of the legality of kills and their impact
+//! on various statistics or scoring mechanisms.
 class ARGEO_WarCrimesComponent : SCR_BaseGameModeComponent
 {
 	[Attribute("0", desc: "Killing an unarmed or wounded enemy is a war crime (ihl-databases.icrc.org - Rule 47).", category: "War Crimes")]
@@ -41,6 +44,8 @@ class ARGEO_WarCrimesComponent : SCR_BaseGameModeComponent
 	//
 	// LIFECYCLE
 	//
+	
+	//------------------------------------------------------------------------------------------------
 	override void OnGameModeStart()
 	{
 		if (!s_Instance)
@@ -89,6 +94,11 @@ class ARGEO_WarCrimesComponent : SCR_BaseGameModeComponent
 	//
 	// NOTIFICATIONS
 	//
+	
+	//------------------------------------------------------------------------------------------------
+	//! Spawn a war crime entity in the world, which can then be used by triggers or investigators.
+	//! \param crime The type of war crime.
+	//! \param instigatorContextData Information about the killer and the victim.
 	void RegisterWarCrime(SCR_ECrimeNotification crime, notnull SCR_InstigatorContextData instigatorContextData)
 	{
 		EntitySpawnParams params = EntitySpawnParams();
@@ -138,22 +148,38 @@ class ARGEO_WarCrimesComponent : SCR_BaseGameModeComponent
 	//
 	// KILL LEGALITY
 	//
+	
+	//------------------------------------------------------------------------------------------------
+	//! Evaluates a kill legality and possibly impacts player statistics.
+	//! If a war crime has been identified, it will also spawn a war crime entity.
 	bool EvaluateKillLegalityStats(notnull SCR_InstigatorContextData instigatorContextData, SCR_PlayerData killerData)
 	{
 		return EvaluateKillLegality(instigatorContextData, true, killerData, null, null);
 	}
 	
+	//------------------------------------------------------------------------------------------------
+	//! Evaluates a kill legality and possibly impacts XP scoring.
 	bool EvaluateKillLegalityXP(notnull SCR_InstigatorContextData instigatorContextData, SCR_XPHandlerComponent xpHandlerComp)
 	{
 		return EvaluateKillLegality(instigatorContextData, false, null, xpHandlerComp, null);
 	}
 
+	//------------------------------------------------------------------------------------------------
+	//! Evaluates a kill legality and possibly impacts base scoring.
 	bool EvaluateKillLegalityScoring(notnull SCR_InstigatorContextData instigatorContextData, SCR_BaseScoringSystemComponent scoringSystemComp)
 	{
 		return EvaluateKillLegality(instigatorContextData, false, null, null, scoringSystemComp);
 	}
 
-	//! Centralize the complex logic of evaluating kill legality across statistics, notifications and XP rewards.
+	//------------------------------------------------------------------------------------------------
+	//! Centralizes the complex logic of evaluating a kill legality
+	//! across statistics, notifications and XP rewards.
+	//! \param instigatorContextData Information about the killer and the victim.
+	//! \param register Whether war crime entities should be spawned. To use only once per war crime.
+	//! \param killerData Player statistics of the killer, can be null.
+	//! \param xpHandlerComp XP handler component, can be null.
+	//! \param scoringSystemComp Base scoring system component, can be null.
+	//! \return true if the kill was legal, false if it was a war crime. 
 	protected bool EvaluateKillLegality(notnull SCR_InstigatorContextData instigatorContextData, bool register, SCR_PlayerData killerData, SCR_XPHandlerComponent xpHandlerComp, SCR_BaseScoringSystemComponent scoringSystemComp)
 	{
 		IEntity victimEntity = instigatorContextData.GetVictimEntity();
@@ -190,7 +216,7 @@ class ARGEO_WarCrimesComponent : SCR_BaseGameModeComponent
 		}
 		// check hors de combat killed
 		else if(killedByEnemy
-		 && IsHorsDecombat(victimEntity)
+		 && IsHorsDeCombat(victimEntity)
 		 && IsKillingHorsDeCombatWarCrime())
 		{	
 			isLegalKill = false;
@@ -293,7 +319,7 @@ class ARGEO_WarCrimesComponent : SCR_BaseGameModeComponent
 			}
 			else
 			{
-				 // completely ignore friendly kill, no stats or XP will be gathered
+				// completely ignore friendly kill, no stats or XP will be gathered
 				return true;
 			}
 		}
@@ -345,6 +371,9 @@ class ARGEO_WarCrimesComponent : SCR_BaseGameModeComponent
 		return isLegalKill;		
 	}
 
+	//------------------------------------------------------------------------------------------------
+	//! Whether this entity (currently only characters) should be considered as a non-combatant,
+	//! that is, an unarmed member of a non-military faction.
 	bool IsNonCombatant(IEntity entity)
 	{		
 		SCR_ChimeraCharacter character = SCR_ChimeraCharacter.Cast(entity);
@@ -361,7 +390,10 @@ class ARGEO_WarCrimesComponent : SCR_BaseGameModeComponent
 		return false; 
 	}
 
-	bool IsHorsDecombat(IEntity entity)
+	//------------------------------------------------------------------------------------------------
+	//! Whether this character should be considered as "hors de combat",
+	//! that is, an unarmed member of a military faction.
+	bool IsHorsDeCombat(IEntity entity)
 	{		
 		SCR_ChimeraCharacter character = SCR_ChimeraCharacter.Cast(entity);
 		if(character)
@@ -376,16 +408,12 @@ class ARGEO_WarCrimesComponent : SCR_BaseGameModeComponent
 		return false; 
 	}
 
-
-	bool IsDisarmed(SCR_ChimeraCharacter character)
+	//------------------------------------------------------------------------------------------------
+	//! Whether this character should be considered as disarmed. The default implementation
+	//! looks at the actual weapons list, not at the perception.
+	//! Can be overridden in order to refine the logic.
+	protected bool IsDisarmed(SCR_ChimeraCharacter character)
 	{
-//		CharacterPerceivableComponent perceivableComp = CharacterPerceivableComponent.Cast(character.FindComponent(CharacterPerceivableComponent));
-//		if (perceivableComp)
-//		{
-//			if(perceivableComp.IsDisarmed())
-//				return true;
-//		}
-		
 		CharacterWeaponManagerComponent weaponManager = CharacterWeaponManagerComponent.Cast(character.FindComponent(CharacterWeaponManagerComponent));
 		if (!weaponManager)
 			return true;
@@ -435,6 +463,8 @@ class ARGEO_WarCrimesComponent : SCR_BaseGameModeComponent
 		return m_bVanillaLogicForScoring;
 	}
 	
+	//------------------------------------------------------------------------------------------------
+	//! The singleton instance.
 	static ARGEO_WarCrimesComponent GetInstance()
 	{
 		return s_Instance;

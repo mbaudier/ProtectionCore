@@ -1,7 +1,9 @@
 //------------------------------------------------------------------------------------------------
+//! Command for protecting a non-combatant AI or group of AIs.
 [BaseContainerProps(), SCR_BaseGroupCommandTitleField("m_sCommandName")]
 class ARGEO_ProtectAIGroupCommand : ARGEO_BaseAddAIGroupCommand
 {
+	//------------------------------------------------------------------------------------------------
 	override bool IsFeatureEnabled()
 	{
 		FactionManager factionManager = GetGame().GetFactionManager();
@@ -9,6 +11,7 @@ class ARGEO_ProtectAIGroupCommand : ARGEO_BaseAddAIGroupCommand
 		return protectionFactionManagerComponent && protectionFactionManagerComponent.CanNonCombattantsBeProtected();
 	}
 
+	//------------------------------------------------------------------------------------------------
 	override bool CanBeShownForFaction(notnull SCR_Faction controlledEntityFaction, notnull SCR_Faction faction)
 	{
 		if (!controlledEntityFaction.IsMilitary())
@@ -20,25 +23,20 @@ class ARGEO_ProtectAIGroupCommand : ARGEO_BaseAddAIGroupCommand
 		return true;
 	}
 
+	//------------------------------------------------------------------------------------------------
 	override bool CanBeShownForCharacter(notnull SCR_ChimeraCharacter targetCharacter)
 	{
 		ARGEO_WarCrimesComponent warCrimesComp = ARGEO_WarCrimesComponent.GetInstance();
 		if (warCrimesComp)
-			return warCrimesComp.IsDisarmed(targetCharacter);
+			return warCrimesComp.IsNonCombatant(targetCharacter);
 		return false;
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	override void PostRecruitment(int playerID, int count)
 	{
 		SCR_XPHandlerComponent xpComp = SCR_XPHandlerComponent.Cast(GetGame().GetGameMode().FindComponent(SCR_XPHandlerComponent));
 		if (xpComp)
 			xpComp.AwardXP(playerID, SCR_EXPRewards.PROTECT_NON_COMBATANT);
-//		else
-//		{
-//			if (count == 1)
-//				SCR_HintManagerComponent.GetInstance().ShowCustomHint("Civilian protected", "Protected", 3.0);	
-//			else	
-//				SCR_HintManagerComponent.GetInstance().ShowCustomHint("Group of civilians protected", "Protected", 3.0);
-//		}		
 	}
 }

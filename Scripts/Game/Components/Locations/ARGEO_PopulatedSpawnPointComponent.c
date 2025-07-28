@@ -2,6 +2,8 @@ class ARGEO_PopulatedSpawnPointComponentClass : SCR_AmbientPatrolSpawnPointCompo
 {
 }
 
+//------------------------------------------------------------------------------------------------
+//! Population as single-person ambient patrols.
 class ARGEO_PopulatedSpawnPointComponent : SCR_AmbientPatrolSpawnPointComponent
 {
 	protected AIWaypoint m_ToHomeWP;
@@ -13,6 +15,11 @@ class ARGEO_PopulatedSpawnPointComponent : SCR_AmbientPatrolSpawnPointComponent
 	
 	protected AIAgent m_Person;
 	
+	//
+	// AMBIENT PATROL
+	//
+	
+	//------------------------------------------------------------------------------------------------
 	override void SpawnPatrol()
 	{
 		super.SpawnPatrol();
@@ -22,6 +29,8 @@ class ARGEO_PopulatedSpawnPointComponent : SCR_AmbientPatrolSpawnPointComponent
 		m_Group.GetOnAgentAdded().Insert(OnAgentAdded);
 	}
 	
+	//------------------------------------------------------------------------------------------------
+	//! Called when an AI agent is effectively added. Should happen only once.
 	protected void OnAgentAdded(AIAgent agent)
 	{
 		if (m_Person)
@@ -32,38 +41,15 @@ class ARGEO_PopulatedSpawnPointComponent : SCR_AmbientPatrolSpawnPointComponent
 		m_Person = agent;
 	}
 	
-	override void ActivateGroup()
-	{
-		// since there may be a lot of civilians in the same area, smooth activation
-		bool smoothActivation = false;
-		if (smoothActivation)
-		{
-			int randomDelay = Math.RandomInt(0, 5000);
-			GetGame().GetCallqueue().CallLater(DoActivateGroup, randomDelay, false);
-		}
-		else
-		{
-			DoActivateGroup();
-		}
-	}
-	
-	private void DoActivateGroup()
-	{
-		super.ActivateGroup();
-		Print("Populated spawn point - " + GetOwner().GetID() + " - activated", LogLevel.DEBUG);
-	}
-
-	override void DeactivateGroup()
-	{
-		super.DeactivateGroup();
-		Print("Populated spawn point - " + GetOwner().GetID() + " - deactivated", LogLevel.DEBUG);
-	}
-		
+	//------------------------------------------------------------------------------------------------
+	//! Whether this spawn point will be populated.
 	bool IsSpawnEnabled()
 	{
 		return m_bSpawnEnabled;
 	}
 	
+	//------------------------------------------------------------------------------------------------
+	//! This spawn point won't be populated.
 	void DisableSpawn()
 	{
 		SCR_AmbientPatrolSystem ambientPatrolSystem = SCR_AmbientPatrolSystem.GetInstance();
@@ -72,18 +58,14 @@ class ARGEO_PopulatedSpawnPointComponent : SCR_AmbientPatrolSpawnPointComponent
 		m_bSpawnEnabled = false;
 	}
 	
+	//------------------------------------------------------------------------------------------------
+	//! This spawn point will be populated.
 	void EnableSpawn()
 	{
 		SCR_AmbientPatrolSystem ambientPatrolSystem = SCR_AmbientPatrolSystem.GetInstance();
 		if (ambientPatrolSystem)
 			ambientPatrolSystem.RegisterPatrol(this);
 		m_bSpawnEnabled = true;
-		
-		// add random delay so that not all civilians spawn at the same time
-//		ChimeraWorld world =  GetOwner().GetWorld();
-//		WorldTimestamp currentTime = world.GetServerTimestamp();
-//		int randomDelay = Math.RandomInt(5,30);
-//		SetRespawnTimestamp(currentTime.PlusSeconds(randomDelay));
 		
 		if(m_iMembersAlive == 0)
 		{	
@@ -95,6 +77,9 @@ class ARGEO_PopulatedSpawnPointComponent : SCR_AmbientPatrolSpawnPointComponent
 	//
 	// DAILY LIFE
 	//
+	
+	//------------------------------------------------------------------------------------------------
+	//! Prepare waypoints so that the population can perform various activites in a peaceful context.
 	override void PrepareWaypoints()
 	{
 		super.PrepareWaypoints();
@@ -135,6 +120,9 @@ class ARGEO_PopulatedSpawnPointComponent : SCR_AmbientPatrolSpawnPointComponent
 	//
 	// ACCESSORS
 	//
+	
+	//------------------------------------------------------------------------------------------------
+	//! The single agent related to this spawnpoint, or null if there is none.
 	AIAgent GetAgent()
 	{
 		SCR_ChimeraAIAgent chimeraAgent = SCR_ChimeraAIAgent.Cast(m_Person);

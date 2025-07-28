@@ -2,7 +2,9 @@ class ARGEO_BuildingHouseholdEntityClass: ARGEO_BuildingPopulationEntityClass
 {
 }
 
-//! The link between people and a given building.
+//------------------------------------------------------------------------------------------------
+//! The link between a given building and its inhabitants.
+//! Members of an household will also flee together as a group if they have to.
 class ARGEO_BuildingHouseholdEntity: ARGEO_BuildingPopulationEntity
 {
 	[Attribute("{BBF1B3890A3FAFD7}Prefabs/AI/Groups/Displaced_Group.et", "General")]
@@ -11,7 +13,6 @@ class ARGEO_BuildingHouseholdEntity: ARGEO_BuildingPopulationEntity
 	[Attribute("{B049D4C74FBC0C4D}Prefabs/AI/Waypoints/AIWaypoint_GetInNearest.et", desc:"Find a vehicle near the household", category: "Waypoints Prefabs")]
 	protected ResourceName m_sFindVehicleWaypointPrefab;
 	
-
 	private ref array<ARGEO_PopulatedSpawnPointComponent> m_aSpawnPoints = new array<ARGEO_PopulatedSpawnPointComponent>;
 
 	// Household is displaced together (also for performance reasons, reducing the number of active groups)
@@ -19,6 +20,11 @@ class ARGEO_BuildingHouseholdEntity: ARGEO_BuildingPopulationEntity
 	
 	protected SCR_AIWaypoint m_FindVehicleWP;
 	
+	//
+	// LIFECYCLE
+	//
+	
+	//------------------------------------------------------------------------------------------------
 	override void EOnActivate(IEntity owner)
 	{
 		super.EOnActivate(owner);
@@ -62,6 +68,9 @@ class ARGEO_BuildingHouseholdEntity: ARGEO_BuildingPopulationEntity
 	//
 	// EVENTS
 	//
+	
+	//------------------------------------------------------------------------------------------------
+	//! Notified when the safety status of this household's territory has changed.
 	void OnSafetyStatusChanged(ARGEO_EPopulationSafetyStatus safetyStatus)
 	{
 		if (HasFled())
@@ -100,18 +109,24 @@ class ARGEO_BuildingHouseholdEntity: ARGEO_BuildingPopulationEntity
 		}
 	}
 	
+	//------------------------------------------------------------------------------------------------
+	//! Notified when a new civic center has been created.
 	void OnCivicCenterCreated(ARGEO_CivicCenterEntity civicCenter)
 	{
 		if (m_DisplacedGroup)
 			UpdateFleeingTarget();
 	}
 	
+	//------------------------------------------------------------------------------------------------
+	//! Notified when a civic center has been destroyed.
 	void OnCivicCenterDestroyed(ARGEO_CivicCenterEntity civicCenter)
 	{
 		if (m_DisplacedGroup)
 			UpdateFleeingTarget();
 	}
 	
+	//------------------------------------------------------------------------------------------------
+	//! Possibly update the current fleeing target, typically if a civic center has been built nearby.
 	protected void UpdateFleeingTarget(bool initFlight = false)
 	{
 		if (!m_DisplacedGroup)
@@ -143,6 +158,8 @@ class ARGEO_BuildingHouseholdEntity: ARGEO_BuildingPopulationEntity
 		}
 	}
 	
+	//------------------------------------------------------------------------------------------------
+	//! Creates the group that will be used by this houshold while being displaced.
 	protected SCR_AIGroup CreateDisplacedGroup()
 	{
 		EntitySpawnParams params = EntitySpawnParams();
@@ -159,6 +176,11 @@ class ARGEO_BuildingHouseholdEntity: ARGEO_BuildingPopulationEntity
 		return group;
 	}
 	
+	//
+	// UTILITIES
+	//
+	
+	//------------------------------------------------------------------------------------------------
 	private void ClearGroupWPs(SCR_AIGroup group)
 	{
 		array<AIWaypoint> wps = {};
@@ -167,16 +189,12 @@ class ARGEO_BuildingHouseholdEntity: ARGEO_BuildingPopulationEntity
 		{	
 			group.RemoveWaypoint(wp);			
 		}
-	}
+	}	
 		
-	bool HasFled()
-	{
-		return m_DisplacedGroup != null;
-	}
-	
 	//
 	// ACCESSORS
 	//
+	
 	int GetSpawnPointsCount()
 	{
 		return m_aSpawnPoints.Count();
@@ -187,4 +205,9 @@ class ARGEO_BuildingHouseholdEntity: ARGEO_BuildingPopulationEntity
 		spawnPoints.InsertAll(m_aSpawnPoints);
 		return m_aSpawnPoints.Count();
 	}
+	
+	bool HasFled()
+	{
+		return m_DisplacedGroup != null;
+	}	
 }

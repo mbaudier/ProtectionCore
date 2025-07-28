@@ -3,6 +3,8 @@ class ARGEO_CharacterProtectionComponentClass : GameComponentClass
 {
 }
 
+//------------------------------------------------------------------------------------------------
+//! Character component managing Protection-related attributes, notably the protected status.
 class ARGEO_CharacterProtectionComponent : GameComponent
 {
 	protected bool m_bProtected = false;
@@ -17,6 +19,7 @@ class ARGEO_CharacterProtectionComponent : GameComponent
 	//
 	// ACCESSORS
 	//
+	
 	Faction GetPreProtectionFaction()
 	{
 		return m_PreProtectionFaction;
@@ -29,8 +32,7 @@ class ARGEO_CharacterProtectionComponent : GameComponent
 			m_bProtected = true;
 		else
 			m_bProtected = false;
-	}
-	
+	}	
 	
 	bool IsProtected()
 	{
@@ -67,6 +69,11 @@ class ARGEO_CharacterProtectionComponent : GameComponent
 	//
 	// UTILITIES
 	//
+	
+	//------------------------------------------------------------------------------------------------
+	//! Convenience method to search from the protection component of an agent.
+	//! \param agent The agent whose controlled entity may own the component.
+	//! \return The protection component, or null if not available.
 	static ARGEO_CharacterProtectionComponent FindFromAgent(AIAgent agent)
 	{
 		if (!agent)
@@ -78,10 +85,12 @@ class ARGEO_CharacterProtectionComponent : GameComponent
 	}
 }
 
+//------------------------------------------------------------------------------------------------
+//! List of displacement statuses, from worst to best.
 enum ARGEO_ECharacterDisplacementStatus
 {
-	FLEEING,
-	DISPLACED,
-	RESETTLED,
-	NORMAL,
+	FLEEING, //!< On the run, either toward a civic center or without goal
+	DISPLACED, //!< Registered to a civic center and thus provided with temporary housing
+	RESETTLED, //!< Resettled in a proper building in another populated territory
+	NORMAL, //!< At home in own populated territory
 }

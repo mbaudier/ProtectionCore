@@ -1,3 +1,5 @@
+//------------------------------------------------------------------------------------------------
+//! Extends the base scoring system with non combatant and hors de combat kills.
 modded class SCR_ScoreInfo
 {
 	int m_iNonCombatantKills = 0;

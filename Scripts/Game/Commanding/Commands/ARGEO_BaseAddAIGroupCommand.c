@@ -1,45 +1,71 @@
 //------------------------------------------------------------------------------------------------
+//! Abstract class from which "recruiting" commands are inherited.
 class ARGEO_BaseAddAIGroupCommand : SCR_BaseGroupCommand
 {
 	[Attribute(defvalue: "0", desc: "Apply to the whole AI group of the target")]
 	protected bool m_bApplyToGroup;
 	
+	//
+	// API
+	//
+	
+	//------------------------------------------------------------------------------------------------
 	//! Whether this command is enabled at game level. To be overridden.
 	protected bool IsFeatureEnabled()
 	{
 		return false;
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	//! Whether this command is relevant for this factions combination. To be overridden.
+	//! \param controlledEntityFaction Faction of the commanding entity.
+	//! \param faction Faction of the target entity.
 	protected bool CanBeShownForFaction(notnull SCR_Faction controlledEntityFaction, notnull SCR_Faction faction)
 	{
 		return false;
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	//! Whether this command is relevant for this character. To be overridden.
+	//! \param targetCharacter Character targeted by the commanding.
 	protected bool CanBeShownForCharacter(notnull SCR_ChimeraCharacter targetCharacter)
 	{
 		return true;
 	}
 	
-	//! Whether this command applies to a real player. Currently always false.
+	//------------------------------------------------------------------------------------------------
+	//! Whether this command applies to a real player. Default is false. To be overridden.
+	//! \param character The player character.
+	//! \param targetPlayerID The player ID.
 	protected bool ProcessPlayer(notnull SCR_ChimeraCharacter character, int targetPlayerID)
 	{
 		return false;
 	}
 	
-	//! If true, target will be affiliated to the protected faction.
+	//------------------------------------------------------------------------------------------------
+	//! If true, target will be affiliated to the (possibly virtual) protected faction. To be overridden.
 	protected bool IsProtecting()
 	{
 		return true;
 	}
 
+	//------------------------------------------------------------------------------------------------
 	//! Callback after the recruitment has happened. To be overridden.
+	//! \param playerID The player ID.
+	//! \param count How many AI agents were added.
 	protected void PostRecruitment(int playerID, int count)
 	{
 	}
 
-	//! 
+	//
+	// PROTECTION LOGIC
+	//
+	
+	//------------------------------------------------------------------------------------------------
+	//! The main logic of adding an AI agent to the commanded group and protecting it.
+	//! \param groupController The player group controller.
+	//! \param playerID The player ID.
+	//! \param character The target character.
 	protected void AddAIAgent(SCR_PlayerControllerGroupComponent groupController, int playerID, SCR_ChimeraCharacter character)
 	{
 		Faction currentFaction = NULL;
@@ -51,9 +77,8 @@ class ARGEO_BaseAddAIGroupCommand : SCR_BaseGroupCommand
 		
 		groupController.RequestAddAIAgent(character, playerID);
 		SCR_AIGroup commandedGroup = groupController.GetPlayersGroup().GetSlave();
-		//commandedGroup.GetOnAgentRemoved().Insert(OnAgentRemoved);
 		
-		// faction has now been set to recruiter's faction, set it to either PROTECTED or original:
+		// faction has been forced to recruiter's faction, set it to either PROTECTED or original:
 		if (IsProtecting())
 		{
 			ARGEO_ProtectionFactionManagerComponent.SetProtected(character, currentFaction);
@@ -63,19 +88,9 @@ class ARGEO_BaseAddAIGroupCommand : SCR_BaseGroupCommand
 			factionAffiliation.SetAffiliatedFaction(currentFaction);
 		}
 	}
-
-	protected void OnAgentRemoved(SCR_AIGroup group, AIAgent agent)
-	{
-		IEntity character = agent.GetControlledEntity();
-		ARGEO_CharacterProtectionComponent characterProtectionComponent = ARGEO_CharacterProtectionComponent.Cast(character.FindComponent(ARGEO_CharacterProtectionComponent));
-		if (characterProtectionComponent && characterProtectionComponent.IsProtected())
-		{
-			ARGEO_ProtectionFactionManagerComponent.UnsetProtected(character);
-		}
-	}
 	
 	//
-	// FORKED LOGIC
+	// FORKED VANILLA LOGIC
 	//
 
 	//------------------------------------------------------------------------------------------------
@@ -124,7 +139,6 @@ class ARGEO_BaseAddAIGroupCommand : SCR_BaseGroupCommand
 			SCR_AIGroup commandedGroup = groupController.GetPlayersGroup().GetSlave();
 			array<AIAgent> commandedAgents = {};
 			commandedGroup.GetAgents(commandedAgents);
-//			commandedGroup.SetFaction(playerController.GetLocalControlledEntityFaction());
 	
 			int count = 1;
 			if (m_bApplyToGroup)
@@ -152,17 +166,6 @@ class ARGEO_BaseAddAIGroupCommand : SCR_BaseGroupCommand
 			}
 			
 			PostRecruitment(playerID, count);	
-				
-			// DEBUG list the whole group
-//			array<AIAgent> commandedA = {};
-//			commandedGroup.GetAgents(commandedA);
-//			int index = 0;
-//			foreach (AIAgent a : commandedA)
-//			{
-//				SCR_ChimeraCharacter c = SCR_ChimeraCharacter.Cast(a.GetControlledEntity());
-//				Print(" " + index + " - " + c.GetFactionKey());
-//				index++;
-//			}		
 			
 			return true;
 		}
@@ -211,7 +214,7 @@ class ARGEO_BaseAddAIGroupCommand : SCR_BaseGroupCommand
 			return false;
 		
 		int maxAI = commandingManager.GetMaxAIPerGroup();
-		//in case there is a limit on how many AIs can be in single group.
+		// in case there is a limit on how many AIs can be in single group.
 		if (maxAI != -1 && slaveGroup.GetAgentsCount() >= maxAI)
 			return false;
 		
@@ -219,7 +222,7 @@ class ARGEO_BaseAddAIGroupCommand : SCR_BaseGroupCommand
 			return false;
 		
 		//
-		// Protection specific
+		// Protection-specific
 		//
 		if (!IsFeatureEnabled())
 			return false;
@@ -246,27 +249,22 @@ class ARGEO_BaseAddAIGroupCommand : SCR_BaseGroupCommand
 		
 		if (!CanBeShownForCharacter(character))
 			return false;
-		//
-				
-		int playerID = GetGame().GetPlayerController().GetPlayerId();
-		
-//		SCR_Faction playerFaction;
-//		SCR_FactionManager factionManager = SCR_FactionManager.Cast(GetGame().GetFactionManager());
-//		if (factionManager)
-//		{
-//			playerFaction = SCR_Faction.Cast(factionManager.GetPlayerFaction(playerID));
-//		}
 		
 		// Protection: check that it is not already controlled by any faction
 		if (IsCharacterInAnyGroup(groupController, character))
 			return false;
+		//
+		// End of Protection-specific
+		//
 		
 		return true;
 	}
 	
 	//
 	// UTILITIES
-	//	
+	//
+	
+	//------------------------------------------------------------------------------------------------
 	private bool IsCharacterInAnyGroup(SCR_PlayerControllerGroupComponent groupController, SCR_ChimeraCharacter character)
 	{
 		SCR_FactionManager factionManager = SCR_FactionManager.Cast(GetGame().GetFactionManager());
@@ -289,6 +287,7 @@ class ARGEO_BaseAddAIGroupCommand : SCR_BaseGroupCommand
 		return false;
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	private SCR_AIGroup GetGroupFromCharacter(SCR_ChimeraCharacter character)
 	{
 		AIControlComponent aiContr = AIControlComponent.Cast(character.FindComponent(AIControlComponent));	

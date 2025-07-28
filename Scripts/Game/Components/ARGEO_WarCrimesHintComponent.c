@@ -7,6 +7,9 @@ class ARGEO_WarCrimesHintComponentClass : ScriptComponentClass
 {
 }
 
+//------------------------------------------------------------------------------------------------
+//! Game component providing different hints for the various war crimes. 
+//! It is triggered by player statistics.
 class ARGEO_WarCrimesHintComponent : ScriptComponent
 {
 	[Attribute("5", desc: "Duration of the short hints (in s). Longer hints will use twice that duration.")]
@@ -15,15 +18,8 @@ class ARGEO_WarCrimesHintComponent : ScriptComponent
 	protected ref ScriptInvokerWarCrimesNotification m_OnCriminalScoreIncreased = new ScriptInvokerWarCrimesNotification();
 	
 	//------------------------------------------------------------------------------------------------
-	//!
-	[RplRpc(RplChannel.Reliable, RplRcver.Owner)]
-	void RPC_DoIncreaseCriminalScore(array<SCR_ECrimeNotification> crimeNotifications, float criminalScore)
-	{
-		m_OnCriminalScoreIncreased.Invoke(crimeNotifications, criminalScore);
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	//!
+	//! Called on the client in order to show a detailed hint for a single war crime,
+	//! or a list of multiple war crimes if there were more than one.
 	void ShowUI(array<SCR_ECrimeNotification> crimeNotifications, float criminalScore)
 	{
 		if (crimeNotifications.Count() == 1)
@@ -52,18 +48,21 @@ class ARGEO_WarCrimesHintComponent : ScriptComponent
 				else if (SCR_ECrimeNotification.PERFIDY == crime)
 					msg += "\n- #PRTC-WarCrime_Perfidy_Title (#PRTC-WarCrime_Rule_Nbr 65)";
 			}
-			// TODO Format rule number with %1
 			
 			SCR_HintManagerComponent.ShowCustomHint(msg, "#PRTC-WarCrime_Multiple_Title", m_fHintDuration * 2);
 		}
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	//!
+	//! Notifies new war crimes.
 	void NotifyClientCriminalScoreIncreased(array<SCR_ECrimeNotification> crimeNotifications, float criminalScore)
 	{
 		Rpc(RPC_DoIncreaseCriminalScore, crimeNotifications, criminalScore);
 	}
+	
+	//
+	// LIFECYCLE
+	//
 	
 	//------------------------------------------------------------------------------------------------
 	override void OnPostInit(IEntity owner)
@@ -71,4 +70,14 @@ class ARGEO_WarCrimesHintComponent : ScriptComponent
 		m_OnCriminalScoreIncreased.Insert(ShowUI);
 	}
 
+	//
+	// RPC
+	//
+	
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Owner)]
+	void RPC_DoIncreaseCriminalScore(array<SCR_ECrimeNotification> crimeNotifications, float criminalScore)
+	{
+		m_OnCriminalScoreIncreased.Invoke(crimeNotifications, criminalScore);
+	}
 }

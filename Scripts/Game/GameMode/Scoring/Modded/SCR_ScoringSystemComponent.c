@@ -1,3 +1,5 @@
+//------------------------------------------------------------------------------------------------
+//! Delegates killing scoring evaluation to the war crimes game component.
 modded class SCR_ScoringSystemComponent
 {
 	[Attribute("-2", UIWidgets.EditBox, "Non-combatant kill score multiplier", category: "Scoring: Multipliers")]
@@ -6,6 +8,7 @@ modded class SCR_ScoringSystemComponent
 	[Attribute("-1", UIWidgets.EditBox, "Hors de combat kill score multiplier", category: "Scoring: Multipliers")]
 	protected int m_iHorsDeCombatKillScoreMultiplier;
 
+	//------------------------------------------------------------------------------------------------
 	protected override int CalculateScore(SCR_ScoreInfo info)
 	{
 		int score = vanilla.CalculateScore(info);
@@ -26,6 +29,7 @@ modded class SCR_ScoringSystemComponent
 		return score;
 	}
 
+	//------------------------------------------------------------------------------------------------
 	protected override void OnPlayerKilled(notnull SCR_InstigatorContextData instigatorContextData)
 	{
 		super.OnPlayerKilled(instigatorContextData);
@@ -64,6 +68,7 @@ modded class SCR_ScoringSystemComponent
 		warCrimeComp.EvaluateKillLegalityScoring(instigatorContextData, this);
 	}
 
+	//------------------------------------------------------------------------------------------------
 	protected override void OnControllableDestroyed(notnull SCR_InstigatorContextData instigatorContextData)
 	{
 		ARGEO_WarCrimesComponent warCrimeComp = ARGEO_WarCrimesComponent.GetInstance();

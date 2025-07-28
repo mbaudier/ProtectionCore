@@ -1,8 +1,14 @@
+//------------------------------------------------------------------------------------------------
+//! Adds attributes to or exposes them from vanilla home territory configuration.
 [BaseContainerProps(configRoot: true)]
 modded class SCR_FactionHomeTerritoryConfig
 {
 	[Attribute("0", desc: "Whether this faction is a basis for population")]
 	protected bool m_bIsFactionPopulation;
+	
+	//
+	// ACCESSORS
+	//
 	
 	bool IsFactionPopulation()
 	{
