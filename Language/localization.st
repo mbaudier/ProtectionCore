@@ -20,6 +20,7 @@ StringTable {
   CustomStringTableItem "{65F683AE031121E9}" {
    Id "PRTC-Action_ProtectGroup"
    Target_en_us "Protect Group"
+   Target_fr_fr "Protéger le groupe"
    Modified 1710655643
    Author "argeo"
    LastChanged "argeo"
@@ -27,6 +28,7 @@ StringTable {
   CustomStringTableItem "{65CB0DB987E80469}" {
    Id "PRTC-EditableEntity_EmergencyResponseCenter_S_Name"
    Target_en_us "Emergency Response Center"
+   Target_fr_fr "Centre de réponse d'urgence"
    Modified 1707806253
    Author "argeo"
    LastChanged "argeo"
@@ -34,6 +36,7 @@ StringTable {
   CustomStringTableItem "{65C2CB2AC6F5BBD6}" {
    Id "PRTC-Group_Civilian_2x"
    Target_en_us "Two Civilians"
+   Target_fr_fr "Deux Civilians"
    Modified 1707267142
    Author "argeo"
    LastChanged "argeo"
@@ -41,6 +44,7 @@ StringTable {
   CustomStringTableItem "{65C2CB2A3B24BEB6}" {
    Id "PRTC-Group_Civilian_3x"
    Target_en_us "Three Civilians"
+   Target_fr_fr "Trois Civilians"
    Modified 1707267151
    Author "argeo"
    LastChanged "argeo"
@@ -48,6 +52,7 @@ StringTable {
   CustomStringTableItem "{65C2BE399D4F988F}" {
    Id "PRTC-Group_Rural_2x"
    Target_en_us "Two Rural Civilians"
+   Target_fr_fr "Deux Civils ruraux"
    Modified 1707264294
    Author "argeo"
    LastChanged "argeo"
@@ -55,6 +60,7 @@ StringTable {
   CustomStringTableItem "{65C2BE39DD053386}" {
    Id "PRTC-Group_Rural_3x"
    Target_en_us "Three Rural Civilians"
+   Target_fr_fr "Trois Civils ruraux"
    Modified 1707264301
    Author "argeo"
    LastChanged "argeo"
@@ -62,6 +68,7 @@ StringTable {
   CustomStringTableItem "{65C2BE3E5086C0DB}" {
    Id "PRTC-Group_Urban_2x"
    Target_en_us "Two Urban Civilians"
+   Target_fr_fr "Deux Civils urbains"
    Modified 1707267179
    Author "argeo"
    LastChanged "argeo"
@@ -69,6 +76,7 @@ StringTable {
   CustomStringTableItem "{65C2BE3E494DD7EF}" {
    Id "PRTC-Group_Urban_3x"
    Target_en_us "Three Urban Civilians"
+   Target_fr_fr "Trois Civils urbains"
    Modified 1707264315
    Author "argeo"
    LastChanged "argeo"
@@ -77,7 +85,14 @@ StringTable {
    Id "PRTC-Hint_Build_EmergencyResponseCenter_Text"
    Target_en_us "An emergency response center is a temporary \"civic center\" which is able to take care of displaced civilians (and POW)."\
    ""\
-   "When fleeing, civilians will try to reach te nearest civic center, usually a municipal building in a bigger town. By building an emergency response center you can direct them away from the fighting."
+   "When fleeing, civilians will try to reach te nearest civic center, usually a municipal building in a bigger town. By building an emergency response center you can direct them away from the fighting."\
+   ""\
+   "You can at some point discharge them in the immediate vicinity of a civic center (either a municipal building or an emergency response center)."
+   Target_fr_fr "Un centre de réponse d'urgence est un centre temporaire \"centre civique\" qui peut s'occuper des civils déplacés (et des prisonniers de guerre)."\
+   ""\
+   "Lors de l'évasion, les civils tenteront de se rendre vers le centre civique le plus proche, généralement un bâtiment municipal dans une grande ville. En construisant un centre de réponse d'urgence, vous pouvez les diriger loin du combat."\
+   ""\
+   "Vous pouvez les débarquer dans les immédiats proches d'un centre civique (soit un bâtiment municipal soit un centre de réponse d'urgence)."
    Modified 1710130655
    Author "argeo"
    LastChanged "argeo"
@@ -85,6 +100,7 @@ StringTable {
   CustomStringTableItem "{65EE8189AEE31B8F}" {
    Id "PRTC-Hint_Build_EmergencyResponseCenter_Title"
    Target_en_us "Building An Emergency Response Center"
+   Target_fr_fr "Construction d'un centre de réponse d'urgence"
    Modified 1710130538
    Author "argeo"
    LastChanged "argeo"
@@ -96,6 +112,11 @@ StringTable {
    "When enemies are captured within such a commanded group, they gain a special status and AIs from your own faction won't target them."\
    ""\
    "You can at some point discharge them in the immediate vicinity of a civic center (either a municipal building or an emergency response center)."
+   Target_fr_fr "Vous pouvez capturer des ennemis AI avec le menu d'ordres, comme vous le feriez pour recruter des soldats AI."\
+   ""\
+   "Lorsque des ennemis sont capturés dans un tel groupe d'ordres, ils gagnent un statut spécial et les AIs de votre propre faction ne les viseront pas."\
+   ""\
+   "Vous pouvez les débarquer dans les immédiats proches d'un centre civique (soit un bâtiment municipal soit un centre de réponse d'urgence)."
    Modified 1710130235
    Author "argeo"
    LastChanged "argeo"
@@ -103,6 +124,7 @@ StringTable {
   CustomStringTableItem "{65EE818B493ED0CC}" {
    Id "PRTC-Hint_Command_Capture_Title"
    Target_en_us "Capturing Enemies"
+   Target_fr_fr "Capturer les ennemis"
    Modified 1710129995
    Author "argeo"
    LastChanged "argeo"
@@ -114,6 +136,11 @@ StringTable {
    "When non-combatants are protected within such a commanded group, they gain a special status and even criminal enemies won't target them."\
    ""\
    "You can at some point discharge them in the immediate vicinity of a civic center (either a municipal building or an emergency response center)."
+   Target_fr_fr "Vous pouvez \"protéger\" les civils avec le menu d'ordres, comme vous le feriez pour recruter des soldats AI."\
+   ""\
+   "Lorsque des non-combattants sont protégés dans un tel groupe d'ordres, ils gagnent un statut spécial et même les ennemis criminels ne les viseront pas."\
+   ""\
+   "Vous pouvez les débarquer dans les immédiats proches d'un centre civique (soit un bâtiment municipal soit un centre de réponse d'urgence)."
    Modified 1710130254
    Author "argeo"
    LastChanged "argeo"
@@ -121,6 +148,7 @@ StringTable {
   CustomStringTableItem "{65CD0DC4D3CFBB31}" {
    Id "PRTC-Hint_Command_Protect_Title"
    Target_en_us "Protecting Non-Combatants"
+   Target_fr_fr "Protection des non-combattants"
    Modified 1707943445
    Author "argeo"
    LastChanged "argeo"
@@ -128,6 +156,7 @@ StringTable {
   CustomStringTableItem "{65C2BE38A7B27A84}" {
    Id "PRTC-Random_Businessman_Name"
    Target_en_us "Random Urban Businessman"
+   Target_fr_fr "Commerçant urbain aléatoire"
    Modified 1707264250
    Author "argeo"
    LastChanged "argeo"
@@ -135,6 +164,7 @@ StringTable {
   CustomStringTableItem "{65C2BE389ED4AC82}" {
    Id "PRTC-Random_Guy_Name"
    Target_en_us "Random Urban Guy"
+   Target_fr_fr "Homme urbain aléatoire"
    Modified 1707264261
    Author "argeo"
    LastChanged "argeo"
@@ -142,6 +172,7 @@ StringTable {
   CustomStringTableItem "{65C2BE38972DA1E7}" {
    Id "PRTC-Random_Hipster_Name"
    Target_en_us "Random Urban Hipster"
+   Target_fr_fr "Hipster urbain aléatoire"
    Modified 1707264276
    Author "argeo"
    LastChanged "argeo"
@@ -149,6 +180,7 @@ StringTable {
   CustomStringTableItem "{65C2BE3B7752CBF8}" {
    Id "PRTC-Random_Rural_Name"
    Target_en_us "Random Rural Civilian"
+   Target_fr_fr "Civil ruraux aléatoire"
    Modified 1707262594
    Author "argeo"
    LastChanged "argeo"
@@ -156,6 +188,7 @@ StringTable {
   CustomStringTableItem "{65C2BE38B0EA8808}" {
    Id "PRTC-Random_Urban_Name"
    Target_en_us "Random Urban Civilian"
+   Target_fr_fr "Civil urbain aléatoire"
    Modified 1707264284
    Author "argeo"
    LastChanged "argeo"
@@ -163,6 +196,7 @@ StringTable {
   CustomStringTableItem "{65C6EA469E55E208}" {
    Id "PRTC-WarCrime_Disguised_Title"
    Target_en_us "Disguised As Hostile Faction"
+   Target_fr_fr "Faux hostiles"
    Modified 1707548880
    Author "argeo"
    LastChanged "argeo"
@@ -171,6 +205,8 @@ StringTable {
    Id "PRTC-WarCrime_HdcKill_Text"
    Target_en_us "You have killed an \"hors de combat\" enemy soldier. This is a war crime, as per Rule 47: \"Attacks against Persons Hors de Combat\"."\
    "See https://ihl-databases.icrc.org"
+   Target_fr_fr "Vous avez tué un \"hors de combat\" soldat ennemi. C'est un crime de guerre, selon le règlement 47 : \"Attaques contre les personnes hors de combat\"."\
+   "Voir https://ihl-databases.icrc.org"
    Modified 1707551669
    Author "argeo"
    LastChanged "argeo"
@@ -178,6 +214,7 @@ StringTable {
   CustomStringTableItem "{65C6EA58554F5A8D}" {
    Id "PRTC-WarCrime_HdcKill_Title"
    Target_en_us "Hors De Combat Enemy Killed"
+   Target_fr_fr "Ennemi hors de combat tué"
    Modified 1707542188
    Author "argeo"
    LastChanged "argeo"
@@ -186,6 +223,8 @@ StringTable {
    Id "PRTC-WarCrime_Multiple_Text"
    Target_en_us "You have committed multiple war crimes."\
    "See https://ihl-databases.icrc.org"
+   Target_fr_fr "Vous avez commis des crimes de guerre multiples."\
+   "Voir https://ihl-databases.icrc.org"
    Modified 1707551648
    Author "argeo"
    LastChanged "argeo"
@@ -193,6 +232,7 @@ StringTable {
   CustomStringTableItem "{65C6EA5976013AF9}" {
    Id "PRTC-WarCrime_Multiple_Title"
    Target_en_us "Multiple War Crimes"
+   Target_fr_fr "Crimes de guerre multiples"
    Modified 1707536941
    Author "argeo"
    LastChanged "argeo"
@@ -200,6 +240,7 @@ StringTable {
   CustomStringTableItem "{65C6EA7BF34FB521}" {
    Id "PRTC-WarCrime_Perfidy_Title"
    Target_en_us "Perfidy"
+   Target_fr_fr "Perfidie"
    Modified 1707551267
    Author "argeo"
    LastChanged "argeo"
@@ -208,6 +249,8 @@ StringTable {
    Id "PRTC-WarCrime_ProtectedKill_Text"
    Target_en_us "You have killed a non-combatant. This is a war crime, as per Rule 1: \"The Principle of Distinction between Civilians and Combatants\"."\
    "See https://ihl-databases.icrc.org"
+   Target_fr_fr "Vous avez tué un non-combattant. C'est un crime de guerre, selon le règlement 1 : \"Principe de distinction entre les civils et les combattants\"."\
+   "Voir https://ihl-databases.icrc.org"
    Modified 1707551683
    Author "argeo"
    LastChanged "argeo"
@@ -215,6 +258,7 @@ StringTable {
   CustomStringTableItem "{65C6EA5BA159F0BC}" {
    Id "PRTC-WarCrime_ProtectedKill_Title"
    Target_en_us "Non-Combatant Killed"
+   Target_fr_fr "Non-combattant tué"
    Modified 1707542152
    Author "argeo"
    LastChanged "argeo"
@@ -222,6 +266,7 @@ StringTable {
   CustomStringTableItem "{65C6EA466DEE2265}" {
    Id "PRTC-WarCrime_Rule_Nbr"
    Target_en_us "Rule"
+   Target_fr_fr "Règle"
    Modified 1707551015
    Author "argeo"
    LastChanged "argeo"
@@ -229,6 +274,7 @@ StringTable {
   CustomStringTableItem "{65C6EA59E9D51C4D}" {
    Id "PRTC-WarCrime_Title_Prefix"
    Target_en_us "War Crime: "
+   Target_fr_fr "Crime de guerre: "
    Modified 1707536734
    Author "argeo"
    LastChanged "argeo"
