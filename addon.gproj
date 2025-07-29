@@ -18,6 +18,7 @@ GameProject {
        }
        LanguageDefinition "{65B673C9BF079D5E}" {
         Code "fr_fr"
+        StringTableRuntime "{814F491A30E8C3E8}Language/localization.fr_fr.conf"
        }
       }
      }
