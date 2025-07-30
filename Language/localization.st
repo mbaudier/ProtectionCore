@@ -279,5 +279,53 @@ StringTable {
    Author "argeo"
    LastChanged "argeo"
   }
+  CustomStringTableItem "{65FC745415730D20}" {
+   Id "PRTC-XPReward_NonCombatantAbandoned"
+   Target_en_us "Non-combatant abandoned"
+   Target_fr_fr "Non-combattant abandonné"
+   Modified 1711044451
+   Author "argeo"
+   LastChanged "argeo"
+  }
+  CustomStringTableItem "{65FC74546537A2BC}" {
+   Id "PRTC-XPReward_NonCombatantDischarged"
+   Target_en_us "Non-combatant discharged"
+   Target_fr_fr "Déchargé d'un non-combattant"
+   Modified 1711044474
+   Author "argeo"
+   LastChanged "argeo"
+  }
+  CustomStringTableItem "{65FC7454D32F686C}" {
+   Id "PRTC-XPReward_NonCombatantProtected"
+   Target_en_us "Non-combatant protected"
+   Target_fr_fr "Non-combattant protégé"
+   Modified 1711044495
+   Author "argeo"
+   LastChanged "argeo"
+  }
+  CustomStringTableItem "{65FC7455AB0103AB}" {
+   Id "PRTC-XPReward_PrisonerAbandoned"
+   Target_en_us "Prisoner abandoned"
+   Target_fr_fr "Prisonnier abandonné"
+   Modified 1711044505
+   Author "argeo"
+   LastChanged "argeo"
+  }
+  CustomStringTableItem "{65FC74544715270F}" {
+   Id "PRTC-XPReward_PrisonerCaptured"
+   Target_en_us "Prisoner captured"
+   Target_fr_fr "Prisonnier capturé"
+   Modified 1711044512
+   Author "argeo"
+   LastChanged "argeo"
+  }
+  CustomStringTableItem "{65FC7455904CBE0A}" {
+   Id "PRTC-XPReward_PrisonerDischarged"
+   Target_en_us "Prisoner discharged"
+   Target_fr_fr "Déchargé d'un prisonnier"
+   Modified 1711044533
+   Author "argeo"
+   LastChanged "argeo"
+  }
  }
 }
