@@ -12,7 +12,7 @@ class ARGEO_CivicCenterEntity: ARGEO_BuildingPopulationEntity
 	[Attribute("0", desc: "Delay the registration as civic center until the editable building is built", category: "Logic")]
 	protected bool m_bDelayRegistration;
 
-	[Attribute("{4080EBB873179873}Prefabs/AI/Waypoints/AIWaypoint_RegisterToCivicCenter.et", desc:"Register to this civic center", category: "Waypoints Prefabs")]
+	[Attribute("{06E1B6EBD480C6E0}Prefabs/AI/Waypoints/AIWaypoint_ForcedMove.et", desc:"Register to this civic center", category: "Waypoints Prefabs")]
 	protected ResourceName m_sRegisterWaypointPrefab;
 
 	[Attribute("{FAD1D789EE291964}Prefabs/AI/Waypoints/AIWaypoint_Defend_Large.et", desc:"Loiter near the civic center", category: "Waypoints Prefabs")]

@@ -112,28 +112,36 @@ class ARGEO_WarCrimesComponent : SCR_BaseGameModeComponent
 		warCrimeEntity.SetCrime(crime);
 
 		// criminal
-		FactionAffiliationComponent criminalFactionComp = FactionAffiliationComponent.Cast(instigatorContextData.GetKillerEntity().FindComponent(FactionAffiliationComponent));
-		if (criminalFactionComp)
-			warCrimeEntity.SetCriminalFactionKey(criminalFactionComp.GetAffiliatedFactionKey());		
-		CharacterIdentityComponent criminalCharacterIdentity = CharacterIdentityComponent.Cast(instigatorContextData.GetKillerEntity().FindComponent(CharacterIdentityComponent));
-		if (criminalCharacterIdentity)
-			warCrimeEntity.SetCriminalIdentity(criminalCharacterIdentity.GetIdentity().GetSurname(), criminalCharacterIdentity.GetIdentity().GetName());
+		IEntity killerEntity = instigatorContextData.GetKillerEntity();
+		if (killerEntity)
+		{
+			FactionAffiliationComponent criminalFactionComp = FactionAffiliationComponent.Cast(killerEntity.FindComponent(FactionAffiliationComponent));
+			if (criminalFactionComp)
+				warCrimeEntity.SetCriminalFactionKey(criminalFactionComp.GetAffiliatedFactionKey());		
+			CharacterIdentityComponent criminalCharacterIdentity = CharacterIdentityComponent.Cast(killerEntity.FindComponent(CharacterIdentityComponent));
+			if (criminalCharacterIdentity)
+				warCrimeEntity.SetCriminalIdentity(criminalCharacterIdentity.GetIdentity().GetSurname(), criminalCharacterIdentity.GetIdentity().GetName());
+		}
 		
 		// victim
 		// we gather more identity information, as it will be happen only once
-		FactionAffiliationComponent victimFactionComp = FactionAffiliationComponent.Cast(instigatorContextData.GetVictimEntity().FindComponent(FactionAffiliationComponent));
-		if (victimFactionComp)
-			warCrimeEntity.SetVictimFactionKey(victimFactionComp.GetAffiliatedFactionKey());
-		CharacterIdentityComponent victimCharacterIdentity = CharacterIdentityComponent.Cast(instigatorContextData.GetVictimEntity().FindComponent(CharacterIdentityComponent));
-		if (victimCharacterIdentity)
+		IEntity victimEntity = instigatorContextData.GetVictimEntity();
+		if (victimEntity)
 		{
-			string surname = victimCharacterIdentity.GetIdentity().GetSurname();
-			string givenName = victimCharacterIdentity.GetIdentity().GetName();
-			SCR_ExtendedCharacterIdentityComponent victimExtendedCharacterIdentity = SCR_ExtendedCharacterIdentityComponent.Cast(instigatorContextData.GetVictimEntity().FindComponent(SCR_ExtendedCharacterIdentityComponent));
-			if (victimExtendedCharacterIdentity)
-				warCrimeEntity.SetVictimIdentity(surname, givenName, victimExtendedCharacterIdentity.GetGender(), victimExtendedCharacterIdentity.GetExtendedIdentity(), victimExtendedCharacterIdentity.GetIdentityBio());
-			else
-				warCrimeEntity.SetVictimIdentity(surname, givenName, SCR_EIdentityGender.NEUTRAL, null, null);
+			FactionAffiliationComponent victimFactionComp = FactionAffiliationComponent.Cast(victimEntity.FindComponent(FactionAffiliationComponent));
+			if (victimFactionComp)
+				warCrimeEntity.SetVictimFactionKey(victimFactionComp.GetAffiliatedFactionKey());
+			CharacterIdentityComponent victimCharacterIdentity = CharacterIdentityComponent.Cast(victimEntity.FindComponent(CharacterIdentityComponent));
+			if (victimCharacterIdentity)
+			{
+				string surname = victimCharacterIdentity.GetIdentity().GetSurname();
+				string givenName = victimCharacterIdentity.GetIdentity().GetName();
+				SCR_ExtendedCharacterIdentityComponent victimExtendedCharacterIdentity = SCR_ExtendedCharacterIdentityComponent.Cast(victimEntity.FindComponent(SCR_ExtendedCharacterIdentityComponent));
+				if (victimExtendedCharacterIdentity)
+					warCrimeEntity.SetVictimIdentity(surname, givenName, victimExtendedCharacterIdentity.GetGender(), victimExtendedCharacterIdentity.GetExtendedIdentity(), victimExtendedCharacterIdentity.GetIdentityBio());
+				else
+					warCrimeEntity.SetVictimIdentity(surname, givenName, SCR_EIdentityGender.NEUTRAL, null, null);
+			}
 		}
 		
 		// cannot be modified from now on

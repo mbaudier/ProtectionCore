@@ -102,6 +102,8 @@ class ARGEO_BuildingHouseholdEntity: ARGEO_BuildingPopulationEntity
 				m_DisplacedGroup.AddAgent(agent);
 				characterComp.SetDisplacementStatus(ARGEO_ECharacterDisplacementStatus.FLEEING, null);				
 			}
+			if (m_DisplacedGroup)
+				m_DisplacedGroup.ActivateAllMembers();
 			UpdateFleeingTargetAsync();
 		}
 	}

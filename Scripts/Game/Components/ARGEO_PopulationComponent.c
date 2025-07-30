@@ -22,10 +22,10 @@ class ARGEO_PopulationComponent : SCR_BaseGameModeComponent
 	[Attribute(defvalue: "10", UIWidgets.Slider, desc: "Ratio in percentage of the number of (all) war crimes to the original population triggering UNLIVABLE status.", params: "0 100 1", category: "Populated Territory Safety Status")]
 	protected float m_fProportionOfWarCrimesUnlivable;
 	
-	[Attribute(defvalue: "20", UIWidgets.Slider, desc: "Probability for an houshold to flee by TENSE status, in percentage.", params: "0 100 1", category: "Displacement Probability")]
+	[Attribute(defvalue: "30", UIWidgets.Slider, desc: "Probability for an houshold to flee by TENSE status, in percentage.", params: "0 100 1", category: "Displacement Probability")]
 	protected float m_fProbabilityToFleeWhenTense;
 	
-	[Attribute(defvalue: "60", UIWidgets.Slider, desc: "Probability for an houshold to flee by DANGEROUS status, in percentage.", params: "0 100 1", category: "Displacement Probability")]
+	[Attribute(defvalue: "70", UIWidgets.Slider, desc: "Probability for an houshold to flee by DANGEROUS status, in percentage.", params: "0 100 1", category: "Displacement Probability")]
 	protected float m_fProbabilityToFleeWhenDangerous;
 	
 	[Attribute(defvalue: "90", UIWidgets.Slider, desc: "Probability for an houshold to flee by UNLIVABLE status, in percentage.", params: "0 100 1", category: "Displacement Probability")]

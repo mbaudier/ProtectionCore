@@ -2,6 +2,9 @@ class ARGEO_RegisterToCivicCenterWaypointClass: SCR_AIWaypointClass
 {
 };
 
+//------------------------------------------------------------------------------------------------
+//! Waypoint for registering to a civic center after having reached it.
+//! Not used for the time being.
 class ARGEO_RegisterToCivicCenterWaypoint: SCR_AIWaypoint
 {
 	override SCR_AIWaypointState CreateWaypointState(SCR_AIGroupUtilityComponent groupUtilityComp)
@@ -12,19 +15,16 @@ class ARGEO_RegisterToCivicCenterWaypoint: SCR_AIWaypoint
 	
 };
 
+//------------------------------------------------------------------------------------------------
+//! Waypoint state for registering to a civic center.
 class ARGEO_RegisterToCivicCenterWaypointState: SCR_AIWaypointState
 {
 	void ARGEO_RegisterToCivicCenterWaypointState(notnull SCR_AIGroupUtilityComponent utility, SCR_AIWaypoint waypoint)
 	{
 		SCR_AIWaypointState(utility, waypoint);
 	}
-	
-	
-	override void OnSelected()
-	{
-		super.OnSelected();
-	}
-	
+		
+	//------------------------------------------------------------------------------------------------
 	override void OnDeselected()
 	{
 		ARGEO_PopulationComponent populationComp = ARGEO_PopulationComponent.GetInstance();
