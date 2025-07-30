@@ -109,6 +109,7 @@ SCR_BaseGameMode GameModeSF_Protection : "{FDDB712823199E09}Prefabs/Systems/Scen
   }
  }
  coords 1891.659 11.326 1821.161
+ m_eTestGameFlags 6
 }
 SCR_BaseTaskManager TaskManager : "{1AC69CD7907FB4F8}Prefabs/Systems/ScenarioFramework/Tasks/TaskManager.et" {
  coords 1891.659 11.576 1823.161

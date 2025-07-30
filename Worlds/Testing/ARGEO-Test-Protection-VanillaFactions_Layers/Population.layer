@@ -1,27 +1,45 @@
 GenericEntity PopulationArea : "{C72F956E4AC6A6E7}Prefabs/Systems/ScenarioFramework/Components/Area.et" {
  coords 2044.379 43.544 2681.705
  {
-  GenericEntity PopulationStart : "{5F9FFF4BF027B3A3}Prefabs/Systems/ScenarioFramework/Components/Layer.et" {
-   coords 0 0 0
-   {
-    GenericEntity PopulationSpawn : "{AA01691FDC4E9167}Prefabs/Systems/ScenarioFramework/Components/Slot.et" {
-     components {
-      SCR_ScenarioFrameworkSlotBase "{5A22E1D67E712EC8}" {
-       m_aPlugins {
-        SCR_ScenarioFrameworkPluginSpawnPoint "{65C4B74FBE35E26F}" {
-         m_sFaction "Legal"
-         m_Info SCR_UIInfo "{65C4CB626EABDBA8}" {
-          Name "Test Population"
+  $grp GenericEntity : "{5F9FFF4BF027B3A3}Prefabs/Systems/ScenarioFramework/Components/Layer.et" {
+   PopulationStart {
+    coords 0 0 0
+    {
+     GenericEntity PopulationSpawn : "{AA01691FDC4E9167}Prefabs/Systems/ScenarioFramework/Components/Slot.et" {
+      components {
+       SCR_ScenarioFrameworkSlotBase "{5A22E1D67E712EC8}" {
+        m_aPlugins {
+         SCR_ScenarioFrameworkPluginSpawnPoint "{65C4B74FBE35E26F}" {
+          m_sFaction "Legal"
+          m_Info SCR_UIInfo "{65C4CB626EABDBA8}" {
+           Name "Test Population"
+          }
          }
         }
+        m_sObjectToSpawn "{E7F4D5562F48DDE4}Prefabs/MP/Spawning/SpawnPoint_Base.et"
        }
-       m_sObjectToSpawn "{E7F4D5562F48DDE4}Prefabs/MP/Spawning/SpawnPoint_Base.et"
+      }
+      coords 703.338 33.976 -1070.478
+      angleX 0.038
+      angleY -165.401
+      angleZ -0.148
+     }
+    }
+   }
+   Vehicles {
+    coords 703.898 33.959 -1070.46
+    {
+     $grp GenericEntity : "{0DDAFCA92FF4451C}Prefabs/Systems/AmbientVehicles/AmbientVehicleSpawnpoint_CIV.et" {
+      {
+       coords -8.974 0.017 7.166
+      }
+      {
+       coords -3.213 -0.048 15.041
+      }
+      {
+       coords 18.413 -1.233 3.136
       }
      }
-     coords 703.338 33.976 -1070.478
-     angleX 0.038
-     angleY -165.401
-     angleZ -0.148
     }
    }
   }
