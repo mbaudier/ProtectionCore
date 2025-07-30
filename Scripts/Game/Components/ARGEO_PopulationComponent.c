@@ -95,6 +95,19 @@ class ARGEO_PopulationComponent : SCR_BaseGameModeComponent
 
 		// apply population only after the backend delay also used by the ambient patrol system
 		GetGame().GetCallqueue().CallLater(ApplyPopulation, SCR_GameModeCampaign.BACKEND_DELAY);
+		
+		// enable janitor
+		GetGame().GetCallqueue().CallLater(JanitorCleanUp, SCR_GameModeCampaign.BACKEND_DELAY, true);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	//! Regularly check whether some entities, such as prisoners, can be cleaned up.
+	protected void JanitorCleanUp()
+	{
+		foreach (ARGEO_CivicCenterEntity civicCenter : m_aCivicCenters)
+		{
+			civicCenter.CleanUpPrisoners();
+		}
 	}
 	
 	//

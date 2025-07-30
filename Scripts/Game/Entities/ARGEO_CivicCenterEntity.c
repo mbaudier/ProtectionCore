@@ -73,12 +73,16 @@ class ARGEO_CivicCenterEntity: ARGEO_BuildingPopulationEntity
 		SCR_ChimeraCharacter character = SCR_ChimeraCharacter.Cast(nonCombatant);
 		if (!character)
 			return;
-		
-		m_aRegisteredNonCombatants.Insert(character);
-		
+					
 		ARGEO_CharacterProtectionComponent characterProtectionComp = ARGEO_CharacterProtectionComponent.Cast(character.FindComponent(ARGEO_CharacterProtectionComponent));
 		if (characterProtectionComp)
+		{
+			if (characterProtectionComp.GetDisplacementStatus() >= ARGEO_ECharacterDisplacementStatus.DISPLACED)
+				return; // already registered somewhere
 			characterProtectionComp.SetDisplacementStatus(ARGEO_ECharacterDisplacementStatus.DISPLACED, this);
+		}
+
+		m_aRegisteredNonCombatants.Insert(character);
 		
 		AIControlComponent aiControlComp = AIControlComponent.Cast(character.FindComponent(AIControlComponent));
 		if (aiControlComp)
@@ -106,25 +110,74 @@ class ARGEO_CivicCenterEntity: ARGEO_BuildingPopulationEntity
 		if (!character)
 			return;
 		
-		m_aRegisteredPrisoners.Insert(character);
-		
 		ARGEO_CharacterProtectionComponent characterProtectionComp = ARGEO_CharacterProtectionComponent.Cast(character.FindComponent(ARGEO_CharacterProtectionComponent));
 		if (characterProtectionComp)
+		{
+			if (characterProtectionComp.IsPOW())
+				return;
 			characterProtectionComp.SetPOWStatus(true, this);
+		}
 		
-		// TODO make it disappear after a while
+		m_aRegisteredPrisoners.Insert(character);
+		
 		AIControlComponent aiControlComp = AIControlComponent.Cast(character.FindComponent(AIControlComponent));
 		if (aiControlComp)
 		{
 			AIAgent agent = aiControlComp.GetAIAgent();
 			if (agent)
 			{
-				// we assume that an agent always havea group
-				agent.GetParentGroup().AddWaypoint(m_WaitWP);
+				AIGroup prisonerGroup = agent.GetParentGroup();
+				if (prisonerGroup)
+					prisonerGroup.AddWaypoint(m_WaitWP);
 			}
 		}
 	}
 
+	//------------------------------------------------------------------------------------------------
+	//! Delete prisoners which are not visible to players.
+	void CleanUpPrisoners()
+	{
+		if (m_aRegisteredPrisoners.IsEmpty())
+			return;
+		
+		// same logic (simplified) as ambient patrol system
+		int fractionOfVD = GetGame().GetViewDistance() * 0.3;
+		int despawnDistanceSq = fractionOfVD * fractionOfVD + 200 * 200;
+
+		array<int> playerIds = {};
+		PlayerManager pc = GetGame().GetPlayerManager();
+		int playersCount = pc.GetPlayers(playerIds);
+
+		foreach (SCR_ChimeraCharacter prisoner : m_aRegisteredPrisoners)
+		{
+			vector location = prisoner.GetOrigin();
+			bool remove = true;
+			foreach (int playerId : playerIds)
+			{
+				IEntity player = pc.GetPlayerControlledEntity(playerId);	
+				if (!player)
+					continue;
+	
+				CharacterControllerComponent comp = CharacterControllerComponent.Cast(player.FindComponent(CharacterControllerComponent));	
+				if (!comp || comp.IsDead())
+					continue;
+	
+				int distance = vector.DistanceSq(player.GetOrigin(), location);	
+				if (distance <= despawnDistanceSq)
+				{
+					remove = false;
+					break; // playerIds
+				}
+			}
+			
+			if (remove)
+			{
+				m_aRegisteredPrisoners.RemoveItem(prisoner);
+				delete prisoner;
+			}
+		}
+	}
+	
 	//
 	// EVENTS
 	//
@@ -137,8 +190,17 @@ class ARGEO_CivicCenterEntity: ARGEO_BuildingPopulationEntity
 		if (state != EDamageState.DESTROYED)
 			return;
 		
+		// clear registrations
+		foreach (SCR_ChimeraCharacter character : m_aRegisteredNonCombatants)
+		{
+			ARGEO_CharacterProtectionComponent characterProtectionComp = ARGEO_CharacterProtectionComponent.Cast(character.FindComponent(ARGEO_CharacterProtectionComponent));
+			if (characterProtectionComp)
+				characterProtectionComp.SetDisplacementStatus(ARGEO_ECharacterDisplacementStatus.FLEEING, null);
+		}
+		m_aRegisteredNonCombatants.Clear();
+		
 		ARGEO_PopulationComponent populationComp = ARGEO_PopulationComponent.GetInstance();
-		if (!populationComp) // typically in workbnech
+		if (!populationComp) // typically in workbench
 			return;
 		populationComp.NotifyCivicCenterDestroyed(this);
 	}

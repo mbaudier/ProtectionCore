@@ -44,7 +44,7 @@ class ARGEO_BuildingHouseholdEntity: ARGEO_BuildingPopulationEntity
 			if (spawnPoint)
 			{
 				m_aSpawnPoints.Insert(spawnPoint);
-				nextInHierarchy = null;// no need to go deeper
+				nextInHierarchy = null; // no need to go deeper
 			}
 			else
 			{
@@ -95,17 +95,14 @@ class ARGEO_BuildingHouseholdEntity: ARGEO_BuildingPopulationEntity
 					if (!m_DisplacedGroup)
 					{
 						Print("Cannot create displaced group", LogLevel.ERROR);
-					}
-					
-					UpdateFleeingTarget(true);
+						return;
+					}					
 				}
-				// We assume it will be removed from ambient group
-				// TODO verify the assumption
+				// We assume that it will be removed from the ambient patrol group
 				m_DisplacedGroup.AddAgent(agent);
-				m_DisplacedGroup.ActivateAllMembers();
-				characterComp.SetDisplacementStatus(ARGEO_ECharacterDisplacementStatus.FLEEING, null);
-				
+				characterComp.SetDisplacementStatus(ARGEO_ECharacterDisplacementStatus.FLEEING, null);				
 			}
+			UpdateFleeingTargetAsync();
 		}
 	}
 	
@@ -113,24 +110,36 @@ class ARGEO_BuildingHouseholdEntity: ARGEO_BuildingPopulationEntity
 	//! Notified when a new civic center has been created.
 	void OnCivicCenterCreated(ARGEO_CivicCenterEntity civicCenter)
 	{
-		if (m_DisplacedGroup)
-			UpdateFleeingTarget();
+		UpdateFleeingTargetAsync();
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	//! Notified when a civic center has been destroyed.
 	void OnCivicCenterDestroyed(ARGEO_CivicCenterEntity civicCenter)
 	{
-		if (m_DisplacedGroup)
-			UpdateFleeingTarget();
+		UpdateFleeingTargetAsync();
 	}
-	
+
+	//------------------------------------------------------------------------------------------------
+	//! Add waypoints asynchronously with random delay, so that the game can manage the load.
+	protected void UpdateFleeingTargetAsync()
+	{
+		float delay = Math.RandomFloat(1, 5);
+		GetGame().GetCallqueue().CallLater(UpdateFleeingTarget, delay);
+	}
+		
 	//------------------------------------------------------------------------------------------------
 	//! Possibly update the current fleeing target, typically if a civic center has been built nearby.
-	protected void UpdateFleeingTarget(bool initFlight = false)
+	protected void UpdateFleeingTarget()
 	{
 		if (!m_DisplacedGroup)
 			return;
+		
+		if (m_DisplacedGroup.GetAgentsCount() == 0)
+		{
+			m_DisplacedGroup = null; // all members are dead or taken care of
+			return;
+		}
 		
 		ARGEO_PopulationComponent populationComp = ARGEO_PopulationComponent.GetInstance();
 		if (!populationComp)
@@ -144,18 +153,34 @@ class ARGEO_BuildingHouseholdEntity: ARGEO_BuildingPopulationEntity
 			{
 				ClearGroupWPs(m_DisplacedGroup);
 				
-				if (initFlight)
-					m_DisplacedGroup.AddWaypoint(m_FindVehicleWP);
+				FindVehicle();
 				m_DisplacedGroup.AddWaypoint(fleeTo);
 
-				Print("Civilian household fleeing to " + fleeTo.GetOrigin(), LogLevel.NORMAL);
+				Print("Civilian household fleeing to civic center " + fleeTo.GetOrigin(), LogLevel.NORMAL);
 			}
 		}
 		else // no civic center available
 		{
-			// TODO scatter them?
+			// TODO scatter them randomly?
 			ClearGroupWPs(m_DisplacedGroup);
 		}
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	//! Try to find a vehicle before fleeing. Currently does nothing, but can be overridden.
+	protected void FindVehicle()
+	{
+		// Disabled for the time being as it causes recursive invoke calls errors when a vehicle is not found
+		return;
+		
+		if (!m_DisplacedGroup)
+			return;
+		
+		int distance = vector.Distance(m_DisplacedGroup.GetCenterOfMass(), m_FindVehicleWP.GetOrigin());
+		if (distance > 200)
+			return; // already too far from home
+		
+		m_DisplacedGroup.AddWaypoint(m_FindVehicleWP);
 	}
 	
 	//------------------------------------------------------------------------------------------------

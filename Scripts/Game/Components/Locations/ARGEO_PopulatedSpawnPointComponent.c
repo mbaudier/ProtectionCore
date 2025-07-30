@@ -7,6 +7,7 @@ class ARGEO_PopulatedSpawnPointComponentClass : SCR_AmbientPatrolSpawnPointCompo
 class ARGEO_PopulatedSpawnPointComponent : SCR_AmbientPatrolSpawnPointComponent
 {
 	protected AIWaypoint m_ToHomeWP;
+	
 	protected AIWaypointCycle m_DailyLifeWP;
 
 	protected SCR_TimedWaypoint m_StayAtHomeWP;

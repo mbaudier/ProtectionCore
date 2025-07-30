@@ -63,7 +63,6 @@ class ARGEO_RemoveAIGroupCommand : SCR_BaseGroupCommand
 						xpComp.AwardXP(playerID, SCR_EXPRewards.DISCHARGE_PRISONER);
 					
 					// stay PROTECTED and wait
-					// TODO extend logic to priuson, disappearing, etc.
 					return true;
 				}
 				else
