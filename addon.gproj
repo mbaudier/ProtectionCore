@@ -1,0 +1,39 @@
+GameProject {
+ ID "ProtectionCoreExperimental"
+ GUID "661B2D1D97C31A78"
+ TITLE "Protection Core (Experimental)"
+ Dependencies {
+  "58D0FB3206B6F859"
+ }
+ Configurations {
+  GameProjectConfig PC {
+   WidgetManagerSettings WidgetManagerSettings "{AC4BE58770485E02}" {
+    StringTables {
+     StringTableDefinition "{65B6707BB15DB54D}" {
+      StringTableSource "{91E0F6253032266E}Language/localization.st"
+      Languages {
+       LanguageDefinition "{65B6707BB315E6AB}" {
+        Code "en_us"
+        StringTableRuntime "{FFABF1A438694BFC}Language/localization.en_us.conf"
+       }
+       LanguageDefinition "{65B673C9BF079D5E}" {
+        Code "fr_fr"
+        StringTableRuntime "{814F491A30E8C3E8}Language/localization.fr_fr.conf"
+       }
+      }
+     }
+    }
+   }
+  }
+  GameProjectConfig XBOX_ONE {
+  }
+  GameProjectConfig XBOX_SERIES {
+  }
+  GameProjectConfig PS4 {
+  }
+  GameProjectConfig PS5 {
+  }
+  GameProjectConfig HEADLESS {
+  }
+ }
+}
