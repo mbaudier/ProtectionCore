@@ -83,12 +83,12 @@ class ARGEO_WarCrimesComponent : SCR_BaseGameModeComponent
 		}
 		
 		// event bus
-		array<Managed> arr = {};
-		GetGame().GetGameMode().FindComponents(EventHandlerManagerComponent, arr);
-		foreach (Managed m : arr)
-		{
-			m_aEventBus.Insert(EventHandlerManagerComponent.Cast(m));
-		}
+//		array<Managed> arr = {};
+//		GetGame().GetGameMode().FindComponents(EventHandlerManagerComponent, arr);
+//		foreach (Managed m : arr)
+//		{
+//			m_aEventBus.Insert(EventHandlerManagerComponent.Cast(m));
+//		}
 	}
 	
 	//
@@ -147,10 +147,10 @@ class ARGEO_WarCrimesComponent : SCR_BaseGameModeComponent
 		// cannot be modified from now on
 		warCrimeEntity.SetImmutable();
 		
-		foreach (EventHandlerManagerComponent eventHandlerManager : m_aEventBus)
-		{
-			eventHandlerManager.RaiseEvent(EVENT_WAR_CRIME_CREATED, 1, warCrimeEntity);
-		}
+//		foreach (EventHandlerManagerComponent eventHandlerManager : m_aEventBus)
+//		{
+//			eventHandlerManager.RaiseEvent(EVENT_WAR_CRIME_CREATED, 1, warCrimeEntity);
+//		}
 	}
 
 	//
