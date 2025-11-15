@@ -1,36 +1,3 @@
 SCR_FactionManager : "{E70679F5E0A515AC}Prefabs/MP/Managers/Factions/FactionManager_Protection.et" {
  ID "56B2B4776E6E4499"
- Factions {
-  SCR_Faction "{56DEAC40D2DBC8B1}" : "{5EB46557DF2AA24F}Configs/Factions/US.conf" {
-   m_bIsPlayable 0
-   m_aFriendlyFactionsIds {
-    "RURAL" "URBAN"
-   }
-   m_sFactionBackground "{F8AC305446D5D480}UI/Textures/DeployMenu/Loadout-BG/Loadout_US_BG.imageset"
-  }
-  SCR_Faction "{56DEAC40D3C2E623}" : "{09727032415AC39B}Configs/Factions/USSR.conf" {
-   m_bIsPlayable 0
-   m_aFriendlyFactionsIds {
-    "RURAL" "URBAN"
-   }
-   m_sFactionBackground "{21533F2089005056}UI/Textures/DeployMenu/Loadout-BG/Loadout_BG_USSR.imageset"
-  }
-  SCR_Faction "{56DEAC40D132400B}" : "{8053DB656DD18B14}Configs/Factions/FIA.conf" {
-   m_bIsPlayable 0
-   m_aFriendlyFactionsIds {
-    "RURAL" "URBAN"
-   }
-   m_sFactionBackground "{81BF3B1DCC106577}UI/Textures/DeployMenu/Loadout-BG/Loadout_BG_FIA.imageset"
-  }
-  SCR_Faction "{65BD08321E6B6038}" : "{E5B2FC4A0D01E456}Configs/Factions/RURAL.conf" {
-   m_aFriendlyFactionsIds {
-    "URBAN"
-   }
-  }
-  SCR_Faction "{65BD08321BDDBDF1}" : "{FFF1E35BF8F3312D}Configs/Factions/URBAN.conf" {
-   m_aFriendlyFactionsIds {
-    "RURAL"
-   }
-  }
- }
 }
