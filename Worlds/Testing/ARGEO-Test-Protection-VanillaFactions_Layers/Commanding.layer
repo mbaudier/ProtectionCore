@@ -93,10 +93,8 @@ GenericEntity AreaCommanding : "{C72F956E4AC6A6E7}Prefabs/Systems/ScenarioFramew
         }
        }
       }
-      coords 9.587 0.774 -38.535
-      angleX 2.398
-      angleY -120.981
-      angleZ 0.763
+      coords 89.081 -0.15 -77.927
+      angles 0 165.631 0
      }
     }
    }
@@ -118,9 +116,7 @@ GenericEntity AreaCommanding : "{C72F956E4AC6A6E7}Prefabs/Systems/ScenarioFramew
        }
       }
       coords 0.096 0.045 -3.163
-      angleX 0.038
-      angleY -165.401
-      angleZ -0.148
+      angles 0.038 -165.401 -0.148
      }
     }
    }
