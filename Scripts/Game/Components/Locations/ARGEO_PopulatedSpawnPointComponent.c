@@ -23,6 +23,18 @@ class ARGEO_PopulatedSpawnPointComponent : SCR_AmbientPatrolSpawnPointComponent
 	//------------------------------------------------------------------------------------------------
 	override void SpawnPatrol()
 	{
+		// Since Arma Reforger v1.6 we mysteriously need to add this before super.SpawnPatrol()
+		// otherwise the faction is somehow not set
+		// TODO: check regularly that it is still needed
+		SCR_FactionAffiliationComponent comp = SCR_FactionAffiliationComponent.Cast(GetOwner().FindComponent(SCR_FactionAffiliationComponent));
+		if (!comp)
+			return;
+
+		Faction faction = comp.GetAffiliatedFaction();
+		if (!faction)
+			return;
+		//
+
 		super.SpawnPatrol();
 		
 		if (!m_Group)
