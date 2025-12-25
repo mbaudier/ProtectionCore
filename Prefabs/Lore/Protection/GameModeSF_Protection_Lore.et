@@ -1,0 +1,26 @@
+SCR_BaseGameMode : "{FDDB712823199E09}Prefabs/Systems/ScenarioFramework/GameModeSF_Protection.et" {
+ ID "56B2B479C6B96951"
+ components {
+  ARGEO_PopulationComponent "{657F0CE6ADBB46C4}" {
+   m_sDefaultPopulationFaction "RURAL"
+   m_fGlobalBuildingsOccupation 70
+  }
+  ARGEO_ProtectionLoreComponent "{65C4F0AFC88F0211}" {
+  }
+  SCR_PerceivedFactionManagerComponent "{61AA7E6E0C6A76F9}" {
+   m_sAIFallbackFaction "RURAL"
+  }
+  SCR_RespawnSystemComponent "{56B2B4793051E7C9}" {
+   m_SpawnLogic SCR_MenuSpawnLogic "{5D36888CC966608A}" {
+    m_sForcedFaction "Legal"
+   }
+  }
+  SCR_ScoringSystemComponent "{65E537461C911688}" {
+  }
+  SCR_TimeAndWeatherHandlerComponent "{65B323FCA270F580}" {
+  }
+  SCR_XPHandlerComponent "{65E30DDF1379B91F}" {
+  }
+ }
+ m_bAllowFactionChange 0
+}
