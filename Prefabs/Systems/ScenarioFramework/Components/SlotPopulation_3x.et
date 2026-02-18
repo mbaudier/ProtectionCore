@@ -1,0 +1,21 @@
+GenericEntity : "{8D43830F02C3F114}Prefabs/Systems/ScenarioFramework/Components/SlotAI.et" {
+ ID "664CCC335A0A18C9"
+ components {
+  SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+   m_aFactionSwitchedObjects {
+    SCR_ScenarioFrameworkFactionSwitchedObject "{68A330600C0FE9D0}" {
+     m_sFactionKey "CIV"
+     m_sObjectToSpawn "{890E87DB699ABA4E}Prefabs/Groups/CIV/Group_CIV_3x.et"
+    }
+    SCR_ScenarioFrameworkFactionSwitchedObject "{68A3306007DB652A}" {
+     m_sFactionKey "RURAL"
+     m_sObjectToSpawn "{591DED76888ABC0D}Prefabs/Groups/INDFOR/RURAL/Group_RURAL_3x.et"
+    }
+    SCR_ScenarioFrameworkFactionSwitchedObject "{68A330607F613652}" {
+     m_sFactionKey "URBAN"
+     m_sObjectToSpawn "{E33DC291C5E96EDB}Prefabs/Groups/INDFOR/URBAN/Group_URBAN_3x.et"
+    }
+   }
+  }
+ }
+}
