@@ -1,0 +1,10 @@
+GenericEntity : "{C72F956E4AC6A6E7}Prefabs/Systems/ScenarioFramework/Components/Area.et" {
+ ID "664CCC335A0A18C9"
+ components {
+  SCR_ScenarioFrameworkArea "{59E8CDC50969206E}" {
+   m_bShowDebugShapesInWorkbench 1
+   m_bDynamicDespawn 1
+   m_iDynamicDespawnRange 150
+  }
+ }
+}

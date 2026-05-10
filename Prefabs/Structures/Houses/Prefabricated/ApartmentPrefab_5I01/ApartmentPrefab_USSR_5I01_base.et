@@ -1,0 +1,15 @@
+SCR_DestructibleBuildingEntity : "{A43A100E3C377DB2}Prefabs/Structures/Core/Building_Base.et" {
+ ID "F0DBA538AC2A0552"
+ {
+  GenericEntity : "{B72A268C9DAA9C26}Prefabs/Systems/ScenarioFramework/Components/AreaPopulated.et" {
+   ID "69530259F2626969"
+   coords 0 0 0
+   {
+    GenericEntity LayerPerson1 : "{009252EB9E4471B4}Prefabs/Systems/ScenarioFramework/Components/LayerPerson.et" {
+     ID "695302599904999D"
+     coords -0.022 14.215 3.028
+    }
+   }
+  }
+ }
+}

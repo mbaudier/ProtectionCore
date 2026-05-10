@@ -1,0 +1,68 @@
+$grp GenericEntity : "{C72F956E4AC6A6E7}Prefabs/Systems/ScenarioFramework/Components/Area.et" {
+ PopulatedUgoldar {
+  components {
+   SCR_ScenarioFrameworkArea "{59E8CDC50969206E}" {
+    m_bShowDebugShapesInWorkbench 1
+    m_bDynamicDespawn 1
+    m_iDynamicDespawnRange 100
+   }
+  }
+  coords 6655.021 25.934 3902.646
+  {
+   GenericEntity Layer1 : "{5F9FFF4BF027B3A3}Prefabs/Systems/ScenarioFramework/Components/Layer.et" {
+    coords 0 0 0
+    {
+     $grp GenericEntity : "{8D43830F02C3F114}Prefabs/Systems/ScenarioFramework/Components/SlotAI.et" {
+      SlotAI1 {
+       components {
+        SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+         m_sObjectToSpawn "{890E87DB699ABA4E}Prefabs/Groups/CIV/Group_CIV_3x.et"
+        }
+       }
+       coords 26.054 0.395 1.262
+      }
+      SlotAI2 {
+       components {
+        SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+         m_sObjectToSpawn "{22E43956740A6794}Prefabs/Characters/Factions/CIV/GenericCivilians/Character_CIV_Randomized.et"
+        }
+       }
+       coords -43.979 -0.668 5.052
+      }
+      SlotAI3 {
+       components {
+        SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+         m_sObjectToSpawn "{53105B088649240C}Prefabs/Groups/CIV/Group_CIV_Population.et"
+        }
+       }
+       coords -1.433 0.44 30.254
+      }
+     }
+    }
+   }
+  }
+ }
+ Area1 {
+  coords 6641.288 25.831 3907.964
+  {
+   GenericEntity Layer2 : "{5F9FFF4BF027B3A3}Prefabs/Systems/ScenarioFramework/Components/Layer.et" {
+    coords 0 0 0
+    {
+     GenericEntity Slot1 : "{AA01691FDC4E9167}Prefabs/Systems/ScenarioFramework/Components/Slot.et" {
+      components {
+       SCR_ScenarioFrameworkSlotBase "{5A22E1D67E712EC8}" {
+        m_bExcludeFromDynamicDespawn 1
+        m_aPlugins {
+         SCR_ScenarioFrameworkPluginSpawnPoint "{6952F0A4CFE586D9}" {
+         }
+        }
+        m_sObjectToSpawn "{E7F4D5562F48DDE4}Prefabs/MP/Spawning/SpawnPoint_Base.et"
+       }
+      }
+      coords -221.389 -2.738 -135.403
+     }
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,9 @@
+GenericEntity : "{5F9FFF4BF027B3A3}Prefabs/Systems/ScenarioFramework/Components/Layer.et" {
+ ID "59F0B4850F342318"
+ {
+  GenericEntity : "{2956EC953C36C760}Prefabs/Systems/ScenarioFramework/Components/SlotPerson.et" {
+   ID "6952F0A109B84654"
+   coords 0 0 0
+  }
+ }
+}

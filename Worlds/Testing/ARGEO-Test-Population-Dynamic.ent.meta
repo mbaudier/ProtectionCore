@@ -1,0 +1,17 @@
+MetaFileClass {
+ Name "{2007B7BCE6051CC5}Worlds/Testing/ARGEO-Test-Population-Dynamic.ent"
+ Configurations {
+  ENTResourceClass PC {
+  }
+  ENTResourceClass XBOX_ONE : PC {
+  }
+  ENTResourceClass XBOX_SERIES : PC {
+  }
+  ENTResourceClass PS4 : PC {
+  }
+  ENTResourceClass PS5 : PC {
+  }
+  ENTResourceClass HEADLESS : PC {
+  }
+ }
+}

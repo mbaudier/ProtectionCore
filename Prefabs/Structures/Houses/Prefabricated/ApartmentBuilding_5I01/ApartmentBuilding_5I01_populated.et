@@ -1,0 +1,9 @@
+GenericEntity : "{B72A268C9DAA9C26}Prefabs/Systems/ScenarioFramework/Components/AreaPopulated.et" {
+ ID "664CCC335A0A18C9"
+ {
+  GenericEntity LayerPerson1 : "{009252EB9E4471B4}Prefabs/Systems/ScenarioFramework/Components/LayerPerson.et" {
+   ID "6952FB32EBF2DDBA"
+   coords -9.28 14.01 2.316
+  }
+ }
+}
