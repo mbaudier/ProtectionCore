@@ -1,0 +1,200 @@
+class ARGEO_PopulatedBedEntityClass: ARGEO_BuildingPopulationEntityClass
+{
+}
+
+//------------------------------------------------------------------------------------------------
+//! The link between a given building and its inhabitants.
+//! Members of an household will also flee together as a group if they have to.
+class ARGEO_PopulatedBedEntity: ARGEO_BuildingPopulationEntity
+{
+	[Attribute("{BBF1B3890A3FAFD7}Prefabs/AI/Groups/Displaced_Group.et", "General")]
+	protected ResourceName m_sDisplacedGroupPrefab;
+	
+	[Attribute("{B049D4C74FBC0C4D}Prefabs/AI/Waypoints/AIWaypoint_GetInNearest.et", desc:"Find a vehicle near the household", category: "Waypoints Prefabs")]
+	protected ResourceName m_sFindVehicleWaypointPrefab;
+
+	// Household is displaced together (also for performance reasons, reducing the number of active groups)
+	protected SCR_AIGroup m_DisplacedGroup = null;
+	
+	protected SCR_AIWaypoint m_FindVehicleWP;
+	
+	//
+	// LIFECYCLE
+	//
+	
+	//------------------------------------------------------------------------------------------------
+	override void EOnActivate(IEntity owner)
+	{
+		super.EOnActivate(owner);
+		
+		// Waypoints
+		EntitySpawnParams params = EntitySpawnParams();
+		params.TransformMode = ETransformMode.WORLD;
+		params.Transform[3] = this.GetOrigin();
+		m_FindVehicleWP = SCR_AIWaypoint.Cast(GetGame().SpawnEntityPrefab(Resource.Load(m_sFindVehicleWaypointPrefab), null, params));
+	}
+	
+	//
+	// EVENTS
+	//
+	
+	//------------------------------------------------------------------------------------------------
+	//! Notified when the safety status of this household's territory has changed.
+	void OnSafetyStatusChanged(ARGEO_EPopulationSafetyStatus safetyStatus)
+	{
+		if (HasFled())
+			return;
+		
+		ARGEO_PopulationComponent populationComp = ARGEO_PopulationComponent.GetInstance();
+		if (!populationComp)
+			return;
+		
+		bool shouldFlee = populationComp.ShouldFleeBuilding(this);
+		if (shouldFlee)
+		{
+			/*
+			foreach (ARGEO_PopulatedSpawnPointComponent spawnPoint : m_aSpawnPoints)
+			{
+				AIAgent agent = spawnPoint.GetAgent();
+				ARGEO_CharacterProtectionComponent characterComp = ARGEO_CharacterProtectionComponent.FindFromAgent(agent);
+				if (!characterComp || characterComp.GetDisplacementStatus() < ARGEO_ECharacterDisplacementStatus.NORMAL)
+					continue; // m_aSpawnPoints
+				
+				if (!m_DisplacedGroup) {
+					m_DisplacedGroup = CreateDisplacedGroup();
+					if (!m_DisplacedGroup)
+					{
+						Print("Cannot create displaced group", LogLevel.ERROR);
+						return;
+					}					
+				}
+				// We assume that it will be removed from the ambient patrol group
+				m_DisplacedGroup.AddAgent(agent);
+				characterComp.SetDisplacementStatus(ARGEO_ECharacterDisplacementStatus.FLEEING, null);				
+			}
+			if (m_DisplacedGroup)
+				m_DisplacedGroup.ActivateAllMembers();
+			UpdateFleeingTargetAsync();
+			*/
+		}
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	//! Notified when a new civic center has been created.
+	void OnCivicCenterCreated(ARGEO_CivicCenterEntity civicCenter)
+	{
+		UpdateFleeingTargetAsync();
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	//! Notified when a civic center has been destroyed.
+	void OnCivicCenterDestroyed(ARGEO_CivicCenterEntity civicCenter)
+	{
+		UpdateFleeingTargetAsync();
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Add waypoints asynchronously with random delay, so that the game can manage the load.
+	protected void UpdateFleeingTargetAsync()
+	{
+		float delay = Math.RandomFloat(1, 5);
+		GetGame().GetCallqueue().CallLater(UpdateFleeingTarget, delay);
+	}
+		
+	//------------------------------------------------------------------------------------------------
+	//! Possibly update the current fleeing target, typically if a civic center has been built nearby.
+	protected void UpdateFleeingTarget()
+	{
+		if (!m_DisplacedGroup)
+			return;
+		
+		if (m_DisplacedGroup.GetAgentsCount() == 0)
+		{
+			m_DisplacedGroup = null; // all members are dead or taken care of
+			return;
+		}
+		
+		ARGEO_PopulationComponent populationComp = ARGEO_PopulationComponent.GetInstance();
+		if (!populationComp)
+			return;
+		
+		ARGEO_CivicCenterEntity civicCenter = populationComp.GetNearestCivicCenter(m_DisplacedGroup.GetCenterOfMass());
+		if (civicCenter)
+		{
+			SCR_AIWaypoint fleeTo = civicCenter.GetFleeToWP();
+			if (fleeTo != m_DisplacedGroup.GetCurrentWaypoint())
+			{
+				ClearGroupWPs(m_DisplacedGroup);
+				
+				FindVehicle();
+				m_DisplacedGroup.AddWaypoint(fleeTo);
+
+				Print("Civilian household fleeing to civic center " + fleeTo.GetOrigin(), LogLevel.NORMAL);
+			}
+		}
+		else // no civic center available
+		{
+			// TODO scatter them randomly?
+			ClearGroupWPs(m_DisplacedGroup);
+		}
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	//! Try to find a vehicle before fleeing. Currently does nothing, but can be overridden.
+	protected void FindVehicle()
+	{
+		// Disabled for the time being as it causes recursive invoke calls errors when a vehicle is not found
+		return;
+		
+		if (!m_DisplacedGroup)
+			return;
+		
+		int distance = vector.Distance(m_DisplacedGroup.GetCenterOfMass(), m_FindVehicleWP.GetOrigin());
+		if (distance > 200)
+			return; // already too far from home
+		
+		m_DisplacedGroup.AddWaypoint(m_FindVehicleWP);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	//! Creates the group that will be used by this houshold while being displaced.
+	protected SCR_AIGroup CreateDisplacedGroup()
+	{
+		EntitySpawnParams params = EntitySpawnParams();
+		params.TransformMode = ETransformMode.WORLD;
+		params.Transform[3] = this.GetOrigin();
+
+		IEntity groupEntity = GetGame().SpawnEntityPrefab(Resource.Load(m_sDisplacedGroupPrefab), null, params);
+		if (!groupEntity)
+			return null;
+		
+		SCR_AIGroup group = SCR_AIGroup.Cast(groupEntity);
+		if (!group)
+			return null;
+		return group;
+	}
+	
+	//
+	// UTILITIES
+	//
+	
+	//------------------------------------------------------------------------------------------------
+	private void ClearGroupWPs(SCR_AIGroup group)
+	{
+		array<AIWaypoint> wps = {};
+		group.GetWaypoints(wps);
+		foreach (AIWaypoint wp : wps)
+		{	
+			group.RemoveWaypoint(wp);			
+		}
+	}	
+		
+	//
+	// ACCESSORS
+	//
+	
+	bool HasFled()
+	{
+		return m_DisplacedGroup != null;
+	}	
+}

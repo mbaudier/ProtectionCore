@@ -28,12 +28,19 @@ PerceptionManager PerceptionManager : "{028DAEAD63E056BE}Prefabs/World/Game/Perc
  coords 6297.859 431.079 6369.888
 }
 SCR_FactionManager FactionManager_USxUSSR : "{589540B35EBA8CDC}Prefabs/MP/Managers/Factions/FactionManager_USxUSSR.et" {
+ components {
+  ARGEO_ProtectionFactionManagerComponent "{65C4FA10B63E5205}" {
+   m_sProtectedFaction "URBAN"
+  }
+ }
  coords 6297.859 430.729 6366.888
  Factions {
   SCR_Faction "{56B2B46E9AF80999}" {
    m_bIsPlayable 0
   }
-  SCR_Faction "{6952F0A708FAC200}" : "{3FA20B01D950D31F}Configs/Factions/CIV.conf" {
+  SCR_Faction "{695AB8D684F8F2D2}" : "{FFF1E35BF8F3312D}Configs/Factions/URBAN.conf" {
+  }
+  SCR_Faction "{695AB8D690F0FC06}" : "{E5B2FC4A0D01E456}Configs/Factions/RURAL.conf" {
   }
  }
 }
@@ -42,6 +49,10 @@ RadioManagerEntity RadioManager : "{B8E09FAB91C4ECCD}Prefabs/Systems/Radio/Radio
 }
 SCR_BaseGameMode GameModeSF : "{ECEEDB2D3737204B}Prefabs/Systems/ScenarioFramework/GameModeSF.et" {
  components {
+  ARGEO_PopulationComponent "{657F0CE6ADBB46C4}" {
+   m_sDefaultPopulationFaction "URBAN"
+   m_fGlobalBuildingsOccupation 100
+  }
   SCR_GameModeSFManager "{5A96783ABCA252AE}" {
    m_bDynamicDespawn 1
   }
@@ -52,6 +63,7 @@ SCR_BaseGameMode GameModeSF : "{ECEEDB2D3737204B}Prefabs/Systems/ScenarioFramewo
   }
  }
  coords 6297.859 430.355 6364.888
+ m_eTestGameFlags SpawnAI
 }
 ScriptedChatEntity ScriptedChatEntity : "{F69BC912AC8236F9}Prefabs/MP/ScriptedChatEntity.et" {
  coords 6297.859 431.159 6370.888

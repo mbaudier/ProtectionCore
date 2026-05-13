@@ -6,6 +6,7 @@ class ARGEO_BuildingPopulationEntityClass: GenericEntityClass
 //! Abstract class for entities related to a building and the population.
 class ARGEO_BuildingPopulationEntity: GenericEntity
 {
+	protected IEntity m_BuildingEntity;
 	protected SCR_DestructibleBuildingComponent m_DestructibleBuildingComp;
 	
 	protected SCR_CampaignBuildingCompositionComponent m_CampaignBuildingCompositionComp;
@@ -21,6 +22,7 @@ class ARGEO_BuildingPopulationEntity: GenericEntity
 	{
 		super.EOnActivate(owner);
 
+		m_BuildingEntity = FindDestructibleBuildingEntity(owner);
 		m_DestructibleBuildingComp = FindDestructibleBuildingComp(owner);
 		if (m_DestructibleBuildingComp)
 		{
@@ -76,16 +78,29 @@ class ARGEO_BuildingPopulationEntity: GenericEntity
 	//------------------------------------------------------------------------------------------------
 	private SCR_DestructibleBuildingComponent FindDestructibleBuildingComp(IEntity current)
 	{
+		IEntity building = FindDestructibleBuildingEntity(current);
+		if (!building)
+			return null;
+		
+		SCR_DestructibleBuildingComponent res = SCR_DestructibleBuildingComponent.Cast(building.FindComponent(SCR_DestructibleBuildingComponent));
+		if (res)
+			return res;
+		return null;	
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	private IEntity FindDestructibleBuildingEntity(IEntity current)
+	{
 		if (!current)
 			return null;
 		
 		SCR_DestructibleBuildingComponent res = SCR_DestructibleBuildingComponent.Cast(current.FindComponent(SCR_DestructibleBuildingComponent));
 		if (res)
-			return res;
+			return current;
 		
 		IEntity parent = current.GetParent();
 		// recursive call
-		return FindDestructibleBuildingComp(parent);
+		return FindDestructibleBuildingEntity(parent);
 	}
 	
 	//------------------------------------------------------------------------------------------------

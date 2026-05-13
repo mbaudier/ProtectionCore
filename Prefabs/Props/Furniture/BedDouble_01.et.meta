@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{F5AAC561B0AF9B07}Prefabs/Systems/ScenarioFramework/Components/ApartmentBuilding_5I01_populated.et"
+ Name "{8A6DD31A4FF94E48}Prefabs/Props/Furniture/BedDouble_01.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }
@@ -12,6 +12,8 @@ MetaFileClass {
   EntityTemplateResourceClass PS5 : PC {
   }
   EntityTemplateResourceClass HEADLESS : PC {
+  }
+  EntityTemplateResourceClass Xbox : PC {
   }
  }
 }

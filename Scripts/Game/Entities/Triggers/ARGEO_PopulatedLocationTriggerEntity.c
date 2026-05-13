@@ -38,6 +38,12 @@ class ARGEO_PopulatedLocationTriggerEntity : ARGEO_PopulatedTerritoryTriggerEnti
 				int dotIndex = fullName.LastIndexOf(".");
 				if (dotIndex > slashIndex)
 					m_sLocationPrefabName = fullName.Substring(slashIndex + 1, dotIndex - slashIndex - 1);
+				// Kolguyev
+				int underscoreIndex = m_sLocationPrefabName.LastIndexOf("_");
+				if (underscoreIndex > 0)
+				{
+					m_sLocationPrefabName = m_sLocationPrefabName.Substring(0, underscoreIndex);
+				}
 			}
 		}
 		
@@ -46,6 +52,7 @@ class ARGEO_PopulatedLocationTriggerEntity : ARGEO_PopulatedTerritoryTriggerEnti
 		
 		if (!m_sPopulatedTerritoryID) // Arland
 			m_sPopulatedTerritoryID = m_sLocationName;
+
 		
 		// TODO Use home trritory config for the logic
 		// TODO Use Levenstein, etc. distances provided by SCR_StringHelper?

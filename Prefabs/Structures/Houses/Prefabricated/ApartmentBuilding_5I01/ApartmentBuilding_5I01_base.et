@@ -1,9 +1,23 @@
 SCR_DestructibleBuildingEntity : "{A43A100E3C377DB2}Prefabs/Structures/Core/Building_Base.et" {
  ID "F0DBA538AC2A0552"
  {
-  GenericEntity : "{F5AAC561B0AF9B07}Prefabs/Structures/Houses/Prefabricated/ApartmentBuilding_5I01/ApartmentBuilding_5I01_populated.et" {
-   ID "6952FB33366D87C5"
-   coords 0 0 0
+  $grp ARGEO_BuildingHouseholdEntity : "{3F804D006FE5262D}Prefabs/Structures/Houses/Prefabricated/ApartmentBuilding_5I01/ApartmentBuilding_5I01_household_01.et" {
+   {
+    ID "695AA8510E270A68"
+    coords 10.05 0 0
+   }
+   {
+    ID "695AA85118F5DB11"
+    coords -11.219 0 0
+   }
+   {
+    ID "695AA8511C156C83"
+    coords 22.215 0 0
+   }
+   {
+    ID "695AA8524A6F3FC9"
+    coords 0 0 0
+   }
   }
  }
 }

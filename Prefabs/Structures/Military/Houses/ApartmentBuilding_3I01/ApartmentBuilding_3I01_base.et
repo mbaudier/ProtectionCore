@@ -1,0 +1,15 @@
+SCR_DestructibleBuildingEntity : "{A43A100E3C377DB2}Prefabs/Structures/Core/Building_Base.et" {
+ ID "F0DBA538AC2A0552"
+ {
+  $grp ARGEO_BuildingHouseholdEntity : "{23A135A1DFD43FE6}Prefabs/Structures/Military/Houses/ApartmentBuilding_3I01/ApartmentBuilding_3I01_household_01.et" {
+   {
+    ID "695AB8D6E0B2E5E3"
+    coords 17.27 0 0
+   }
+   {
+    ID "695AB8D6E295AE6B"
+    coords 0 0 0
+   }
+  }
+ }
+}

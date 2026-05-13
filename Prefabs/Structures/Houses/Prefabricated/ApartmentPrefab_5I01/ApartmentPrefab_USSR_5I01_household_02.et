@@ -1,0 +1,61 @@
+ARGEO_BuildingHouseholdEntity : "{EFA00582842D41D0}Prefabs/Systems/Population/BuildingHousehold_Base.et" {
+ ID "64A6F30B4C3FA92F"
+ {
+  $grp SCR_AIWaypoint : "{CBB58AA09362E1E8}Prefabs/Systems/Population/PopulatedSpawnpoint.et" {
+   {
+    ID "695A99C60632526A"
+    coords 0.513 0.904 7.528
+   }
+   {
+    ID "695A99C62A42DD81"
+    coords -1.184 0.903 8.198
+   }
+   {
+    ID "695A99C6C1FC707E"
+    coords 1.611 0.889 7.707
+   }
+   {
+    ID "695AA853DB4412A4"
+    coords -0.136 0.942 -8.98
+   }
+   {
+    ID "695AA853DB4412B9"
+    coords -1.799 0.941 -8.31
+   }
+   {
+    ID "695AA853DB44152A"
+    coords -0.014 0.933 -9.475
+   }
+   {
+    ID "695AA853DB44154E"
+    coords -2.328 0.932 -8.129
+   }
+   {
+    ID "695AA853DB441552"
+    coords 0.505 0.927 -8.801
+   }
+   {
+    ID "695AA853DB44155F"
+    coords 1.306 0.918 -9.038
+    {
+     AIWaypointCycle {
+      ID "64B5177CEC1CC638"
+      coords 0 0 0
+     }
+    }
+   }
+   {
+    ID "695AA85420581A7C"
+    coords 1.247 0.898 8.97
+   }
+   {
+    ID "695AA85420581B9F"
+    coords 0.391 0.913 9.669
+   }
+   {
+    ID "695AA85420581BEF"
+    coords -1.364 0.912 9.137
+   }
+  }
+ }
+}

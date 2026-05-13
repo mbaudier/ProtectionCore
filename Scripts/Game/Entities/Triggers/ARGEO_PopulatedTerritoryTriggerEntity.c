@@ -10,9 +10,56 @@ class ARGEO_PopulatedTerritoryTriggerEntity : ScriptedGameTriggerEntity
 	[Attribute(desc: "ID of the populated territory to attach to.", category: "Population")]
 	protected ARGEO_PopulatedTerritoryID m_sPopulatedTerritoryID;	
 
+	[Attribute("{C72F956E4AC6A6E7}Prefabs/Systems/ScenarioFramework/Components/Area.et", "Scenario Framework")]
+	protected ResourceName m_sAreaPrefab;
+
+	[Attribute("{5F9FFF4BF027B3A3}Prefabs/Systems/ScenarioFramework/Components/Layer.et", "Scenario Framework")]
+	protected ResourceName m_sLayerPrefab;
+
+	[Attribute("{2956EC953C36C760}Prefabs/Systems/ScenarioFramework/Components/SlotPerson.et", "Scenario Framework")]
+	protected ResourceName m_sSlotPersonPrefab;
+	
+	protected SCR_ScenarioFrameworkArea m_SFArea;
+	protected SCR_ScenarioFrameworkLayerBase m_SFLayer;
+	protected IEntity m_SFLayerEntity;
+
+	//
+	// LIFECYCLE
+	//
+	
+	//------------------------------------------------------------------------------------------------
+	override void EOnActivate(IEntity owner)
+	{
+		super.EOnActivate(owner);
+		
+		// Scenario Framework
+		EntitySpawnParams params = EntitySpawnParams();
+		params.TransformMode = ETransformMode.WORLD;
+		params.Transform[3] = this.GetOrigin();
+		
+		IEntity area = GetGame().SpawnEntityPrefab(Resource.Load(m_sAreaPrefab), null, params);
+		m_SFArea = SCR_ScenarioFrameworkArea.Cast(area.FindComponent(SCR_ScenarioFrameworkArea));
+		if (m_SFArea)
+		{
+			m_SFArea.Init();
+			m_SFLayerEntity = GetGame().SpawnEntityPrefab(Resource.Load(m_sLayerPrefab), null, params);
+			if (m_SFLayerEntity)
+			{
+				area.AddChild(m_SFLayerEntity, -1);
+				m_SFLayer = SCR_ScenarioFrameworkLayerBase.Cast(m_SFLayerEntity.FindComponent(SCR_ScenarioFrameworkLayerBase));
+				m_SFLayer.Init(m_SFArea);
+				// TODO optimize
+				//m_SFArea.DynamicReinit();
+			}
+		}
+	}
+	
+	//
+	// EVENTS
+	//
 	//------------------------------------------------------------------------------------------------
 	//! During the first activation, configures the structural population-related entities,
-	//! such as houshols and ambient vehicles.
+	//! such as housholds and ambient vehicles.
 	//! Then monitor for populated territory events such as war crimes.
 	override protected event void OnActivate(IEntity ent)
 	{
@@ -50,6 +97,32 @@ class ARGEO_PopulatedTerritoryTriggerEntity : ScriptedGameTriggerEntity
 			}
 			buildingHousehold.SetPopulatedTerritoryID(m_sPopulatedTerritoryID);
 			populationComponent.RegisterBuildingHousehold(buildingHousehold);
+			return;
+		}
+
+		//ARGEO_PopulatedBedEntity bed = ARGEO_PopulatedBedEntity.Cast(ent);
+		ARGEO_PopulatedBedEntity bed = null;
+		if (bed && !bed.GetPopulatedTerritoryID())
+		{	
+			Print("Found bed in " + m_sPopulatedTerritoryID);
+			bed.SetPopulatedTerritoryID(m_sPopulatedTerritoryID);
+			
+			if (m_SFLayerEntity)
+			{
+				// Scenario Framework
+				EntitySpawnParams params = EntitySpawnParams();
+				params.TransformMode = ETransformMode.WORLD;
+				params.Transform[3] = ent.GetOrigin();
+				
+				IEntity person = GetGame().SpawnEntityPrefab(Resource.Load(m_sSlotPersonPrefab), null, params);
+				m_SFLayerEntity.AddChild(person, -1);
+				SCR_ScenarioFrameworkLayerBase personSlot =  SCR_ScenarioFrameworkLayerBase.Cast(person.FindComponent(SCR_ScenarioFrameworkLayerBase));
+				personSlot.Init(m_SFArea);
+				// TODO optimize
+				//m_SFArea.DynamicReinit();
+			}
+
+//			populationComponent.RegisterBuildingHousehold(buildingHousehold);
 			return;
 		}
 		

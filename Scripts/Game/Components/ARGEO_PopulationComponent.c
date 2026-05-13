@@ -295,9 +295,19 @@ class ARGEO_PopulationComponent : SCR_BaseGameModeComponent
 	//! safety status.
 	bool ShouldFlee(ARGEO_BuildingHouseholdEntity household)
 	{
-		ARGEO_PopulatedTerritoryID populatedTerritoryID = household.GetPopulatedTerritoryID();
+		if (household.HasFled()) // TODO is it necessary?
+			return false; 
+		return ShouldFleeBuilding(household);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	//! Whether a given building's territory should be fled, randomly based on the territory
+	//! safety status.
+	bool ShouldFleeBuilding(ARGEO_BuildingPopulationEntity building)
+	{
+		ARGEO_PopulatedTerritoryID populatedTerritoryID = building.GetPopulatedTerritoryID();
 		ARGEO_PopulatedTerritory populatedTerritory = GetPopulatedTerritory(populatedTerritoryID);
-		if (!populatedTerritory || household.HasFled())
+		if (!populatedTerritory)
 			return false; // should not happen
 		
 		int rand = Math.RandomInt(0, 100);
@@ -312,7 +322,7 @@ class ARGEO_PopulationComponent : SCR_BaseGameModeComponent
 		}
 		return false;
 	}
-	
+
 	//------------------------------------------------------------------------------------------------
 	//! Finds the nearest civic center from a given position.
 	// \param pos A position in the world.

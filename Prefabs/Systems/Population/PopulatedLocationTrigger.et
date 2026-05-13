@@ -19,4 +19,7 @@ ARGEO_PopulatedLocationTriggerEntity : "{D48BC61D01C94A5D}Prefabs/Systems/Popula
   }
  }
  coords 85.936 4.138 76.567
+ ClassesFilter + {
+  "ARGEO_PopulatedBedEntity"
+ }
 }

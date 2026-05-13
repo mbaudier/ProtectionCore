@@ -1,3 +1,11 @@
+SCR_DestructibleBuildingEntity : "{14E317F859842B3C}Prefabs/Structures/Houses/Prefabricated/ApartmentBuilding_5I01/ApartmentBuilding_USSR_5I01.et" {
+ coords 2663.559 -0 1656.94
+ angles 0 56.576 0
+}
+SCR_DestructibleBuildingEntity : "{468473FA5BC4773A}Prefabs/Structures/Houses/Prefabricated/ApartmentPrefab_5I01/ApartmentPrefab_USSR_5I01_gray.et" {
+ coords 2765.297 0 1587.756
+ angles 0 164.306 0
+}
 GenericEntity PopulationArea : "{C72F956E4AC6A6E7}Prefabs/Systems/ScenarioFramework/Components/Area.et" {
  coords 2044.379 43.544 2681.705
  {
@@ -20,9 +28,7 @@ GenericEntity PopulationArea : "{C72F956E4AC6A6E7}Prefabs/Systems/ScenarioFramew
        }
       }
       coords 703.338 33.976 -1070.478
-      angleX 0.038
-      angleY -165.401
-      angleZ -0.148
+      angles 0.038 -165.401 -0.148
      }
     }
    }

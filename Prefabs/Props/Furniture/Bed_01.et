@@ -1,0 +1,9 @@
+GenericEntity : "{4CC2C69DE1AEF103}Prefabs/Props/Core/DestructibleMultiPhase_Props_Base.et" {
+ ID "54DA27348BDA77B2"
+ {
+  ARGEO_PopulatedBedEntity : "{4F4AC8AB0ED293A8}Prefabs/Systems/Population/PopulatedBed.et" {
+   ID "6959152C11F84CBD"
+   coords 0 1.453 0
+  }
+ }
+}
