@@ -21,3 +21,8 @@ modded enum EEditableEntityLabel
 	FACTION_NGO = 910219, //!< Humanitarian NGO
 	FACTION_PRESS = 910220, //!< War reporters
 };
+
+modded enum EEditableEntityLabelGroup
+{
+	BRANCH_BLUPEACE = 217000,
+};
