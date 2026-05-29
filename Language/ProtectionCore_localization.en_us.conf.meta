@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{FFABF1A438694BFC}Language/localization.en_us.conf"
+ Name "{498E6CF7063D80D6}Language/ProtectionCore_localization.en_us.conf"
  Configurations {
   CONFResourceClass PC {
   }
@@ -12,6 +12,8 @@ MetaFileClass {
   CONFResourceClass PS5 : PC {
   }
   CONFResourceClass HEADLESS : PC {
+  }
+  CONFResourceClass Xbox : PC {
   }
  }
 }
