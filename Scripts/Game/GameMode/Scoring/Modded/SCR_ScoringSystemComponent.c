@@ -91,4 +91,39 @@ modded class SCR_ScoringSystemComponent
 		}
 		
 	}
+	
+	//------------------------------------------------------------------------------------------------
+	override void OnPlayerScoreChanged(int playerId, SCR_ScoreInfo scoreInfo)
+	{
+		// Call base logic so native tracking works
+		super.OnPlayerScoreChanged(playerId, scoreInfo);
+
+		if (!scoreInfo)
+			return;
+
+		int currentScore = CalculateScore(scoreInfo);
+
+		// Create localized parameter formatting
+		string title = "Score Updated!";
+		string message = string.Format("Your total score is now: %1", currentScore);
+
+		// Execute RPC to forward variables safely to the client side
+		Rpc(RpcDo_ShowScorePopup, playerId, title, message);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	protected void RpcDo_ShowScorePopup(int playerId, string title, string message)
+	{
+		PlayerController localPlayerController = GetGame().GetPlayerController();
+		if (!localPlayerController || localPlayerController.GetPlayerId() != playerId)
+			return;
+
+		SCR_HintManagerComponent hintManager = SCR_HintManagerComponent.GetInstance();
+		if (hintManager)
+		{
+			// Safely feed the RPC data into the native popup system
+			hintManager.ShowCustomHint(message, title, 5.0);
+		}
+	}
 }

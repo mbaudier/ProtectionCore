@@ -3,5 +3,12 @@ SCR_ChimeraCharacter {
  components {
   ARGEO_CharacterProtectionComponent "{658ED7A064B35E5D}" {
   }
+  BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
+   Slots {
+    LoadoutSlotInfo Pants {
+     Prefab "{3BBE5BAEE39E8CCC}Prefabs/Characters/Uniforms/Crye_Pants/crye_pants_Flecktarn_rec.et"
+    }
+   }
+  }
  }
 }
