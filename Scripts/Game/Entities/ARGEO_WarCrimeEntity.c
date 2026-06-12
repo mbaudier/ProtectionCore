@@ -133,7 +133,7 @@ sealed class ARGEO_WarCrimeEntity: GenericEntity
 	
 	//------------------------------------------------------------------------------------------------
 	//! Serializes to the provided context.
-	bool SerializationSave(BaseSerializationSaveContext context)
+	bool SerializationSave(SaveContext context)
 	{
 		if (!context.IsValid())
 			return false;
@@ -147,7 +147,7 @@ sealed class ARGEO_WarCrimeEntity: GenericEntity
 
 	//------------------------------------------------------------------------------------------------
 	//! Deserializes from the provided context.
-	bool SerializationLoad(BaseSerializationLoadContext context)
+	bool SerializationLoad(LoadContext context)
 	{
 		if (!context.IsValid())
 			return false;
