@@ -27,7 +27,7 @@ SCR_BaseGameMode : "{ECEEDB2D3737204B}Prefabs/Systems/ScenarioFramework/GameMode
    m_iMaxAIPerGroup 32
   }
   SCR_NametagConfigComponent "{571AA9E54FC9210D}" {
-   m_sConfigPath "{5B6640F98711544D}Configs/NameTags/NametagSingleFriendly.conf"
+   m_sConfigPath "{ACFC2F20D14A4CC4}Configs/NameTags/NametagProtection.conf"
   }
   SCR_PerceivedFactionManagerComponent "{61AA7E6E0C6A76F9}" {
    m_eCharacterPerceivedFactionOutfitType HIGHEST_VALUE

@@ -58,14 +58,6 @@ SCR_FactionManager FactionManager_USxUSSR : "{E70679F5E0A515AC}Prefabs/MP/Manage
   }
  }
  m_bCanChangeFactionsPlayable 0
- m_aRanks {
-  SCR_RankID "{5CB0777E83631136}" {
-   m_iRequiredXP -201
-  }
-  SCR_RankID "{5CB0777E828E61F3}" {
-   m_iRequiredXP -200
-  }
- }
 }
 ScriptedChatEntity ScriptedChatEntity : "{F69BC912AC8236F9}Prefabs/MP/ScriptedChatEntity.et" {
  coords 1891.659 12.175 1828.161
@@ -78,6 +70,19 @@ SCR_BaseGameMode GameModeSF_Protection : "{FDDB712823199E09}Prefabs/Systems/Scen
   ARGEO_WarCrimesComponent "{657D06928358A762}" {
    m_bPlayableFactionsFriendlyToNonMilitary 0
   }
+  SCR_CampaignBuildingManagerComponent "{65B2F52D1CFFC5DF}" {
+   m_sFreeRoamBuildingClientTrigger "{5E191CEAF4B95816}Prefabs/MP/FreeRoamBuildingClientTrigger.et"
+   m_BudgetType CAMPAIGN
+   m_iCompositionRefundPercentage 100
+   m_OutlineManager SCR_CampaignBuildingCompositionOutlineManager "{65DED1DEE3894CEC}" : "{96A8B496A076F1C0}Scripts/Game/Building/CampaignBuildingCompositionOutline.conf" {
+   }
+   m_sPrefabsToBuildResource "{D2527D9AA5B4A33E}Configs/Editor/PlaceableEntities/Compositions/Compositions_FreeRoamBuilding.conf"
+   m_sPrefabToHoldSupplyOnRefund "{4BBE0A784C01900E}Prefabs/Props/Military/SupplyBox/SupplyCrate/SupplyCrate_01/SupplyCrate_01_FreeRoamBuilding.et"
+  }
+  SCR_CommandingManagerComponent "{64AD03B2FC3136C6}" {
+   m_sAIGroupPrefab "{4A9D83DCB0619829}Prefabs/AI/Groups/Commanded_Group.et"
+   m_iMaxAIPerGroup 32
+  }
   SCR_FactionAliasComponent "{65C52753ABFAF394}" {
    m_aFactionAliases {
     SCR_ScenarioFrameworkFactionAliasConfig "{65C52753AAC8BAE2}" {
@@ -89,6 +94,9 @@ SCR_BaseGameMode GameModeSF_Protection : "{FDDB712823199E09}Prefabs/Systems/Scen
      m_sFactionKey "USSR"
     }
    }
+  }
+  SCR_NametagConfigComponent "{571AA9E54FC9210D}" {
+   m_sConfigPath "{ACFC2F20D14A4CC4}Configs/NameTags/NametagProtection.conf"
   }
   SCR_PerceivedFactionManagerComponent "{61AA7E6E0C6A76F9}" {
    m_ePunishmentKillingWhileDisguised 3
@@ -104,8 +112,6 @@ SCR_BaseGameMode GameModeSF_Protection : "{FDDB712823199E09}Prefabs/Systems/Scen
      m_iScoreLimit 3
     }
    }
-  }
-  SCR_XPHandlerComponent "{65E2E753776A9B9B}" {
   }
  }
  coords 1891.659 11.326 1821.161
