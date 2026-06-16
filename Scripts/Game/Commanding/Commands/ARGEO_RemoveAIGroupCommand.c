@@ -83,10 +83,11 @@ class ARGEO_RemoveAIGroupCommand : SCR_BaseGroupCommand
 					}
 				}
 				
-				if (civicCenter)
-					xpComp.AwardXP(playerID, SCR_EXPRewards.DISCHARGE_NON_COMBATANT);
-				else
-					xpComp.AwardXP(playerID, SCR_EXPRewards.ABANDON_NON_COMBATANT);
+				if (xpComp)
+					if (civicCenter)
+						xpComp.AwardXP(playerID, SCR_EXPRewards.DISCHARGE_NON_COMBATANT);
+					else
+						xpComp.AwardXP(playerID, SCR_EXPRewards.ABANDON_NON_COMBATANT);
 			}
 			
 			// set faction back to original
