@@ -278,7 +278,9 @@ class ARGEO_PopulationComponent : SCR_BaseGameModeComponent
 			newStatus = ARGEO_EPopulationSafetyStatus.DANGEROUS;
 		
 		bool unlivable = populatedTerritory.GetBuildingDestroyedCount() / populatedTerritory.GetBuildingHouseholdsCount() > (m_fProportionOfDestroyedBuildingUnlivable / 100)
-		 || populatedTerritory.GetWarCrimeCount() / populatedTerritory.GetOriginalPopulation() > (m_fProportionOfWarCrimesUnlivable / 100);
+		 || (populatedTerritory.GetOriginalPopulation() && 
+		     (populatedTerritory.GetWarCrimeCount() / populatedTerritory.GetOriginalPopulation() > (m_fProportionOfWarCrimesUnlivable / 100))
+		    );
 		if (unlivable)
 			newStatus = ARGEO_EPopulationSafetyStatus.UNLIVABLE;
 		
