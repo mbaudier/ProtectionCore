@@ -117,7 +117,15 @@ class ARGEO_CampaignPopulationComponent : ARGEO_PopulationComponent
 			if (campaignBase)
 			{
 				float distanceFromBase = vector.Distance(campaignBase.GetOwner().GetOrigin(), buildingHousehold.GetOrigin());
-				if(distanceFromBase <= campaignBase.GetRadioRange())
+				
+				int consideredRadius = campaignBase.GetRadioRange();
+				// source control points have radio range = 1
+				if (campaignBase.GetRadioRange() < 500)
+				{
+					consideredRadius = campaignBase.GetRadius() * 5;
+				}
+				
+				if(distanceFromBase <= consideredRadius)
 				{
 					m_aEnabledTerritoryIDs.Insert(buildingHousehold.GetPopulatedTerritoryID());
 				}
