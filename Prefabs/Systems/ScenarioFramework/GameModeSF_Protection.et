@@ -26,9 +26,6 @@ SCR_BaseGameMode : "{ECEEDB2D3737204B}Prefabs/Systems/ScenarioFramework/GameMode
    m_sAIGroupPrefab "{4A9D83DCB0619829}Prefabs/AI/Groups/Commanded_Group.et"
    m_iMaxAIPerGroup 32
   }
-  SCR_NametagConfigComponent "{571AA9E54FC9210D}" {
-   m_sConfigPath "{ACFC2F20D14A4CC4}Configs/NameTags/NametagProtection.conf"
-  }
   SCR_PerceivedFactionManagerComponent "{61AA7E6E0C6A76F9}" {
    m_eCharacterPerceivedFactionOutfitType HIGHEST_VALUE
    m_ePunishmentKillingWhileDisguised WARCRIME
