@@ -7,10 +7,10 @@ GenericEntity : "{F8D85655F3C403E9}Prefabs/Compositions/Slotted/SlotFlatSmall/Em
     m_Image "{DBD421368B23AC90}UI/Textures/EditorPreviews/Auto/Compositions/Slotted/SlotFlatSmall/E_EmergencyResponseCenter_S_USSR.edds"
     m_sFaction "USSR"
     m_aAuthoredLabels {
-     5 90 29 909 230 24 200
+     ENTITYTYPE_COMPOSITION SLOT_FLAT_SMALL SERVICE_HQ TRAIT_BASE TRAIT_MEDICAL TRAIT_SUPPLYSTORAGE_SMALL
     }
     m_aAutoLabels {
-     10
+     FACTION_USSR
     }
     m_EntityBudgetCost {
      SCR_EntityBudgetValue "{65DEEBB822080B84}" {
@@ -61,81 +61,81 @@ GenericEntity : "{F8D85655F3C403E9}Prefabs/Compositions/Slotted/SlotFlatSmall/Em
   }
   GenericEntity {
    ID "65DED1D35F16C2A2"
-   Flags 1048576
+   Flags 0x100000 0x403
    {
     GenericEntity {
      ID "5D45393E67B74AC1"
-     Flags 1048576
+     Flags 0x100000 0x403
      {
       GenericEntity {
        ID "5D30E783EA6F52C6"
-       Flags 1048576
+       Flags 0x100000 0x403
       }
      }
     }
     GenericEntity {
      ID "5D45393E67B74AC5"
-     Flags 1048576
+     Flags 0x100000 0x403
      {
       GenericEntity {
        ID "5D3085BCBE7D9302"
-       Flags 1048576
+       Flags 0x100000 0x403
       }
      }
     }
     GenericEntity {
      ID "5D45393E67B74AFC"
-     Flags 1048576
+     Flags 0x100000 0x403
     }
     GenericEntity {
      ID "5D45393E67B74AFF"
-     Flags 1048576
+     Flags 0x100000 0x403
     }
    }
   }
   GenericEntity {
    ID "65DED1D9CBADA351"
-   Flags 1048576
+   Flags 0x100000 0x403
    {
     GenericEntity {
      ID "5CC4E286B5B3482F"
-     Flags 1048576
+     Flags 0x100000 0x403
     }
     GenericEntity {
      ID "5CC4E286B5B34844"
-     Flags 1048576
+     Flags 0x100000 0x403
     }
     GenericEntity {
      ID "620EDD9FE2C8259B"
-     Flags 1048576
+     Flags 0x100000 0x403
     }
     StaticModelEntity {
      ID "5CC4E286B5B34824"
-     Flags 1048576
+     Flags 0x100000 0x403
      {
       GenericEntity {
        ID "5A5344E1BED63C65"
-       Flags 1048576
+       Flags 0x100000 0x403
       }
       GenericEntity {
        ID "5CC49DC456581BA7"
-       Flags 1048576
+       Flags 0x100000 0x3
       }
       SCR_DestructibleBuildingEntity {
        ID "5A5344E1BED63C5B"
-       Flags 1048576
+       Flags 0x100000 0x80403
        {
         GenericEntity {
          ID "54FAC13F64B3CE23"
-         Flags 1048576
+         Flags 0x100000 0x3
         }
         GenericEntity {
          ID "5A04A8A784D18831"
-         Flags 1048576
+         Flags 0x100000 0x403
         }
         GenericEntity {
          ID "5EE8A819345602B2"
-         Flags 1048576
+         Flags 0x100000 0x3
         }
        }
       }
@@ -143,109 +143,109 @@ GenericEntity : "{F8D85655F3C403E9}Prefabs/Compositions/Slotted/SlotFlatSmall/Em
     }
     StaticModelEntity {
      ID "5CC4E286B5B34828"
-     Flags 1048576
+     Flags 0x100000 0x403
     }
     StaticModelEntity {
      ID "5CC4E286B5B34829"
-     Flags 1048576
+     Flags 0x100000 0x403
     }
     StaticModelEntity {
      ID "5CC4E286B5B34847"
-     Flags 1048576
+     Flags 0x100000 0x403
      {
       GenericEntity {
        ID "5CB0F58C8E020658"
-       Flags 1048576
+       Flags 0x100000 0x403
       }
       GenericEntity {
        ID "5CB0F58C8E020659"
-       Flags 1048576
+       Flags 0x100000 0x403
       }
       GenericEntity {
        ID "5CB0F58C8E02065A"
-       Flags 1048576
+       Flags 0x100000 0x403
       }
       GenericEntity {
        ID "5CB0F58C8E0207A0"
-       Flags 1048576
+       Flags 0x100000 0x403
       }
       GenericEntity {
        ID "5CB0F58C8E0207A5"
-       Flags 1048576
+       Flags 0x100000 0x403
       }
      }
     }
     StaticModelEntity {
      ID "5CC4E286B5B3484F"
-     Flags 1048576
+     Flags 0x100000 0x403
      {
       GenericEntity {
        ID "5CB0F58CE79FFBDB"
-       Flags 1048576
+       Flags 0x100000 0x403
       }
      }
     }
     StaticModelEntity {
      ID "5CC4E286B5B3485E"
-     Flags 1048576
+     Flags 0x100000 0x403
      {
       GameEntity {
        ID "5CB0F589903FBFBF"
-       Flags 1048576
+       Flags 0x100000 0x403
       }
       GenericEntity {
        ID "5CB0F589903FBFB0"
-       Flags 1048576
+       Flags 0x100000 0x403
       }
       GenericEntity {
        ID "5CB0F589903FBFB4"
-       Flags 1048576
+       Flags 0x100000 0x403
       }
       GenericEntity {
        ID "5CB0F589903FBFB6"
-       Flags 1048576
+       Flags 0x100000 0x403
       }
       GenericEntity {
        ID "5CB0F589903FBFBC"
-       Flags 1048576
+       Flags 0x100000 0x403
       }
      }
     }
     StaticModelEntity {
      ID "5CC4E286B5B34872"
-     Flags 1048576
+     Flags 0x100000 0x403
     }
     StaticModelEntity {
      ID "5CC4E286B5B34878"
-     Flags 1048576
+     Flags 0x100000 0x403
      {
       GenericEntity {
        ID "5CB0F585380C48B0"
-       Flags 1048576
+       Flags 0x100000 0x403
       }
       GenericEntity {
        ID "5CB0F585380C48B1"
-       Flags 1048576
+       Flags 0x100000 0x403
       }
       GenericEntity {
        ID "5CB0F585380C48B2"
-       Flags 1048576
+       Flags 0x100000 0x403
       }
       GenericEntity {
        ID "5CB0F585380C48B3"
-       Flags 1048576
+       Flags 0x100000 0x403
       }
      }
     }
     StaticModelEntity {
      ID "5CC4E286B5B3487D"
-     Flags 1048576
+     Flags 0x100000 0x403
     }
    }
   }
   GenericEntity {
    ID "65DEEBBA64694DD2"
-   Flags 1048576
+   Flags 0x100000 0x3
   }
  }
 }

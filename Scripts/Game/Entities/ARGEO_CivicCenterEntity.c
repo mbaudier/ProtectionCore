@@ -7,7 +7,8 @@ class ARGEO_CivicCenterEntityClass: ARGEO_BuildingPopulationEntityClass
 //! can be discharged, registered and managed.
 class ARGEO_CivicCenterEntity: ARGEO_BuildingPopulationEntity
 {
-	protected float m_iDischargeRadius = 200;
+	[Attribute("200", desc: "The maximum distance from which protected persons (IDPs, POWs) can be discharged.", category: "Logic")]
+	protected float m_iDischargeRadius;
 	
 	[Attribute("0", desc: "Delay the registration as civic center until the editable building is built", category: "Logic")]
 	protected bool m_bDelayRegistration;

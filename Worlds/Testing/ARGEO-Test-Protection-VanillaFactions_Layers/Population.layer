@@ -1,5 +1,5 @@
 SCR_DestructibleBuildingEntity : "{14E317F859842B3C}Prefabs/Structures/Houses/Prefabricated/ApartmentBuilding_5I01/ApartmentBuilding_USSR_5I01.et" {
- coords 2663.559 -0 1656.94
+ coords 2663.559 0 1656.94
  angles 0 56.576 0
 }
 SCR_DestructibleBuildingEntity : "{468473FA5BC4773A}Prefabs/Structures/Houses/Prefabricated/ApartmentPrefab_5I01/ApartmentPrefab_USSR_5I01_gray.et" {
@@ -9,45 +9,38 @@ SCR_DestructibleBuildingEntity : "{468473FA5BC4773A}Prefabs/Structures/Houses/Pr
 GenericEntity PopulationArea : "{C72F956E4AC6A6E7}Prefabs/Systems/ScenarioFramework/Components/Area.et" {
  coords 2044.379 43.544 2681.705
  {
-  $grp GenericEntity : "{5F9FFF4BF027B3A3}Prefabs/Systems/ScenarioFramework/Components/Layer.et" {
-   PopulationStart {
-    coords 0 0 0
-    {
-     GenericEntity PopulationSpawn : "{AA01691FDC4E9167}Prefabs/Systems/ScenarioFramework/Components/Slot.et" {
-      components {
-       SCR_ScenarioFrameworkSlotBase "{5A22E1D67E712EC8}" {
-        m_aPlugins {
-         SCR_ScenarioFrameworkPluginSpawnPoint "{65C4B74FBE35E26F}" {
-          m_sFaction "Legal"
-          m_Info SCR_UIInfo "{65C4CB626EABDBA8}" {
-           Name "Test Population"
-          }
-         }
-        }
-        m_sObjectToSpawn "{E7F4D5562F48DDE4}Prefabs/MP/Spawning/SpawnPoint_Base.et"
+  GenericEntity Vehicles : "{5F9FFF4BF027B3A3}Prefabs/Systems/ScenarioFramework/Components/Layer.et" {
+   coords 703.898 33.959 -1070.46
+   {
+    $grp GenericEntity : "{0DDAFCA92FF4451C}Prefabs/Systems/AmbientVehicles/AmbientVehicleSpawnpoint_CIV.et" {
+     {
+      coords -8.974 0.017 7.166
+     }
+     {
+      coords -3.213 -0.048 15.041
+     }
+     {
+      coords 18.413 -1.233 3.136
+     }
+    }
+   }
+  }
+  GenericEntity PopulationSpawn : "{AA01691FDC4E9167}Prefabs/Systems/ScenarioFramework/Components/Slot.et" {
+   components {
+    SCR_ScenarioFrameworkSlotBase "{5A22E1D67E712EC8}" {
+     m_aPlugins {
+      SCR_ScenarioFrameworkPluginSpawnPoint "{65C4B74FBE35E26F}" {
+       m_sFaction "Legal"
+       m_Info SCR_UIInfo "{65C4CB626EABDBA8}" {
+        Name "Test Population"
        }
       }
-      coords 703.338 33.976 -1070.478
-      angles 0.038 -165.401 -0.148
      }
+     m_sObjectToSpawn "{E7F4D5562F48DDE4}Prefabs/MP/Spawning/SpawnPoint_Base.et"
     }
    }
-   Vehicles {
-    coords 703.898 33.959 -1070.46
-    {
-     $grp GenericEntity : "{0DDAFCA92FF4451C}Prefabs/Systems/AmbientVehicles/AmbientVehicleSpawnpoint_CIV.et" {
-      {
-       coords -8.974 0.017 7.166
-      }
-      {
-       coords -3.213 -0.048 15.041
-      }
-      {
-       coords 18.413 -1.233 3.136
-      }
-     }
-    }
-   }
+   coords 703.338 33.976 -1070.478
+   angles 0.038 -165.401 -0.148
   }
  }
 }
