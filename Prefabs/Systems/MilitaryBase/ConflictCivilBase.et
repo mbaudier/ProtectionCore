@@ -1,0 +1,108 @@
+GenericEntity {
+ ID "69C8E9FF9EF2CC4C"
+ components {
+  Persistence "{69C8E9FF9EF26772}" {
+  }
+  SCR_CampaignMilitaryBaseMapDescriptorComponent "{69C8E9FF9EF26687}" {
+   MainType "Radio/ Tower"
+   m_GraphLinesData SCR_GraphLinesData "{69C8E9FF9EF26682}" {
+   }
+  }
+  SCR_CampaignSeizingComponent "{69C8E9FF9EF26680}" {
+   m_iRadius 50
+   m_fMaximumSeizingTime 60
+   m_fMinimumSeizingTime 5
+   m_iMaximumSeizingCharacters 12
+   m_fRespawnCooldownPeriod 20
+   m_bGradualTimerReset 1
+   m_fExtraTimePerService 45
+  }
+  SCR_CampaignSuppliesComponent "{69C8E9FF9EF26681}" {
+   m_iSupplies 250
+   m_iSuppliesMax 500
+   m_fOperationalRadius 25
+  }
+  SCR_CoverageRadioComponent "{69C8E9FF9EF2668F}" {
+   "Turned on" 0
+   Transceivers {
+    RelayTransceiver "{69C8E9FF9EF2668D}" {
+     "Transmitting Range" 1000
+     "Frequency resolution" 1
+    }
+   }
+  }
+  SCR_EditableSystemComponent "{69C8E9FF9EF2668B}" {
+   m_EntityType SYSTEM
+   m_UIInfo SCR_EditableDescriptorUIInfo "{69C8E9FF9EF20E0A}" {
+    Name "#AR-MapLocation_MilitaryBase"
+    Icon "{DD5F23CBB1731598}UI/Textures/Editor/EditableEntities/Systems/EditableEntity_System_Base.edds"
+   }
+   m_EntityInteraction SCR_EditableEntityInteraction "{69C8E9FF9EF20E08}" {
+   }
+   m_bAutoRegister ALWAYS
+   m_Flags 2052
+  }
+  SCR_FactionAffiliationComponent "{69C8E9FF9EF20E16}" {
+   "faction affiliation" "CIV"
+  }
+  SCR_MilitaryBaseAreaMeshComponent "{69C8E9FF9EF20E15}" {
+   m_fHeight 30
+   m_vResolution 48
+   m_Material "{E65E61D1541003E2}Assets/Editor/VirtualArea/VirtualArea.emat"
+  }
+  SCR_ResourceComponent "{69C8E9FF9EF20E14}" {
+   m_aConsumers {
+    SCR_ResourceConsumer "{69C8E9FF9EF20E22}" {
+     m_sDebugName "Free Building Consumer"
+     m_eResourceRights ALL
+     m_eGeneratorIdentifier DEFAULT
+     m_fResourceRange 100
+     m_fBuyMultiplier 1
+     m_fSellMultiplier 1
+     m_ContainerQueue SCR_ResourceConsumerContainerQueue "{69C8E9FF9EF20E21}" {
+      m_StoragePolicies {
+       SCR_ResourceConsumerStoragePolicy "{69C8E9FF9EF3E409}" {
+        m_StorageQueue SCR_ResourceConsumerContainerStorageQueueExtended "{69C8E9FF9EF3E407}" {
+        }
+        m_eStorageType STORED
+       }
+      }
+     }
+    }
+   }
+   m_aGenerators {
+    SCR_ResourceGenerator "{69C8E9FF9EF3E405}" {
+     m_sDebugName "Free Building Generator"
+     m_eResourceRights ALL
+     m_fStorageRange 100
+     m_ContainerQueue SCR_ResourceGeneratorContainerQueue "{69C8E9FF9EF3E403}" {
+      m_StoragePolicies {
+       SCR_ResourceGeneratorStoragePolicy "{69C8E9FF9EF3E401}" {
+        m_StorageQueue SCR_ResourceGeneratorContainerStorageQueueExtended "{69C8E9FF9EF3E400}" {
+        }
+        m_eStorageType STORED
+       }
+      }
+     }
+     m_aActions {
+      SCR_ResourceGeneratorActionStore "{69C8E9FF9EF3E41F}" {
+      }
+      SCR_ResourceGeneratorActionDropContainers "{69C8E9FF9EF3E41D}" {
+      }
+     }
+    }
+   }
+   m_eDebugVisualizationFlags 5
+  }
+  SCR_CampaignMilitaryBaseComponent "{69C8E9FF9EF3E41C}" {
+   m_iRadius 150
+   m_bShowNotifications 0
+   m_fRespawnDelayAfterCaptureSeconds 0
+   m_fSupplyLimit 0.2
+  }
+  RplComponent "{69C8E9FF9EF3E414}" {
+   Streamable Disabled
+  }
+ }
+ coords 899.447 0.185 901.325
+}

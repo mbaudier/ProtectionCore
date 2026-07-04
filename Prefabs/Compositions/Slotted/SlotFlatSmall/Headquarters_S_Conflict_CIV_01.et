@@ -1,0 +1,33 @@
+GenericEntity : "{6E9190BC2713551D}Prefabs/Compositions/Slotted/BuildableComposition_Base.et" {
+ ID "5282DCB5DFC8538F"
+ components {
+  FactionAffiliationComponent "{69C95B5727655AD6}" {
+   "faction affiliation" "CIV"
+  }
+  RigidBody "{5E96A067A67C5029}" {
+   Geometries {
+    PhysicsBoxGeometry UserAction {
+     Extents 12 0.5 12
+    }
+   }
+  }
+  SCR_CampaignBuildingCompositionComponent "{5E96A067C097D570}" {
+   m_AudioSourceConfigurationSpawn SCR_AudioSourceConfiguration "{5E96A067C355978C}" {
+    m_sSoundEventName "SOUND_BUILD_BUNKER"
+   }
+  }
+  Hierarchy "{69C95B5727655A0F}" {
+   Enabled 1
+  }
+ }
+ coords 0 0 0
+ {
+  GenericEntity : "{811ECBE58F51D9A2}Prefabs/MP/Campaign/Assets/CampaignHQRadioBase.et" {
+   ID "69C95B5727640689"
+   coords 0 0 0
+  }
+  GenericEntity : "{9DDE95F40F7D0F74}Prefabs/Systems/Compositions/BaseLogic/CivilBaseLogic.et" {
+   ID "69C95B5727645B64"
+  }
+ }
+}

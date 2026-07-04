@@ -1,0 +1,25 @@
+GenericEntity : "{15EA9302410D8052}Prefabs/Systems/Compositions/BaseLogic/MilitaryBaseLogic_base.et" {
+ ID "5CB0DBC1FF2C5354"
+ components {
+  SCR_FactionAffiliationComponent "{5D36D469534F8E78}" {
+   "faction affiliation" "CIV"
+  }
+ }
+ coords 0 0 0
+ {
+  GenericEntity : "{F70830D0B0BDC7F9}Prefabs/Systems/Compositions/CapturePoint/CapturePoint_Neutral_metal.et" {
+   ID "69C8E9F9546032D0"
+   coords 0 0 0
+   {
+    GenericEntity {
+     ID "5D36C61EF5BF6C53"
+     components {
+      SCR_FlagComponent "{5E3C95A1F6DA459D}" {
+       m_sDefaultMaterial "{6E9DA07CBCE6BE7F}Assets/Props/Fabric/Flags/Data/Flag_1_2_White.emat"
+      }
+     }
+    }
+   }
+  }
+ }
+}
