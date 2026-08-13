@@ -75,7 +75,7 @@ class ARGEO_BaseAddAIGroupCommand : SCR_BaseGroupCommand
 			currentFaction = factionAffiliation.GetAffiliatedFaction();
 		}
 		
-		groupController.RequestAddAIAgent(character, playerID);
+		groupController.RequestAddAIAgent(character);
 		SCR_AIGroup commandedGroup = groupController.GetPlayersGroup().GetSlave();
 		
 		// faction has been forced to recruiter's faction, set it to either PROTECTED or original:
@@ -94,7 +94,7 @@ class ARGEO_BaseAddAIGroupCommand : SCR_BaseGroupCommand
 	//
 
 	//------------------------------------------------------------------------------------------------
-	override bool Execute(IEntity cursorTarget, IEntity target, vector targetPosition, int playerID, bool isClient)
+	override bool Execute(IEntity cursorTarget, IEntity groupEnt, vector targetPosition, int playerID, bool isClient)
 	{
 		if (isClient)
 		{

@@ -5,9 +5,9 @@
 class ARGEO_ProtectionFollowGroupCommand: SCR_FollowGroupCommand
 {
 	//------------------------------------------------------------------------------------------------
-	override bool Execute(IEntity cursorTarget, IEntity target, vector targetPosition, int playerID, bool isClient)
+	override bool Execute(IEntity cursorTarget, IEntity groupEnt, vector targetPosition, int playerID, bool isClient)
 	{
-		if (!m_sWaypointPrefab || !target || !targetPosition)
+		if (!m_sWaypointPrefab || !groupEnt || !targetPosition)
 			return false;
 		
 		if (isClient)
@@ -16,7 +16,7 @@ class ARGEO_ProtectionFollowGroupCommand: SCR_FollowGroupCommand
 			return true;
 		}
 		
-		SCR_AIGroup commandedGroup = SCR_AIGroup.Cast(target);
+		SCR_AIGroup commandedGroup = SCR_AIGroup.Cast(groupEnt);
 		if (!commandedGroup)
 			return false;
 		
@@ -36,6 +36,6 @@ class ARGEO_ProtectionFollowGroupCommand: SCR_FollowGroupCommand
 			m_bForceCommand = false;
 		}
 		
-		return super.Execute(cursorTarget, target, targetPosition, playerID, isClient);
+		return super.Execute(cursorTarget, groupEnt, targetPosition, playerID, isClient);
 	}
 }

@@ -80,11 +80,11 @@ class ARGEO_PopulatedSpawnPointComponent : SCR_AmbientPatrolSpawnPointComponent
 			ambientPatrolSystem.RegisterPatrol(this);
 		m_bSpawnEnabled = true;
 		
-		if(m_iMembersAlive == 0)
-		{	
-			// workaround for when bases cleared it as remnants
-			m_iMembersAlive = -1;
-		}
+//		if(m_iMembersAlive == 0)
+//		{	
+//			// workaround for when bases cleared it as remnants
+//			m_iMembersAlive = -1;
+//		}
 	}
 	
 	//
