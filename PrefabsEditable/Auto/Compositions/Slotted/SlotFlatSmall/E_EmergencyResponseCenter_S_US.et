@@ -9,7 +9,7 @@ GenericEntity : "{850461BA2DE146B6}Prefabs/Compositions/Slotted/SlotFlatSmall/Em
     m_Image "{B767EE6AF3438BA4}UI/Textures/EditorPreviews/Auto/Compositions/Slotted/SlotFlatSmall/E_EmergencyResponseCenter_S_US.edds"
     m_sFaction "US"
     m_aAuthoredLabels {
-     ENTITYTYPE_COMPOSITION SLOT_FLAT_SMALL SERVICE_HQ TRAIT_BASE TRAIT_MEDICAL TRAIT_SUPPLYSTORAGE_SMALL
+     ENTITYTYPE_COMPOSITION SLOT_FLAT_SMALL SERVICE_HQ TRAIT_BASE TRAIT_MEDICAL TRAIT_SUPPLYSTORAGE_SMALL TRAIT_SERVICE
     }
     m_aAutoLabels {
      FACTION_US
