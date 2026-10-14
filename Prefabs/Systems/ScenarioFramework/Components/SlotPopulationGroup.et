@@ -1,0 +1,16 @@
+GenericEntity : "{8D43830F02C3F114}Prefabs/Systems/ScenarioFramework/Components/SlotAI.et" {
+ ID "664CCC335A0A18C9"
+ components {
+  SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+   m_bRandomizePerFaction 1
+   m_eEntityCatalogType GROUP
+   m_aIncludedEditableEntityLabels {
+    GROUPSIZE_MEDIUM
+   }
+   m_sWPToSpawn "{FAD1D789EE291964}Prefabs/AI/Waypoints/AIWaypoint_Defend_Large.et"
+   m_eAIGroupFormation StaggeredColumn
+   m_eAISkill ROOKIE
+   m_fPerceptionFactor 0.5
+  }
+ }
+}

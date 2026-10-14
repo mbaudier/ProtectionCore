@@ -1,0 +1,48 @@
+GenericEntity : "{B72A268C9DAA9C26}Prefabs/Systems/ScenarioFramework/Components/AreaPopulated.et" {
+ ID "664CCC335A0A18C9"
+ {
+  $grp GenericEntity : "{C74B14BAA89875F5}Prefabs/Systems/ScenarioFramework/Components/SlotPopulationGroup.et" {
+   SlotAI3 {
+    ID "6A9D02314A7F9A57"
+    coords 1.191 -3.55 -1.164
+   }
+   SlotAI2 {
+    ID "6A9D02314A7F9A6E"
+    components {
+     SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+      m_aIncludedEditableEntityLabels {
+       GROUPSIZE_LARGE
+      }
+     }
+    }
+    coords 1.191 -3.55 -1.164
+   }
+   SlotAI5 {
+    ID "6A9D02314A7F9BA2"
+    components {
+     SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+      m_aIncludedEditableEntityLabels {
+       GROUPSIZE_SMALL
+      }
+     }
+    }
+    coords 1.191 -3.55 -1.164
+   }
+   SlotAI4 {
+    ID "6A9D02314A7F9BAC"
+    coords 1.191 -3.55 -1.164
+   }
+   SlotAI1 {
+    ID "6A9D02314A7F9BB6"
+    components {
+     SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+      m_aIncludedEditableEntityLabels {
+       GROUPSIZE_SMALL
+      }
+     }
+    }
+    coords 1.191 -3.55 -1.164
+   }
+  }
+ }
+}
